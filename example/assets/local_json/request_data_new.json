@@ -1,0 +1,62 @@
+{
+  "shippingAddress": [
+    {
+      "addressId":1,
+      "isDefault":true,
+      "address": {
+        "fullAddress":"",
+        "zip": "",
+        "pin": "",
+        "country":"",
+        "state": "",
+        "city": "",
+        "landMark": ""
+      },
+      "gAddress":{
+        "lat":"",
+        "long": ""
+      },
+      "contact": {
+        "primaryNumber": "",
+        "secondaryNumber": ""
+      }
+    }
+  ],
+  "billingAddress": [
+    {
+      "addressId":1,
+      "isDefault":true,
+      "email": "",
+      "address": {
+        "fullAddress":"",
+        "zip": "",
+        "pin": "",
+        "country":"",
+        "state": "",
+        "city": "",
+        "landMark": ""
+      },
+      "gAddress":{
+        "lat":"",
+        "long": ""
+      },
+      "contact": {
+        "primaryNumber": "",
+        "secondaryNumber": ""
+
+      }
+    }
+  ],
+  "savedCard": [
+    {
+      "cardType":"",
+      "cardName":"",
+      "authKey":""
+    }
+  ],
+  "deliveryOption": [
+    {
+
+    }
+  ]
+}
