@@ -1,6 +1,6 @@
 # Dynamic form
 
-A flutter package that render dynamic form with different input field which is manage from API json response. This plugin supports both iOS and Android.
+A flutter package that render dynamic multi step form with different input field which is manage from API json response. This plugin supports both iOS and Android.
 
 |               | Android   | iOS    |
 | :-------------| :---------| :------|
