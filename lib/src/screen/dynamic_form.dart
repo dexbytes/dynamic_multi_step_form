@@ -108,7 +108,7 @@ class DynamicFormState extends State<DynamicForm> {
     return widget.showIndicator!?(count>1?Padding(padding: widget.formIndicatorPadding!
       ,child: StepProgressIndicator(
       totalSteps: count,size: 35,padding: 8,
-      currentStep: currentPage,
+      currentStep: currentPage+1,
       selectedColor: selectedColor,
       unselectedColor: unselectedColor,
       onTap: (index) {
