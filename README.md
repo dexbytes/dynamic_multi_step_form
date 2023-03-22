@@ -1,6 +1,10 @@
 # Dynamic form
 
-A flutter package that render dynamic multi step form with different input field which is manage from API json response. This plugin supports both iOS and Android.
+Most of the time, filling out forms with lots of fields can be cumbersome, and this can discourage users from completing the process. This is where a multi-step form comes into play.
+Multi-step forms are just as the name implies: a multi-step form is a long form broken down into short pieces. They provide a less daunting experience to the users of your application.
+
+This  flutter package renders a dynamic multi step form with different input fields and step indicator. Step indicator helps to display on which step you are at the moment.  Form fields, field level validations and design elements are managed via JSON, this JSON can store on the server and call through api or it can store in app code as well.
+This plugin supports both iOS and Android.
 
 |               | Android   | iOS    |
 | :-------------| :---------| :------|
