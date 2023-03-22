@@ -21,6 +21,7 @@ class DynamicFormState extends State<DynamicForm> {
   Map<String,dynamic> formSubmitData = <String,dynamic>{};
   Map<int,dynamic> formScreenList = {};
   List<SingleForm> formScreen = [];
+  List<String> formInformation = [];
 
   DynamicFormState({required this.jsonEncoded}){
     responseParser.setFormData = jsonEncoded;
@@ -29,7 +30,8 @@ class DynamicFormState extends State<DynamicForm> {
     formScreen =
         formScreenList.entries.map( (entry) {
           currentIndex += 1;
-          final _formKeyNew = GlobalKey<SingleFormState>();
+           final _formKeyNew = GlobalKey<SingleFormState>();
+          formInformation.add(entry.value['title']);
            return SingleForm(singleFormKey: _formKeyNew,formData:entry.value, nextPageButtonClick:(index,Map<String,dynamic> formSubmitData){
             this.formSubmitData ['$currentIndex'] = formSubmitData;
             widget.currentStepCallBack?.call(currentIndex:currentIndex,formSubmitData:formSubmitData);
@@ -90,15 +92,35 @@ class DynamicFormState extends State<DynamicForm> {
     widget.currentStepCallBack?.call(currentIndex:responseParser.getCurrentFormNumber,formSubmitData:data,formInformation:formInformation);
   }
 
+  Widget? customStep (int, color, double){
+    return Container();
+}
   //Form step indicator
   Widget formStepIndicator(){
+    Color selectedColor = Colors.green;
+    Color unselectedColor = Colors.grey;
     int count = responseParser.getTotalFormsCount;
     int currentPage = responseParser.getCurrentFormNumber;
     return widget.showIndicator!?(count>1?Padding(padding: widget.formIndicatorPadding!,child: StepProgressIndicator(
-      totalSteps: count,
+      totalSteps: count,size: 35,padding: 5,
       currentStep: currentPage,
-      selectedColor: Colors.green,
-      unselectedColor: Colors.grey,
+      selectedColor: selectedColor,
+      unselectedColor: unselectedColor,
+      onTap: (index) {
+          return () {
+            if(responseParser.getCurrentFormNumber>index) {
+              previewStepCustomClick();
+            }
+          };
+        },
+        customStep: (int index,Color color, double){
+        String title = "${formInformation[index]}";
+          return
+            Column(children: [
+              Text("$title",style: TextStyle(color: color,fontWeight: FontWeight.bold,fontSize: 16),),SizedBox(height: 5,),
+              Container(color: color,height: 4,),
+            ],);
+        }
     ),):const SizedBox(height: 0,)):SizedBox(height: 0,);
   }
 
