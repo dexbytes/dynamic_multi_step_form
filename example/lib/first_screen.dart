@@ -1,5 +1,6 @@
 import 'package:dynamic_multi_step_form/parts.dart';
 import 'package:example/second_screen.dart';
+import 'package:example/widget/appbar_with_back_arrow.dart';
 
 class FirstScreen extends StatefulWidget {
  final String jsonString;
@@ -20,45 +21,91 @@ class _FirstScreenState extends State<FirstScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBar(centerTitle: true,title: const Text('First Screen'),),
-      body:
-      Container(margin: const EdgeInsets.symmetric(horizontal: 0,vertical: 20),
-        child: Column(
-          children: [
-            //Get all fields of form
-            Expanded(child:DynamicForm(jsonString,dynamicFormKey: _formKeyNew,
-                finalSubmitCallBack: (int currentPage,Map<String, dynamic> data) async {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => SecondScreen(data: data)),
-                  );
-                },
-                currentStepCallBack:({int? currentIndex,Map<String,dynamic>? formSubmitData,Map<String,dynamic>? formInformation}){
-              setState(() {
-                print("$formInformation");
-                currentPageIndex = currentIndex!;
-              });
- },
-           submitButtonAlignment:Alignment.bottomCenter)),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-              currentPageIndex>0?Align(alignment: Alignment.center,
-              child: ElevatedButton(clipBehavior: Clip.hardEdge,
-                onPressed: () async {
-                  _formKeyNew.currentState!.previewStepCustomClick();
-                },
-                child: const Text('Previous'),
-              ),
-            ):const SizedBox(),
-              Align(alignment: Alignment.center,
-              child: ElevatedButton(clipBehavior: Clip.hardEdge,
-                onPressed: () async {
-                  _formKeyNew.currentState!.nextStepCustomClick();
-                },
-                child: const Text('Submit Form'),
-              ),
-            )],)
-          ],
-        ),
+      appBar: appBarWithBackArrow(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //Get all fields of form
+          Padding(
+            padding: const EdgeInsets.only(left: 18.0),
+            child: Text("Upload KYC",
+              style: TextStyle(fontSize: 18,
+                  letterSpacing: 1,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.black),),
+          ),
+          Expanded(
+            child: Column(
+              children: [
+                Expanded(child:
+                DynamicForm(jsonString,dynamicFormKey: _formKeyNew,
+                    finalSubmitCallBack: (int currentPage,Map<String, dynamic> data) async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SecondScreen(data: data)),
+                      );
+                    },
+                    currentStepCallBack:({int? currentIndex,Map<String,dynamic>? formSubmitData,Map<String,dynamic>? formInformation}){
+                      setState(() {
+                        print("$formInformation");
+                        currentPageIndex = currentIndex!;
+                      });
+                    },
+                    submitButtonAlignment:Alignment.bottomCenter)),
+                Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          maximumSize: Size(MediaQuery.of(context).size.width, 45),
+                          minimumSize: Size(MediaQuery.of(context).size.width, 45),
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                        onPressed: () async {
+                          _formKeyNew.currentState!.nextStepCustomClick();
+                        },
+                        child: const Text('Next'),
+                      ),
+                    ),
+                  ],
+                )
+                // Container(
+                //   color: Colors.white,
+                //   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
+                //     currentPageIndex>0?Align(alignment: Alignment.center,
+                //       child: ElevatedButton(clipBehavior: Clip.hardEdge,
+                //         onPressed: () async {
+                //           _formKeyNew.currentState!.previewStepCustomClick();
+                //         },
+                //         child: const Text('Previous'),
+                //       ),
+                //     ):const SizedBox(),
+                //     Align(alignment: Alignment.center,
+                //       child: Padding(
+                //         padding: EdgeInsets.symmetric(horizontal: 15),
+                //         child: ElevatedButton(
+                //           style: ElevatedButton.styleFrom(
+                //             backgroundColor: Colors.black,
+                //             maximumSize: Size(MediaQuery.of(context).size.width, 45),
+                //             minimumSize: Size(MediaQuery.of(context).size.width, 45),
+                //           ),
+                //           clipBehavior: Clip.hardEdge,
+                //           onPressed: () async {
+                //             _formKeyNew.currentState!.nextStepCustomClick();
+                //           },
+                //           child: const Text('Next'),
+                //         ),
+                //       ),
+                //     )],),
+                // )
+              ],
+            ),
+          )
+
+        ],
       ),
 
     );

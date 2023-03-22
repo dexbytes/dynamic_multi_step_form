@@ -1,4 +1,4 @@
-import 'package:dynamic_multi_step_form/dynamic_json_form.dart';
+ import 'package:dynamic_multi_step_form/dynamic_json_form.dart';
 import 'package:dynamic_multi_step_form/parts.dart';
 import 'package:example/first_screen.dart';
 import 'package:example/time_duration.dart';

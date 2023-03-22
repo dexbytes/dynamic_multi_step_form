@@ -106,19 +106,27 @@ class DynamicFormState extends State<DynamicForm> {
   Widget build(BuildContext context) {
 
     return Material(
+      color: Colors.transparent,
       child: !commonValidation.isValidJsonEncoded(jsonEncoded)?Container():
       Column(mainAxisSize: MainAxisSize.min,children: [
         formStepIndicator(),
       Flexible(child:
-      ListView.builder(shrinkWrap: true,padding: widget.formPadding!,
-          physics: const ClampingScrollPhysics(),
-          itemCount: formScreen.length,
-          itemBuilder: (BuildContext context, int index) {
-            if(responseParser.getCurrentFormNumber!=index){
-              return const SizedBox(height: 0,);
-            }
-            return formScreen[index];
-          })),
+      Container(
+        padding: EdgeInsets.only(top: 20),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(16),topRight: Radius.circular(16))
+        ),
+        child: ListView.builder(shrinkWrap: false,padding: widget.formPadding!,
+            physics: const ClampingScrollPhysics(),
+            itemCount: formScreen.length,
+            itemBuilder: (BuildContext context, int index) {
+              if(responseParser.getCurrentFormNumber!=index){
+                return const SizedBox(height: 0,);
+              }
+              return formScreen[index];
+            }),
+      )),
         // formScreen[selectedPageIndex].singleFormKey!=null && formScreen[selectedPageIndex].singleFormKey!.currentState!=null && formScreen[selectedPageIndex].singleFormKey!.currentState!.formSubmitButton!=null?formScreen[selectedPageIndex].singleFormKey!.currentState!.formSubmitButton!:const SizedBox(height:0),
       ],),
     );
