@@ -1,7 +1,6 @@
 import 'package:dynamic_multi_step_form/parts.dart';
 import 'package:example/second_screen.dart';
 
-
 class FirstScreen extends StatefulWidget {
  final String jsonString;
  final String apiCallingTime;
@@ -47,8 +46,7 @@ class _FirstScreenState extends State<FirstScreen> {
                 onPressed: () async {
                   _formKeyNew.currentState!.previewStepCustomClick();
                 },
-                child: const Text('preview'),
-                //color: Colors.green,
+                child: const Text('Previous'),
               ),
             ):const SizedBox(),
               Align(alignment: Alignment.center,
@@ -57,7 +55,6 @@ class _FirstScreenState extends State<FirstScreen> {
                   _formKeyNew.currentState!.nextStepCustomClick();
                 },
                 child: const Text('Submit Form'),
-                //color: Colors.green,
               ),
             )],)
           ],

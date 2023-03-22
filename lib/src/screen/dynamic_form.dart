@@ -8,8 +8,9 @@ final GlobalKey<DynamicFormState>? dynamicFormKey ;
 final Alignment? submitButtonAlignment;
 final EdgeInsetsGeometry? formPadding;
 final EdgeInsetsGeometry? formIndicatorPadding;
+final bool? showIndicator;
 
-const DynamicForm(this.jsonEncoded,{this.submitButtonAlignment,this.dynamicFormKey,required this.finalSubmitCallBack,this.currentStepCallBack,this.formPadding = const EdgeInsets.only(left: 15,right: 15),this.formIndicatorPadding = const EdgeInsets.only(left: 0,right: 0,bottom: 15,top: 15)}) : super(key: dynamicFormKey);
+const DynamicForm(this.jsonEncoded,{this.submitButtonAlignment,this.dynamicFormKey,this.showIndicator = true,required this.finalSubmitCallBack,this.currentStepCallBack,this.formPadding = const EdgeInsets.only(left: 15,right: 15),this.formIndicatorPadding = const EdgeInsets.only(left: 0,right: 0,bottom: 15,top: 15)}) : super(key: dynamicFormKey);
   @override
   DynamicFormState createState() => DynamicFormState(jsonEncoded: jsonEncoded);
 }
@@ -41,6 +42,7 @@ class DynamicFormState extends State<DynamicForm> {
         }
             ).toList();
   }
+
   //Next step button click event
   void nextStepCustomClick(){
     int currentPage = responseParser.getCurrentFormNumber;
@@ -88,19 +90,21 @@ class DynamicFormState extends State<DynamicForm> {
     widget.currentStepCallBack?.call(currentIndex:responseParser.getCurrentFormNumber,formSubmitData:data,formInformation:formInformation);
   }
 
+  //Form step indicator
   Widget formStepIndicator(){
     int count = responseParser.getTotalFormsCount;
     int currentPage = responseParser.getCurrentFormNumber;
-    return count>1?Padding(padding: widget.formIndicatorPadding!,child: StepProgressIndicator(
+    return widget.showIndicator!?(count>1?Padding(padding: widget.formIndicatorPadding!,child: StepProgressIndicator(
       totalSteps: count,
       currentStep: currentPage,
       selectedColor: Colors.green,
       unselectedColor: Colors.grey,
-    ),):const SizedBox(height: 0,);
+    ),):const SizedBox(height: 0,)):SizedBox(height: 0,);
   }
+
   @override
   Widget build(BuildContext context) {
-   
+
     return Material(
       child: !commonValidation.isValidJsonEncoded(jsonEncoded)?Container():
       Column(mainAxisSize: MainAxisSize.min,children: [

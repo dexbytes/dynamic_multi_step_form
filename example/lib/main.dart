@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Dynamic TextFormFields',
+      title: 'Dynamic Multi Step Form',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -116,7 +116,7 @@ class _MyFormState extends State<MyForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBar(centerTitle: true,title: const Text('Dynamic TextFormFields'),),
+      appBar: AppBar(centerTitle: true,title: const Text('Dynamic Multi Step Form'),),
       body: Center(
         child: Stack(alignment: Alignment.center,
           children: [
@@ -137,7 +137,7 @@ class _MyFormState extends State<MyForm> {
                   setState(() {
                     isLoading = true;
                   });
-                  //get data which is stored in shared prefernce
+                    //get data which is stored in shared prefernce
                     String? jsonString = await ConfigurationSetting.instance.getFormDataLocal();
                     //if(jsonString!.isEmpty) {
                       // Comment this while get data from local json
