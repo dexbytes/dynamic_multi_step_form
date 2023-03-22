@@ -33,7 +33,7 @@ void main() async {
   TelTextFieldConfiguration telTextFieldConfiguration =  TelTextFieldConfiguration(
       cursorColor: Colors.yellow,
       suffixIconColor: Colors.black,
-      fillColor: Colors.grey.shade200,
+      fillColor:  Color(0xFFE1EFE7),
       hintStyle: const TextStyle(color: Colors.black,fontSize: 16),
       filled: true,border: const OutlineInputBorder(borderRadius:  BorderRadius.all(Radius.circular(12)),
       borderSide: BorderSide(color: Colors.transparent,)//BorderSide
