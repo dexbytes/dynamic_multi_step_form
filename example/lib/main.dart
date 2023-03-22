@@ -15,7 +15,7 @@ void main() async {
   TextFieldConfiguration textFieldConfiguration = TextFieldConfiguration(
       cursorColor: Colors.black,
       suffixIconColor: Colors.black,
-      fillColor: Colors.grey.shade200,
+      fillColor:  Color(0xFFE1EFE7),
   textStyle: const TextStyle(color: Colors.black),
   hintStyle: const TextStyle(color: Colors.black,fontSize: 16),
   //contentPadding: const EdgeInsets.all(8),
