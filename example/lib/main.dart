@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dynamic Multi Step Form',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyForm(jsonString),

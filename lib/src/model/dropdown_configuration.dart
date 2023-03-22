@@ -5,36 +5,36 @@ class DropdownConfiguration {
 
   late TextStyle? _textStyle =  const TextStyle(
     fontSize: 14,
-    fontWeight: FontWeight.bold,
-    color: Colors.white,
+    fontWeight: FontWeight.normal,
+    color: Colors.black,
   );
 
   late TextStyle? _labelTextStyle =  const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
-    color: Colors.grey,
+    color: Colors.black,
   );
   late TextStyle? _selectedTextStyle =  const TextStyle(
     fontSize: 14,
-    fontWeight: FontWeight.bold,
-    color: Colors.white,
+    fontWeight: FontWeight.normal,
+    color: Colors.black,
   );
   late Widget _rightArrow = const Icon(
     Icons.arrow_forward_ios_outlined,
   );
-  late Color? _iconEnabledColor = Colors.white;
+  late Color? _iconEnabledColor = Colors.black;
   late Color? _iconDisabledColor = Colors.grey;
   late BoxDecoration? _buttonDecoration = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
     border: Border.all(
       color: Colors.black26,
     ),
-    color: Colors.blueAccent,
+    color: Color(0xFFE1EFE7),
   );
   /// The decoration of the dropdown menu
   late BoxDecoration? _dropdownDecoration = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
-    color: Colors.blueAccent.shade100,
+    color: Color(0xFFE1EFE7),
   );
   /// The size to use for the drop-down button's icon.
   /// Defaults to 24.0.

@@ -16,7 +16,7 @@ class CheckBoxConfiguration {
   late LabelAndOptionsAlignment _optionsAlign = LabelAndOptionsAlignment.horizontal;
 
   //Colors of active checkboxes
-  late Color _checkboxActiveColor = Colors.blue;
+  late Color _checkboxActiveColor = Colors.green.shade500;
 
   CheckBoxConfiguration({TextStyle? labelTextStyle,TextStyle? optionTextStyle, Color? checkboxActiveColor, LabelAndOptionsAlignment? labelAndRadioButtonAlign,LabelAndOptionsAlignment? optionsAlign}){
     _labelTextStyle = labelTextStyle ?? _labelTextStyle;

@@ -24,7 +24,7 @@ class RadioButtonConfiguration {
   late LabelAndOptionsAlignment _radioButtonsAlign = LabelAndOptionsAlignment.horizontal;
 
   //Colors of active radioButton
-  late Color _radioButtonActiveColor = Colors.blue;
+  late Color _radioButtonActiveColor = Colors.green.shade500;
 
   RadioButtonConfiguration({TextStyle? labelTextStyle,TextStyle? optionTextStyle, Color? radioButtonActiveColor,LabelAndOptionsAlignment? labelAndRadioButtonAlign,LabelAndOptionsAlignment? radioButtonsAlign}){
     _labelTextStyle = labelTextStyle ?? _labelTextStyle;

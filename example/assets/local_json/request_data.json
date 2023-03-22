@@ -7,18 +7,18 @@
   "step": {
     "form1":
     {
-      "formName" : "Registration",
-      "title": "Sign Up",
+      "formName" : "personalDetail",
+      "title": "Personal Detail",
       "description": "Hey, get on board ",
       "formFields": [
         {
           "elementType": "input",
           "elementConfig": {
             "type": "text",
-            "name": "first_name",
-            "label": "First name",
+            "name": "full_name",
+            "label": "Full name",
             "enableLabel": true,
-            "placeholder": "First name",
+            "placeholder": "Full name",
             "class": "form-control",
             "keyboardRejex": "^[a-zA-Z-]+",
             "resetIcon": true,
@@ -35,9 +35,9 @@
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
-              "required": "Please enter first name",
+              "required": "Please enter full name",
               "minLength": "Minimum 3 characters require",
-              "rejex": "Please enter valid first name"
+              "rejex": "Please enter valid full name"
             }
           },
           "valid": true,
@@ -46,61 +46,36 @@
         {
           "elementType": "input",
           "elementConfig": {
-            "type": "text",
-            "name": "full_name",
-            "label": "Full name",
-            "enableLabel": true,
-            "placeholder": "Full name",
+            "type": "tel",
+            "name": "office",
+            "label": "Phone",
+            "enableLabel": false,
+            "keyboardRejex": "^[0-9+]+",
+            "placeholder": "Mobile Number",
             "class": "form-control",
-            "keyboardRejex": "^[a-zA-Z\\s-]+",
-            "resetIcon": true,
-            "minLine": 1,
-            "maxLine": 1,
-            "textCapitalization": "words"
+            "resetIcon": true
+          },
+          "help": {
+            "text": "",
+            "placement": "below"
           },
           "value": "",
           "validation": {
             "required": true,
-            "minLength": 5,
-            "maxLength": 50,
-            "rejex": "^[a-zA-Z.a-zA-Z-`]+ [a-zA-Z.a-zA-Z-`]+",
+            "minLength": 8,
+            "maxLength": 13,
+            "rejex": "^[0-9+]+",
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
-              "required": "Please enter full name",
-              "minLength": "Minimum 5 characters require",
-              "rejex": "Please enter valid full name"
+              "required": "Please enter mobile number",
+              "minLength": "Minimum 8 digit mobile number required",
+              "rejex": "Please enter valid mobile number"
             }
           },
           "valid": true,
           "onchange": false
         },
-        {
-          "elementType": "button",
-          "elementConfig": {
-            "type": "button",
-            "name": "submit_first_button",
-            "label": "Submit First Form",
-            "enableLabel": true,
-            "isVisible": false,
-            "class": "form-control",
-            "resetIcon": true,
-            "minLine": 1,
-            "maxLine": 1,
-            "textCapitalization": "words"
-          },
-          "value": "",
-          "valid": true,
-          "onchange": false
-        }
-      ]
-    },
-    "form2":
-    {
-      "formName" : "Login",
-      "title": "Sign In",
-      "description": "Hey, get on board ",
-      "formFields": [
         {
           "elementType": "input",
           "elementConfig": {
@@ -124,39 +99,6 @@
             "errorMessage": {
               "required": "Please enter email",
               "rejex": "Please enter valid email"
-            }
-          },
-          "valid": true,
-          "onchange": false
-        },
-        {
-          "elementType": "input",
-          "elementConfig": {
-            "type": "tel",
-            "name": "office",
-            "label": "Phone",
-            "enableLabel": false,
-            "keyboardRejex": "^[0-9+]+",
-            "placeholder": "Phone",
-            "class": "form-control",
-            "resetIcon": true
-          },
-          "help": {
-            "text": "",
-            "placement": "below"
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "minLength": 8,
-            "maxLength": 13,
-            "rejex": "^[0-9+]+",
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please enter phone number",
-              "minLength": "Minimum 8 digit mobile number required",
-              "rejex": "Please enter valid mobile number"
             }
           },
           "valid": true,
@@ -191,70 +133,35 @@
         {
           "elementType": "input",
           "elementConfig": {
-            "type": "password",
-            "name": "password",
-            "label": "Password",
-            "enableLabel": true,
-            "placeholder": "Password",
+            "type": "tel",
+            "name": "pincode",
+            "label": "Pincode",
+            "enableLabel": false,
+            "keyboardRejex": "^[0-9+]+",
+            "placeholder": "Pincode",
             "class": "form-control",
             "resetIcon": true
+          },
+          "help": {
+            "text": "",
+            "placement": "below"
           },
           "value": "",
           "validation": {
             "required": true,
             "minLength": 4,
-            "maxLength": 16,
-            "rejex": "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*~])",
+            "maxLength": 6,
+            "rejex": "^[0-9+]+",
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
-              "required": "Please enter password",
-              "minLength": "Minimum 4 characters require",
-              "rejex": "Password must contain upper case, lower case letter, number and a special character"
+              "required": "Please enter the pin-code",
+              "minLength": "Minimum 4 digit pin-code required",
+              "rejex": "Please enter valid pin-code"
             }
           },
           "valid": true,
           "onchange": false
-        },
-        {
-          "elementType": "checkbox",
-          "elementConfig": {
-            "name": "hobbies",
-            "label": "My Hobbies",
-            "enableLabel": true,
-            "class": "form-control",
-            "options": [
-              {
-                "checked": true,
-                "value": "book_reading",
-                "displayValue": "Book Reading"
-              },
-              {
-                "checked": false,
-                "value": "dancing",
-                "displayValue": "Dancing"
-              },
-              {
-                "checked": false,
-                "value": "playing",
-                "displayValue": "Playing"
-              },
-              {
-                "checked": false,
-                "value": "coding",
-                "displayValue": "Coding"
-              }
-            ]
-          },
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select at least one"
-            }
-          },
-          "valid": false
         },
         {
           "elementType": "radio",
@@ -290,53 +197,153 @@
           },
           "valid": false
         },
+
+
+
         {
-          "elementType": "select",
+          "elementType": "button",
           "elementConfig": {
-            "name": "occupation",
-            "label": "Occupation",
+            "type": "button",
+            "name": "submit_first_button",
+            "label": "Submit First Form",
             "enableLabel": true,
-            "placeholder": "Occupation",
+            "isVisible": false,
             "class": "form-control",
-            "options": [
-              {
-                "value": "Salaried",
-                "displayValue": "Salaried"
-              },
-              {
-                "value": "selfEmployed",
-                "displayValue": "Self Employed"
-              }
-            ],
-            "isMulitpleSelect": false
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 1,
+            "textCapitalization": "words"
           },
           "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select at least one"
-            }
+          "valid": true,
+          "onchange": false
+        }
+      ]
+    }
+
+    "form2":
+
+    {
+  "formName" : "bankDetail",
+  "title": "Bank Detail",
+  "description": "Hey, get on board ",
+  "formFields": [
+
+    {
+      "elementType": "select",
+      "elementConfig": {
+        "name": "documentType",
+        "label": "Document Type",
+        "enableLabel": true,
+        "placeholder": "Document Type",
+        "class": "form-control",
+        "options": [
+          {
+            "value": "aadharCard",
+            "displayValue": "Aadhar Card"
           },
-          "valid": false
-        },
+          {
+            "value": "panCard",
+            "displayValue": "Pan Card"
+          },
+          {
+            "value": "drivingLicence",
+            "displayValue": "Driving Licence"
+          }
+        ],
+        "isMulitpleSelect": false
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please select at least one"
+        }
+      },
+      "valid": false
+    },
+    {
+      "elementType": "input",
+      "elementConfig": {
+        "type": "text",
+        "name": "proofId",
+        "label": "Proof ID",
+        "enableLabel": false,
+        "keyboardRejex": "^[a-zA-Z0-9_.-]*$",
+        "placeholder": "Proof ID",
+        "class": "form-control",
+        "resetIcon": true
+      },
+      "help": {
+        "text": "",
+        "placement": "below"
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "minLength": 8,
+        "maxLength": 13,
+        "rejex": "^[a-zA-Z0-9_.-]*$",
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please enter the id proof number",
+          "minLength": "Please enter correct id proof number",
+          "rejex": "Please enter valid id proof"
+        }
+      },
+      "valid": true,
+      "onchange": false
+    },
+    {
+      "elementType": "button",
+      "elementConfig": {
+        "type": "button",
+        "name": "submit_second_button",
+        "label": "Submit First Form",
+        "enableLabel": true,
+        "class": "form-control",
+        "resetIcon": true,
+        "isVisible": false,
+        "minLine": 1,
+        "maxLine": 1,
+        "textCapitalization": "words"
+      },
+      "value": "",
+      "valid": true,
+      "onchange": false
+    }
+  ]
+},
+    "form3":
+    {
+      "formName" : "otherDetail",
+      "title": "Id Proof",
+      "description": "Hey, get on board ",
+      "formFields": [
+
         {
           "elementType": "select",
           "elementConfig": {
-            "name": "College",
-            "label": "College",
+            "name": "documentType",
+            "label": "Document Type",
             "enableLabel": true,
-            "placeholder": "College",
+            "placeholder": "Document Type",
             "class": "form-control",
             "options": [
               {
-                "value": "ips",
-                "displayValue": "IPS"
+                "value": "aadharCard",
+                "displayValue": "Aadhar Card"
               },
               {
-                "value": "sdbansal",
-                "displayValue": "SD Bansal"
+                "value": "panCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "drivingLicence",
+                "displayValue": "Driving Licence"
               }
             ],
             "isMulitpleSelect": false
@@ -355,36 +362,35 @@
         {
           "elementType": "input",
           "elementConfig": {
-            "type": "tel",
-            "name": "tel",
-            "label": "Phone",
+            "type": "text",
+            "name": "proofId",
+            "label": "Proof ID",
             "enableLabel": false,
-            "placeholder": "Phone",
+            "keyboardRejex": "^[a-zA-Z0-9_.-]*$",
+            "placeholder": "Proof ID",
             "class": "form-control",
-            "resetIcon": true,
-            "isCountryCode": true,
-            "keyboardRejex": "^[0-9]+",
-            "enabledCountries": [
-              "Sa",
-              "In"
-            ]
+            "resetIcon": true
+          },
+          "help": {
+            "text": "",
+            "placement": "below"
           },
           "value": "",
           "validation": {
             "required": true,
             "minLength": 8,
-            "maxLength": 10,
-            "rejex": "^[0-9]+",
+            "maxLength": 13,
+            "rejex": "^[a-zA-Z0-9_.-]*$",
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
-              "required": "Please enter phone number",
-              "minLength": "Minimum 8 digit mobile number required",
-              "rejex": "Please enter valid mobile number"
+              "required": "Please enter the id proof number",
+              "minLength": "Please enter correct id proof number",
+              "rejex": "Please enter valid id proof"
             }
           },
           "valid": true,
-          "onchange": true
+          "onchange": false
         },
         {
           "elementType": "button",
