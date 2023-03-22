@@ -39,13 +39,15 @@ class _FirstScreenState extends State<FirstScreen> {
             child: Column(
               children: [
                 Expanded(child:
-                DynamicForm(jsonString,dynamicFormKey: _formKeyNew,
+                DynamicForm(
+                    jsonString,dynamicFormKey: _formKeyNew,
                     finalSubmitCallBack: (int currentPage,Map<String, dynamic> data) async {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => SecondScreen(data: data)),
                       );
                     },
+
                     currentStepCallBack:({int? currentIndex,Map<String,dynamic>? formSubmitData,Map<String,dynamic>? formInformation}){
                       setState(() {
                         print("$formInformation");
@@ -53,24 +55,22 @@ class _FirstScreenState extends State<FirstScreen> {
                       });
                     },
                     submitButtonAlignment:Alignment.bottomCenter)),
-                Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 15),
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          maximumSize: Size(MediaQuery.of(context).size.width, 45),
-                          minimumSize: Size(MediaQuery.of(context).size.width, 45),
-                        ),
-                        clipBehavior: Clip.hardEdge,
-                        onPressed: () async {
-                          _formKeyNew.currentState!.nextStepCustomClick();
-                        },
-                        child: const Text('Next'),
-                      ),
+                Container(
+                  color: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 15).copyWith(bottom: 8),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      backgroundColor: Colors.black,
+                      maximumSize: Size(MediaQuery.of(context).size.width, 45),
+                      minimumSize: Size(MediaQuery.of(context).size.width, 45),
                     ),
-                  ],
+                    clipBehavior: Clip.hardEdge,
+                    onPressed: () async {
+                      _formKeyNew.currentState!.nextStepCustomClick();
+                    },
+                    child: const Text('Next'),
+                  ),
                 )
                 // Container(
                 //   color: Colors.white,

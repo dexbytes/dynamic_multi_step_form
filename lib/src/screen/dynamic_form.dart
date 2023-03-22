@@ -10,7 +10,11 @@ final EdgeInsetsGeometry? formPadding;
 final EdgeInsetsGeometry? formIndicatorPadding;
 final bool? showIndicator;
 
-const DynamicForm(this.jsonEncoded,{this.submitButtonAlignment,this.dynamicFormKey,this.showIndicator = true,required this.finalSubmitCallBack,this.currentStepCallBack,this.formPadding = const EdgeInsets.only(left: 15,right: 15),this.formIndicatorPadding = const EdgeInsets.only(left: 0,right: 0,bottom: 15,top: 15)}) : super(key: dynamicFormKey);
+const DynamicForm(this.jsonEncoded,{this.submitButtonAlignment,this.dynamicFormKey,
+  this.showIndicator = true,required this.finalSubmitCallBack,
+  this.currentStepCallBack,
+  this.formPadding = const EdgeInsets.only(left: 15,right: 15,top: 25),
+  this.formIndicatorPadding = const EdgeInsets.only(left: 10,right: 10,bottom: 15,top: 15)}) : super(key: dynamicFormKey);
   @override
   DynamicFormState createState() => DynamicFormState(jsonEncoded: jsonEncoded);
 }
@@ -97,12 +101,13 @@ class DynamicFormState extends State<DynamicForm> {
 }
   //Form step indicator
   Widget formStepIndicator(){
-    Color selectedColor = Colors.green;
-    Color unselectedColor = Colors.grey;
+    Color selectedColor = Color(0xFF3BAD59);
+    Color unselectedColor = Color(0xFFC2C2C2);
     int count = responseParser.getTotalFormsCount;
     int currentPage = responseParser.getCurrentFormNumber;
-    return widget.showIndicator!?(count>1?Padding(padding: widget.formIndicatorPadding!,child: StepProgressIndicator(
-      totalSteps: count,size: 35,padding: 5,
+    return widget.showIndicator!?(count>1?Padding(padding: widget.formIndicatorPadding!
+      ,child: StepProgressIndicator(
+      totalSteps: count,size: 35,padding: 8,
       currentStep: currentPage,
       selectedColor: selectedColor,
       unselectedColor: unselectedColor,
@@ -117,8 +122,14 @@ class DynamicFormState extends State<DynamicForm> {
         String title = "${formInformation[index]}";
           return
             Column(children: [
-              Text("$title",style: TextStyle(color: color,fontWeight: FontWeight.bold,fontSize: 16),),SizedBox(height: 5,),
-              Container(color: color,height: 4,),
+              Text("$title",style: TextStyle(color: color,fontWeight: FontWeight.w500,fontSize: 14),),SizedBox(height: 5,),
+              Container(
+                height: 4,
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(15)
+                ),
+              ),
             ],);
         }
     ),):const SizedBox(height: 0,)):SizedBox(height: 0,);
@@ -134,7 +145,6 @@ class DynamicFormState extends State<DynamicForm> {
         formStepIndicator(),
       Flexible(child:
       Container(
-        padding: EdgeInsets.only(top: 20),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(topLeft: Radius.circular(16),topRight: Radius.circular(16))
