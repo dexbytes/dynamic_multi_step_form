@@ -25,4 +25,5 @@ class DataRefreshStream {
   void disposeMessageListStreamController() {
     _formFieldStreamController.close();
   }
+
 }

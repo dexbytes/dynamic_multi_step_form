@@ -8,51 +8,35 @@ class TextFieldModel {
   bool? valid;
   bool? onchange;
 
-  TextFieldModel(
-      {this.elementType,
-      this.elementConfig,
-      this.help,
-      this.value,
-      this.validation,
-      this.validationStr,
-      this.valid,
-      this.onchange});
+  TextFieldModel({this.elementType, this.elementConfig, this.help, this.value, this.validation,this.validationStr, this.valid, this.onchange});
 
   TextFieldModel.fromJson(Map<String, dynamic> json) {
     elementType = json['elementType'];
-    elementConfig = json['elementConfig'] != null
-        ? ElementConfig.fromJson(json['elementConfig'])
-        : null;
-    help = !json.containsKey('help')
-        ? null
-        : json['help'] != null
-            ? Help.fromJson(json['help'])
-            : null;
+    elementConfig = json['elementConfig'] != null ?  ElementConfig.fromJson(json['elementConfig']) : null;
+    help = !json.containsKey('help')?null:json['help'] != null ?  Help.fromJson(json['help']) : null;
     value = json['value'];
-    validation = json['validation'] != null
-        ? Validation.fromJson(json['validation'])
-        : null;
-    validationStr = json['validation'];
+    validation = json['validation'] != null ?  Validation.fromJson(json['validation']) : null;
+    validationStr = json['validation'] != null ? json['validation'] : null;
     valid = json['valid'];
     onchange = json['onchange'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['elementType'] = elementType;
-    if (elementConfig != null) {
-      data['elementConfig'] = elementConfig!.toJson();
+    data['elementType'] = this.elementType;
+    if (this.elementConfig != null) {
+      data['elementConfig'] = this.elementConfig!.toJson();
     }
-    if (help != null) {
-      data['help'] = help!.toJson();
+    if (this.help != null) {
+      data['help'] = this.help!.toJson();
     }
-    data['value'] = value;
-    if (validation != null) {
-      data['validation'] = validation!.toJson();
+    data['value'] = this.value;
+    if (this.validation != null) {
+      data['validation'] = this.validation!.toJson();
     }
-    data['valid'] = valid;
-    data['onchange'] = onchange;
-    data['validationStr'] = validationStr;
+    data['valid'] = this.valid;
+    data['onchange'] = this.onchange;
+    data['validationStr'] = this.validationStr;
     return data;
   }
 }
@@ -70,58 +54,60 @@ class ElementConfig {
   String? nextName;
   int? minLine;
   int? maxLine;
+  String? firstDate;
+  String? lastDate;
+  String? initialDate;
+  String? dateFormat;
+  bool? pickDateFromCalender;
 
-  ElementConfig(
-      {this.type,
-      this.textCapitalization,
-      this.name,
-      this.keyboardRejex = "",
-      this.label,
-      this.enableLabel,
-      this.placeholder,
-      this.classProperty,
-      this.resetIcon,
-      this.nextName,
-      this.minLine = 1,
-      this.maxLine = 2});
+  ElementConfig({this.type,this.firstDate,this.pickDateFromCalender,this.initialDate,this.lastDate,this.textCapitalization, this.name,this.keyboardRejex = "", this.label,this.enableLabel, this.placeholder, this.classProperty, this.resetIcon,this.nextName,this.minLine = 1,this.maxLine = 2,this.dateFormat});
 
   ElementConfig.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
+  type = json['type'];
 
-    textCapitalization = json.containsKey('textCapitalization')
-        ? json['textCapitalization']
-        : "none";
-    name = json['name'];
-    label = json['label'];
-    if (json.containsKey('enableLabel')) {
-      enableLabel = json['enableLabel'];
-    }
-    keyboardRejex =
-        json.containsKey('keyboardRejex') ? json['keyboardRejex'] : "";
+  textCapitalization = json.containsKey('textCapitalization')?json['textCapitalization']:"none";
+  name = json['name'];
+  label = json['label'];
+  if(json.containsKey('enableLabel')){
+    enableLabel = json['enableLabel'];
+  }
+    keyboardRejex = json.containsKey('keyboardRejex')?json['keyboardRejex']:"";
 
-    placeholder = json['placeholder'];
-    classProperty = json['class'];
-    resetIcon = json['resetIcon'];
-    nextName = json['nextName'];
-    maxLine = json.containsKey('maxLine') ? json['maxLine'] : 1;
-    minLine = json.containsKey('minLine') ? json['minLine'] : 1;
+  placeholder = json['placeholder'];
+  classProperty = json['class'];
+  resetIcon = json['resetIcon'];
+  nextName = json['nextName'];
+  maxLine = json.containsKey('maxLine')?json['maxLine']:1;
+  minLine = json.containsKey('minLine')?json['minLine']:1;
+
+  firstDate = json.containsKey('firstDate')?json['firstDate']:'';
+  lastDate = json.containsKey('lastDate')?json['lastDate']:'';
+  initialDate = json.containsKey('initialDate')?json['initialDate']:'';
+  dateFormat = json.containsKey('dateFormat')?json['dateFormat']:'';
+  pickDateFromCalender = json.containsKey('pickDateFromCalender')?json['pickDateFromCalender']:false;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['textCapitalization'] = textCapitalization;
-    data['type'] = type;
-    data['name'] = name;
-    data['keyboardRejex'] = keyboardRejex;
-    data['label'] = label;
-    data['enableLabel'] = enableLabel;
-    data['placeholder'] = placeholder;
-    data['class'] = classProperty;
-    data['resetIcon'] = resetIcon;
-    data['nextName'] = nextName;
-    data['maxLine'] = maxLine;
-    data['minLine'] = minLine;
-    return data;
+  final Map<String, dynamic> data = new Map<String, dynamic>();
+  data['textCapitalization'] = this.textCapitalization;
+  data['type'] = this.type;
+  data['name'] = this.name;
+  data['keyboardRejex'] = this.keyboardRejex;
+  data['label'] = this.label;
+  data['enableLabel'] = this.enableLabel;
+  data['placeholder'] = this.placeholder;
+  data['class'] = this.classProperty;
+  data['resetIcon'] = this.resetIcon;
+  data['nextName'] = this.nextName;
+  data['maxLine'] = this.maxLine;
+  data['minLine'] = this.minLine;
+
+  data['firstDate'] = this.firstDate;
+  data['lastDate'] = this.lastDate;
+  data['initialDate'] = this.initialDate;
+  data['dateFormat'] = this.dateFormat;
+  data['pickDateFromCalender'] = this.pickDateFromCalender;
+  return data;
   }
 }
 
@@ -129,7 +115,7 @@ class Help {
   String? text;
   String? placement;
 
-  Help({text, this.placement});
+  Help({this.text, this.placement});
 
   Help.fromJson(Map<String, dynamic> json) {
     text = json['text'];
@@ -137,9 +123,9 @@ class Help {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['text'] = text;
-    data['placement'] = placement;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['text'] = this.text;
+    data['placement'] = this.placement;
     return data;
   }
 }
@@ -151,39 +137,33 @@ class Validation {
   String? rejex;
   bool? isReadOnly;
   bool? isDisabled;
+  int? minAge;
   ErrorMessage? errorMessage;
 
-  Validation(
-      {this.required,
-      this.minLength,
-      this.maxLength,
-      this.rejex,
-      this.isReadOnly = false,
-      this.isDisabled = false,
-      this.errorMessage});
+  Validation({this.required, this.minLength, this.minAge, this.maxLength, this.rejex, this.isReadOnly = false, this.isDisabled = false,this.errorMessage});
 
   Validation.fromJson(Map<String, dynamic> json) {
     required = json['required'];
-    minLength = json.containsKey('minLength') ? json['minLength'] : 10;
-    maxLength = json.containsKey('maxLength') ? json['maxLength'] : 50;
-    rejex = json.containsKey('rejex') ? json['rejex'] : "";
-    isReadOnly = json.containsKey('isReadOnly') ? json['isReadOnly'] : false;
-    isDisabled = json.containsKey('isDisabled') ? json['isDisabled'] : false;
-    errorMessage = json['errorMessage'] != null
-        ? ErrorMessage.fromJson(json['errorMessage'])
-        : null;
+    minLength = json.containsKey('minLength')?json['minLength']:10;
+    maxLength = json.containsKey('maxLength')?json['maxLength']:50;
+    rejex = json.containsKey('rejex')?json['rejex']:"";
+    isReadOnly = json.containsKey('isReadOnly')?json['isReadOnly']:false;
+    isDisabled = json.containsKey('isDisabled')?json['isDisabled']:false;
+    minAge = json.containsKey('minAge')?json['minAge']:-1;
+    errorMessage = json['errorMessage'] != null ? ErrorMessage.fromJson(json['errorMessage']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['required'] = required;
-    data['minLength'] = minLength;
-    data['maxLength'] = maxLength;
-    data['rejex'] = rejex;
-    data['isReadOnly'] = isReadOnly;
-    data['isDisabled'] = isDisabled;
-    if (errorMessage != null) {
-      data['errorMessage'] = errorMessage!.toJson();
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['required'] = this.required;
+    data['minLength'] = this.minLength;
+    data['maxLength'] = this.maxLength;
+    data['rejex'] = this.rejex;
+    data['isReadOnly'] = this.isReadOnly;
+    data['isDisabled'] = this.isDisabled;
+    data['minAge'] = this.minAge;
+    if (this.errorMessage != null) {
+      data['errorMessage'] = this.errorMessage!.toJson();
     }
     return data;
   }
@@ -205,11 +185,11 @@ class ErrorMessage {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['required'] = required;
-    data['minLength'] = minLength;
-    data['maxLength'] = maxLength;
-    data['rejex'] = rejex;
+    final Map<String, dynamic> data =  Map<String, dynamic>();
+    data['required'] = this.required;
+    data['minLength'] = this.minLength;
+    data['maxLength'] = this.maxLength;
+    data['rejex'] = this.rejex;
     return data;
   }
 }

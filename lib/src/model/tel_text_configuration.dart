@@ -1,5 +1,5 @@
 // import 'package:flutter/material.dart';
-part of dynamic_multi_step_form;
+part of dynamic_json_form;
 
 class TelTextFieldConfiguration {
   /// The shape of the border to draw around the decoration's container.
@@ -40,30 +40,30 @@ class TelTextFieldConfiguration {
   ///    bottom of the input decorator's container.
   ///  * [OutlineInputBorder], an [InputDecorator] border which draws a
   ///    rounded rectangle around the input decorator's container.
-  late InputBorder? _border = const OutlineInputBorder();
-  late InputBorder? _focusedBorder = const OutlineInputBorder();
+  late InputBorder? _border =  const OutlineInputBorder();
+  late InputBorder? _focusedBorder =  const OutlineInputBorder();
   //late InputBorder? _errorBorder =  const OutlineInputBorder();
-  late TextStyle? _textStyle = const TextStyle();
-  late TextStyle? _hintStyle = const TextStyle();
-  late TextStyle? _labelStyle = const TextStyle();
-  late TextStyle? _errorStyle = const TextStyle();
-  late TextStyle? _prefixStyle = const TextStyle();
-  late TextStyle? _counterStyle = const TextStyle();
-  late TextStyle? _suffixStyle = const TextStyle();
-  // late StrutStyle? _strutStyle =  const StrutStyle();
-  // late TextDirection? _textDirection = TextDirection.ltr;
-
+  late TextStyle? _textStyle =  const TextStyle();
+  late TextStyle? _hintStyle =  const TextStyle();
+  late TextStyle? _labelStyle =  const TextStyle();
+  late TextStyle? _errorStyle =  const TextStyle();
+  late TextStyle? _prefixStyle =  const TextStyle();
+  late TextStyle? _counterStyle =  const TextStyle();
+  late TextStyle? _suffixStyle =  const TextStyle();
+  late StrutStyle? _strutStyle =  const StrutStyle();
+  late TextDirection? _textDirection = TextDirection.ltr;
+  late TextAlign? _textAlign = TextAlign.start;
+  late TextAlignVertical? _textAlignVertical = TextAlignVertical.center;
   late bool _enableLabel = true;
   late bool _filled = true;
   late Color _fillColor = Colors.transparent;
   late Color _cursorColor = Colors.red;
   late Color _suffixIconColor = Colors.red;
-  late EdgeInsets _contentPadding = const EdgeInsets.all(16);
-  late FloatingLabelBehavior _floatingLabelBehavior =
-      FloatingLabelBehavior.never;
+  late EdgeInsets _contentPadding =  const EdgeInsets.all(16);
+  late FloatingLabelBehavior _floatingLabelBehavior = FloatingLabelBehavior.never;
 
-  TelTextFieldConfiguration({
-    TextStyle? textStyle,
+
+  TelTextFieldConfiguration({TextStyle? textStyle,
     TextStyle? hintStyle,
     TextStyle? labelStyle,
     TextStyle? errorStyle,
@@ -79,6 +79,7 @@ class TelTextFieldConfiguration {
     Color? cursorColor,
     EdgeInsets? contentPadding,
     FloatingLabelBehavior? floatingLabelBehavior,
+
   }) {
     _fillColor = fillColor ?? _fillColor;
     _cursorColor = cursorColor ?? _cursorColor;
@@ -98,8 +99,7 @@ class TelTextFieldConfiguration {
     _floatingLabelBehavior = floatingLabelBehavior ?? _floatingLabelBehavior;
   }
 
-  TextFieldConfiguration setConfiguration({
-    TextStyle? textStyle,
+  TextFieldConfiguration setConfiguration({TextStyle? textStyle,
     TextStyle? hintStyle,
     TextStyle? labelStyle,
     TextStyle? errorStyle,
@@ -117,46 +117,43 @@ class TelTextFieldConfiguration {
     FloatingLabelBehavior? floatingLabelBehavior,
   }) {
     return TextFieldConfiguration(
-        textStyle: textStyle ?? _textStyle,
-        hintStyle: hintStyle ?? _hintStyle,
-        labelStyle: labelStyle ?? _labelStyle,
-        prefixStyle: prefixStyle ?? _prefixStyle,
-        errorStyle: errorStyle ?? _errorStyle,
-        counterStyle: counterStyle ?? _counterStyle,
-        suffixStyle: suffixStyle ?? _suffixStyle,
-        border: border ?? _border,
-        focusedBorder: focusedBorder ?? _focusedBorder,
-        fillColor: fillColor ?? _fillColor,
-        suffixIconColor: suffixIconColor ?? _suffixIconColor,
-        cursorColor: cursorColor ?? _cursorColor,
-        filled: filled ?? _filled,
-        enableLabel: enableLabel ?? _enableLabel,
-        contentPadding: contentPadding ?? _contentPadding,
-        floatingLabelBehavior: floatingLabelBehavior ?? _floatingLabelBehavior);
+        textStyle : textStyle ?? _textStyle,
+        hintStyle : hintStyle ?? _hintStyle,
+        labelStyle : labelStyle ?? _labelStyle,
+        prefixStyle : prefixStyle ?? _prefixStyle,
+        errorStyle : errorStyle ?? _errorStyle,
+        counterStyle : counterStyle ?? _counterStyle,
+        suffixStyle : suffixStyle ?? _suffixStyle,
+        border : border ?? _border,
+        focusedBorder : focusedBorder ?? _focusedBorder,
+        fillColor : fillColor ?? _fillColor,
+        suffixIconColor : suffixIconColor ?? _suffixIconColor,
+        cursorColor : cursorColor ?? _cursorColor,
+        filled: filled??_filled,
+        enableLabel : enableLabel ?? _enableLabel,
+        contentPadding : contentPadding ?? _contentPadding,
+        floatingLabelBehavior : floatingLabelBehavior ?? _floatingLabelBehavior
+    );
   }
-
-  set setBorder(value) {
+  set setBorder (value){
     _border = value;
   }
 
-  set setTextStyle(value) {
+  set setTextStyle (value){
     _textStyle = value;
   }
-
-  set setHintStyle(value) {
+  set setHintStyle (value){
     _hintStyle = value;
   }
-
-  set setStrutStyle(value) {
-    // _strutStyle = value;
+  set setStrutStyle (value){
+    _strutStyle = value;
   }
-  set setTextDirection(value) {
-    // _textDirection = value;
+  set setTextDirection (value){
+    _textDirection = value;
   }
-  set setEnableLabel(value) {
+  set setEnableLabel (value){
     _enableLabel = value;
   }
 }
+TelTextFieldConfiguration telTextFieldConfiguration = TelTextFieldConfiguration();
 
-TelTextFieldConfiguration telTextFieldConfiguration =
-    TelTextFieldConfiguration();

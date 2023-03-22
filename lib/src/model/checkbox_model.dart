@@ -1,13 +1,13 @@
-class DropDownModel {
+class CheckboxModel {
   String? elementType;
   ElementConfig? elementConfig;
   String? value;
   Validation? validation;
   bool? valid;
 
-  DropDownModel({this.elementType, this.elementConfig, this.value, this.validation, this.valid});
+  CheckboxModel({this.elementType, this.elementConfig, this.value, this.validation, this.valid});
 
-  DropDownModel.fromJson(Map<String, dynamic> json) {
+  CheckboxModel.fromJson(Map<String, dynamic> json) {
     elementType = json['elementType'];
     elementConfig = json['elementConfig'] != null ?  ElementConfig.fromJson(json['elementConfig']) : null;
     value = json['value'];
@@ -17,9 +17,9 @@ class DropDownModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =  Map<String, dynamic>();
-    data['elementType'] = this.elementType;
+    data['elementType'] = elementType;
     if (this.elementConfig != null) {
-      data['elementConfig'] = this.elementConfig!.toJson();
+      data['elementConfig'] = elementConfig!.toJson();
     }
     data['value'] = this.value;
     if (this.validation != null) {
@@ -33,38 +33,29 @@ class DropDownModel {
 class ElementConfig {
   String? name;
   String? label;
-  String? placeholder;
   String? classProperty;
   List<Options>? options;
-  bool? isMultipleSelect;
-  bool? isInline;
 
-  ElementConfig({this.name, this.label, this.placeholder, this.classProperty, this.options, this.isMultipleSelect = false,this.isInline = false});
+  ElementConfig({this.name, this.label,  this.classProperty, this.options});
 
   ElementConfig.fromJson(Map<String, dynamic> json) {
-  name = json['name'];
-  label = json['label'];
-  placeholder = json['placeholder'];
-  classProperty = json.containsKey('class')?json['class']:"";
-  if (json['options'] != null) {
-  options = <Options>[];
-  json['options'].forEach((v) { options!.add(new Options.fromJson(v)); });
-  }
-  isMultipleSelect = json.containsKey('isMulitpleSelect')?json['isMulitpleSelect']:false;
-  isInline = json.containsKey('isInline')?json['isInline']:false;
+    name = json['name'];
+    label = json['label'];
+    classProperty = json.containsKey('class')?json['class']:"";
+    if (json['options'] != null) {
+      options = <Options>[];
+      json['options'].forEach((v) { options!.add(new Options.fromJson(v)); });
+    }
   }
   Map<String, dynamic> toJson() {
-  final Map<String, dynamic> data =  Map<String, dynamic>();
-  data['name'] = this.name;
-  data['label'] = this.label;
-  data['placeholder'] = this.placeholder;
-  data['class'] = this.classProperty;
-  if (this.options != null) {
-  data['options'] = this.options!.map((v) => v.toJson()).toList();
-  }
-  data['isMultipleSelect'] = this.isMultipleSelect;
-  data['isInline'] = this.isInline;
-  return data;
+    final Map<String, dynamic> data =  Map<String, dynamic>();
+    data['name'] = this.name;
+    data['label'] = this.label;
+    data['class'] = this.classProperty;
+    if (this.options != null) {
+      data['options'] = this.options!.map((v) => v.toJson()).toList();
+    }
+    return data;
   }
 }
 
@@ -96,7 +87,7 @@ class Validation {
   bool? isDisabled;
   ErrorMessage? errorMessage;
 
-  Validation({this.required, this.isReadOnly, this.isDisabled, this.errorMessage});
+  Validation({this.required, this.isReadOnly, this.isDisabled,this.errorMessage});
 
   Validation.fromJson(Map<String, dynamic> json) {
     required = json['required'];
@@ -116,6 +107,7 @@ class Validation {
     return data;
   }
 }
+
 class ErrorMessage {
   String? required;
 
