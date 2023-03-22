@@ -7,222 +7,218 @@
   "step": {
     "form1":
     {
-      "formName" : "personalDetail",
-      "title": "Personal Detail",
-      "description": "Hey, get on board ",
-      "formFields": [
-        {
-          "elementType": "input",
-          "elementConfig": {
-            "type": "text",
-            "name": "full_name",
-            "label": "Full name",
-            "enableLabel": true,
-            "placeholder": "Full name",
-            "class": "form-control",
-            "keyboardRejex": "^[a-zA-Z-]+",
-            "resetIcon": true,
-            "minLine": 1,
-            "maxLine": 1,
-            "textCapitalization": "words"
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "minLength": 3,
-            "maxLength": 50,
-            "rejex": "^[a-zA-Z-]+",
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please enter full name",
-              "minLength": "Minimum 3 characters require",
-              "rejex": "Please enter valid full name"
-            }
-          },
-          "valid": true,
-          "onchange": false
-        },
-        {
-          "elementType": "input",
-          "elementConfig": {
-            "type": "tel",
-            "name": "office",
-            "label": "Phone",
-            "enableLabel": false,
-            "keyboardRejex": "^[0-9+]+",
-            "placeholder": "Mobile Number",
-            "class": "form-control",
-            "resetIcon": true
-          },
-          "help": {
-            "text": "",
-            "placement": "below"
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "minLength": 8,
-            "maxLength": 13,
-            "rejex": "^[0-9+]+",
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please enter mobile number",
-              "minLength": "Minimum 8 digit mobile number required",
-              "rejex": "Please enter valid mobile number"
-            }
-          },
-          "valid": true,
-          "onchange": false
-        },
-        {
-          "elementType": "input",
-          "elementConfig": {
-            "type": "email",
-            "name": "email",
-            "label": "Email",
-            "enableLabel": true,
-            "placeholder": "Email",
-            "class": "form-control",
-            "resetIcon": true
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isEmail": true,
-            "maxLength": 50,
-            "rejex": "^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+\\.[a-zA-Z]+",
-            "isReadOnly": false,
-            "isDisabled": false,
-            "isUnique": false,
-            "errorMessage": {
-              "required": "Please enter email",
-              "rejex": "Please enter valid email"
-            }
-          },
-          "valid": true,
-          "onchange": false
-        },
-        {
-          "elementType": "input",
-          "elementConfig": {
-            "type": "date",
-            "name": "dob",
-            "label": "Date of Birth",
-            "placeholder": "Date of Birth",
-            "class": "form-control",
-            "resetIcon": true,
-            "firstDate": "1546350642",
-            "initialDate": "631201842",
-            "lastDate": "631201842",
-            "pickDateFromCalender": false
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select date of birth"
-            }
-          },
-          "valid": true,
-          "onchange": false
-        },
-        {
-          "elementType": "input",
-          "elementConfig": {
-            "type": "tel",
-            "name": "pincode",
-            "label": "Pincode",
-            "enableLabel": false,
-            "keyboardRejex": "^[0-9+]+",
-            "placeholder": "Pincode",
-            "class": "form-control",
-            "resetIcon": true
-          },
-          "help": {
-            "text": "",
-            "placement": "below"
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "minLength": 4,
-            "maxLength": 6,
-            "rejex": "^[0-9+]+",
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please enter the pin-code",
-              "minLength": "Minimum 4 digit pin-code required",
-              "rejex": "Please enter valid pin-code"
-            }
-          },
-          "valid": true,
-          "onchange": false
-        },
-        {
-          "elementType": "radio",
-          "elementConfig": {
-            "name": "gender",
-            "label": "Gender",
-            "enableLabel": true,
-            "class": "form-control",
-            "options": [
-              {
-                "value": "female",
-                "displayValue": "Female"
-              },
-              {
-                "value": "male",
-                "displayValue": "Male"
-              },
-              {
-                "value": "other",
-                "displayValue": "Other"
-              }
-            ],
-            "initialValue": ""
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select at least one"
-            }
-          },
-          "valid": false
-        },
-
-
-
-        {
-          "elementType": "button",
-          "elementConfig": {
-            "type": "button",
-            "name": "submit_first_button",
-            "label": "Submit First Form",
-            "enableLabel": true,
-            "isVisible": false,
-            "class": "form-control",
-            "resetIcon": true,
-            "minLine": 1,
-            "maxLine": 1,
-            "textCapitalization": "words"
-          },
-          "value": "",
-          "valid": true,
-          "onchange": false
+  "formName" : "personalDetail",
+  "title": "Personal Detail",
+  "description": "Hey, get on board ",
+  "formFields": [
+    {
+      "elementType": "input",
+      "elementConfig": {
+        "type": "text",
+        "name": "full_name",
+        "label": "Full name",
+        "enableLabel": true,
+        "placeholder": "Full name",
+        "class": "form-control",
+        "keyboardRejex": "^[a-zA-Z-]+",
+        "resetIcon": true,
+        "minLine": 1,
+        "maxLine": 1,
+        "textCapitalization": "words"
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "minLength": 3,
+        "maxLength": 50,
+        "rejex": "^[a-zA-Z-]+",
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please enter full name",
+          "minLength": "Minimum 3 characters require",
+          "rejex": "Please enter valid full name"
         }
-      ]
+      },
+      "valid": true,
+      "onchange": false
+    },
+    {
+      "elementType": "input",
+      "elementConfig": {
+        "type": "tel",
+        "name": "office",
+        "label": "Phone",
+        "enableLabel": false,
+        "keyboardRejex": "^[0-9+]+",
+        "placeholder": "Mobile Number",
+        "class": "form-control",
+        "resetIcon": true
+      },
+      "help": {
+        "text": "",
+        "placement": "below"
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "minLength": 8,
+        "maxLength": 13,
+        "rejex": "^[0-9+]+",
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please enter mobile number",
+          "minLength": "Minimum 8 digit mobile number required",
+          "rejex": "Please enter valid mobile number"
+        }
+      },
+      "valid": true,
+      "onchange": false
+    },
+    {
+      "elementType": "input",
+      "elementConfig": {
+        "type": "email",
+        "name": "email",
+        "label": "Email",
+        "enableLabel": true,
+        "placeholder": "Email",
+        "class": "form-control",
+        "resetIcon": true
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "isEmail": true,
+        "maxLength": 50,
+        "rejex": "^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+\\.[a-zA-Z]+",
+        "isReadOnly": false,
+        "isDisabled": false,
+        "isUnique": false,
+        "errorMessage": {
+          "required": "Please enter email",
+          "rejex": "Please enter valid email"
+        }
+      },
+      "valid": true,
+      "onchange": false
+    },
+    {
+      "elementType": "input",
+      "elementConfig": {
+        "type": "date",
+        "name": "dob",
+        "label": "Date of Birth",
+        "placeholder": "Date of Birth",
+        "class": "form-control",
+        "resetIcon": true,
+        "firstDate": "1546350642",
+        "initialDate": "631201842",
+        "lastDate": "631201842",
+        "pickDateFromCalender": false
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please select date of birth"
+        }
+      },
+      "valid": true,
+      "onchange": false
+    },
+    {
+      "elementType": "input",
+      "elementConfig": {
+        "type": "tel",
+        "name": "pincode",
+        "label": "Pincode",
+        "enableLabel": false,
+        "keyboardRejex": "^[0-9+]+",
+        "placeholder": "Pincode",
+        "class": "form-control",
+        "resetIcon": true
+      },
+      "help": {
+        "text": "",
+        "placement": "below"
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "minLength": 4,
+        "maxLength": 6,
+        "rejex": "^[0-9+]+",
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please enter the pin-code",
+          "minLength": "Minimum 4 digit pin-code required",
+          "rejex": "Please enter valid pin-code"
+        }
+      },
+      "valid": true,
+      "onchange": false
+    },
+    {
+      "elementType": "radio",
+      "elementConfig": {
+        "name": "gender",
+        "label": "Gender",
+        "enableLabel": true,
+        "class": "form-control",
+        "options": [
+          {
+            "value": "female",
+            "displayValue": "Female"
+          },
+          {
+            "value": "male",
+            "displayValue": "Male"
+          },
+          {
+            "value": "other",
+            "displayValue": "Other"
+          }
+        ],
+        "initialValue": ""
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please select at least one"
+        }
+      },
+      "valid": false
+    },
+    {
+      "elementType": "button",
+      "elementConfig": {
+        "type": "button",
+        "name": "submit_first_button",
+        "label": "Submit First Form",
+        "enableLabel": true,
+        "isVisible": false,
+        "class": "form-control",
+        "resetIcon": true,
+        "minLine": 1,
+        "maxLine": 1,
+        "textCapitalization": "words"
+      },
+      "value": "",
+      "valid": true,
+      "onchange": false
     }
+  ]
+},
 
     "form2":
-
     {
   "formName" : "bankDetail",
   "title": "Bank Detail",
