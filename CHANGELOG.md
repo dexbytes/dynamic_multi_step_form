@@ -1,4 +1,4 @@
-## [1.0.0] - 19/08/2022
+## [1.0.0] - 22/03/2023
 
 Added initial dynamic multi step form.
 

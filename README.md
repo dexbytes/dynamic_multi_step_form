@@ -28,6 +28,9 @@ To use the plugin you just need to add dynamic_multi_step_form: ^1.0.0 into your
 ## Add following into your package's pubspec.yaml (and run an implicit dart pub get):
 dynamic_multi_step_form: ^1.0.0
 
+## UI
+[this file](./lib/ui_image/multi_step_form.png).
+
 ## Example
 
             Column(
@@ -55,6 +58,7 @@ dynamic_multi_step_form: ^1.0.0
                 )
               ],
             )
+
 
 ## Changelog
 
