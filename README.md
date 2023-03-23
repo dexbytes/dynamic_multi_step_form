@@ -42,12 +42,12 @@ Credit for sample UI: https://dribbble.com/shots/16885694-Upload-KYC-screens
 
             Column(
              children: [
-            //Get all fields of form
+             //Get all form fields
                    DynamicMultiStepFormScreen(jsonString,dynamicFormKey: _formKeyNew, finalSubmitCallBack: (Map<String, dynamic> data) async {
                    Navigator.push(
                    context,MaterialPageRoute(builder: (context) => SecondScreen(data: data)),);},),
-                Align(alignment: Alignment.center,
-                  child: ElevatedButton(clipBehavior: Clip.hardEdge,
+                   Align(alignment: Alignment.center,
+                   child: ElevatedButton(clipBehavior: Clip.hardEdge,
                     onPressed: () async {
                       if(_formKeyNew.currentState!.validateFields()){
                      var data =  _formKeyNew.currentState!.getFormData();
