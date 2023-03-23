@@ -43,13 +43,14 @@ class _FirstScreenState extends State<FirstScreen> {
             ),
           ),
           Expanded(
-            child:
-            Column(
+            child: Column(
               children: [
                 Expanded(
+                  // Add jsonString from example assets file or json encoded String.
                     child: DynamicForm(jsonString, dynamicFormKey: _formKeyNew,
                         finalSubmitCallBack:
                             (int currentPage, Map<String, dynamic> data) async {
+                      //Get all entered information on final or last form submit and redirect to another scree to display entered information
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -59,10 +60,13 @@ class _FirstScreenState extends State<FirstScreen> {
                             {int? currentIndex,
                             Map<String, dynamic>? formSubmitData,
                             Map<String, dynamic>? formInformation}) {
+                      //This function return value when any current form submit and validated.
                   setState(() {
+                    //Here currentIndex is a current displayed step index. its default value is zero.
                     currentPageIndex = currentIndex!;
                   });
-                }, submitButtonAlignment: Alignment.bottomCenter)),
+                })),
+                // Custom user buttons to move on next step or submit current form details
                 Container(
                   color: Colors.white,
                   padding:
@@ -77,6 +81,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                     clipBehavior: Clip.hardEdge,
                     onPressed: () async {
+                      //Call next step function to validate form and move next step of form
                       _formKeyNew.currentState!.nextStepCustomClick();
                     },
                     child: const Text('Next'),
