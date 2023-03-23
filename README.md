@@ -26,11 +26,11 @@ This plugin relies on the flutter core.
 
 ## Usage
 
-To use the plugin you just need to add dynamic_multi_step_form: ^1.0.0 into your pubspec.yaml file and run pub get.
+To use the plugin you just need to add dynamic_multi_step_form: ^1.1.1 into your pubspec.yaml file and run pub get.
 
 
 ## Add following into your package's pubspec.yaml (and run an implicit dart pub get):
-dynamic_multi_step_form: ^1.1.0
+dynamic_multi_step_form: ^1.1.1
 
 ## Multi Step Form UI Sample
 
@@ -39,28 +39,42 @@ dynamic_multi_step_form: ^1.1.0
 Credit for sample UI: https://dribbble.com/shots/16885694-Upload-KYC-screens
 
 ## Example
-
-            Column(
-             children: [
-             //Get all form fields
-                   DynamicMultiStepFormScreen(jsonString,dynamicFormKey: _formKeyNew, finalSubmitCallBack: (Map<String, dynamic> data) async {
-                   Navigator.push(
-                   context,MaterialPageRoute(builder: (context) => SecondScreen(data: data)),);},),
-                   Align(alignment: Alignment.center,
-                   child: ElevatedButton(clipBehavior: Clip.hardEdge,
+           Column(
+              children: [
+                Expanded(
+                    child: DynamicForm(jsonString, dynamicFormKey: _formKeyNew,
+                        finalSubmitCallBack:
+                            (int currentPage, Map<String, dynamic> data) async {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SecondScreen(data: data)),
+                  );
+                }, currentStepCallBack: (
+                            {int? currentIndex,
+                            Map<String, dynamic>? formSubmitData,
+                            Map<String, dynamic>? formInformation}) {
+                  setState(() {
+                    currentPageIndex = currentIndex!;
+                  });
+                }, submitButtonAlignment: Alignment.bottomCenter)),
+                Container(
+                  color: Colors.white,
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 15).copyWith(bottom: 8),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                      backgroundColor: Colors.black,
+                      maximumSize: Size(MediaQuery.of(context).size.width, 45),
+                      minimumSize: Size(MediaQuery.of(context).size.width, 45),
+                    ),
+                    clipBehavior: Clip.hardEdge,
                     onPressed: () async {
-                      if(_formKeyNew.currentState!.validateFields()){
-                     var data =  _formKeyNew.currentState!.getFormData();
-                     if(data!.isNotEmpty){
-                       Navigator.push(
-                         context,
-                         MaterialPageRoute(builder: (context) => SecondScreen(data: data)),
-                       );
-                     }
-                     }
+                      _formKeyNew.currentState!.nextStepCustomClick();
                     },
-                    child: const Text('Submit Form'),
-                    //color: Colors.green,
+                    child: const Text('Next'),
                   ),
                 )
               ],

@@ -43,7 +43,8 @@ class _FirstScreenState extends State<FirstScreen> {
             ),
           ),
           Expanded(
-            child: Column(
+            child:
+            Column(
               children: [
                 Expanded(
                     child: DynamicForm(jsonString, dynamicFormKey: _formKeyNew,

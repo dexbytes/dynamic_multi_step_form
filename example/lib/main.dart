@@ -100,16 +100,16 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyForm(jsonString),
+      home: MyForm(jsonString:jsonString),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyForm extends StatefulWidget {
-  String jsonString = "";
+  final String jsonString ;
 
-  MyForm(this.jsonString);
+  const MyForm({this.jsonString = ""});
 
   @override
   _MyFormState createState() => _MyFormState(jsonString);
