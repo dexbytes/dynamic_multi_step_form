@@ -1,4 +1,4 @@
-# Dynamic form
+# Dynamic Multi Step Form
 
 Most of the time, filling out forms with lots of fields can be cumbersome, and this can discourage users from completing the process. This is where a multi-step form comes into play.
 Multi-step forms are just as the name implies: a multi-step form is a long form broken down into short pieces. They provide a less daunting experience to the users of your application.
@@ -10,7 +10,7 @@ This plugin supports both iOS and Android.
 | :-------------| :---------| :------|
 | **Support**   | SDK 21+   | 10.0+  |
 
-# Dynamic form Implementation Guide
+# Dynamic Multi Step Form Implementation Guide
 
 ## Features
 
@@ -34,6 +34,8 @@ dynamic_multi_step_form: ^1.1.0
 
 ## UI
 [this file](./lib/ui_image/multi_step_form.png).
+![alt text](https://github.com/dexbytes/dynamic_multi_step_form/blob/ui_image/multi_step_form.png?raw=true)
+
 
 ## Example
 
