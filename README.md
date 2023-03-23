@@ -34,7 +34,8 @@ dynamic_multi_step_form: ^1.1.0
 
 ## UI
 [this file](./lib/ui_image/multi_step_form.png).
-![alt text](https://github.com/dexbytes/dynamic_multi_step_form/blob/ui_image/multi_step_form.png?raw=true)
+
+![alt text](https://github.com/dexbytes/dynamic_multi_step_form/blob/master/lib/ui_image/multi_step_form.png?raw=true)
 
 
 ## Example
