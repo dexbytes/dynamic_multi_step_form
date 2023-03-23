@@ -32,8 +32,7 @@ To use the plugin you just need to add dynamic_multi_step_form: ^1.0.0 into your
 ## Add following into your package's pubspec.yaml (and run an implicit dart pub get):
 dynamic_multi_step_form: ^1.1.0
 
-## UI
-[this file](./lib/ui_image/multi_step_form.png).
+## Multi Step Form UI Sample
 
 ![alt text](https://github.com/dexbytes/dynamic_multi_step_form/blob/master/lib/ui_image/multi_step_form.png?raw=true)
 
