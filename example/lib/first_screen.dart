@@ -3,9 +3,12 @@ import 'package:example/second_screen.dart';
 import 'package:example/widget/appbar_with_back_arrow.dart';
 
 class FirstScreen extends StatefulWidget {
- final String jsonString;
- final String apiCallingTime;
- const FirstScreen({Key? key,required this.jsonString,this.apiCallingTime = ""}) : super(key: key);
+  final String jsonString;
+  final String apiCallingTime;
+
+  const FirstScreen(
+      {Key? key, required this.jsonString, this.apiCallingTime = ""})
+      : super(key: key);
 
   @override
   _FirstScreenState createState() => _FirstScreenState(jsonString);
@@ -15,6 +18,7 @@ class _FirstScreenState extends State<FirstScreen> {
   final String jsonString;
   final _formKeyNew = GlobalKey<DynamicFormState>();
   int currentPageIndex = 0;
+
   _FirstScreenState(this.jsonString);
 
   @override
@@ -29,38 +33,43 @@ class _FirstScreenState extends State<FirstScreen> {
           //Get all fields of form
           Padding(
             padding: const EdgeInsets.only(left: 18.0),
-            child: Text("Upload KYC",
-              style: TextStyle(fontSize: 18,
+            child: Text(
+              "Upload KYC",
+              style: TextStyle(
+                  fontSize: 18,
                   letterSpacing: 1,
                   fontWeight: FontWeight.w400,
-                  color: Colors.black),),
+                  color: Colors.black),
+            ),
           ),
           Expanded(
             child: Column(
               children: [
-                Expanded(child:
-                DynamicForm(
-                    jsonString,dynamicFormKey: _formKeyNew,
-                    finalSubmitCallBack: (int currentPage,Map<String, dynamic> data) async {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SecondScreen(data: data)),
-                      );
-                    },
-
-                    currentStepCallBack:({int? currentIndex,Map<String,dynamic>? formSubmitData,Map<String,dynamic>? formInformation}){
-                      setState(() {
-                        print("$formInformation");
-                        currentPageIndex = currentIndex!;
-                      });
-                    },
-                    submitButtonAlignment:Alignment.bottomCenter)),
+                Expanded(
+                    child: DynamicForm(jsonString, dynamicFormKey: _formKeyNew,
+                        finalSubmitCallBack:
+                            (int currentPage, Map<String, dynamic> data) async {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SecondScreen(data: data)),
+                  );
+                }, currentStepCallBack: (
+                            {int? currentIndex,
+                            Map<String, dynamic>? formSubmitData,
+                            Map<String, dynamic>? formInformation}) {
+                  setState(() {
+                    currentPageIndex = currentIndex!;
+                  });
+                }, submitButtonAlignment: Alignment.bottomCenter)),
                 Container(
                   color: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 15).copyWith(bottom: 8),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 15).copyWith(bottom: 8),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
                       backgroundColor: Colors.black,
                       maximumSize: Size(MediaQuery.of(context).size.width, 45),
                       minimumSize: Size(MediaQuery.of(context).size.width, 45),
@@ -72,42 +81,11 @@ class _FirstScreenState extends State<FirstScreen> {
                     child: const Text('Next'),
                   ),
                 )
-                // Container(
-                //   color: Colors.white,
-                //   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
-                //     currentPageIndex>0?Align(alignment: Alignment.center,
-                //       child: ElevatedButton(clipBehavior: Clip.hardEdge,
-                //         onPressed: () async {
-                //           _formKeyNew.currentState!.previewStepCustomClick();
-                //         },
-                //         child: const Text('Previous'),
-                //       ),
-                //     ):const SizedBox(),
-                //     Align(alignment: Alignment.center,
-                //       child: Padding(
-                //         padding: EdgeInsets.symmetric(horizontal: 15),
-                //         child: ElevatedButton(
-                //           style: ElevatedButton.styleFrom(
-                //             backgroundColor: Colors.black,
-                //             maximumSize: Size(MediaQuery.of(context).size.width, 45),
-                //             minimumSize: Size(MediaQuery.of(context).size.width, 45),
-                //           ),
-                //           clipBehavior: Clip.hardEdge,
-                //           onPressed: () async {
-                //             _formKeyNew.currentState!.nextStepCustomClick();
-                //           },
-                //           child: const Text('Next'),
-                //         ),
-                //       ),
-                //     )],),
-                // )
               ],
             ),
           )
-
         ],
       ),
-
     );
   }
 }
