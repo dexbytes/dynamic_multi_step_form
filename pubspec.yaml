@@ -1,6 +1,6 @@
 name: dynamic_multi_step_form
 description: A flutter package that render dynamic multi step form with different input field which is manage from API json response. This plugin supports both iOS and Android.
-version: 1.1.2
+version: 1.1.2+1
 homepage: https://github.com/dexbytes
 repository: https://github.com/dexbytes/dynamic_multi_step_form.git
 
