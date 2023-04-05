@@ -5,6 +5,7 @@
  * Copyright 2014 The Flutter Authors. All rights reserved.
 */
 import 'dart:math' as math;
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -15,13 +16,13 @@ const double _kMenuItemHeight = kMinInteractiveDimension;
 const double _kDenseButtonHeight = 24.0;
 const EdgeInsets _kMenuItemPadding = EdgeInsets.symmetric(horizontal: 16.0);
 const EdgeInsetsGeometry _kAlignedButtonPadding =
-EdgeInsetsDirectional.only(start: 16.0, end: 4.0);
+    EdgeInsetsDirectional.only(start: 16.0, end: 4.0);
 const EdgeInsets _kUnalignedButtonPadding = EdgeInsets.zero;
 
 typedef _SearchMatchFn = bool Function(
-    DropdownMenuItem item,
-    String searchValue,
-    );
+  DropdownMenuItem item,
+  String searchValue,
+);
 
 _SearchMatchFn _defaultSearchMatchFn = (item, searchValue) =>
     item.value.toString().toLowerCase().contains(searchValue.toLowerCase());
@@ -35,20 +36,20 @@ class _DropdownMenuPainter extends CustomPainter {
     required this.itemHeight,
     this.dropdownDecoration,
   })  : _painter = dropdownDecoration
-      ?.copyWith(
-    color: dropdownDecoration.color ?? color,
-    boxShadow: dropdownDecoration.boxShadow ??
-        kElevationToShadow[elevation],
-  )
-      .createBoxPainter() ??
-      BoxDecoration(
-        // If you add an image here, you must provide a real
-        // configuration in the paint() function and you must provide some sort
-        // of onChanged callback here.
-        color: color,
-        borderRadius: const BorderRadius.all(Radius.circular(2.0)),
-        boxShadow: kElevationToShadow[elevation],
-      ).createBoxPainter(),
+                ?.copyWith(
+                  color: dropdownDecoration.color ?? color,
+                  boxShadow: dropdownDecoration.boxShadow ??
+                      kElevationToShadow[elevation],
+                )
+                .createBoxPainter() ??
+            BoxDecoration(
+              // If you add an image here, you must provide a real
+              // configuration in the paint() function and you must provide some sort
+              // of onChanged callback here.
+              color: color,
+              borderRadius: const BorderRadius.all(Radius.circular(2.0)),
+              boxShadow: kElevationToShadow[elevation],
+            ).createBoxPainter(),
         super(repaint: resize);
 
   final Color? color;
@@ -95,15 +96,15 @@ class _DropdownMenuPainter extends CustomPainter {
 // The widget that is the button wrapping the menu items.
 class _DropdownMenuItemButton<T> extends StatefulWidget {
   const _DropdownMenuItemButton({
-  // super.key,
-  this.padding,
-  required this.route,
-  required this.buttonRect,
-  required this.constraints,
-  required this.itemIndex,
-  required this.enableFeedback,
-  this.customItemsIndexes,
-  this.customItemsHeight,
+    // super.key,
+    this.padding,
+    required this.route,
+    required this.buttonRect,
+    required this.constraints,
+    required this.itemIndex,
+    required this.enableFeedback,
+    this.customItemsIndexes,
+    this.customItemsHeight,
   });
 
   final _DropdownRoute<T> route;
@@ -149,7 +150,7 @@ class _DropdownMenuItemButtonState<T>
 
   void _handleOnTap() {
     final DropdownMenuItem<T> dropdownMenuItem =
-    widget.route.items[widget.itemIndex].item!;
+        widget.route.items[widget.itemIndex].item!;
 
     dropdownMenuItem.onTap?.call();
 
@@ -160,19 +161,19 @@ class _DropdownMenuItemButtonState<T>
   }
 
   static const Map<ShortcutActivator, Intent> _webShortcuts =
-  <ShortcutActivator, Intent>{
+      <ShortcutActivator, Intent>{
     // On the web, up/down don't change focus, *except* in a <select>
     // element, which is what a dropdown emulates.
     SingleActivator(LogicalKeyboardKey.arrowDown):
-    DirectionalFocusIntent(TraversalDirection.down),
+        DirectionalFocusIntent(TraversalDirection.down),
     SingleActivator(LogicalKeyboardKey.arrowUp):
-    DirectionalFocusIntent(TraversalDirection.up),
+        DirectionalFocusIntent(TraversalDirection.up),
   };
 
   @override
   Widget build(BuildContext context) {
     final DropdownMenuItem<T> dropdownMenuItem =
-    widget.route.items[widget.itemIndex].item!;
+        widget.route.items[widget.itemIndex].item!;
     final CurvedAnimation opacity;
     final double unit = 0.5 / (widget.route.items.length + 1.5);
     if (widget.itemIndex == widget.route.selectedIndex) {
@@ -180,7 +181,7 @@ class _DropdownMenuItemButtonState<T>
           parent: widget.route.animation!, curve: const Threshold(0.0));
     } else {
       final double start =
-      (0.5 + (widget.itemIndex + 1) * unit).clamp(0.0, 1.0);
+          (0.5 + (widget.itemIndex + 1) * unit).clamp(0.0, 1.0);
       final double end = (start + 1.5 * unit).clamp(0.0, 1.0);
       opacity = CurvedAnimation(
           parent: widget.route.animation!, curve: Interval(start, end));
@@ -190,8 +191,8 @@ class _DropdownMenuItemButtonState<T>
       height: widget.customItemsIndexes == null
           ? widget.route.itemHeight
           : widget.customItemsIndexes!.contains(widget.itemIndex)
-          ? widget.customItemsHeight ?? _kMenuItemHeight
-          : widget.route.itemHeight,
+              ? widget.customItemsHeight ?? _kMenuItemHeight
+              : widget.route.itemHeight,
       child: widget.route.items[widget.itemIndex],
     );
     // An [InkWell] is added to the item only if it is enabled
@@ -206,7 +207,7 @@ class _DropdownMenuItemButtonState<T>
         onFocusChange: _handleFocusChange,
         child: Container(
           color:
-          _isSelectedItem ? widget.route.selectedItemHighlightColor : null,
+              _isSelectedItem ? widget.route.selectedItemHighlightColor : null,
           child: child,
         ),
       );
@@ -224,24 +225,24 @@ class _DropdownMenuItemButtonState<T>
 
 class _DropdownMenu<T> extends StatefulWidget {
   const _DropdownMenu({
-  // super.key,
-  this.padding,
-  required this.route,
-  required this.buttonRect,
-  required this.constraints,
-  required this.enableFeedback,
-  required this.itemHeight,
-  this.dropdownDecoration,
-  this.dropdownPadding,
-  this.scrollbarRadius,
-  this.scrollbarThickness,
-  this.scrollbarAlwaysShow,
-  required this.offset,
-  this.customItemsIndexes,
-  this.customItemsHeight,
-  this.searchController,
-  this.searchInnerWidget,
-  this.searchMatchFn,
+    // super.key,
+    this.padding,
+    required this.route,
+    required this.buttonRect,
+    required this.constraints,
+    required this.enableFeedback,
+    required this.itemHeight,
+    this.dropdownDecoration,
+    this.dropdownPadding,
+    this.scrollbarRadius,
+    this.scrollbarThickness,
+    this.scrollbarAlwaysShow,
+    required this.offset,
+    this.customItemsIndexes,
+    this.customItemsHeight,
+    this.searchController,
+    this.searchInnerWidget,
+    this.searchMatchFn,
   });
 
   final _DropdownRoute<T> route;
@@ -356,7 +357,7 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
     // in the first 0.25s.
     assert(debugCheckHasMaterialLocalizations(context));
     final MaterialLocalizations localizations =
-    MaterialLocalizations.of(context);
+        MaterialLocalizations.of(context);
     final _DropdownRoute<T> route = widget.route;
 
     return FadeTransition(
@@ -381,7 +382,7 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
             //Prevent scrollbar, ripple effect & items from going beyond border boundaries when scrolling.
             clipBehavior: Clip.antiAlias,
             borderRadius: widget.dropdownDecoration?.borderRadius
-                ?.resolve(Directionality.of(context)) ??
+                    ?.resolve(Directionality.of(context)) ??
                 const BorderRadius.all(Radius.circular(2.0)),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -406,7 +407,7 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
                         //trackVisibility: widget.scrollbarAlwaysShow,
                         child: ListView(
                           padding:
-                          widget.dropdownPadding ?? kMaterialListPadding,
+                              widget.dropdownPadding ?? kMaterialListPadding,
                           shrinkWrap: true,
                           children: _children,
                         ),
@@ -464,7 +465,7 @@ class _DropdownMenuRouteLayout<T> extends SingleChildLayoutDelegate {
   @override
   Offset getPositionForChild(Size size, Size childSize) {
     final _MenuLimits menuLimits =
-    route.getMenuLimits(buttonRect, size.height, route.selectedIndex);
+        route.getMenuLimits(buttonRect, size.height, route.selectedIndex);
 
     assert(() {
       final Rect container = Offset.zero & size;
@@ -683,7 +684,7 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
     final double topLimit = math.min(itemHeight, buttonTop);
     final double bottomLimit = math.max(availableHeight, buttonBottom);
     double menuTop =
-    showAboveButton ? buttonTop - offset.dy : buttonBottom - offset.dy;
+        showAboveButton ? buttonTop - offset.dy : buttonBottom - offset.dy;
     double preferredMenuHeight =
         dropdownPadding?.vertical ?? kMaterialListPadding.vertical;
     if (items.isNotEmpty) {
@@ -747,31 +748,31 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
 
 class _DropdownRoutePage<T> extends StatelessWidget {
   const _DropdownRoutePage({
-  // super.key,
-  required this.route,
-  required this.constraints,
-  this.items,
-  required this.padding,
-  required this.buttonRect,
-  required this.selectedIndex,
-  this.elevation = 8,
-  required this.capturedThemes,
-  this.style,
-  required this.enableFeedback,
-  this.dropdownDecoration,
-  this.dropdownPadding,
-  this.menuMaxHeight,
-  required this.itemHeight,
-  this.itemWidth,
-  this.scrollbarRadius,
-  this.scrollbarThickness,
-  this.scrollbarAlwaysShow,
-  required this.offset,
-  this.customItemsIndexes,
-  this.customItemsHeight,
-  this.searchController,
-  this.searchInnerWidget,
-  this.searchMatchFn,
+    // super.key,
+    required this.route,
+    required this.constraints,
+    this.items,
+    required this.padding,
+    required this.buttonRect,
+    required this.selectedIndex,
+    this.elevation = 8,
+    required this.capturedThemes,
+    this.style,
+    required this.enableFeedback,
+    this.dropdownDecoration,
+    this.dropdownPadding,
+    this.menuMaxHeight,
+    required this.itemHeight,
+    this.itemWidth,
+    this.scrollbarRadius,
+    this.scrollbarThickness,
+    this.scrollbarAlwaysShow,
+    required this.offset,
+    this.customItemsIndexes,
+    this.customItemsHeight,
+    this.searchController,
+    this.searchInnerWidget,
+    this.searchMatchFn,
   });
 
   final _DropdownRoute<T> route;
@@ -811,7 +812,7 @@ class _DropdownRoutePage<T> extends StatelessWidget {
     // treating the items as if their heights were all equal to kMinInteractiveDimension.
     if (route.scrollController == null) {
       final _MenuLimits menuLimits =
-      route.getMenuLimits(buttonRect, constraints.maxHeight, selectedIndex);
+          route.getMenuLimits(buttonRect, constraints.maxHeight, selectedIndex);
       route.scrollController =
           ScrollController(initialScrollOffset: menuLimits.scrollOffset);
     }
@@ -869,9 +870,9 @@ class _DropdownRoutePage<T> extends StatelessWidget {
 // as closely as possible.
 class _MenuItem<T> extends SingleChildRenderObjectWidget {
   const _MenuItem({
-  // super.key,
-  required this.onLayout,
-  required this.item,
+    // super.key,
+    required this.onLayout,
+    required this.item,
   }) : super(child: item);
 
   final ValueChanged<Size> onLayout;
@@ -1002,144 +1003,144 @@ class DropdownButton2<T> extends StatefulWidget {
   /// if it is non-null. If [disabledHint] is null, then [hint] will be displayed
   /// if it is non-null.
   DropdownButton2({
-  // super.key,
-  required this.items,
-  this.selectedItemBuilder,
-  this.value,
-  this.hint,
-  this.disabledHint,
-  this.onChanged,
-  this.dropdownElevation = 8,
-  this.style,
-  this.underline,
-  this.icon,
-  this.iconOnClick,
-  this.iconDisabledColor,
-  this.iconEnabledColor,
-  this.iconSize = 24.0,
-  this.isDense = false,
-  this.isExpanded = false,
-  this.itemHeight = kMinInteractiveDimension,
-  this.focusColor,
-  this.focusNode,
-  this.autofocus = false,
-  this.dropdownMaxHeight,
-  this.enableFeedback,
-  this.alignment = AlignmentDirectional.centerStart,
-  this.buttonHeight,
-  this.buttonWidth,
-  this.buttonPadding,
-  this.buttonDecoration,
-  this.buttonElevation,
-  this.itemPadding,
-  this.dropdownWidth,
-  this.dropdownPadding,
-  this.dropdownDecoration,
-  this.selectedItemHighlightColor,
-  this.scrollbarRadius,
-  this.scrollbarThickness,
-  this.scrollbarAlwaysShow,
-  this.offset,
-  this.customButton,
-  this.customItemsIndexes,
-  this.customItemsHeight,
-  this.openWithLongPress = false,
-  this.dropdownOverButton = false,
-  this.dropdownFullScreen = false,
-  this.onMenuStateChange,
-  this.barrierDismissible = true,
-  this.barrierColor,
-  this.barrierLabel,
-  this.searchController,
-  this.searchInnerWidget,
-  this.searchMatchFn,
-  // When adding new arguments, consider adding similar arguments to
-  // DropdownButtonFormField.
+    // super.key,
+    required this.items,
+    this.selectedItemBuilder,
+    this.value,
+    this.hint,
+    this.disabledHint,
+    this.onChanged,
+    this.dropdownElevation = 8,
+    this.style,
+    this.underline,
+    this.icon,
+    this.iconOnClick,
+    this.iconDisabledColor,
+    this.iconEnabledColor,
+    this.iconSize = 24.0,
+    this.isDense = false,
+    this.isExpanded = false,
+    this.itemHeight = kMinInteractiveDimension,
+    this.focusColor,
+    this.focusNode,
+    this.autofocus = false,
+    this.dropdownMaxHeight,
+    this.enableFeedback,
+    this.alignment = AlignmentDirectional.centerStart,
+    this.buttonHeight,
+    this.buttonWidth,
+    this.buttonPadding,
+    this.buttonDecoration,
+    this.buttonElevation,
+    this.itemPadding,
+    this.dropdownWidth,
+    this.dropdownPadding,
+    this.dropdownDecoration,
+    this.selectedItemHighlightColor,
+    this.scrollbarRadius,
+    this.scrollbarThickness,
+    this.scrollbarAlwaysShow,
+    this.offset,
+    this.customButton,
+    this.customItemsIndexes,
+    this.customItemsHeight,
+    this.openWithLongPress = false,
+    this.dropdownOverButton = false,
+    this.dropdownFullScreen = false,
+    this.onMenuStateChange,
+    this.barrierDismissible = true,
+    this.barrierColor,
+    this.barrierLabel,
+    this.searchController,
+    this.searchInnerWidget,
+    this.searchMatchFn,
+    // When adding new arguments, consider adding similar arguments to
+    // DropdownButtonFormField.
   })  : assert(
-  items == null ||
-  items.isEmpty ||
-  value == null ||
-  items.where((DropdownMenuItem<T> item) {
-  return item.value == value;
-  }).length ==
-  1,
-  "There should be exactly one item with [DropdownButton]'s value: "
-  '$value. \n'
-  'Either zero or 2 or more [DropdownMenuItem]s were detected '
-  'with the same value',
-  ),
-  _inputDecoration = null,
-  _isEmpty = false;
+          items == null ||
+              items.isEmpty ||
+              value == null ||
+              items.where((DropdownMenuItem<T> item) {
+                    return item.value == value;
+                  }).length ==
+                  1,
+          "There should be exactly one item with [DropdownButton]'s value: "
+          '$value. \n'
+          'Either zero or 2 or more [DropdownMenuItem]s were detected '
+          'with the same value',
+        ),
+        _inputDecoration = null,
+        _isEmpty = false;
 
   DropdownButton2._formField({
-  // super.key,
-  required this.items,
-  this.selectedItemBuilder,
-  this.value,
-  this.hint,
-  this.disabledHint,
-  required this.onChanged,
-  this.onMenuStateChange,
-  this.dropdownElevation = 8,
-  this.style,
-  this.underline,
-  this.icon,
-  this.iconOnClick,
-  this.iconDisabledColor,
-  this.iconEnabledColor,
-  this.iconSize = 24.0,
-  this.isDense = false,
-  this.isExpanded = false,
-  this.itemHeight = kMinInteractiveDimension,
-  this.focusColor,
-  this.focusNode,
-  this.autofocus = false,
-  this.dropdownMaxHeight,
-  this.enableFeedback,
-  this.alignment = AlignmentDirectional.centerStart,
-  this.buttonHeight,
-  this.buttonWidth,
-  this.buttonPadding,
-  this.buttonDecoration,
-  this.buttonElevation,
-  this.itemPadding,
-  this.dropdownWidth,
-  this.dropdownPadding,
-  this.dropdownDecoration,
-  this.selectedItemHighlightColor,
-  this.scrollbarRadius,
-  this.scrollbarThickness,
-  this.scrollbarAlwaysShow,
-  this.offset,
-  this.customButton,
-  this.customItemsIndexes,
-  this.customItemsHeight,
-  this.openWithLongPress = false,
-  this.dropdownOverButton = false,
-  this.dropdownFullScreen = false,
-  this.barrierDismissible = true,
-  this.barrierColor,
-  this.barrierLabel,
-  this.searchController,
-  this.searchInnerWidget,
-  this.searchMatchFn,
-  required InputDecoration inputDecoration,
-  required bool isEmpty,
+    // super.key,
+    required this.items,
+    this.selectedItemBuilder,
+    this.value,
+    this.hint,
+    this.disabledHint,
+    required this.onChanged,
+    this.onMenuStateChange,
+    this.dropdownElevation = 8,
+    this.style,
+    this.underline,
+    this.icon,
+    this.iconOnClick,
+    this.iconDisabledColor,
+    this.iconEnabledColor,
+    this.iconSize = 24.0,
+    this.isDense = false,
+    this.isExpanded = false,
+    this.itemHeight = kMinInteractiveDimension,
+    this.focusColor,
+    this.focusNode,
+    this.autofocus = false,
+    this.dropdownMaxHeight,
+    this.enableFeedback,
+    this.alignment = AlignmentDirectional.centerStart,
+    this.buttonHeight,
+    this.buttonWidth,
+    this.buttonPadding,
+    this.buttonDecoration,
+    this.buttonElevation,
+    this.itemPadding,
+    this.dropdownWidth,
+    this.dropdownPadding,
+    this.dropdownDecoration,
+    this.selectedItemHighlightColor,
+    this.scrollbarRadius,
+    this.scrollbarThickness,
+    this.scrollbarAlwaysShow,
+    this.offset,
+    this.customButton,
+    this.customItemsIndexes,
+    this.customItemsHeight,
+    this.openWithLongPress = false,
+    this.dropdownOverButton = false,
+    this.dropdownFullScreen = false,
+    this.barrierDismissible = true,
+    this.barrierColor,
+    this.barrierLabel,
+    this.searchController,
+    this.searchInnerWidget,
+    this.searchMatchFn,
+    required InputDecoration inputDecoration,
+    required bool isEmpty,
   })  : assert(
-  items == null ||
-  items.isEmpty ||
-  value == null ||
-  items.where((DropdownMenuItem<T> item) {
-  return item.value == value;
-  }).length ==
-  1,
-  "There should be exactly one item with [DropdownButtonFormField]'s value: "
-  '$value. \n'
-  'Either zero or 2 or more [DropdownMenuItem]s were detected '
-  'with the same value',
-  ),
-  _inputDecoration = inputDecoration,
-  _isEmpty = isEmpty;
+          items == null ||
+              items.isEmpty ||
+              value == null ||
+              items.where((DropdownMenuItem<T> item) {
+                    return item.value == value;
+                  }).length ==
+                  1,
+          "There should be exactly one item with [DropdownButtonFormField]'s value: "
+          '$value. \n'
+          'Either zero or 2 or more [DropdownMenuItem]s were detected '
+          'with the same value',
+        ),
+        _inputDecoration = inputDecoration,
+        _isEmpty = isEmpty;
 
   // Parameters added By Me
 
@@ -1517,15 +1518,15 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
         (widget.value == null &&
             widget.items!
                 .where((DropdownMenuItem<T> item) =>
-            item.enabled && item.value == widget.value)
+                    item.enabled && item.value == widget.value)
                 .isEmpty)) {
       _selectedIndex = null;
       return;
     }
 
     assert(widget.items!
-        .where((DropdownMenuItem<T> item) => item.value == widget.value)
-        .length ==
+            .where((DropdownMenuItem<T> item) => item.value == widget.value)
+            .length ==
         1);
     for (int itemIndex = 0; itemIndex < widget.items!.length; itemIndex++) {
       if (widget.items![itemIndex].value == widget.value) {
@@ -1552,12 +1553,12 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
     final TextDirection? textDirection = Directionality.maybeOf(context);
     const EdgeInsetsGeometry menuMargin = EdgeInsets.zero;
     final NavigatorState navigator =
-    Navigator.of(context, rootNavigator: widget.dropdownFullScreen);
+        Navigator.of(context, rootNavigator: widget.dropdownFullScreen);
 
     final RenderBox itemBox = context.findRenderObject()! as RenderBox;
     final Rect itemRect = itemBox.localToGlobal(Offset.zero,
-        ancestor: navigator.context.findRenderObject()) &
-    itemBox.size;
+            ancestor: navigator.context.findRenderObject()) &
+        itemBox.size;
 
     return menuMargin.resolve(textDirection).inflateRect(itemRect);
   }
@@ -1586,7 +1587,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
     ];
 
     final NavigatorState navigator =
-    Navigator.of(context, rootNavigator: widget.dropdownFullScreen);
+        Navigator.of(context, rootNavigator: widget.dropdownFullScreen);
     assert(_dropdownRoute == null);
     _rect.value = _getRect();
     _dropdownRoute = _DropdownRoute<T>(
@@ -1598,7 +1599,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
       selectedItemHighlightColor: widget.selectedItemHighlightColor,
       elevation: widget.dropdownElevation,
       capturedThemes:
-      InheritedTheme.capture(from: context, to: navigator.context),
+          InheritedTheme.capture(from: context, to: navigator.context),
       style: _textStyle!,
       barrierDismissible: widget.barrierDismissible,
       barrierColor: widget.barrierColor,
@@ -1676,8 +1677,8 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
 
   bool get _enabled =>
       widget.items != null &&
-          widget.items!.isNotEmpty &&
-          widget.onChanged != null;
+      widget.items!.isNotEmpty &&
+      widget.onChanged != null;
 
   Orientation _getOrientation(BuildContext context) {
     Orientation? result = MediaQuery.maybeOf(context)?.orientation;
@@ -1715,7 +1716,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
     int? hintIndex;
     if (widget.hint != null || (!_enabled && widget.disabledHint != null)) {
       Widget displayedHint =
-      _enabled ? widget.hint! : widget.disabledHint ?? widget.hint!;
+          _enabled ? widget.hint! : widget.disabledHint ?? widget.hint!;
       if (widget.selectedItemBuilder == null) {
         displayedHint = _DropdownMenuItemContainer(
           child: displayedHint,
@@ -1749,8 +1750,8 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
         children: widget.isDense
             ? items
             : items.map((Widget item) {
-          return SizedBox(height: widget.itemHeight, child: item);
-        }).toList(),
+                return SizedBox(height: widget.itemHeight, child: item);
+              }).toList(),
       );
     }
 
@@ -1786,8 +1787,8 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
                   ),
                   child: widget.iconOnClick != null
                       ? _isMenuOpen
-                      ? widget.iconOnClick!
-                      : widget.icon!
+                          ? widget.iconOnClick!
+                          : widget.icon!
                       : widget.icon ?? defaultIcon,
                 ),
               ],
@@ -1822,7 +1823,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
     }
 
     final MouseCursor effectiveMouseCursor =
-    MaterialStateProperty.resolveAs<MouseCursor>(
+        MaterialStateProperty.resolveAs<MouseCursor>(
       MaterialStateMouseCursor.clickable,
       <MaterialState>{
         if (!_enabled) MaterialState.disabled,
@@ -1887,172 +1888,172 @@ class DropdownButtonFormField2<T> extends FormField<T> {
   /// The `items`, `elevation`, `iconSize`, `isDense`, `isExpanded`,
   /// `autofocus`, and `decoration`  parameters must not be null.
   DropdownButtonFormField2({
-  // super.key,
-  required List<DropdownMenuItem<T>>? items,
-  DropdownButtonBuilder? selectedItemBuilder,
-  T? value,
-  Widget? hint,
-  Widget? disabledHint,
-  this.onChanged,
-  int dropdownElevation = 8,
-  TextStyle? style,
-  Widget? icon,
-  Widget? iconOnClick,
-  Color? iconDisabledColor,
-  Color? iconEnabledColor,
-  double iconSize = 24.0,
-  bool isDense = true,
-  bool isExpanded = false,
-  double itemHeight = kMinInteractiveDimension,
-  Color? focusColor,
-  FocusNode? focusNode,
-  bool autofocus = false,
-  InputDecoration? decoration,
-  onSaved,
-  validator,
-  AutovalidateMode? autovalidateMode,
-  double? dropdownMaxHeight,
-  bool? enableFeedback,
-  AlignmentGeometry alignment = AlignmentDirectional.centerStart,
-  double? buttonHeight,
-  double? buttonWidth,
-  EdgeInsetsGeometry? buttonPadding,
-  BoxDecoration? buttonDecoration,
-  int? buttonElevation,
-  EdgeInsetsGeometry? itemPadding,
-  double? dropdownWidth,
-  EdgeInsetsGeometry? dropdownPadding,
-  BoxDecoration? dropdownDecoration,
-  Color? selectedItemHighlightColor,
-  Radius? scrollbarRadius,
-  double? scrollbarThickness,
-  bool? scrollbarAlwaysShow,
-  Offset? offset,
-  Widget? customButton,
-  List<int>? customItemsIndexes,
-  double? customItemsHeight,
-  bool openWithLongPress = false,
-  bool dropdownOverButton = false,
-  bool dropdownFullScreen = false,
-  bool barrierDismissible = true,
-  Color? barrierColor,
-  String? barrierLabel,
-  TextEditingController? searchController,
-  Widget? searchInnerWidget,
-  _SearchMatchFn? searchMatchFn,
-  void Function(bool isOpen)? onMenuStateChange,
+    // super.key,
+    required List<DropdownMenuItem<T>>? items,
+    DropdownButtonBuilder? selectedItemBuilder,
+    T? value,
+    Widget? hint,
+    Widget? disabledHint,
+    this.onChanged,
+    int dropdownElevation = 8,
+    TextStyle? style,
+    Widget? icon,
+    Widget? iconOnClick,
+    Color? iconDisabledColor,
+    Color? iconEnabledColor,
+    double iconSize = 24.0,
+    bool isDense = true,
+    bool isExpanded = false,
+    double itemHeight = kMinInteractiveDimension,
+    Color? focusColor,
+    FocusNode? focusNode,
+    bool autofocus = false,
+    InputDecoration? decoration,
+    onSaved,
+    validator,
+    AutovalidateMode? autovalidateMode,
+    double? dropdownMaxHeight,
+    bool? enableFeedback,
+    AlignmentGeometry alignment = AlignmentDirectional.centerStart,
+    double? buttonHeight,
+    double? buttonWidth,
+    EdgeInsetsGeometry? buttonPadding,
+    BoxDecoration? buttonDecoration,
+    int? buttonElevation,
+    EdgeInsetsGeometry? itemPadding,
+    double? dropdownWidth,
+    EdgeInsetsGeometry? dropdownPadding,
+    BoxDecoration? dropdownDecoration,
+    Color? selectedItemHighlightColor,
+    Radius? scrollbarRadius,
+    double? scrollbarThickness,
+    bool? scrollbarAlwaysShow,
+    Offset? offset,
+    Widget? customButton,
+    List<int>? customItemsIndexes,
+    double? customItemsHeight,
+    bool openWithLongPress = false,
+    bool dropdownOverButton = false,
+    bool dropdownFullScreen = false,
+    bool barrierDismissible = true,
+    Color? barrierColor,
+    String? barrierLabel,
+    TextEditingController? searchController,
+    Widget? searchInnerWidget,
+    _SearchMatchFn? searchMatchFn,
+    void Function(bool isOpen)? onMenuStateChange,
   })  : assert(
-  items == null ||
-  items.isEmpty ||
-  value == null ||
-  items.where((DropdownMenuItem<T> item) {
-  return item.value == value;
-  }).length ==
-  1,
-  "There should be exactly one item with [DropdownButton]'s value: "
-  '$value. \n'
-  'Either zero or 2 or more [DropdownMenuItem]s were detected '
-  'with the same value',
-  ),
-  decoration = decoration ?? InputDecoration(focusColor: focusColor),
-  super(
-  initialValue: value,
-  autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,
-  builder: (FormFieldState<T> field) {
-  final _DropdownButtonFormFieldState<T> state =
-  field as _DropdownButtonFormFieldState<T>;
-  final InputDecoration decorationArg =
-  decoration ?? InputDecoration(focusColor: focusColor);
-  final InputDecoration effectiveDecoration =
-  decorationArg.applyDefaults(
-  Theme.of(field.context).inputDecorationTheme,
-  );
+          items == null ||
+              items.isEmpty ||
+              value == null ||
+              items.where((DropdownMenuItem<T> item) {
+                    return item.value == value;
+                  }).length ==
+                  1,
+          "There should be exactly one item with [DropdownButton]'s value: "
+          '$value. \n'
+          'Either zero or 2 or more [DropdownMenuItem]s were detected '
+          'with the same value',
+        ),
+        decoration = decoration ?? InputDecoration(focusColor: focusColor),
+        super(
+          initialValue: value,
+          autovalidateMode: autovalidateMode ?? AutovalidateMode.disabled,
+          builder: (FormFieldState<T> field) {
+            final _DropdownButtonFormFieldState<T> state =
+                field as _DropdownButtonFormFieldState<T>;
+            final InputDecoration decorationArg =
+                decoration ?? InputDecoration(focusColor: focusColor);
+            final InputDecoration effectiveDecoration =
+                decorationArg.applyDefaults(
+              Theme.of(field.context).inputDecorationTheme,
+            );
 
-  final bool showSelectedItem = items != null &&
-  items
-      .where(
-  (DropdownMenuItem<T> item) => item.value == state.value)
-      .isNotEmpty;
-  bool isHintOrDisabledHintAvailable() {
-  final bool isDropdownDisabled =
-  onChanged == null || (items == null || items.isEmpty);
-  if (isDropdownDisabled) {
-  return hint != null || disabledHint != null;
-  } else {
-  return hint != null;
-  }
-  }
+            final bool showSelectedItem = items != null &&
+                items
+                    .where(
+                        (DropdownMenuItem<T> item) => item.value == state.value)
+                    .isNotEmpty;
+            bool isHintOrDisabledHintAvailable() {
+              final bool isDropdownDisabled =
+                  onChanged == null || (items == null || items.isEmpty);
+              if (isDropdownDisabled) {
+                return hint != null || disabledHint != null;
+              } else {
+                return hint != null;
+              }
+            }
 
-  final bool isEmpty =
-  !showSelectedItem && !isHintOrDisabledHintAvailable();
+            final bool isEmpty =
+                !showSelectedItem && !isHintOrDisabledHintAvailable();
 
-  // An unfocusable Focus widget so that this widget can detect if its
-  // descendants have focus or not.
-  return Focus(
-  canRequestFocus: false,
-  skipTraversal: true,
-  child: Builder(builder: (BuildContext context) {
-  return DropdownButtonHideUnderline(
-  child: DropdownButton2._formField(
-  items: items,
-  selectedItemBuilder: selectedItemBuilder,
-  value: state.value,
-  hint: hint,
-  disabledHint: disabledHint,
-  onChanged: onChanged == null ? null : state.didChange,
-  dropdownElevation: dropdownElevation,
-  style: style,
-  icon: icon,
-  iconOnClick: iconOnClick,
-  iconDisabledColor: iconDisabledColor,
-  iconEnabledColor: iconEnabledColor,
-  iconSize: iconSize,
-  isDense: isDense,
-  isExpanded: isExpanded,
-  itemHeight: itemHeight,
-  focusColor: focusColor,
-  focusNode: focusNode,
-  autofocus: autofocus,
-  dropdownMaxHeight: dropdownMaxHeight,
-  enableFeedback: enableFeedback,
-  alignment: alignment,
-  buttonHeight: buttonHeight,
-  buttonWidth: buttonWidth,
-  buttonPadding: buttonPadding,
-  buttonDecoration: buttonDecoration,
-  buttonElevation: buttonElevation,
-  itemPadding: itemPadding,
-  dropdownWidth: dropdownWidth,
-  dropdownPadding: dropdownPadding,
-  dropdownDecoration: dropdownDecoration,
-  selectedItemHighlightColor: selectedItemHighlightColor,
-  scrollbarRadius: scrollbarRadius,
-  scrollbarThickness: scrollbarThickness,
-  scrollbarAlwaysShow: scrollbarAlwaysShow,
-  offset: offset,
-  customButton: customButton,
-  customItemsIndexes: customItemsIndexes,
-  customItemsHeight: customItemsHeight,
-  openWithLongPress: openWithLongPress,
-  dropdownOverButton: dropdownOverButton,
-  dropdownFullScreen: dropdownFullScreen,
-  onMenuStateChange: onMenuStateChange,
-  barrierDismissible: barrierDismissible,
-  barrierColor: barrierColor,
-  barrierLabel: barrierLabel,
-  searchController: searchController,
-  searchInnerWidget: searchInnerWidget,
-  searchMatchFn: searchMatchFn,
-  inputDecoration: effectiveDecoration.copyWith(
-  errorText: field.errorText,
-  ),
-  isEmpty: isEmpty,
-  ),
-  );
-  }),
-  );
-  },
-  );
+            // An unfocusable Focus widget so that this widget can detect if its
+            // descendants have focus or not.
+            return Focus(
+              canRequestFocus: false,
+              skipTraversal: true,
+              child: Builder(builder: (BuildContext context) {
+                return DropdownButtonHideUnderline(
+                  child: DropdownButton2._formField(
+                    items: items,
+                    selectedItemBuilder: selectedItemBuilder,
+                    value: state.value,
+                    hint: hint,
+                    disabledHint: disabledHint,
+                    onChanged: onChanged == null ? null : state.didChange,
+                    dropdownElevation: dropdownElevation,
+                    style: style,
+                    icon: icon,
+                    iconOnClick: iconOnClick,
+                    iconDisabledColor: iconDisabledColor,
+                    iconEnabledColor: iconEnabledColor,
+                    iconSize: iconSize,
+                    isDense: isDense,
+                    isExpanded: isExpanded,
+                    itemHeight: itemHeight,
+                    focusColor: focusColor,
+                    focusNode: focusNode,
+                    autofocus: autofocus,
+                    dropdownMaxHeight: dropdownMaxHeight,
+                    enableFeedback: enableFeedback,
+                    alignment: alignment,
+                    buttonHeight: buttonHeight,
+                    buttonWidth: buttonWidth,
+                    buttonPadding: buttonPadding,
+                    buttonDecoration: buttonDecoration,
+                    buttonElevation: buttonElevation,
+                    itemPadding: itemPadding,
+                    dropdownWidth: dropdownWidth,
+                    dropdownPadding: dropdownPadding,
+                    dropdownDecoration: dropdownDecoration,
+                    selectedItemHighlightColor: selectedItemHighlightColor,
+                    scrollbarRadius: scrollbarRadius,
+                    scrollbarThickness: scrollbarThickness,
+                    scrollbarAlwaysShow: scrollbarAlwaysShow,
+                    offset: offset,
+                    customButton: customButton,
+                    customItemsIndexes: customItemsIndexes,
+                    customItemsHeight: customItemsHeight,
+                    openWithLongPress: openWithLongPress,
+                    dropdownOverButton: dropdownOverButton,
+                    dropdownFullScreen: dropdownFullScreen,
+                    onMenuStateChange: onMenuStateChange,
+                    barrierDismissible: barrierDismissible,
+                    barrierColor: barrierColor,
+                    barrierLabel: barrierLabel,
+                    searchController: searchController,
+                    searchInnerWidget: searchInnerWidget,
+                    searchMatchFn: searchMatchFn,
+                    inputDecoration: effectiveDecoration.copyWith(
+                      errorText: field.errorText,
+                    ),
+                    isEmpty: isEmpty,
+                  ),
+                );
+              }),
+            );
+          },
+        );
 
   /// {@macro flutter.material.dropdownButton.onChanged}
   final ValueChanged<T?>? onChanged;
@@ -2075,7 +2076,7 @@ class _DropdownButtonFormFieldState<T> extends FormFieldState<T> {
   void didChange(T? value) {
     super.didChange(value);
     final DropdownButtonFormField2<T> dropdownButtonFormField =
-    widget as DropdownButtonFormField2<T>;
+        widget as DropdownButtonFormField2<T>;
     assert(dropdownButtonFormField.onChanged != null);
     dropdownButtonFormField.onChanged!(value);
   }

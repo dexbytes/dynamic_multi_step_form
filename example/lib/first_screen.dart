@@ -46,11 +46,11 @@ class _FirstScreenState extends State<FirstScreen> {
             child: Column(
               children: [
                 Expanded(
-                  // Add jsonString from example assets file or json encoded String.
+                    // Add jsonString from example assets file or json encoded String.
                     child: DynamicForm(jsonString, dynamicFormKey: _formKeyNew,
                         finalSubmitCallBack:
                             (int currentPage, Map<String, dynamic> data) async {
-                      //Get all entered information on final or last form submit and redirect to another scree to display entered information
+                  //Get all entered information on final or last form submit and redirect to another scree to display entered information
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -60,7 +60,7 @@ class _FirstScreenState extends State<FirstScreen> {
                             {int? currentIndex,
                             Map<String, dynamic>? formSubmitData,
                             Map<String, dynamic>? formInformation}) {
-                      //This function return value when any current form submit and validated.
+                  //This function return value when any current form submit and validated.
                   setState(() {
                     //Here currentIndex is a current displayed step index. its default value is zero.
                     currentPageIndex = currentIndex!;

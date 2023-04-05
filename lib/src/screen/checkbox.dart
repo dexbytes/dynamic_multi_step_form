@@ -1,20 +1,28 @@
-part of dynamic_json_form;
+part of dynamic_multi_step_form;
 
 class CheckBoxWidget extends StatefulWidget {
   final List<Options> optionList;
-  final Map<String,dynamic> jsonData;
+  final Map<String, dynamic> jsonData;
   final bool autoValidate;
   final CheckBoxConfiguration? viewConfiguration;
-  final Function (String fieldKey,List<String> fieldValue) onChangeValue ;
+  final Function(String fieldKey, List<String> fieldValue) onChangeValue;
 
-  const CheckBoxWidget({Key? key,required this.jsonData,required this.onChangeValue,
-    this.optionList = const [],
-    this.viewConfiguration, required this.autoValidate
-  }) : super(key: key);
+  const CheckBoxWidget(
+      {Key? key,
+      required this.jsonData,
+      required this.onChangeValue,
+      this.optionList = const [],
+      this.viewConfiguration,
+      required this.autoValidate})
+      : super(key: key);
 
   @override
-  _CheckBoxWidgetState createState() => _CheckBoxWidgetState(optionList: this.optionList,autoValidate:autoValidate,jsonData: jsonData,onChangeValue: onChangeValue,
-      viewConfiguration:viewConfiguration);
+  _CheckBoxWidgetState createState() => _CheckBoxWidgetState(
+      optionList: this.optionList,
+      autoValidate: autoValidate,
+      jsonData: jsonData,
+      onChangeValue: onChangeValue,
+      viewConfiguration: viewConfiguration);
 }
 
 class _CheckBoxWidgetState extends State<CheckBoxWidget> {
@@ -29,13 +37,19 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
   List<String>? selectedOption = [];
   bool autoValidate = false;
 
-  Function (String fieldKey,List<String> fieldValue) onChangeValue ;
+  Function(String fieldKey, List<String> fieldValue) onChangeValue;
+
   Options _intialValue = Options();
 
-  _CheckBoxWidgetState({required this.jsonData,required this.optionList,required this.onChangeValue,this.autoValidate = false,this.viewConfiguration}) {
-    checkBoxModel ??= responseParser.checkBoxFormFiledParsing(jsonData: jsonData, updateCommon: true);
-    setValues(checkBoxModel,jsonData);
-
+  _CheckBoxWidgetState(
+      {required this.jsonData,
+      required this.optionList,
+      required this.onChangeValue,
+      this.autoValidate = false,
+      this.viewConfiguration}) {
+    checkBoxModel ??= responseParser.checkBoxFormFiledParsing(
+        jsonData: jsonData, updateCommon: true);
+    setValues(checkBoxModel, jsonData);
   }
 
   @override
@@ -45,9 +59,10 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
   }
 
   //Initial value set
-  void setValues(CheckboxModel? radioButtonModel, Map<String, dynamic> jsonData) {
-
-    viewConfiguration  = viewConfiguration ?? ConfigurationSetting.instance._checkBoxConfiguration;
+  void setValues(
+      CheckboxModel? radioButtonModel, Map<String, dynamic> jsonData) {
+    viewConfiguration = viewConfiguration ??
+        ConfigurationSetting.instance._checkBoxConfiguration;
 
     if (radioButtonModel != null) {
       try {
@@ -60,18 +75,23 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
       if (radioButtonModel.elementConfig != null) {
         fieldKey = radioButtonModel.elementConfig!.name!;
         label = radioButtonModel.elementConfig!.label!;
-        value = radioButtonModel.value??"";
+        value = radioButtonModel.value ?? "";
 
         if (radioButtonModel.elementConfig!.options!.isNotEmpty) {
-          optionList = radioButtonModel.elementConfig!.options!.map((e) => Options(value: e.value,displayValue: e.displayValue,checked: e.checked)).toList();
+          optionList = radioButtonModel.elementConfig!.options!
+              .map((e) => Options(
+                  value: e.value,
+                  displayValue: e.displayValue,
+                  checked: e.checked))
+              .toList();
 
           //Add already selected items
-          optionList.map((Options e){
-            if(e.checked!){
+          optionList.map((Options e) {
+            if (e.checked!) {
               selectedOption!.add(e.value!.toString());
             }
           }).toList();
-          onChangeValue.call(fieldKey,selectedOption!);
+          onChangeValue.call(fieldKey, selectedOption!);
         }
       }
     }
@@ -79,17 +99,27 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var checkBoxAlignment = viewConfiguration!._optionsAlign == LabelAndOptionsAlignment.horizontal?Axis.horizontal:Axis.vertical;
+    var checkBoxAlignment =
+        viewConfiguration!._optionsAlign == LabelAndOptionsAlignment.horizontal
+            ? Axis.horizontal
+            : Axis.vertical;
 
     //Label
-    Widget label =  Text(checkBoxModel!.elementConfig!.label??'',style: viewConfiguration!._labelTextStyle,  strutStyle: StrutStyle(),);
+    Widget label = Text(
+      checkBoxModel!.elementConfig!.label ?? '',
+      style: viewConfiguration!._labelTextStyle,
+      strutStyle: StrutStyle(),
+    );
 
     //ErrorMessage
-    Widget errorMessage = (selectedOption != null && selectedOption!.isNotEmpty)?Container():
-    Padding(
-      padding: const EdgeInsets.only(left: 15.0, top: 2),
-      child:Text(checkBoxModel!.validation!.errorMessage!.required.toString(),style: const TextStyle(color:  Color(0xFFD32F2F),fontSize: 12)),);
-
+    Widget errorMessage = (selectedOption != null && selectedOption!.isNotEmpty)
+        ? Container()
+        : Padding(
+            padding: const EdgeInsets.only(left: 15.0, top: 2),
+            child: Text(
+                checkBoxModel!.validation!.errorMessage!.required.toString(),
+                style: const TextStyle(color: Color(0xFFD32F2F), fontSize: 12)),
+          );
 
     //Create checkbox list
     Widget checkBoxOptions = CheckBoxGroup<String>.builder(
@@ -101,56 +131,69 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
       onChanged: (selectedValue) => setState(() {
         if (selectedValue != null) {
           _intialValue = selectedValue;
-          if(selectedOption!.contains(selectedValue.value)){
-                    selectedOption!.remove(selectedValue.value!.toString());
-                  }else{
-                    selectedOption!.add(selectedValue.value!.toString());
-                  }
+          if (selectedOption!.contains(selectedValue.value)) {
+            selectedOption!.remove(selectedValue.value!.toString());
+          } else {
+            selectedOption!.add(selectedValue.value!.toString());
+          }
         }
-        onChangeValue.call(fieldKey,selectedOption!);
+        onChangeValue.call(fieldKey, selectedOption!);
       }),
       items: optionList,
-      itemBuilder: (item) => RadioButtonBuilder(item.displayValue??''),
+      itemBuilder: (item) => RadioButtonBuilder(item.displayValue ?? ''),
       activeColor: viewConfiguration!._checkboxActiveColor,
     );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-    LabelAndOptionsAlignment.vertical == viewConfiguration!._labelAndRadioButtonAlign?
-      //Vertical alignment of checkboxes with label
-      Row(
-      children: [
-      Flexible( child:Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        label,
-        const SizedBox(height: 3,),
-        checkBoxOptions
-      ],))
-    ],
-    ):
-    //Horizontal alignment of checkboxes with label
-    Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: [
-    Padding(
-    padding: const EdgeInsets.only(top:5.0),
-    child: label,
-    ),
-    const SizedBox(width: 15,),
-    Expanded(child: checkBoxOptions,)
-    ],),
-    const SizedBox(height: 5,),
-    autoValidate ? errorMessage : Container()
+        LabelAndOptionsAlignment.vertical ==
+                viewConfiguration!._labelAndRadioButtonAlign
+            ?
+            //Vertical alignment of checkboxes with label
+            Row(
+                children: [
+                  Flexible(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      label,
+                      const SizedBox(
+                        height: 3,
+                      ),
+                      checkBoxOptions
+                    ],
+                  ))
+                ],
+              )
+            :
+            //Horizontal alignment of checkboxes with label
+            Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5.0),
+                    child: label,
+                  ),
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: checkBoxOptions,
+                  )
+                ],
+              ),
+        const SizedBox(
+          height: 5,
+        ),
+        autoValidate ? errorMessage : Container()
       ],
     );
   }
 }
-
 
 class CheckBoxGroup<T> extends StatelessWidget {
   /// Creates a [RadioButton] group
@@ -186,32 +229,34 @@ class CheckBoxGroup<T> extends StatelessWidget {
 
   List<Widget> get _group => this.items.map(
         (Options item) {
-      final radioButtonBuilder = this.itemBuilder(item);
+          final radioButtonBuilder = this.itemBuilder(item);
 
-      return Container(
-          height: this.direction == Axis.vertical ? this.spacebetween : 30.0,
-          child: CheckBoxWithText(
-            description: radioButtonBuilder.description,
-            value: item,
-            groupValue: this.groupValue,
-            onChanged: (option){
-                this.onChanged?.call(option as Options);
-            },
-            textStyle: textStyle,
-            textPosition: radioButtonBuilder.textPosition ??
-                RadioButtonTextPosition.right,
-            activeColor: activeColor,
-          )
-      );
-    },
-  ).toList();
+          return Container(
+              height:
+                  this.direction == Axis.vertical ? this.spacebetween : 30.0,
+              child: CheckBoxWithText(
+                description: radioButtonBuilder.description,
+                value: item,
+                groupValue: this.groupValue,
+                onChanged: (option) {
+                  this.onChanged?.call(option as Options);
+                },
+                textStyle: textStyle,
+                textPosition: radioButtonBuilder.textPosition ??
+                    RadioButtonTextPosition.right,
+                activeColor: activeColor,
+              ));
+        },
+      ).toList();
 
   @override
-  Widget build(BuildContext context) => direction == Axis.vertical ? Column(
-    mainAxisAlignment: MainAxisAlignment.start,
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: _group,
-  ) : Wrap(children:_group);
+  Widget build(BuildContext context) => direction == Axis.vertical
+      ? Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: _group,
+        )
+      : Wrap(children: _group);
 }
 
 // Check box with option name
@@ -233,59 +278,57 @@ class CheckBoxWithText<T> extends StatelessWidget {
     this.textPosition = RadioButtonTextPosition.right,
     this.activeColor,
     this.textStyle,
-  }): super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => InkWell(
-    onTap: () {
-      if (onChanged != null) {
-        value.checked = !value.checked!;
-        onChanged!(value);
-      }
-    },
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: this.textPosition == RadioButtonTextPosition.right
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.end,
-      children: <Widget>[
-        this.textPosition == RadioButtonTextPosition.left
-            ? Padding(
-          padding: const EdgeInsets.only(left: 10.0),
-          child: Text(
-            this.description,
-            style: this.textStyle,
-            strutStyle: StrutStyle(),
-            textAlign: TextAlign.left,
-          ),
-        )
-            : Container(),
-
-       CheckBoxCustom(
-            checkStatus: value.checked,
-  activeColor:activeColor,
-            onClicked: (value1){
-              value.checked = value1;
-              if (this.onChanged != null) {
-                this.onChanged!(value);
-              }
-            },
-          ),
-
-        this.textPosition == RadioButtonTextPosition.right
-            ? Padding(
-          padding: const EdgeInsets.only(right: 8.0),
-          child: Text(
-            this.description,
-            style: this.textStyle,
-            textAlign: TextAlign.right,
-            strutStyle: StrutStyle(),
-          ),
-        )
-            : Container(),
-      ],
-    ),
-  );
+        onTap: () {
+          if (onChanged != null) {
+            value.checked = !value.checked!;
+            onChanged!(value);
+          }
+        },
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: this.textPosition == RadioButtonTextPosition.right
+              ? MainAxisAlignment.start
+              : MainAxisAlignment.end,
+          children: <Widget>[
+            this.textPosition == RadioButtonTextPosition.left
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      this.description,
+                      style: this.textStyle,
+                      strutStyle: StrutStyle(),
+                      textAlign: TextAlign.left,
+                    ),
+                  )
+                : Container(),
+            CheckBoxCustom(
+              checkStatus: value.checked,
+              activeColor: activeColor,
+              onClicked: (value1) {
+                value.checked = value1;
+                if (this.onChanged != null) {
+                  this.onChanged!(value);
+                }
+              },
+            ),
+            this.textPosition == RadioButtonTextPosition.right
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      this.description,
+                      style: this.textStyle,
+                      textAlign: TextAlign.right,
+                      strutStyle: StrutStyle(),
+                    ),
+                  )
+                : Container(),
+          ],
+        ),
+      );
 }
 
 //Check box
@@ -294,10 +337,13 @@ class CheckBoxCustom extends StatefulWidget {
   final Color? activeColor;
   final Function(bool)? onClicked;
 
-  const CheckBoxCustom({Key? key,this.checkStatus = false,this.onClicked,this.activeColor}) : super(key: key);
+  const CheckBoxCustom(
+      {Key? key, this.checkStatus = false, this.onClicked, this.activeColor})
+      : super(key: key);
 
   @override
-  _CheckBoxCustomState createState() => _CheckBoxCustomState(checkStatus: checkStatus,onClicked: onClicked,activeColor:activeColor);
+  _CheckBoxCustomState createState() => _CheckBoxCustomState(
+      checkStatus: checkStatus, onClicked: onClicked, activeColor: activeColor);
 }
 
 class _CheckBoxCustomState extends State<CheckBoxCustom> {
@@ -305,7 +351,8 @@ class _CheckBoxCustomState extends State<CheckBoxCustom> {
   Color? activeColor;
   Function(bool)? onClicked;
 
-  _CheckBoxCustomState({this.checkStatus = false, this.onClicked, this.activeColor});
+  _CheckBoxCustomState(
+      {this.checkStatus = false, this.onClicked, this.activeColor});
 
   @override
   void initState() {
@@ -330,20 +377,18 @@ class _CheckBoxCustomState extends State<CheckBoxCustom> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
-
     return Checkbox(
         //checkColor: activeColor,
         activeColor: activeColor,
-        value: checkStatus, onChanged: (value) {
-      debugPrint("$value");
-      setState(() {
-        checkStatus = value;
-      });
-      onClicked?.call(checkStatus!);
-    });
+        value: checkStatus,
+        onChanged: (value) {
+          debugPrint("$value");
+          setState(() {
+            checkStatus = value;
+          });
+          onClicked?.call(checkStatus!);
+        });
   }
 }

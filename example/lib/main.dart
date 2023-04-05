@@ -1,4 +1,4 @@
-import 'package:dynamic_multi_step_form/dynamic_json_form.dart';
+import 'package:dynamic_multi_step_form/dynamic_multi_step_form.dart';
 import 'package:dynamic_multi_step_form/parts.dart';
 import 'package:example/first_screen.dart';
 import 'package:example/time_duration.dart';
@@ -84,7 +84,7 @@ void main() async {
   ConfigurationSetting.instance.setLoadFromApi = true;
 
   String? jsonString = "";
-  runApp(MyApp(jsonString:jsonString));
+  runApp(MyApp(jsonString: jsonString));
 }
 
 class MyApp extends StatelessWidget {
@@ -100,14 +100,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyForm(jsonString:jsonString),
+      home: MyForm(jsonString: jsonString),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyForm extends StatefulWidget {
-  final String jsonString ;
+  final String jsonString;
 
   const MyForm({this.jsonString = ""});
 

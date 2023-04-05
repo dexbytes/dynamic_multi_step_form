@@ -8,7 +8,7 @@ class HttpService {
     Response res = await get(Uri.parse(postsURL));
     if (res.statusCode == 200) {
       try {
-       // var body = jsonDecode(res.body);
+        // var body = jsonDecode(res.body);
         String body = res.body;
         return body;
       } catch (e) {
@@ -21,7 +21,6 @@ class HttpService {
       return "";
     }
   }
-
 }
 
 final HttpService httpService = HttpService();

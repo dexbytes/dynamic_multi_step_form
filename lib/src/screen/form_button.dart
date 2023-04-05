@@ -1,23 +1,31 @@
-part of dynamic_json_form;
+part of dynamic_multi_step_form;
 
 class FormButtonWidget extends StatefulWidget {
   final List<Options> optionList;
-  final Map<String,dynamic> jsonData;
+  final Map<String, dynamic> jsonData;
   final String label;
-  final Function (String fieldKey,List<String> fieldValue) onChangeValue ;
+  final Function(String fieldKey, List<String> fieldValue) onChangeValue;
 
-  const FormButtonWidget({Key? key,required this.jsonData,required this.onChangeValue,this.label = "",
+  const FormButtonWidget({
+    Key? key,
+    required this.jsonData,
+    required this.onChangeValue,
+    this.label = "",
     this.optionList = const [],
   }) : super(key: key);
 
   @override
-  _FormButtonWidgetState createState() => _FormButtonWidgetState(optionList: this.optionList,jsonData: jsonData,onChangeValue: onChangeValue);
+  _FormButtonWidgetState createState() => _FormButtonWidgetState(
+      optionList: this.optionList,
+      jsonData: jsonData,
+      onChangeValue: onChangeValue);
 }
 
 class _FormButtonWidgetState extends State<FormButtonWidget> {
   List<Options> optionList = [];
   FormButtonModel? formButtonModel;
   Map<String, dynamic> jsonData;
+
   // FormButtonConfiguration? viewConfiguration;
   String fieldKey = "";
   String label = "";
@@ -25,12 +33,15 @@ class _FormButtonWidgetState extends State<FormButtonWidget> {
   bool isVisible = true;
   String value = "";
   List<String>? selectedOption = [];
-  Function (String fieldKey,List<String> fieldValue) onChangeValue ;
+  Function(String fieldKey, List<String> fieldValue) onChangeValue;
 
-  _FormButtonWidgetState({required this.jsonData,required this.optionList,required this.onChangeValue}) {
-    formButtonModel ??= responseParser.formButtonParsing(jsonData: jsonData, updateCommon: true);
-   setValues(formButtonModel,jsonData);
-
+  _FormButtonWidgetState(
+      {required this.jsonData,
+      required this.optionList,
+      required this.onChangeValue}) {
+    formButtonModel ??= responseParser.formButtonParsing(
+        jsonData: jsonData, updateCommon: true);
+    setValues(formButtonModel, jsonData);
   }
 
   @override
@@ -39,8 +50,8 @@ class _FormButtonWidgetState extends State<FormButtonWidget> {
   }
 
   //Initial value set
-  void setValues(FormButtonModel? radioButtonModel, Map<String, dynamic> jsonData) {
-
+  void setValues(
+      FormButtonModel? radioButtonModel, Map<String, dynamic> jsonData) {
     //viewConfiguration  = viewConfiguration ?? ConfigurationSetting.instance._checkBoxConfiguration;
 
     if (radioButtonModel != null) {
@@ -55,15 +66,14 @@ class _FormButtonWidgetState extends State<FormButtonWidget> {
         fieldKey = radioButtonModel.elementConfig!.name!;
         label = radioButtonModel.elementConfig!.label!;
         isVisible = radioButtonModel.elementConfig!.isVisible!;
-        value = radioButtonModel.value??"";
-
+        value = radioButtonModel.value ?? "";
       }
     }
   }
 
   @override
   Widget build(BuildContext context) {
- //   var checkBoxAlignment = viewConfiguration!._optionsAlign == LabelAndOptionsAlignment.horizontal?Axis.horizontal:Axis.vertical;
+    //   var checkBoxAlignment = viewConfiguration!._optionsAlign == LabelAndOptionsAlignment.horizontal?Axis.horizontal:Axis.vertical;
 
 /*
     //Label
@@ -76,11 +86,13 @@ class _FormButtonWidgetState extends State<FormButtonWidget> {
       child:Text(checkBoxModel!.validation!.errorMessage!.required.toString()??'',style: const TextStyle(color:  Color(0xFFD32F2F),fontSize: 12)),);
 */
 
-
-    return !isVisible?const SizedBox():ElevatedButton(clipBehavior: Clip.hardEdge,
-      onPressed: () async {
-        onChangeValue.call(fieldKey,selectedOption!);
-       /* if(_formKeyNew.currentState!.validateFields()){
+    return !isVisible
+        ? const SizedBox()
+        : ElevatedButton(
+            clipBehavior: Clip.hardEdge,
+            onPressed: () async {
+              onChangeValue.call(fieldKey, selectedOption!);
+              /* if(_formKeyNew.currentState!.validateFields()){
           var data =  _formKeyNew.currentState!.getFormData();
 
           if(data!.isNotEmpty){
@@ -90,9 +102,9 @@ class _FormButtonWidgetState extends State<FormButtonWidget> {
             );
           }
         }*/
-      },
-      child: Text(widget.label.isNotEmpty?widget.label:label),
-      //color: Colors.green,
-    );
+            },
+            child: Text(widget.label.isNotEmpty ? widget.label : label),
+            //color: Colors.green,
+          );
   }
 }

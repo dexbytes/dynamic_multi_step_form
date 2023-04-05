@@ -5,6 +5,7 @@ class InputDoneView extends StatelessWidget {
   final VoidCallback? onPressCallback;
   final String buttonName;
   final TextStyle textStyle;
+
   const InputDoneView(
       {Key? key,
       this.onPressCallback,
@@ -23,7 +24,7 @@ class InputDoneView extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.only(top: 0.0, bottom: 0.0),
           child: CupertinoButton(
-            padding: const  EdgeInsets.only(right: 24.0, top: 3.0, bottom: 3.0),
+            padding: const EdgeInsets.only(right: 24.0, top: 3.0, bottom: 3.0),
             onPressed: () {
               //FocusScope.of(context).requestFocus(new FocusNode());
               onPressCallback?.call();

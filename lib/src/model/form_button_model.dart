@@ -7,10 +7,10 @@ class FormButtonModel {
 
   FormButtonModel(
       {this.elementType,
-        this.elementConfig,
-        this.value,
-        this.valid,
-        this.onchange});
+      this.elementConfig,
+      this.value,
+      this.valid,
+      this.onchange});
 
   FormButtonModel.fromJson(Map<String, dynamic> json) {
     elementType = json['elementType'];
@@ -48,21 +48,21 @@ class ElementConfig {
 
   ElementConfig(
       {this.type,
-        this.name,
-        this.label,
-        this.enableLabel,
-        this.isVisible,
-        this.resetIcon,
-        this.minLine,
-        this.maxLine,
-        this.textCapitalization});
+      this.name,
+      this.label,
+      this.enableLabel,
+      this.isVisible,
+      this.resetIcon,
+      this.minLine,
+      this.maxLine,
+      this.textCapitalization});
 
   ElementConfig.fromJson(Map<String, dynamic> json) {
     type = json['type'];
     name = json['name'];
     label = json['label'];
     enableLabel = json['enableLabel'];
-    isVisible = json.containsKey('isVisible')?json['isVisible']:true;
+    isVisible = json.containsKey('isVisible') ? json['isVisible'] : true;
     resetIcon = json['resetIcon'];
     minLine = json['minLine'];
     maxLine = json['maxLine'];

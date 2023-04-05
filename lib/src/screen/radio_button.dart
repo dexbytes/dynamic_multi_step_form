@@ -1,21 +1,29 @@
-part of dynamic_json_form;
+part of dynamic_multi_step_form;
 
 class RadioButton extends StatefulWidget {
   final List<RadioButtonOptions>? optionList;
   final bool autoValidate;
-  final Map<String,dynamic> jsonData;
+  final Map<String, dynamic> jsonData;
 
   final RadioButtonConfiguration? viewConfiguration;
-  final Function (String fieldKey,String fieldValue) onChangeValue ;
+  final Function(String fieldKey, String fieldValue) onChangeValue;
 
-  const RadioButton({Key? key,required this.jsonData,required this.onChangeValue,
-    this.optionList = const [],
-    this.viewConfiguration, required this.autoValidate
-  }) : super(key: key);
+  const RadioButton(
+      {Key? key,
+      required this.jsonData,
+      required this.onChangeValue,
+      this.optionList = const [],
+      this.viewConfiguration,
+      required this.autoValidate})
+      : super(key: key);
 
   @override
-  _RadioButtonState createState() => _RadioButtonState(optionList: this.optionList,autoValidate:autoValidate,jsonData: jsonData,onChangeValue: onChangeValue,viewConfiguration:viewConfiguration);
-
+  _RadioButtonState createState() => _RadioButtonState(
+      optionList: this.optionList,
+      autoValidate: autoValidate,
+      jsonData: jsonData,
+      onChangeValue: onChangeValue,
+      viewConfiguration: viewConfiguration);
 }
 
 class _RadioButtonState extends State<RadioButton> {
@@ -32,12 +40,14 @@ class _RadioButtonState extends State<RadioButton> {
   String? selectedOption = '';
   bool autoValidate = false;
 
-
-
-  Function (String fieldKey, String fieldValue) onChangeValue;
+  Function(String fieldKey, String fieldValue) onChangeValue;
 
   _RadioButtonState(
-      {required this.jsonData, this.optionList, required this.onChangeValue, this.viewConfiguration, this.autoValidate = false}) {
+      {required this.jsonData,
+      this.optionList,
+      required this.onChangeValue,
+      this.viewConfiguration,
+      this.autoValidate = false}) {
     radioButtonModel ??= responseParser.radioButtonFormFiledParsing(
         jsonData: jsonData, updateCommon: true);
     setValues(radioButtonModel, jsonData);
@@ -49,10 +59,9 @@ class _RadioButtonState extends State<RadioButton> {
     super.didUpdateWidget(oldWidget);
   }
 
-
   //Initial value set
-  void setValues(RadioButtonModel? radioButtonModel,
-      Map<String, dynamic> jsonData) {
+  void setValues(
+      RadioButtonModel? radioButtonModel, Map<String, dynamic> jsonData) {
     viewConfiguration = viewConfiguration ??
         ConfigurationSetting.instance._radioButtonConfiguration;
 
@@ -72,16 +81,12 @@ class _RadioButtonState extends State<RadioButton> {
         String tempVal = radioButtonModel.elementConfig!.initialValue ?? '';
 
         if (radioButtonModel.elementConfig!.options!.isNotEmpty) {
-          optionList = radioButtonModel.elementConfig!
-              .options!
-              .map((e) =>
-              RadioButtonOptions(value: e.value, displayValue: e.displayValue))
+          optionList = radioButtonModel.elementConfig!.options!
+              .map((e) => RadioButtonOptions(
+                  value: e.value, displayValue: e.displayValue))
               .toList();
           optionList!.map((e) {
-            if (tempVal
-                .toString()
-                .trim()
-                .isNotEmpty) {
+            if (tempVal.toString().trim().isNotEmpty) {
               if (e.value == tempVal) {
                 selectedOption = tempVal;
                 _initialValue = e;
@@ -97,7 +102,9 @@ class _RadioButtonState extends State<RadioButton> {
   @override
   Widget build(BuildContext context) {
     var radioButtonAlignment = viewConfiguration!._radioButtonsAlign ==
-        LabelAndOptionsAlignment.horizontal ? Axis.horizontal : Axis.vertical;
+            LabelAndOptionsAlignment.horizontal
+        ? Axis.horizontal
+        : Axis.vertical;
 
     //Label
     Widget label = Text(radioButtonModel!.elementConfig!.label ?? '',
@@ -109,45 +116,54 @@ class _RadioButtonState extends State<RadioButton> {
       groupValue: _initialValue,
       spaceBetween: 30,
       horizontalAlignment: MainAxisAlignment.start,
-      onChanged: (selectedValue) =>
-          setState(() {
-            _initialValue = selectedValue as RadioButtonOptions;
-            selectedOption = selectedValue.value!.toString();
-            onChangeValue.call(fieldKey, selectedOption!);
-          }),
+      onChanged: (selectedValue) => setState(() {
+        _initialValue = selectedValue as RadioButtonOptions;
+        selectedOption = selectedValue.value!.toString();
+        onChangeValue.call(fieldKey, selectedOption!);
+      }),
       items: optionList ?? [],
       itemBuilder: (item) => RadioButtonBuilder(item.displayValue ?? ""),
       activeColor: viewConfiguration!._radioButtonActiveColor,
       textStyle: viewConfiguration!._optionTextStyle,
     );
 
-      Widget errorMessage = (selectedOption != null && selectedOption!.toString().trim().isNotEmpty)?Container():
-      Padding(
-        padding: const EdgeInsets.only(left: 15.0, top: 2),
-        child:Text(radioButtonModel!.validation!.errorMessage!.required.toString(),style: const TextStyle(color:  Color(0xFFD32F2F),fontSize: 12),));
+    Widget errorMessage = (selectedOption != null &&
+            selectedOption!.toString().trim().isNotEmpty)
+        ? Container()
+        : Padding(
+            padding: const EdgeInsets.only(left: 15.0, top: 2),
+            child: Text(
+              radioButtonModel!.validation!.errorMessage!.required.toString(),
+              style: const TextStyle(color: Color(0xFFD32F2F), fontSize: 12),
+            ));
 
-
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              LabelAndOptionsAlignment.vertical ==
-                  viewConfiguration!._labelAndRadioButtonAlign ?
-              //Vertical alignment of radio buttons with label
-              Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        LabelAndOptionsAlignment.vertical ==
+                viewConfiguration!._labelAndRadioButtonAlign
+            ?
+            //Vertical alignment of radio buttons with label
+            Row(
                 children: [
-                  Flexible(child: Column(
+                  Flexible(
+                      child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       label,
-                      const SizedBox(height: 3,),
+                      const SizedBox(
+                        height: 3,
+                      ),
                       radioButtons,
-                    ],))
+                    ],
+                  ))
                 ],
-              ) :
-              //Horizontal alignment of radio buttons with label
-              Row(
+              )
+            :
+            //Horizontal alignment of radio buttons with label
+            Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -155,25 +171,36 @@ class _RadioButtonState extends State<RadioButton> {
                     padding: const EdgeInsets.only(top: 5.0),
                     child: label,
                   ),
-                  const SizedBox(width: 15,),
-                  Expanded(child: radioButtons,)
-                ],),
-              const SizedBox(height: 5,),
-              autoValidate ? errorMessage : Container()
-            ],
-          );
-
+                  const SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: radioButtons,
+                  )
+                ],
+              ),
+        const SizedBox(
+          height: 5,
+        ),
+        autoValidate ? errorMessage : Container()
+      ],
+    );
   }
 }
 
-enum RadioButtonTextPosition { right, left, }
+enum RadioButtonTextPosition {
+  right,
+  left,
+}
+
 class RadioButtonBuilder<T> {
   final String description;
   final RadioButtonTextPosition? textPosition;
+
   RadioButtonBuilder(
-      this.description, {
-        this.textPosition,
-      });
+    this.description, {
+    this.textPosition,
+  });
 }
 
 class RadioGroup<T> extends StatelessWidget {
@@ -210,33 +237,32 @@ class RadioGroup<T> extends StatelessWidget {
 
   List<Widget> get _group => items.map(
         (item) {
-      final radioButtonBuilder = itemBuilder(item);
-      return SizedBox(
-          height: direction == Axis.vertical ? spaceBetween : 30.0,
-          child: RadioButtonWidget(
-            description: radioButtonBuilder.description,
-            value: item,
-            groupValue: groupValue,
-            onChanged: (option){
-              onChanged?.call(option as RadioButtonOptions);
-            },
-            textStyle: textStyle,
-            textPosition: radioButtonBuilder.textPosition ??
-                RadioButtonTextPosition.right,
-            activeColor: activeColor,
-          )
-      );
-    },
-  ).toList();
+          final radioButtonBuilder = itemBuilder(item);
+          return SizedBox(
+              height: direction == Axis.vertical ? spaceBetween : 30.0,
+              child: RadioButtonWidget(
+                description: radioButtonBuilder.description,
+                value: item,
+                groupValue: groupValue,
+                onChanged: (option) {
+                  onChanged?.call(option as RadioButtonOptions);
+                },
+                textStyle: textStyle,
+                textPosition: radioButtonBuilder.textPosition ??
+                    RadioButtonTextPosition.right,
+                activeColor: activeColor,
+              ));
+        },
+      ).toList();
 
   @override
   Widget build(BuildContext context) => direction == Axis.vertical
       ? Column(
-    mainAxisAlignment: MainAxisAlignment.start,
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: _group,
-  ) : Wrap(children:_group
-  );
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: _group,
+        )
+      : Wrap(children: _group);
 }
 
 class RadioButtonWidget<T> extends StatelessWidget {
@@ -257,54 +283,51 @@ class RadioButtonWidget<T> extends StatelessWidget {
     this.textPosition = RadioButtonTextPosition.right,
     this.activeColor,
     this.textStyle,
-  }): super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) => InkWell(
-    onTap: () {
-      if (onChanged != null) {
-        onChanged!(value);
-      }
-    },
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: textPosition == RadioButtonTextPosition.right
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.end,
-      children: <Widget>[
-        textPosition == RadioButtonTextPosition.left
-            ? Padding(
-          padding: const EdgeInsets.only(left: 10.0),
-          child: Text(
-            description,
-            style: textStyle,
-            textAlign: TextAlign.left,
-          ),
-        )
-            : Container(),
-
-
-          Radio<T>(
-            visualDensity: VisualDensity.standard,
-            groupValue: groupValue,
-            onChanged: onChanged,
-            value: value,
-            activeColor: activeColor,
-            //  splashRadius: 10.0,
-            // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-          ),
-
-        textPosition == RadioButtonTextPosition.right
-            ? Padding(
-          padding: const EdgeInsets.only(right: 8.0),
-          child: Text(
-            description,
-            style: textStyle,
-            textAlign: TextAlign.right,
-          ),
-        )
-            : Container(),
-      ],
-    ),
-  );
+        onTap: () {
+          if (onChanged != null) {
+            onChanged!(value);
+          }
+        },
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: textPosition == RadioButtonTextPosition.right
+              ? MainAxisAlignment.start
+              : MainAxisAlignment.end,
+          children: <Widget>[
+            textPosition == RadioButtonTextPosition.left
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: Text(
+                      description,
+                      style: textStyle,
+                      textAlign: TextAlign.left,
+                    ),
+                  )
+                : Container(),
+            Radio<T>(
+              visualDensity: VisualDensity.standard,
+              groupValue: groupValue,
+              onChanged: onChanged,
+              value: value,
+              activeColor: activeColor,
+              //  splashRadius: 10.0,
+              // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            textPosition == RadioButtonTextPosition.right
+                ? Padding(
+                    padding: const EdgeInsets.only(right: 8.0),
+                    child: Text(
+                      description,
+                      style: textStyle,
+                      textAlign: TextAlign.right,
+                    ),
+                  )
+                : Container(),
+          ],
+        ),
+      );
 }

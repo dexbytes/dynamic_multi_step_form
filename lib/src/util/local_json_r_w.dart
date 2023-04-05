@@ -1,19 +1,23 @@
-part of dynamic_json_form;
+part of dynamic_multi_step_form;
 
-enum ComponentType {all,email}
-class LocalJsonRw{
+enum ComponentType { all, email }
+
+class LocalJsonRw {
   String jsonFileAssetsPath = "assets/local_json/";
 
-  Future<String> localRead({ComponentType componentType = ComponentType.all}) async {
+  Future<String> localRead(
+      {ComponentType componentType = ComponentType.all}) async {
     try {
-     switch(componentType){
+      switch (componentType) {
         case ComponentType.all:
-          String jsonString = await rootBundle.loadString(jsonFileAssetsPath+"request_data.json");
+          String jsonString = await rootBundle
+              .loadString(jsonFileAssetsPath + "request_data.json");
           // jsonString = json.encode(jsonString);
           return jsonString;
 
-        default :
-          String jsonString = await rootBundle.loadString(jsonFileAssetsPath+"request_data.json");
+        default:
+          String jsonString = await rootBundle
+              .loadString(jsonFileAssetsPath + "request_data.json");
           // jsonString = json.encode(jsonString);
           return jsonString;
       }
@@ -26,9 +30,11 @@ class LocalJsonRw{
   }
 
   Future<File> get _localFile async {
-    return File(jsonFileAssetsPath+'request_data.json');
+    return File(jsonFileAssetsPath + 'request_data.json');
   }
-  Future<bool> updateInfo({Map<String, dynamic> list = const {"name":"Dinesh"}}) async {
+
+  Future<bool> updateInfo(
+      {Map<String, dynamic> list = const {"name": "Dinesh"}}) async {
     // "list" is the updated book-list
     try {
       final file = await _localFile;
@@ -41,6 +47,6 @@ class LocalJsonRw{
     }
     return Future.value(true);
   }
-
 }
+
 final LocalJsonRw localJsonRw = LocalJsonRw();
