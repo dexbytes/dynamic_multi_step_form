@@ -215,7 +215,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
   //for keyboard done button
   showOverlay(BuildContext context) {
     if (overlayEntry != null) return;
-    OverlayState overlayState = Overlay.of(context)!;
+    OverlayState overlayState = Overlay.of(context);
     overlayEntry = OverlayEntry(builder: (context) {
       return Positioned(
           bottom: MediaQuery.of(context).viewInsets.bottom,

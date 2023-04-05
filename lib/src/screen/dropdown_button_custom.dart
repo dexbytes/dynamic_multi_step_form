@@ -1320,7 +1320,7 @@ class DropdownButton2<T> extends StatefulWidget {
   /// ** See code in examples/api/lib/material/dropdown/dropdown_button.style.0.dart **
   /// {@end-tool}
   ///
-  /// Defaults to the [TextTheme.subtitle1] value of the current
+  /// Defaults to the [TextTheme] value of the current
   /// [ThemeData.textTheme] of the current [Theme].
   final TextStyle? style;
 
@@ -1546,7 +1546,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
   }
 
   TextStyle? get _textStyle =>
-      widget.style ?? Theme.of(context).textTheme.subtitle1;
+      widget.style ?? Theme.of(context).textTheme.headlineSmall;
 
   Rect _getRect() {
     final TextDirection? textDirection = Directionality.maybeOf(context);
@@ -1647,7 +1647,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
   // would be clipped.
   double get _denseButtonHeight {
     final double fontSize = _textStyle!.fontSize ??
-        Theme.of(context).textTheme.subtitle1!.fontSize!;
+        Theme.of(context).textTheme.headlineSmall!.fontSize!;
     return math.max(fontSize, math.max(widget.iconSize, _kDenseButtonHeight));
   }
 
