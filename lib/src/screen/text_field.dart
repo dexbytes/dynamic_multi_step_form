@@ -98,9 +98,11 @@ class _TextFieldsState extends State<TextFieldView> {
    // _nameController = TextEditingController();
   }
 
+
   @override
   void dispose() {
     _nameController!.dispose();
+    _fieldStreamControl.close();
     super.dispose();
   }
 
@@ -308,7 +310,7 @@ class _TextFieldsState extends State<TextFieldView> {
     }
   }
 
-  _autoValidate({bool checkValidOnSubmit = false}){
+  _autoValidate(){
     if(checkValidOnChange){
       return AutovalidateMode.onUserInteraction;
     }
@@ -377,7 +379,7 @@ class _TextFieldsState extends State<TextFieldView> {
       ,onChanged: (value){
               if(mounted){
                 onChangeValue.call(fieldKey,value);
-                String? validate = commonValidation.checkValidation(enteredValue:value,validationStr: textFieldModel!.validationStr!,formFieldType:formFieldType);
+                commonValidation.checkValidation(enteredValue:value,validationStr: textFieldModel!.validationStr!,formFieldType:formFieldType);
 
                 // if(validate !=null ){
                 //   textFieldHeight = 80;
@@ -440,7 +442,7 @@ class _TextFieldsState extends State<TextFieldView> {
   }
 
   void moveToNextField(String value) {
-    if(nextFocusNode!=null && commonValidation.checkValidation(enteredValue:value,validationStr: textFieldModel!.validationStr!,formFieldType:formFieldType) == null){
+    if(commonValidation.checkValidation(enteredValue:value,validationStr: textFieldModel!.validationStr!,formFieldType:formFieldType) == null){
       nextFocusNode.requestFocus();
     }
   }

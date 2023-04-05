@@ -8,7 +8,6 @@ import 'dart:ui' show window;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../parts.dart';
 
@@ -462,7 +461,7 @@ class _DropdownMenuState<T> extends State<_DropdownMenu<T>> {
               child: PrimaryScrollController(
                 controller: widget.route.scrollController!,
                 child: Scrollbar(
-                  isAlwaysShown: true,
+                  thumbVisibility: true,
                   child: ListView(
                     padding: widget.dropdownPadding ?? kMaterialListPadding,
                     shrinkWrap: true,
@@ -589,7 +588,7 @@ class _DropdownRoute<T> extends PopupRoute<_DropdownRouteResult<T>> {
     this.menuMaxHeight,
     required this.enableFeedback,
     this.borderRadius,this.dropdownDecoration,
-  }) : assert(style != null),
+  }) :
         itemHeights = List<double>.filled(items.length, itemHeight ?? kMinInteractiveDimension);
 
   final List<_MenuItem<T>> items;
@@ -854,7 +853,7 @@ class _MenuItem<T> extends SingleChildRenderObjectWidget {
     Key? key,
     required this.onLayout,
     required this.item,
-  }) : assert(onLayout != null), super(key: key, child: item);
+  }) :super(key: key, child: item);
 
   final ValueChanged<Size> onLayout;
   final DropdownMenuItemNew<T>? item;
@@ -871,7 +870,7 @@ class _MenuItem<T> extends SingleChildRenderObjectWidget {
 }
 
 class _RenderMenuItem extends RenderProxyBox {
-  _RenderMenuItem(this.onLayout, [RenderBox? child]) : assert(onLayout != null), super(child);
+  _RenderMenuItem(this.onLayout, [RenderBox? child]) :  super(child);
 
   ValueChanged<Size> onLayout;
 
@@ -893,8 +892,7 @@ class _DropdownMenuItemContainer extends StatelessWidget {
     Key? key,
     this.alignment = AlignmentDirectional.centerStart,
     required this.child,
-  }) : assert(child != null),
-        super(key: key);
+  }) : super(key: key);
 
   /// The widget below this widget in the tree.
   ///
@@ -938,8 +936,7 @@ class DropdownMenuItemNew<T> extends _DropdownMenuItemContainer {
     this.enabled = true,
     AlignmentGeometry alignment = AlignmentDirectional.centerStart,
     required Widget child,
-  }) : assert(child != null),
-        super(key: key, alignment:alignment, child: child);
+  }) : super(key: key, alignment:alignment, child: child);
 
   /// Called when the dropdown menu item is tapped.
   final VoidCallback? onTap;
@@ -967,8 +964,7 @@ class DropdownButtonHideUnderlineNew extends InheritedWidget {
   const DropdownButtonHideUnderlineNew({
     Key? key,
     required Widget child,
-  }) : assert(child != null),
-        super(key: key, child: child);
+  }) : super(key: key, child: child);
 
   /// Returns whether the underline of [DropdownButtonNew] widgets should
   /// be hidden.
@@ -1083,13 +1079,7 @@ class DropdownButtonNew<T> extends StatefulWidget {
       '$value. \n'
       'Either zero or 2 or more [DropdownMenuItemNew]s were detected '
       'with the same value',
-  ),
-        assert(elevation != null),
-        assert(iconSize != null),
-        assert(isDense != null),
-        assert(isExpanded != null),
-        assert(autofocus != null),
-        assert(itemHeight == null || itemHeight >=  kMinInteractiveDimension),
+  ),assert(itemHeight == null || itemHeight >=  kMinInteractiveDimension),
         super(key: key);
 
   /// The list of items the user can select.
@@ -1353,16 +1343,16 @@ class _DropdownButtonState<T> extends State<DropdownButtonNew<T>> with WidgetsBi
       ),
     };
     focusNode!.addListener(_handleFocusChanged);
-    final FocusManager focusManager = WidgetsBinding.instance!.focusManager;
+    final FocusManager focusManager = WidgetsBinding.instance.focusManager;
     _focusHighlightMode = focusManager.highlightMode;
     focusManager.addHighlightModeListener(_handleFocusHighlightModeChange);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     _removeDropdownRoute();
-    WidgetsBinding.instance!.focusManager.removeHighlightModeListener(_handleFocusHighlightModeChange);
+    WidgetsBinding.instance.focusManager.removeHighlightModeListener(_handleFocusHighlightModeChange);
     focusNode!.removeListener(_handleFocusChanged);
     _internalNode?.dispose();
     super.dispose();
@@ -1765,12 +1755,7 @@ class DropdownButtonFormField<T> extends FormField<T> {
       'Either zero or 2 or more [DropdownMenuItemNew]s were detected '
       'with the same value',
   ),
-        assert(elevation != null),
-        assert(iconSize != null),
-        assert(isDense != null),
-        assert(isExpanded != null),
         assert(itemHeight == null || itemHeight >= kMinInteractiveDimension),
-        assert(autofocus != null),
         decoration = decoration ?? InputDecoration(focusColor: focusColor),
         super(
         key: key,

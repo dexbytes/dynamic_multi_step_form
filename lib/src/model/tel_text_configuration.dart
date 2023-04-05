@@ -50,10 +50,6 @@ class TelTextFieldConfiguration {
   late TextStyle? _prefixStyle =  const TextStyle();
   late TextStyle? _counterStyle =  const TextStyle();
   late TextStyle? _suffixStyle =  const TextStyle();
-  late StrutStyle? _strutStyle =  const StrutStyle();
-  late TextDirection? _textDirection = TextDirection.ltr;
-  late TextAlign? _textAlign = TextAlign.start;
-  late TextAlignVertical? _textAlignVertical = TextAlignVertical.center;
   late bool _enableLabel = true;
   late bool _filled = true;
   late Color _fillColor = Colors.transparent;
@@ -145,12 +141,7 @@ class TelTextFieldConfiguration {
   set setHintStyle (value){
     _hintStyle = value;
   }
-  set setStrutStyle (value){
-    _strutStyle = value;
-  }
-  set setTextDirection (value){
-    _textDirection = value;
-  }
+
   set setEnableLabel (value){
     _enableLabel = value;
   }

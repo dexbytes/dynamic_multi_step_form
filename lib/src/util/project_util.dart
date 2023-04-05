@@ -37,15 +37,10 @@ class PackageUtil {
   String getText(String dateFormat,DateTime dateTime) {
 
     try {
-      if (dateTime == null) {
-            return 'Select Date';
-          }
-          else {
-            if(dateFormat.isNotEmpty){
-              return DateFormat(dateFormat).format(dateTime).toString();
-            }
-            return DateFormat('dd MMMM, yyyy').format(dateTime);
-          }
+      if(dateFormat.isNotEmpty){
+        return DateFormat(dateFormat).format(dateTime).toString();
+      }
+      return DateFormat('dd MMMM, yyyy').format(dateTime);
     } catch (e) {
       if (kDebugMode) {
         print(e);

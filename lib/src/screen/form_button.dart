@@ -26,7 +26,6 @@ class _FormButtonWidgetState extends State<FormButtonWidget> {
   String value = "";
   List<String>? selectedOption = [];
   Function (String fieldKey,List<String> fieldValue) onChangeValue ;
-  Options _intialValue = Options();
 
   _FormButtonWidgetState({required this.jsonData,required this.optionList,required this.onChangeValue}) {
     formButtonModel ??= responseParser.formButtonParsing(jsonData: jsonData, updateCommon: true);

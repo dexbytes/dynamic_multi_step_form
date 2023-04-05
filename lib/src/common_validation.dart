@@ -25,7 +25,7 @@ class CommonValidation {
 
   //Check all field validation
   String? checkValidation({required String enteredValue,required Map<String, dynamic> validationStr,required String formFieldType, isPickFromCalendar}){
-    String? errorMsg;
+    String? errorMsg = "";
     switch(formFieldType){
       case 'text':
        return errorMsg = isValidText(enteredValue,validationStr);
@@ -55,6 +55,7 @@ class CommonValidation {
         return errorMsg = isValidEmail(enteredValue,validationStr);
 
     }
+    return errorMsg;
   }
 
   //Text validation
@@ -69,7 +70,6 @@ class CommonValidation {
       /*int minLine = 1;
     int maxLine = 20;*/
 
-      bool required = validation.containsKey('required')?validation['required']: false;
       int minLength = validation.containsKey('minLength')?validation['minLength']: 1;
       int maxLength = validation.containsKey('maxLength')?validation['maxLength']: 2;
       String rejex = validation.containsKey('rejex')?validation['rejex']:"";
@@ -185,7 +185,6 @@ class CommonValidation {
       /*int minLine = 1;
     int maxLine = 20;*/
 
-      bool required = validation.containsKey('required')?validation['required']: false;
       int minLength = validation.containsKey('minLength')?validation['minLength']: 1;
       int maxLength = validation.containsKey('maxLength')?validation['maxLength']: 2;
       String rejex = validation.containsKey('rejex')?validation['rejex']:"";
@@ -266,7 +265,6 @@ class CommonValidation {
       /*int minLine = 1;
     int maxLine = 20;*/
 
-      bool required = validation.containsKey('required')?validation['required']: false;
       int minLength = validation.containsKey('minLength')?validation['minLength']: 1;
       int maxLength = validation.containsKey('maxLength')?validation['maxLength']: 2;
       String rejex = validation.containsKey('rejex')?validation['rejex']:"";
@@ -308,7 +306,6 @@ class CommonValidation {
       /*int minLine = 1;
     int maxLine = 20;*/
 
-      bool required = validation.containsKey('required')?validation['required']: false;
       int minLength = validation.containsKey('minLength')?validation['minLength']: 1;
       int maxLength = validation.containsKey('maxLength')?validation['maxLength']: 2;
       String rejex = validation.containsKey('rejex')?validation['rejex']:"";
@@ -341,7 +338,7 @@ class CommonValidation {
 
   //method to calculate age on Today (in years)
   int ageCalculate(String dateFormat, String input) {
-    if(dateFormat != null && (dateFormat == "dd.mm.yyyy" || dateFormat == "dd/mm/yyyy" || dateFormat == "dd-mm-yyyy" )){
+    if(dateFormat.isNotEmpty && (dateFormat == "dd.mm.yyyy" || dateFormat == "dd/mm/yyyy" || dateFormat == "dd-mm-yyyy" )){
       // regex for validation of date format : dd.mm.yyyy, dd/mm/yyyy, dd-mm-yyyy
       RegExp regExp =  RegExp(
         r"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$",
@@ -389,7 +386,7 @@ class CommonValidation {
             1970;
       }
     }
-    else if(dateFormat != null && (dateFormat == "yyyy-MM-dd")){
+    else if(dateFormat.isNotEmpty && (dateFormat == "yyyy-MM-dd")){
       // regex for validation of date format : yyyy-MM-dd
       RegExp regExp =  RegExp(
         r"((?:19|20)\\d\\d)-(0?[1-9]|1[012])-([12][0-9]|3[01]|0?[1-9])",
@@ -425,9 +422,6 @@ class CommonValidation {
     try {
       Map<String,dynamic> validation = validationStr;
       Map<String,dynamic> errorMessage = validation.containsKey('errorMessage')?validation['errorMessage']:<String,dynamic>{};
-
-      bool required = validation.containsKey('required')?validation['required']: false;
-      int minAge = validation.containsKey('minAge')?validation['minAge']: -1;
 
       if(value.trim().isEmpty){
         errorMsg = errorMessage.containsKey('required')?errorMessage['required']:"required key missing";

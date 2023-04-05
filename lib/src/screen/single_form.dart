@@ -49,6 +49,12 @@ class SingleFormState extends State<SingleForm> {
   }
 
   @override
+  void dispose() {
+    _fieldStreamControl.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return  StreamBuilder(
         stream: onVariableChanged,

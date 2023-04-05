@@ -14,9 +14,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  shared_preferences: ^2.0.15
-  country_code_picker: ^2.0.2
-  intl: ^0.17.0
+  shared_preferences: ^2.1.0
+  country_code_picker: ^3.0.0
+  intl: ^0.18.0
 
 
 dev_dependencies:

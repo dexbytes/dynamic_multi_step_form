@@ -88,7 +88,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
     Widget errorMessage = (selectedOption != null && selectedOption!.isNotEmpty)?Container():
     Padding(
       padding: const EdgeInsets.only(left: 15.0, top: 2),
-      child:Text(checkBoxModel!.validation!.errorMessage!.required.toString()??'',style: const TextStyle(color:  Color(0xFFD32F2F),fontSize: 12)),);
+      child:Text(checkBoxModel!.validation!.errorMessage!.required.toString(),style: const TextStyle(color:  Color(0xFFD32F2F),fontSize: 12)),);
 
 
     //Create checkbox list
@@ -100,7 +100,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
       horizontalAlignment: MainAxisAlignment.start,
       onChanged: (selectedValue) => setState(() {
         if (selectedValue != null) {
-          _intialValue = selectedValue as Options;
+          _intialValue = selectedValue;
           if(selectedOption!.contains(selectedValue.value)){
                     selectedOption!.remove(selectedValue.value!.toString());
                   }else{

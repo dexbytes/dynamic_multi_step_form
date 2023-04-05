@@ -1458,7 +1458,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     _updateSelectedIndex();
     if (widget.focusNode == null) {
       _internalNode ??= _createFocusNode();
@@ -1476,7 +1476,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     _removeDropdownRoute();
     focusNode!.removeListener(_handleFocusChanged);
     _internalNode?.dispose();
@@ -1684,7 +1684,7 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
     if (result == null) {
       // If there's no MediaQuery, then use the window aspect to determine
       // orientation.
-      final Size size = WidgetsBinding.instance!.window.physicalSize;
+      final Size size = WidgetsBinding.instance.window.physicalSize;
       result = size.width > size.height
           ? Orientation.landscape
           : Orientation.portrait;

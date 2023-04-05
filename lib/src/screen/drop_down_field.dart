@@ -58,7 +58,7 @@ class _DropDownState extends State<DropDown> {
     Widget errorMessage = (selectedOption != null && selectedOption!.isNotEmpty)?Container():
     Padding(
       padding: const EdgeInsets.only(left: 15.0, top: 2),
-      child: Text(dropDownModel!.validation!.errorMessage!.required.toString()??'',style: const TextStyle(color: Color(0xFFD32F2F),fontSize: 12),),
+      child: Text(dropDownModel!.validation!.errorMessage!.required.toString(),style: const TextStyle(color: Color(0xFFD32F2F),fontSize: 12),),
     );
 
     return Padding(

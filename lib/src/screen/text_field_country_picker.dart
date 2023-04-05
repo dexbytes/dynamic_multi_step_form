@@ -97,6 +97,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
   @override
   void dispose() {
     _nameController!.dispose();
+    _fieldStreamControl.close();
     super.dispose();
   }
 
@@ -235,7 +236,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
     }
   }
 
-  _autoValidate({bool checkValidOnSubmit = false}){
+  _autoValidate(){
     if(checkValidOnChange){
       return AutovalidateMode.onUserInteraction;
     }
@@ -339,7 +340,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
   }
 
   void moveToNextField(String value) {
-    if(nextFocusNode!=null && commonValidation.checkValidation(enteredValue:value,validationStr: textFieldModel!.validationStr!,formFieldType:formFieldType) == null){
+    if(commonValidation.checkValidation(enteredValue:value,validationStr: textFieldModel!.validationStr!,formFieldType:formFieldType) == null){
       nextFocusNode.requestFocus();
     }
   }
