@@ -1,3 +1,4 @@
+/// FormButtonModel model
 class FormButtonModel {
   String? elementType;
   ElementConfig? elementConfig;

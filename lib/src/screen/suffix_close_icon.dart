@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Custom Suffix Close Icon view
 class SuffixCloseIcon extends StatefulWidget {
   final TextEditingController? textController;
   final VoidCallback? iconClicked;

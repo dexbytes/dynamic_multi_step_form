@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'dropdown_button_custom.dart';
 
+/// Custom Dropdown Button Widget
 class CustomDropdownButton2 extends StatelessWidget {
   final String hint;
   final String? value;
@@ -64,7 +65,7 @@ class CustomDropdownButton2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
-        //To avoid long text overflowing.
+        ///To avoid long text overflowing.
         isExpanded: true,
         hint: Container(
           alignment: hintAlignment,

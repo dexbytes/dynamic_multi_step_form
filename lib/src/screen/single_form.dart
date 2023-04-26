@@ -1,5 +1,6 @@
 part of dynamic_multi_step_form;
 
+/// Single form view
 class SingleForm extends StatefulWidget {
   final Map<String, dynamic> formData;
   final int index;
@@ -28,7 +29,7 @@ class SingleForm extends StatefulWidget {
 }
 
 class SingleFormState extends State<SingleForm> {
-  //We will include the entered values in the map from field on submit click
+  ///We will include the entered values in the map from field on submit click
   Map<String, dynamic> formSubmitData = <String, dynamic>{};
   Map<String, dynamic> autoValidateFieldList = <String, bool>{};
   List<String> fieldsForValidate = [];
@@ -93,7 +94,7 @@ class SingleFormState extends State<SingleForm> {
         });
   }
 
-  //Get form value
+  ///Get form value
   Map<String, dynamic>? getFormData() {
     setState(() {
       autovalidateMode = _autoValidate(checkValidOnSubmit: true);
@@ -127,7 +128,7 @@ class SingleFormState extends State<SingleForm> {
     return AutovalidateMode.disabled;
   }
 
-  //Check Form field value
+  ///Check Form field value
   bool validateFields() {
     setState(() {
       autovalidateMode = _autoValidate(checkValidOnSubmit: true);
@@ -139,7 +140,7 @@ class SingleFormState extends State<SingleForm> {
     return false;
   }
 
-  //Filter form field according type from json and return view
+  ///Filter form field according type from json and return view
   Widget _getFormField(
       {required Map<String, dynamic> data, Map<String, dynamic>? nextData}) {
     String nextFieldKey = "";
@@ -178,7 +179,8 @@ class SingleFormState extends State<SingleForm> {
           if (nextFieldKey.isNotEmpty) {
             responseParser.setFieldFocusNode = nextFieldKey;
           }
-          //Open mobile field
+
+          ///Open mobile field
           if (data.containsKey("elementConfig") &&
               data["elementConfig"].containsKey("type") &&
               data["elementConfig"]["type"].toString().toLowerCase() == "tel") {

@@ -1,6 +1,7 @@
 part of dynamic_multi_step_form;
 
 // enum formFieldType {text,name,email,tel,url,number,textMultiline}
+/// Custom TextField view
 class TextFieldView extends StatefulWidget {
   final Map<String, dynamic> jsonData;
   final String? nextFieldKey;
@@ -145,7 +146,7 @@ class _TextFieldsState extends State<TextFieldView> {
     super.dispose();
   }
 
-  //Get Keyboard type according to input type
+  ///Get Keyboard type according to input type
   TextInputType keyBoardType({required String formFieldType}) {
     TextInputType keyBoardType = TextInputType.text;
     switch (formFieldType) {
@@ -183,11 +184,12 @@ class _TextFieldsState extends State<TextFieldView> {
         keyBoardType = TextInputType.multiline;
         break;
     }
-    // keyBoardType = TextInputType.text;
+
+    /// keyBoardType = TextInputType.text;
     return keyBoardType;
   }
 
-  //Get TextCapitalization
+  ///Get TextCapitalization
   TextCapitalization textCapitalize({required String textCapitalizeStr}) {
     TextCapitalization textCapitalization = TextCapitalization.none;
     switch (textCapitalizeStr.toLowerCase()) {
@@ -263,7 +265,8 @@ class _TextFieldsState extends State<TextFieldView> {
 
   List<TextInputFormatter>? inputFormatter({required String formFieldType}) {
     String keyText = textFieldModel!.elementConfig!.keyboardRejex!;
-    // String keyText = "^[a-zA-Z '-]+";
+
+    /// String keyText = "^[a-zA-Z '-]+";
     List<TextInputFormatter>? filter = [];
     if (keyText.isNotEmpty) {
       filter = [];
@@ -271,10 +274,13 @@ class _TextFieldsState extends State<TextFieldView> {
       //return filter;
     }
     String formFieldTypeTemp = formFieldType.toLowerCase();
-    //Not apply regex in this case
+
+    ///Not apply regex in this case
     if (formFieldTypeTemp == "email" || formFieldTypeTemp == "password") {
       filter = [];
-    } //Not apply regex in this case
+    }
+
+    ///Not apply regex in this case
     else if (formFieldTypeTemp == "date" && !isPickFromCalendar) {
       String dateFormat = textFieldModel!.elementConfig!.dateFormat!;
       filter = [];
@@ -285,10 +291,11 @@ class _TextFieldsState extends State<TextFieldView> {
     return filter;
   }
 
-//Get minLine of input field
+  ///Get minLine of input field
   int? minLine() {
     int minLine = textFieldModel!.elementConfig!.minLine!;
-    //We are restrict input field must min 1 line not less not much in below case
+
+    ///We are restrict input field must min 1 line not less not much in below case
     if (obscureText ||
         configurationSetting.singleLineInputFields
             .contains(formFieldType.toLowerCase())) {
@@ -297,10 +304,11 @@ class _TextFieldsState extends State<TextFieldView> {
     return minLine;
   }
 
-//Get maxLine of input field
+  ///Get maxLine of input field
   int? maxLine() {
     int maxLine = textFieldModel!.elementConfig!.maxLine!;
-    //We are restrict input field must min 1 line not less not much in below case
+
+    ///We are restrict input field must min 1 line not less not much in below case
     if (obscureText ||
         configurationSetting.singleLineInputFields
             .contains(formFieldType.toLowerCase())) {
@@ -334,7 +342,7 @@ class _TextFieldsState extends State<TextFieldView> {
     return VerticalDirection.down;
   }
 
-  //for ios done button callback
+  ///for ios done button callback
   onPressCallback() {
     removeOverlay();
     FocusScope.of(context).requestFocus(FocusNode());
@@ -350,7 +358,7 @@ class _TextFieldsState extends State<TextFieldView> {
     }
   }
 
-  //for keyboard done button
+  ///for keyboard done button
   showOverlay(BuildContext context) {
     if (overlayEntry != null) return;
     OverlayState overlayState = Overlay.of(context);
@@ -386,7 +394,7 @@ class _TextFieldsState extends State<TextFieldView> {
 
   @override
   Widget build(BuildContext context) {
-    //Check if data not pars properly
+    ///Check if data not pars properly
     if (fieldKey.isEmpty) {
       return const SizedBox(
         height: 0,
@@ -432,7 +440,8 @@ class _TextFieldsState extends State<TextFieldView> {
                     viewConfig!.viewConfiguration?._cursorColor ?? Colors.blue,
                 textInputAction: TextInputAction.done,
                 maxLength: textFieldModel!.validation!.maxLength,
-                //It is the length of char
+
+                ///It is the length of char
                 maxLines: maxLine(),
                 minLines: minLine(),
                 textCapitalization:
@@ -530,10 +539,10 @@ class _TextFieldsState extends State<TextFieldView> {
     }
   }
 
-  //Date of birth
+  ///Date of birth
   void pickDate(BuildContext context,
       {firstDateTS, lastDateTS, initialDateTS}) async {
-    //get date from timestamp
+    ///get date from timestamp
     DateTime firstDate = commonValidation.getTimeFromTimeStamp(
         dateTimeStamp: firstDateTS, date: DateTime(DateTime.now().year - 100));
     DateTime lastDate = commonValidation.getTimeFromTimeStamp(
@@ -542,7 +551,7 @@ class _TextFieldsState extends State<TextFieldView> {
         dateTimeStamp: initialDateTS, date: DateTime(DateTime.now().year - 10));
     DateTime initialDate = DateTime(DateTime.now().year - 10);
 
-    //check initial date, it must be after first date and before last date
+    ///check initial date, it must be after first date and before last date
     try {
       if ((firstDate.isBefore(tempDate) ||
               firstDate.isAtSameMomentAs(tempDate)) &&
@@ -556,7 +565,7 @@ class _TextFieldsState extends State<TextFieldView> {
       }
     }
 
-    //check first date and last date
+    ///check first date and last date
     try {
       if (lastDate.isBefore(firstDate) || firstDate.isAfter(lastDate)) {
         firstDate = DateTime(DateTime.now().year - 100);
@@ -618,7 +627,7 @@ class ViewConfig {
         ConfigurationSetting.instance._textFieldConfiguration;
   }
 
-  //Color cursorColor = cursorColor ??Colors.red;
+  ///Color cursorColor = cursorColor ??Colors.red;
   InputDecoration _getTextDecoration() {
     bool enableLabel = viewConfiguration!._enableLabel;
     if (textFieldModel.elementConfig!.enableLabel != null) {

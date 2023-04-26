@@ -1,3 +1,4 @@
+/// CheckboxModel model
 class CheckboxModel {
   String? elementType;
   ElementConfig? elementConfig;

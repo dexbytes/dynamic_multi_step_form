@@ -2,9 +2,11 @@ part of dynamic_multi_step_form;
 
 enum ComponentType { all, email }
 
+/// Get local json data from assets folder
 class LocalJsonRw {
   String jsonFileAssetsPath = "assets/local_json/";
 
+  ///Load json data from loader
   Future<String> localRead(
       {ComponentType componentType = ComponentType.all}) async {
     try {
@@ -29,12 +31,14 @@ class LocalJsonRw {
     }
   }
 
+  /// return local file
   Future<File> get _localFile async {
     return File(jsonFileAssetsPath + 'request_data.json');
   }
 
+  /// Update information
   Future<bool> updateInfo(
-      {Map<String, dynamic> list = const {"name": "Dinesh"}}) async {
+      {Map<String, dynamic> list = const {"name": "dexbytes"}}) async {
     // "list" is the updated book-list
     try {
       final file = await _localFile;

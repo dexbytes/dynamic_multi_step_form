@@ -9,7 +9,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
-import '../../parts.dart';
+import '../../dynamic_multi_step_form.dart';
+
 
 /*import 'button_theme.dart';
 import 'colors.dart';

@@ -1,3 +1,4 @@
+/// RadioButtonModel model
 class RadioButtonModel {
   String? elementType;
   ElementConfig? elementConfig;

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// Custom InputDone view
 class InputDoneView extends StatelessWidget {
   final VoidCallback? onPressCallback;
   final String buttonName;

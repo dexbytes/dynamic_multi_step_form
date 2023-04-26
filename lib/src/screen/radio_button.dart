@@ -1,5 +1,6 @@
 part of dynamic_multi_step_form;
 
+/// Custom RadioButton view
 class RadioButton extends StatefulWidget {
   final List<RadioButtonOptions>? optionList;
   final bool autoValidate;

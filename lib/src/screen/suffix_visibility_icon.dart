@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Custom Suffix Visible Icon view
 class SuffixVisibilityIcon extends StatefulWidget {
   final Function(bool)? iconClicked;
   final Widget? iconWidget;

@@ -1,5 +1,6 @@
 part of dynamic_multi_step_form;
 
+/// Dynamic form screen
 class DynamicForm extends StatefulWidget {
   final String jsonEncoded;
   final Function(int currentFormNumber, Map<String, dynamic> data)?
@@ -64,7 +65,7 @@ class DynamicFormState extends State<DynamicForm> {
     }).toList();
   }
 
-  //Next step button click event
+  ///Next step button click event
   void nextStepCustomClick() {
     int currentPage = responseParser.getCurrentFormNumber;
 
@@ -117,7 +118,7 @@ class DynamicFormState extends State<DynamicForm> {
     }
   }
 
-  //Preview step button click event
+  ///Preview step button click event
   void previewStepCustomClick() {
     Map<String, dynamic>? data = formScreen[responseParser.getCurrentFormNumber]
         .singleFormKey!
@@ -144,7 +145,7 @@ class DynamicFormState extends State<DynamicForm> {
     return Container();
   }
 
-  //Form step indicator
+  ///Form step indicator
   Widget formStepIndicator() {
     Color selectedColor = Color(0xFF3BAD59);
     Color unselectedColor = Color(0xFFC2C2C2);

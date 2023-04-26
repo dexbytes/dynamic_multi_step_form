@@ -267,14 +267,14 @@ class StepProgressIndicator extends StatelessWidget {
   Widget _applyWidgetDirection(
       List<Widget> Function(double) children, BoxConstraints constraits) {
     if (direction == Axis.horizontal) {
-      // If horizontal indicator, then use a Row
+      /// If horizontal indicator, then use a Row
       return Row(
         crossAxisAlignment: crossAxisAlignment,
         mainAxisAlignment: mainAxisAlignment,
         children: children(constraits.maxWidth),
       );
     } else {
-      // If vertical indicator, then use a Column
+      /// If vertical indicator, then use a Column
       return Column(
         crossAxisAlignment: crossAxisAlignment,
         mainAxisAlignment: mainAxisAlignment,
@@ -305,7 +305,7 @@ class StepProgressIndicator extends StatelessWidget {
       return max(size, max(selectedSize ?? 0, unselectedSize ?? 0));
     }
 
-    // When customSize defined, compute max possible size
+    /// When customSize defined, compute max possible size
     double currentMaxSize = 0;
 
     for (int step = 0; step < totalSteps; ++step) {
@@ -349,24 +349,24 @@ class StepProgressIndicator extends StatelessWidget {
   /// Choose what [Color] to assign
   /// given current [step] index (zero-based)
   Color _chooseStepColor(int step, int stepIndex) {
-    // Compute id given step is unselected or not
+    /// Compute id given step is unselected or not
     final isUnselectedStepColor = progressDirection == TextDirection.ltr
         ? step > currentStep
         : step < totalSteps - currentStep;
 
-    // Override all the other color options when gradient is defined
+    /// Override all the other color options when gradient is defined
     if (gradientColor != null ||
         (isUnselectedStepColor && unselectedGradientColor != null) ||
         (!isUnselectedStepColor && selectedGradientColor != null)) {
       return Colors.white;
     }
 
-    // Assign customColor if not null
+    /// Assign customColor if not null
     if (customColor != null) {
       return customColor!(stepIndex);
     }
 
-    // Selected or Unselected color based on the progressDirection
+    /// Selected or Unselected color based on the progressDirection
     if (isUnselectedStepColor) {
       return unselectedColor;
     } else {
@@ -396,7 +396,7 @@ class StepProgressIndicator extends StatelessWidget {
     final firstStepLength = indicatorLength * (currentStep / totalSteps);
     final secondStepLength = indicatorLength - firstStepLength;
 
-    // Add first step
+    /// Add first step
     stepList.add(
       _applyShaderMask(
         firstStepGradient,
@@ -431,7 +431,7 @@ class StepProgressIndicator extends StatelessWidget {
       ),
     );
 
-    // Add second step
+    /// Add second step
     stepList.add(
       _applyShaderMask(
         secondStepGradient,
@@ -476,24 +476,24 @@ class StepProgressIndicator extends StatelessWidget {
     List<Widget> selectedStepList = [];
     List<Widget> unselectedStepList = [];
 
-    // Define directions parameters
+    /// Define directions parameters
     final isLtr = progressDirection == TextDirection.ltr;
     final isHorizontal = direction == Axis.horizontal;
 
-    // From 0 to totalStep if TextDirection.ltr, from (totalSteps - 1) to 0 otherwise
+    /// From 0 to totalStep if TextDirection.ltr, from (totalSteps - 1) to 0 otherwise
     int step = isLtr ? 0 : totalSteps - 1;
 
-    // Add steps to the list, based on the progressDirection attribute
+    /// Add steps to the list, based on the progressDirection attribute
     for (; isLtr ? step < totalSteps : step >= 0; isLtr ? ++step : --step) {
-      // currentStep = 6, then 6 selected and 4 not selected
+      /// currentStep = 6, then 6 selected and 4 not selected
       final loopStep = isLtr ? step + 1 : totalSteps - step - 1;
       final isSelectedStepColor = _isSelectedColor(loopStep);
 
-      // customColor if not null, otherwise selected or unselected color
+      /// customColor if not null, otherwise selected or unselected color
       final stepColor = _chooseStepColor(loopStep, step);
 
-      // If defined and applicable, apply customSize or
-      // different sizes for selected and unselected
+      /// If defined and applicable, apply customSize or
+      /// different sizes for selected and unselected
       final stepSize = customSize != null
           ? customSize!(step, isSelectedStepColor)
           : isSelectedStepColor
@@ -517,7 +517,7 @@ class StepProgressIndicator extends StatelessWidget {
         crossAxisAlignment: stepCrossAxisAlignment,
       );
 
-      // Add to list of selected or unselected steps based on selection state
+      /// Add to list of selected or unselected steps based on selection state
       if (isSelectedStepColor) {
         selectedStepList.add(progressStep);
       } else {
@@ -525,7 +525,7 @@ class StepProgressIndicator extends StatelessWidget {
       }
     }
 
-    // Apply shader if gradient is not null and build a row or column based on the direction
+    /// Apply shader if gradient is not null and build a row or column based on the direction
     return [
       _applyShaderMask(
         isLtr ? selectedGradientColor : unselectedGradientColor,
@@ -586,9 +586,9 @@ class _ProgressStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Assign given padding
+    /// Assign given padding
     return Column(
-      // Single step alignment
+      /// Single step alignment
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
       children: [
@@ -597,13 +597,14 @@ class _ProgressStep extends StatelessWidget {
             horizontal: direction == Axis.horizontal ? padding : 0.0,
             vertical: direction == Axis.vertical ? padding : 0.0,
           ),
-          // If first or last step and rounded edges enabled, apply
-          // rounded edges using ClipRRect
-          // Different corners based on first/last step and indicator's direction
-          // - First step + horizontal: top-left, bottom-left
-          // - First step + vertical: top-left, top-right
-          // - Last step + horizontal: top-right, bottom-right
-          // - Last step + vertical: bottom-left, bottom-right
+
+          /// If first or last step and rounded edges enabled, apply
+          /// rounded edges using ClipRRect
+          /// Different corners based on first/last step and indicator's direction
+          /// - First step + horizontal: top-left, bottom-left
+          /// - First step + vertical: top-left, top-right
+          /// - Last step + horizontal: top-right, bottom-right
+          /// - Last step + vertical: bottom-left, bottom-right
           child: (isFirstStep || isLastStep || isOnlyOneStep) &&
                   roundedEdges != null
               ? ClipRRect(

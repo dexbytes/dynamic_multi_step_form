@@ -1,6 +1,7 @@
 // import 'package:flutter/material.dart';
 part of dynamic_multi_step_form;
 
+/// DropdownConfiguration model
 class DropdownConfiguration {
   late TextStyle? _textStyle = const TextStyle(
     fontSize: 14,

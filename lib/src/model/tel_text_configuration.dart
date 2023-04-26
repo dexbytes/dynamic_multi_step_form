@@ -1,6 +1,7 @@
 // import 'package:flutter/material.dart';
 part of dynamic_multi_step_form;
 
+/// TelTextFieldConfiguration model
 class TelTextFieldConfiguration {
   /// The shape of the border to draw around the decoration's container.
   ///

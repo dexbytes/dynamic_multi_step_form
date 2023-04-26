@@ -1,6 +1,7 @@
 part of dynamic_multi_step_form;
 
 //enum LabelAndOptionsAlignment{vertical, horizontal}
+/// CheckBoxConfiguration model
 class CheckBoxConfiguration {
   //Label style
   late TextStyle _labelTextStyle = const TextStyle();

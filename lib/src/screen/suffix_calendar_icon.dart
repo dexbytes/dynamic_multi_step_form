@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Custom Suffix Calender Icon view
 class SuffixCalendarIcon extends StatefulWidget {
   final Function(bool)? iconClicked;
   final Widget? iconWidget;
@@ -14,13 +15,13 @@ class SuffixCalendarIcon extends StatefulWidget {
 class _CalendarTextFormFiledState extends State<SuffixCalendarIcon> {
   @override
   void initState() {
-    // TODO: implement initState
+    /// TODO: implement initState
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    /// TODO: implement dispose
     super.dispose();
   }
 

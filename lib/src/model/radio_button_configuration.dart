@@ -2,6 +2,7 @@ part of dynamic_multi_step_form;
 
 enum LabelAndOptionsAlignment { vertical, horizontal }
 
+/// RadioButtonConfiguration model
 class RadioButtonConfiguration {
   //Label style
   late TextStyle _labelTextStyle = const TextStyle(

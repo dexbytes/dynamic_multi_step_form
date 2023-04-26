@@ -1,7 +1,8 @@
-import 'package:dynamic_multi_step_form/parts.dart';
+import 'package:dynamic_multi_step_form/dynamic_multi_step_form.dart';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
 
+//Common function class
 class PackageUtil {
   TextInputType keyBoardType({required String formFieldType}) {
     TextInputType keyBoardType = TextInputType.text;
@@ -33,6 +34,7 @@ class PackageUtil {
     return keyBoardType;
   }
 
+  ///Get formatted date
   String getText(String dateFormat, DateTime dateTime) {
     try {
       if (dateFormat.isNotEmpty) {

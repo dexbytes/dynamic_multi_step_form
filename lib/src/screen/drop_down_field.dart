@@ -1,6 +1,7 @@
-//for Restaurant type dropdown
+///for Restaurant type dropdown
 part of dynamic_multi_step_form;
 
+///Dropdown single view
 class DropDown extends StatefulWidget {
   final List<Options>? optionList;
   final String? hint;
@@ -67,7 +68,7 @@ class _DropDownState extends State<DropDown> {
 
   @override
   Widget build(BuildContext context) {
-    //ErrorMessage
+    ///ErrorMessage
     Widget errorMessage = (selectedOption != null && selectedOption!.isNotEmpty)
         ? Container()
         : Padding(
@@ -105,14 +106,6 @@ class _DropDownState extends State<DropDown> {
                 dropdownOverButton: false,
                 hint: Row(
                   children: [
-                    /*Icon(
-                    Icons.list,
-                    size: 16,
-                    color: Colors.yellow,
-                  ),
-                  SizedBox(
-                    width: 4,
-                  ),*/
                     Expanded(
                       child: Text(
                         '$buttonHead',
@@ -167,10 +160,7 @@ class _DropDownState extends State<DropDown> {
   }
 
   DropdownMenuItemNew<String> buildMenuItem(Options option) {
-    String value = option
-        .value!; /*
-    String item = option.displayValue!;
-    bool isChecked = selectedOption!.contains(value)?true:option.checked!;*/
+    String value = option.value!;
 
     return DropdownMenuItemNew(
         value: value,
@@ -204,7 +194,7 @@ class _DropDownState extends State<DropDown> {
         ));
   }
 
-  //Initial value set
+  ///Initial value set
   void setValues(DropDownModel? dropDownModel, Map<String, dynamic> jsonData) {
     viewConfiguration = viewConfiguration ??
         ConfigurationSetting.instance._dropdownConfiguration;
@@ -243,11 +233,11 @@ class _DropDownState extends State<DropDown> {
     }
   }
 
-  /*Call action when click on any item*/
+  ///Call action when click on any item
   void _onSelect(
       {bool isInit = false, String? value = "", String? displayValue = ""}) {
     if (value!.trim().isNotEmpty && !selectedOption!.contains(value.trim())) {
-      //Remove older selected value in case multi selection off
+      ///Remove older selected value in case multi selection off
       if (!isMultipleSelect) {
         selectedOption = [];
       }
@@ -266,7 +256,7 @@ class _DropDownState extends State<DropDown> {
         value = optionList![idTemp].value;
       }
       if (!selectedOption!.contains(value!.trim())) {
-        //Remove older selected value in case multi selection off
+        ///Remove older selected value in case multi selection off
         if (!isMultipleSelect) {
           selectedOption = [];
         }
@@ -299,7 +289,7 @@ class _DropDownState extends State<DropDown> {
     }
   }
 
-  /*Call action when click on any item*/
+  ///Call action when click on any item
   void _onUnSelect({String? value = "", String? displayValue = ""}) {
     if (value!.trim().isNotEmpty && selectedOption!.contains(value.trim())) {
       selectedOption!.remove(value.trim());
@@ -335,12 +325,9 @@ class _DropDownState extends State<DropDown> {
         valueChoose = indexData.value!;
       });
       String valueTemp = value as String;
-      //if(!isChecked){
+
       _onSelect(value: valueTemp);
-      /*}
-      else{
-        _onUnSelect(value: value as String);
-      }*/
+
       _returnValue();
     }
   }
@@ -408,19 +395,19 @@ class _DropdownRowItemState extends State<DropdownRowItem> {
 
   @override
   void initState() {
-    // TODO: implement initState
+    /// TODO: implement initState
     super.initState();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    /// TODO: implement dispose
     super.dispose();
   }
 
   @override
   void didUpdateWidget(covariant DropdownRowItem oldWidget) {
-    // TODO: implement didUpdateWidget
+    /// TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     setState(() {
       if (widget.selectedOption != null) {

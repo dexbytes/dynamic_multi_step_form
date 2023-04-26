@@ -1,3 +1,4 @@
+/// TextFieldModel model
 class TextFieldModel {
   String? elementType;
   ElementConfig? elementConfig;

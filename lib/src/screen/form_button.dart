@@ -1,5 +1,6 @@
 part of dynamic_multi_step_form;
 
+/// Custom FormButton view
 class FormButtonWidget extends StatefulWidget {
   final List<Options> optionList;
   final Map<String, dynamic> jsonData;
@@ -26,7 +27,7 @@ class _FormButtonWidgetState extends State<FormButtonWidget> {
   FormButtonModel? formButtonModel;
   Map<String, dynamic> jsonData;
 
-  // FormButtonConfiguration? viewConfiguration;
+  /// FormButtonConfiguration? viewConfiguration;
   String fieldKey = "";
   String label = "";
   bool enableLabel = true;
@@ -49,7 +50,7 @@ class _FormButtonWidgetState extends State<FormButtonWidget> {
     super.didUpdateWidget(oldWidget);
   }
 
-  //Initial value set
+  ///Initial value set
   void setValues(
       FormButtonModel? radioButtonModel, Map<String, dynamic> jsonData) {
     //viewConfiguration  = viewConfiguration ?? ConfigurationSetting.instance._checkBoxConfiguration;
@@ -76,10 +77,10 @@ class _FormButtonWidgetState extends State<FormButtonWidget> {
     //   var checkBoxAlignment = viewConfiguration!._optionsAlign == LabelAndOptionsAlignment.horizontal?Axis.horizontal:Axis.vertical;
 
 /*
-    //Label
+    ///Label
     Widget label =  Text(FormButtonModel!.elementConfig!.label??'',style: viewConfiguration!._labelTextStyle,  strutStyle: StrutStyle(),);
 
-    //ErrorMessage
+    ///ErrorMessage
     Widget errorMessage = (selectedOption != null && selectedOption!.isNotEmpty)?Container():
     Padding(
       padding: const EdgeInsets.only(left: 15.0, top: 2),

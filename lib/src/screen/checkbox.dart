@@ -1,5 +1,6 @@
 part of dynamic_multi_step_form;
 
+/// Custom Checkbox Widget
 class CheckBoxWidget extends StatefulWidget {
   final List<Options> optionList;
   final Map<String, dynamic> jsonData;
@@ -58,7 +59,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
     super.didUpdateWidget(oldWidget);
   }
 
-  //Initial value set
+  ///Initial value set
   void setValues(
       CheckboxModel? radioButtonModel, Map<String, dynamic> jsonData) {
     viewConfiguration = viewConfiguration ??
@@ -85,7 +86,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                   checked: e.checked))
               .toList();
 
-          //Add already selected items
+          ///Add already selected items
           optionList.map((Options e) {
             if (e.checked!) {
               selectedOption!.add(e.value!.toString());
@@ -104,14 +105,14 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
             ? Axis.horizontal
             : Axis.vertical;
 
-    //Label
+    ///Label
     Widget label = Text(
       checkBoxModel!.elementConfig!.label ?? '',
       style: viewConfiguration!._labelTextStyle,
       strutStyle: StrutStyle(),
     );
 
-    //ErrorMessage
+    ///ErrorMessage
     Widget errorMessage = (selectedOption != null && selectedOption!.isNotEmpty)
         ? Container()
         : Padding(
@@ -121,7 +122,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                 style: const TextStyle(color: Color(0xFFD32F2F), fontSize: 12)),
           );
 
-    //Create checkbox list
+    ///Create checkbox list
     Widget checkBoxOptions = CheckBoxGroup<String>.builder(
       direction: checkBoxAlignment,
       groupValue: _intialValue,
@@ -150,7 +151,8 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
         LabelAndOptionsAlignment.vertical ==
                 viewConfiguration!._labelAndRadioButtonAlign
             ?
-            //Vertical alignment of checkboxes with label
+
+            ///Vertical alignment of checkboxes with label
             Row(
                 children: [
                   Flexible(
@@ -169,7 +171,8 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                 ],
               )
             :
-            //Horizontal alignment of checkboxes with label
+
+            ///Horizontal alignment of checkboxes with label
             Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,

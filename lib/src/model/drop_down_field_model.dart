@@ -1,3 +1,4 @@
+/// DropDownModel model
 class DropDownModel {
   String? elementType;
   ElementConfig? elementConfig;

@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
+//Check validations
 class CommonValidation {
-  //Check is entered json is not empty and correct format
+  ///Check is entered json is not empty and correct format
   bool isValidJsonEncoded(String jsonEncoded) {
     bool isValidate = false;
     if (jsonEncoded.isNotEmpty) {
       try {
-        // var enteredJsonN = json.decode(jsonEncoded);
         Map<String, dynamic>? enteredJson = json.decode(jsonEncoded);
         if (enteredJson!.isNotEmpty) {
           if (enteredJson.containsKey("formType") &&
@@ -24,7 +24,7 @@ class CommonValidation {
     return isValidate;
   }
 
-  //Check all field validation
+  ///Check all field validation
   String? checkValidation(
       {required String enteredValue,
       required Map<String, dynamic> validationStr,
@@ -63,7 +63,7 @@ class CommonValidation {
     return errorMsg;
   }
 
-  //Text validation
+  ///Text validation
   String? isValidText(String value, Map<String, dynamic> validationStr) {
     String? errorMsg;
     try {
@@ -112,7 +112,7 @@ class CommonValidation {
     return errorMsg;
   }
 
-  //Email validation
+  ///Email validation
   String? isValidEmail(String value, Map<String, dynamic> validationStr) {
     String? errorMsg;
     try {
@@ -158,7 +158,7 @@ class CommonValidation {
     return errorMsg;
   }
 
-  //Password validation
+  ///Password validation
   String? isValidPassword(String value, Map<String, dynamic> validationStr) {
     String? errorMsg;
     try {
@@ -204,7 +204,7 @@ class CommonValidation {
     return errorMsg;
   }
 
-  //name validation
+  ///name validation
   String? isValidName(String value, Map<String, dynamic> validationStr) {
     String? errorMsg;
     try {
@@ -253,7 +253,7 @@ class CommonValidation {
     return errorMsg;
   }
 
-  //telephone validation
+  ///telephone validation
   String? isValidTel(String value, Map<String, dynamic> validationStr) {
     String? errorMsg;
     try {
@@ -299,7 +299,7 @@ class CommonValidation {
     return errorMsg;
   }
 
-  //Url validation
+  ///Url validation
   String? isValidUrl(String value, Map<String, dynamic> validationStr) {
     String? errorMsg;
     try {
@@ -348,7 +348,7 @@ class CommonValidation {
     return errorMsg;
   }
 
-  //Number validation
+  ///Number validation
   String? isValidNumber(String value, Map<String, dynamic> validationStr) {
     String? errorMsg;
     try {
@@ -397,7 +397,7 @@ class CommonValidation {
     return errorMsg;
   }
 
-  //method to calculate age on Today (in years)
+  ///method to calculate age on Today (in years)
   int ageCalculate(String dateFormat, String input) {
     if (dateFormat.isNotEmpty &&
         (dateFormat == "dd.mm.yyyy" ||
@@ -467,7 +467,7 @@ class CommonValidation {
     return -1;
   }
 
-  //Number validation
+  ///Number validation
   String? validateDate(String value, Map<String, dynamic> validationStr,
       {isPickFromCalendar, dateFormat}) {
     String? errorMsg;
@@ -492,40 +492,7 @@ class CommonValidation {
     return errorMsg;
   }
 
-  //Number validation
-  // String? validateDate(String value,Map<String, dynamic> validationStr,{isPickFromCalendar, dateFormat}){
-  //   String? errorMsg;
-  //   try {
-  //     Map<String,dynamic> validation = validationStr;
-  //     Map<String,dynamic> errorMessage = validation.containsKey('errorMessage')?validation['errorMessage']:<String,dynamic>{};
-  //
-  //     bool required = validation.containsKey('required')?validation['required']: false;
-  //     int minAge = validation.containsKey('minAge')?validation['minAge']: -1;
-  //
-  //     if(value.trim().isEmpty){
-  //       errorMsg = errorMessage.containsKey('required')?errorMessage['required']:"required key missing";
-  //     }
-  //     if(value.trim().isNotEmpty){
-  //       if(minAge != null && minAge != -1){
-  //         int age = ageCalculate(dateFormat,value);
-  //         if(age < minAge){
-  //           errorMsg = errorMessage.containsKey('required')?errorMessage['required']:"required key missing";
-  //         }
-  //       }
-  //     }
-  //     else{
-  //       errorMsg = null;
-  //     }
-  //   }
-  //   catch (e) {
-  //     if (kDebugMode) {
-  //       print(e);
-  //     }
-  //   }
-  //   return errorMsg;
-  // }
-
-  //get time from timestamp
+  ///get time from timestamp
   DateTime getTimeFromTimeStamp({required dateTimeStamp, DateTime? date}) {
     DateTime tempDate = date ?? DateTime.now();
     if (dateTimeStamp != null && dateTimeStamp.toString().trim().isNotEmpty) {

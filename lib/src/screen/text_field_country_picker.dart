@@ -1,6 +1,7 @@
 part of dynamic_multi_step_form;
 
 // enum formFieldType {text,name,email,tel,url,number,textMultiline}
+/// Custom TextFieldCountryPicker view
 class TextFieldCountryPickerView extends StatefulWidget {
   final Map<String, dynamic> jsonData;
   final String? nextFieldKey;
@@ -74,7 +75,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
         checkValidOnChange = textFieldModel!.onchange ?? false;
         checkValid = textFieldModel!.valid ?? false;
 
-        //Country code required condition
+        ///Country code required condition
         if (jsonData['elementConfig'].containsKey('isCountryCode') &&
             jsonData['elementConfig']['isCountryCode']) {
           isCountryCode = jsonData['elementConfig']['isCountryCode'];
@@ -132,7 +133,8 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
         }
       }
     });
-    // _nameController = TextEditingController();
+
+    /// _nameController = TextEditingController();
   }
 
   @override
@@ -142,7 +144,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
     super.dispose();
   }
 
-  //Get Keyboard type according to input type
+  ///Get Keyboard type according to input type
   TextInputType keyBoardType({required String formFieldType}) {
     TextInputType keyBoardType = TextInputType.text;
     switch (formFieldType) {
@@ -176,7 +178,8 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
         keyBoardType = TextInputType.multiline;
         break;
     }
-    // keyBoardType = TextInputType.text;
+
+    /// keyBoardType = TextInputType.text;
 
     return keyBoardType;
   }
@@ -198,10 +201,11 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
     return filter;
   }
 
-//Get minLine of input field
+  ///Get minLine of input field
   int? minLine() {
     int minLine = textFieldModel!.elementConfig!.minLine!;
-    //We are restrict input field must min 1 line not less not much in below case
+
+    ///We are restrict input field must min 1 line not less not much in below case
     if (obscureText ||
         configurationSetting.singleLineInputFields
             .contains(formFieldType.toLowerCase())) {
@@ -213,7 +217,8 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
 //Get maxLine of input field
   int? maxLine() {
     int maxLine = textFieldModel!.elementConfig!.maxLine!;
-    //We are restrict input field must min 1 line not less not much in below case
+
+    ///We are restrict input field must min 1 line not less not much in below case
     if (obscureText ||
         configurationSetting.singleLineInputFields
             .contains(formFieldType.toLowerCase())) {
@@ -247,7 +252,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
     return VerticalDirection.down;
   }
 
-  //for ios done button callback
+  ///for ios done button callback
   onPressCallback() {
     removeOverlay();
     FocusScope.of(context).requestFocus(new FocusNode());
@@ -264,7 +269,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
     }
   }
 
-  //for keyboard done button
+  ///for keyboard done button
   showOverlay(BuildContext context) {
     if (overlayEntry != null) return;
     OverlayState overlayState = Overlay.of(context);
@@ -302,7 +307,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
   Widget build(BuildContext context) {
     queryData = MediaQuery.of(context);
 
-    //Check if data not pars properly
+    ///Check if data not pars properly
     if (fieldKey.isEmpty) {
       return const SizedBox(
         height: 0,
@@ -329,7 +334,8 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
               controller: _nameController,
               textInputAction: TextInputAction.done,
               maxLength: textFieldModel!.validation!.maxLength,
-              //It is the length of char
+
+              ///It is the length of char
               maxLines: maxLine(),
               minLines: minLine(),
               decoration: viewConfig!.getInputDecoration(),
@@ -357,7 +363,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
                 }
               },
               onSaved: (value) {
-                //Check validation on submit and will not submit data on server
+                ///Check validation on submit and will not submit data on server
                 if ((value!.isNotEmpty && checkValid)) {
                   /* setState(() {
                 checkValidOnSubmit = true;

@@ -1,4 +1,4 @@
-import 'package:dynamic_multi_step_form/parts.dart';
+import 'package:dynamic_multi_step_form/dynamic_multi_step_form.dart';
 import 'package:example/second_screen.dart';
 import 'package:example/widget/appbar_with_back_arrow.dart';
 
