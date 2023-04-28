@@ -1,3 +1,7 @@
+## [1.1.2+6] - 28/04/2023
+
+Code style update.
+
 ## [1.1.2+5] - 28/04/2023
 
 Code document update.
