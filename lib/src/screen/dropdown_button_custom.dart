@@ -1,9 +1,3 @@
-/*
- * Created by AHMED ELSAYED on 30 Nov 2021.
- * email: ahmedelsaayid@gmail.com
- * Edits made on original source code by Flutter.
- * Copyright 2014 The Flutter Authors. All rights reserved.
-*/
 import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart';
@@ -455,8 +449,9 @@ class _DropdownMenuRouteLayout<T> extends SingleChildLayoutDelegate {
     if (route.menuMaxHeight != null && route.menuMaxHeight! <= maxHeight) {
       maxHeight = route.menuMaxHeight!;
     }
-    // The width of a menu should be at most the view width. This ensures that
-    // the menu does not extend past the left and right edges of the screen.
+
+    /// The width of a menu should be at most the view width. This ensures that
+    /// the menu does not extend past the left and right edges of the screen.
     final double width =
         itemWidth ?? math.min(constraints.maxWidth, buttonRect.width);
     return BoxConstraints(

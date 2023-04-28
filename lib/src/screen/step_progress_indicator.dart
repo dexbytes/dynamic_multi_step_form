@@ -2,13 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-/// (Linear) Progress indicator made of a series of steps
-///
-/// Developed and published by Sandro Maglione
-/// https://www.sandromaglione.com
-///
-/// Check out the official tutorial on
-/// https://www.sandromaglione.com/blog
+///Progress indicator
 class StepProgressIndicator extends StatelessWidget {
   /// Defines a custom [Widget] to display at each step instead of a simple container,
   /// given the current step index, the [Color] of the step, which

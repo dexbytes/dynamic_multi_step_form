@@ -1,6 +1,6 @@
 part of dynamic_multi_step_form;
 
-// enum formFieldType {text,name,email,tel,url,number,textMultiline}
+
 /// Custom TextFieldCountryPicker view
 class TextFieldCountryPickerView extends StatefulWidget {
   final Map<String, dynamic> jsonData;

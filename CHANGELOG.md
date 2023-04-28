@@ -1,3 +1,7 @@
+## [1.1.2+5] - 28/04/2023
+
+Code document update.
+
 ## [1.1.2+4] - 26/04/2023
 
 Code document.
@@ -10,7 +14,7 @@ Code optimize.
 
 Code optimize.
 
-.## [1.1.2+1] - 05/04/2023
+## [1.1.2+1] - 05/04/2023
 
 Ui update.
 
