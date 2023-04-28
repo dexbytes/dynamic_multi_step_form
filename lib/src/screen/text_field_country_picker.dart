@@ -1,6 +1,5 @@
 part of dynamic_multi_step_form;
 
-
 /// Custom TextFieldCountryPicker view
 class TextFieldCountryPickerView extends StatefulWidget {
   final Map<String, dynamic> jsonData;
