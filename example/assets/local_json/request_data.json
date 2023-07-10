@@ -16,9 +16,9 @@
       "elementConfig": {
         "type": "text",
         "name": "full_name",
-        "label": "Full name",
+        "label": "Full name 1",
         "enableLabel": true,
-        "placeholder": "Full name",
+        "placeholder": "Full name 1",
         "class": "form-control",
         "keyboardRejex": "^[a-zA-Z-]+",
         "resetIcon": true,

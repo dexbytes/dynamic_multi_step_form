@@ -5,7 +5,7 @@ library dynamic_multi_step_form;
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
+import 'dart:ui';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dynamic_multi_step_form/src/common_validation.dart';
 import 'package:dynamic_multi_step_form/src/model/checkbox_model.dart';
@@ -42,6 +42,7 @@ part 'src/screen/form_button.dart';
 part 'src/screen/radio_button.dart';
 part 'src/screen/single_form.dart';
 part 'src/screen/text_field.dart';
+part 'src/screen/upload_image.dart';
 part 'src/screen/text_field_country_picker.dart';
 part 'src/util/local_json_r_w.dart';
 part 'src/util/shared_pref.dart';

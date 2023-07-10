@@ -191,7 +191,14 @@ class SingleFormState extends State<SingleForm> {
                 },
                 nextFieldKey: nextFieldKey);
           }
-          return TextFieldView(
+/*          return TextFieldView(
+              jsonData: data,
+              onChangeValue: (String fieldKey, String value) {
+                formSubmitData[fieldKey] = value;
+              },
+              nextFieldKey: nextFieldKey); */
+
+          return UploadImageView(
               jsonData: data,
               onChangeValue: (String fieldKey, String value) {
                 formSubmitData[fieldKey] = value;
