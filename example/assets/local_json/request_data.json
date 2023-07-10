@@ -7,6 +7,69 @@
   "step": {
     "form1":
     {
+      "formName" : "documentUpload",
+      "title": "Document",
+      "description": "Hey, get on board ",
+      "formFields": [
+        {
+          "elementType": "upload_image",
+          "elementConfig": {
+            "name": "driving_license",
+            "label": "Driving License",
+            "enableLabel": true,
+            "initialValue": ""
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please select at least one"
+            }
+          },
+          "valid": false
+        }, {
+          "elementType": "upload_image",
+          "elementConfig": {
+            "name": "driving_license1",
+            "label": "Driving License1",
+            "enableLabel": true,
+            "initialValue": ""
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please select at least one"
+            }
+          },
+          "valid": false
+        },
+        {
+          "elementType": "button",
+          "elementConfig": {
+            "type": "button",
+            "name": "submit_first_button",
+            "label": "Submit First Form",
+            "enableLabel": true,
+            "isVisible": false,
+            "class": "form-control",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 1,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "valid": true,
+          "onchange": false
+        }
+      ]
+    },
+    "form2":
+    {
   "formName" : "personalDetail",
   "title": "Personal Detail",
   "description": "Hey, get on board ",
@@ -217,8 +280,7 @@
     }
   ]
 },
-
-    "form2":
+    "form3":
     {
   "formName" : "bankDetail",
   "title": "Bank Detail",
@@ -312,101 +374,6 @@
       "onchange": false
     }
   ]
-},
-    "form3":
-    {
-      "formName" : "otherDetail",
-      "title": "Id Proof",
-      "description": "Hey, get on board ",
-      "formFields": [
-
-        {
-          "elementType": "select",
-          "elementConfig": {
-            "name": "documentType",
-            "label": "Document Type",
-            "enableLabel": true,
-            "placeholder": "Document Type",
-            "class": "form-control",
-            "options": [
-              {
-                "value": "aadharCard",
-                "displayValue": "Aadhar Card"
-              },
-              {
-                "value": "panCard",
-                "displayValue": "Pan Card"
-              },
-              {
-                "value": "drivingLicence",
-                "displayValue": "Driving Licence"
-              }
-            ],
-            "isMulitpleSelect": false
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select at least one"
-            }
-          },
-          "valid": false
-        },
-        {
-          "elementType": "input",
-          "elementConfig": {
-            "type": "text",
-            "name": "proofId",
-            "label": "Proof ID",
-            "enableLabel": false,
-            "keyboardRejex": "^[a-zA-Z0-9_.-]*$",
-            "placeholder": "Proof ID",
-            "class": "form-control",
-            "resetIcon": true
-          },
-          "help": {
-            "text": "",
-            "placement": "below"
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "minLength": 8,
-            "maxLength": 13,
-            "rejex": "^[a-zA-Z0-9_.-]*$",
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please enter the id proof number",
-              "minLength": "Please enter correct id proof number",
-              "rejex": "Please enter valid id proof"
-            }
-          },
-          "valid": true,
-          "onchange": false
-        },
-        {
-          "elementType": "button",
-          "elementConfig": {
-            "type": "button",
-            "name": "submit_second_button",
-            "label": "Submit First Form",
-            "enableLabel": true,
-            "class": "form-control",
-            "resetIcon": true,
-            "isVisible": false,
-            "minLine": 1,
-            "maxLine": 1,
-            "textCapitalization": "words"
-          },
-          "value": "",
-          "valid": true,
-          "onchange": false
-        }
-      ]
-    }
+}
   }
 }

@@ -46,7 +46,7 @@ class SingleFormState extends State<SingleForm> {
   List<dynamic>? formFieldList;
   Map<String, dynamic> formData;
   String formName = "";
-  String title = "";
+  String? title = "";
   String description = "";
   Map<String, dynamic> formInformation = {};
 
@@ -82,6 +82,24 @@ class SingleFormState extends State<SingleForm> {
           return Column(
             mainAxisSize: MainAxisSize.max,
             children: [
+              title != null && title!.trim().isNotEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.only(bottom: 11, left: 4),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            title!,
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: const Color(0xff222222),
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    )
+                  : SizedBox(),
               Form(
                   key: _formKey,
                   autovalidateMode: autovalidateMode,
@@ -191,13 +209,14 @@ class SingleFormState extends State<SingleForm> {
                 },
                 nextFieldKey: nextFieldKey);
           }
-/*          return TextFieldView(
+          return TextFieldView(
               jsonData: data,
               onChangeValue: (String fieldKey, String value) {
                 formSubmitData[fieldKey] = value;
               },
-              nextFieldKey: nextFieldKey); */
+              nextFieldKey: nextFieldKey);
 
+        case "upload_image":
           return UploadImageView(
               jsonData: data,
               onChangeValue: (String fieldKey, String value) {

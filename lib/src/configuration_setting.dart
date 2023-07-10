@@ -12,10 +12,16 @@ class ConfigurationSetting extends TextFieldConfiguration {
   final List<String> singleLineInputFields = ['password', 'email', 'tel'];
 
   TextFieldConfiguration _textFieldConfiguration = TextFieldConfiguration();
+  PickImageViewConfiguration _pickImageViewConfiguration = PickImageViewConfiguration();
 
   ///Set Text field ui presentation
   set setTextFieldViewConfig(TextFieldConfiguration textFieldConfig) {
     _textFieldConfiguration = textFieldConfig;
+  }
+
+  ///Set Text field ui presentation
+  set setPickImageViewConfigurationConfig(PickImageViewConfiguration pickImageViewConfiguration) {
+    _pickImageViewConfiguration = pickImageViewConfiguration;
   }
 
   TelTextFieldConfiguration _telTextFieldConfiguration =

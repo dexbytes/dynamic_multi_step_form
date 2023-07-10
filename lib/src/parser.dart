@@ -4,6 +4,7 @@ import 'package:dynamic_multi_step_form/src/common_validation.dart';
 import 'package:dynamic_multi_step_form/src/model/drop_down_field_model.dart';
 import 'package:dynamic_multi_step_form/src/model/form_button_model.dart';
 import 'package:dynamic_multi_step_form/src/model/text_field_model.dart';
+import 'package:dynamic_multi_step_form/src/model/upload_image_model.dart';
 import 'package:flutter/foundation.dart';
 
 import '../dynamic_multi_step_form.dart';
@@ -80,6 +81,21 @@ class ResponseParser {
   resetAll() {
     setCurrentFormNumber = -1;
     clearFieldFocusNode();
+  }
+
+  /// Return formatted textFieldModel
+  UploadImageModel? uploadFormFiledParsing(
+      {required Map<String, dynamic> jsonData, bool updateCommon = false}) {
+    try {
+      UploadImageModel uploadImageModel = UploadImageModel.fromJson(jsonData);
+      if (updateCommon) {}
+      return uploadImageModel;
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+    return null;
   }
 
   /// Return formatted textFieldModel
