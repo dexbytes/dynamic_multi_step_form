@@ -217,12 +217,16 @@ class SingleFormState extends State<SingleForm> {
               nextFieldKey: nextFieldKey);
 
         case "upload_image":
-          return UploadImageView(
-              jsonData: data,
-              onChangeValue: (String fieldKey, String value) {
-                formSubmitData[fieldKey] = value;
-              },
-              nextFieldKey: nextFieldKey);
+          return StreamBuilder(
+              stream: onAutoValidateChanged,
+              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                return UploadImageView(
+                    jsonData: data,
+                    onChangeValue: (String fieldKey, String value) {
+                      formSubmitData[fieldKey] = value;
+                    },
+                    nextFieldKey: nextFieldKey);
+              });
 
         case "select":
           return StreamBuilder(

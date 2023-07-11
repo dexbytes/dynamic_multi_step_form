@@ -25,6 +25,27 @@ class PickImageViewConfiguration {
     ],
   );
 
+  Widget? bottomSheetCameraRow =   Padding(
+    padding: const EdgeInsets.symmetric(vertical: 5),
+    child: Row(
+      children: [
+        Text("Take a Photo",style: TextStyle( fontSize: 16,
+            color: const Color(0xff090C30),
+            fontWeight: FontWeight.w500),),
+      ],
+    ),
+  );
+  Widget? bottomSheetGalleryRow =   Padding(
+    padding: const EdgeInsets.symmetric(vertical: 5),
+    child: Row(
+      children: [
+        Text("Select option",style: TextStyle( fontSize: 16,
+            color: const Color(0xff090C30),
+            fontWeight: FontWeight.w500),),
+      ],
+    ),
+  );
+
  Widget? emptyImgView = Container(width: double.infinity,height: 100,decoration: BoxDecoration(
      border: Border.all(color: Color(0xffAEAEAE)),
      borderRadius: BorderRadius.all(Radius.circular(5))),
@@ -38,10 +59,12 @@ class PickImageViewConfiguration {
        child: Icon(Icons.close,size: 35.0,)),
  );
 
-  PickImageViewConfiguration({ Widget? emptyImgView, Widget? editImgView,BorderRadiusGeometry? borderRadius}){
+  PickImageViewConfiguration({ Widget? emptyImgView, Widget? editImgView,Widget? bottomSheetGalleryRow,Widget? bottomSheetCameraRow,BorderRadiusGeometry? borderRadius}){
     this.emptyImgView = emptyImgView??this.emptyImgView;
     this.editImgView = emptyImgView??this.editImgView;
     this.borderRadius = borderRadius??this.borderRadius;
+    this.bottomSheetGalleryRow = bottomSheetGalleryRow??this.bottomSheetGalleryRow;
+    this.bottomSheetCameraRow = bottomSheetCameraRow??this.bottomSheetCameraRow;
   }
 }
 

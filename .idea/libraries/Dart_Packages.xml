@@ -136,6 +136,13 @@
             </list>
           </value>
         </entry>
+        <entry key="fluttertoast">
+          <value>
+            <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/fluttertoast-8.2.2/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="http">
           <value>
             <list>
@@ -459,6 +466,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/file-6.1.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_blurhash-0.7.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/fluttertoast-8.2.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http-0.13.4/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http-1.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http_parser-4.0.1/lib" />

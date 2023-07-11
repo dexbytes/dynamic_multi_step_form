@@ -132,9 +132,9 @@ class _UploadImageState extends State<UploadImageView> {
         width: double.infinity,
         errorBuilder:
             (BuildContext context, Object error, StackTrace? stackTrace) {
-          setState(() {
+          // setState(() {
             imagePath = null;
-          });
+          // });
           return const Center(child: Text('This image type is not supported'));
         },
       );
@@ -288,16 +288,7 @@ class _UploadImageState extends State<UploadImageView> {
                        actionOnClick("camera");
                        Navigator.pop(buildContext);
                      },
-                     child: Padding(
-                       padding: const EdgeInsets.symmetric(vertical: 5),
-                       child: Row(
-                         children: [
-                           Text("Take a Photo",style: TextStyle( fontSize: 16,
-                               color: const Color(0xff090C30),
-                               fontWeight: FontWeight.w500),),
-                         ],
-                       ),
-                     )),
+                     child: viewConfiguration!.bottomSheetCameraRow),
                  SizedBox(
                    height: 15,
                  ),
@@ -306,16 +297,7 @@ class _UploadImageState extends State<UploadImageView> {
                        actionOnClick("gallery");
                        Navigator.pop(buildContext);
                      },
-                     child: Padding(
-                       padding: const EdgeInsets.symmetric(vertical: 5),
-                       child: Row(
-                         children: [
-                           Text("Gallery",style: TextStyle( fontSize: 16,
-                               color: const Color(0xff090C30),
-                               fontWeight: FontWeight.w500),),
-                         ],
-                       ),
-                     )),
+                     child: viewConfiguration!.bottomSheetGalleryRow),
                ],)
               ],
             ),
