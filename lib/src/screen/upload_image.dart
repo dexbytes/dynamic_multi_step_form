@@ -278,9 +278,7 @@ class _UploadImageState extends State<UploadImageView> {
                       },
                       child: viewConfiguration!.bottomSheetCloser),
                ),
-                Text("Select option",style: TextStyle( fontSize: 18,
-                    color: const Color(0xff090C30),
-                    fontWeight: FontWeight.w500),),
+            viewConfiguration!.bottomSheetTopTitle!,
                 SizedBox(height: 25,),
                Column(children: [
                  InkWell(

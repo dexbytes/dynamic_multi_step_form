@@ -25,10 +25,16 @@ class PickImageViewConfiguration {
     ],
   );
 
+  Widget? bottomSheetTopTitle =   Text("Select option",style: TextStyle( fontSize: 18,
+      color: const Color(0xff090C30),
+      fontWeight: FontWeight.w600),);
+
+
   Widget? bottomSheetCameraRow =   Padding(
     padding: const EdgeInsets.symmetric(vertical: 5),
     child: Row(
       children: [
+        Icon(Icons.camera_alt),SizedBox(width: 10,),
         Text("Take a Photo",style: TextStyle( fontSize: 16,
             color: const Color(0xff090C30),
             fontWeight: FontWeight.w500),),
@@ -39,6 +45,7 @@ class PickImageViewConfiguration {
     padding: const EdgeInsets.symmetric(vertical: 5),
     child: Row(
       children: [
+        Icon(Icons.image),SizedBox(width: 10,),
         Text("Select option",style: TextStyle( fontSize: 16,
             color: const Color(0xff090C30),
             fontWeight: FontWeight.w500),),
@@ -59,12 +66,13 @@ class PickImageViewConfiguration {
        child: Icon(Icons.close,size: 35.0,)),
  );
 
-  PickImageViewConfiguration({ Widget? emptyImgView, Widget? editImgView,Widget? bottomSheetGalleryRow,Widget? bottomSheetCameraRow,BorderRadiusGeometry? borderRadius}){
+  PickImageViewConfiguration({ Widget? emptyImgView, Widget? editImgView,Widget? bottomSheetGalleryRow,Widget? bottomSheetTopTitle,Widget? bottomSheetCameraRow,BorderRadiusGeometry? borderRadius}){
     this.emptyImgView = emptyImgView??this.emptyImgView;
     this.editImgView = emptyImgView??this.editImgView;
     this.borderRadius = borderRadius??this.borderRadius;
     this.bottomSheetGalleryRow = bottomSheetGalleryRow??this.bottomSheetGalleryRow;
     this.bottomSheetCameraRow = bottomSheetCameraRow??this.bottomSheetCameraRow;
+    this.bottomSheetTopTitle = bottomSheetTopTitle??this.bottomSheetTopTitle;
   }
 }
 
