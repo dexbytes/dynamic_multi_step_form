@@ -11,13 +11,31 @@
       "title": "Document",
       "description": "Hey, get on board ",
       "formFields": [
+
         {
-          "elementType": "upload_image",
+          "elementType": "select",
           "elementConfig": {
-            "name": "driving_license",
-            "label": "Driving License",
+            "name": "documentType",
+            "label": "",
+            "buttonHead": "Select city",
             "enableLabel": true,
-            "initialValue": ""
+            "placeholder": "Document Type",
+            "class": "form-control",
+            "options": [
+              {
+                "value": "aadharCard",
+                "displayValue": "Aadhar Card"
+              },
+              {
+                "value": "panCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "drivingLicence",
+                "displayValue": "Driving Licence"
+              }
+            ],
+            "isMulitpleSelect": false
           },
           "value": "",
           "validation": {
@@ -29,7 +47,27 @@
             }
           },
           "valid": false
-        }, {
+        },
+        {
+          "elementType": "upload_image",
+          "elementConfig": {
+            "name": "driving_license",
+            "label": "Driving License",
+            "enableLabel": true,
+            "initialValue": ""
+          },
+          "value": "https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg?w=2000",
+          "validation": {
+            "required": true,
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please select at least one"
+            }
+          },
+          "valid": false
+        },
+        {
           "elementType": "upload_image",
           "elementConfig": {
             "name": "driving_license1",
@@ -286,7 +324,6 @@
   "title": "Bank Detail",
   "description": "Hey, get on board ",
   "formFields": [
-
     {
       "elementType": "select",
       "elementConfig": {

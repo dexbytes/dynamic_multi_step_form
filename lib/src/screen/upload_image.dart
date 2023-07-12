@@ -52,6 +52,17 @@ class _UploadImageState extends State<UploadImageView> {
     if(uploadFormFiledParsing!=null){
       fieldKey = uploadFormFiledParsing!.elementConfig!.name!;
       label = uploadFormFiledParsing!.elementConfig!.label!;
+      imagePath =  uploadFormFiledParsing!.value;
+      if(imagePath!=null && imagePath!.trim().isNotEmpty){
+        try {
+          onChangeValue.call(fieldKey, imagePath!);
+        } catch (e) {
+          print(e);
+        }
+      }
+      else{
+        imagePath = null;
+      }
     }
   }
 
@@ -94,9 +105,8 @@ class _UploadImageState extends State<UploadImageView> {
                 onTap: () {},
                 child: Container(
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
+                    shape: BoxShape.rectangle,
                     color: Colors.transparent,
-                    borderRadius: BorderRadius.all(Radius.circular(5)),
                     image: DecorationImage(
                       image: imageProvider,
                       fit: BoxFit.cover,
@@ -108,13 +118,13 @@ class _UploadImageState extends State<UploadImageView> {
               SizedBox(
                 child: Center(
                   child: SizedBox(
-                    height: fieldHeight / 2,
-                    width: fieldHeight / 2,
+                    height: 50,
+                    width: 50,
                     child: CircularProgressIndicator(
                       strokeWidth: 1.5,
                       value: downloadProgress.progress,
                       valueColor:
-                          AlwaysStoppedAnimation<Color>(Colors.blueAccent),
+                          AlwaysStoppedAnimation<Color>(Colors.grey),
                     ),
                   ),
                 ),
@@ -178,9 +188,8 @@ class _UploadImageState extends State<UploadImageView> {
               borderRadius: viewConfiguration!.borderRadius,
               child: Stack(
                 children: [
-                  imagePath != null
-                      ? SizedBox()
-                      : InkWell(
+
+                  imagePath == null || imagePath!.trim().isEmpty? InkWell(
                           onTap: () {
                             displayProductDetailModal(context);
                           },
@@ -188,10 +197,9 @@ class _UploadImageState extends State<UploadImageView> {
                               height: fieldHeight,
                               padding: EdgeInsets.all(4),
                               child: viewConfiguration!.emptyImgView),
-                        ),
+                        ):const SizedBox(),
                   imageView(imagePath),
-                  imagePath == null
-                      ? SizedBox()
+                  imagePath == null || imagePath!.trim().isEmpty ? SizedBox()
                       : InkWell(
                           onTap: () {
                             setState(() {

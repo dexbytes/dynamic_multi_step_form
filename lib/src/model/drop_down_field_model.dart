@@ -43,6 +43,7 @@ class DropDownModel {
 class ElementConfig {
   String? name;
   String? label;
+  String? buttonHead;
   String? placeholder;
   String? classProperty;
   List<Options>? options;
@@ -52,6 +53,7 @@ class ElementConfig {
   ElementConfig(
       {this.name,
       this.label,
+      this.buttonHead,
       this.placeholder,
       this.classProperty,
       this.options,
@@ -61,6 +63,7 @@ class ElementConfig {
   ElementConfig.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     label = json['label'];
+    buttonHead = json['buttonHead'];
     placeholder = json['placeholder'];
     classProperty = json.containsKey('class') ? json['class'] : "";
     if (json['options'] != null) {
@@ -78,6 +81,7 @@ class ElementConfig {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = this.name;
     data['label'] = this.label;
+    data['buttonHead'] = this.buttonHead;
     data['placeholder'] = this.placeholder;
     data['class'] = this.classProperty;
     if (this.options != null) {

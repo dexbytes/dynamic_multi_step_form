@@ -79,6 +79,15 @@ void main() async {
   ConfigurationSetting.instance.setCheckBoxConfiguration =
       checkBoxConfiguration;
 
+
+  DropdownConfiguration dropdownConfiguration = DropdownConfiguration(
+      rightArrow : const Icon(
+        Icons.arrow_forward_ios_outlined,
+      )
+  );
+  ConfigurationSetting.instance.setDropdownConfiguration =
+      dropdownConfiguration;
+
   //Set load form from json
   ConfigurationSetting.instance.setLoadFromApi = true;
 

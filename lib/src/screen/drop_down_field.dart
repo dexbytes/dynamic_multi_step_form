@@ -31,7 +31,7 @@ class DropDown extends StatefulWidget {
 
 class _DropDownState extends State<DropDown> {
   String? valueChoose;
-  String? buttonHead = "Select Item";
+  String? buttonHead = "";
   List<Options>? optionList;
   DropDownModel? dropDownModel;
   Map<String, dynamic> jsonData;
@@ -210,6 +210,7 @@ class _DropDownState extends State<DropDown> {
       if (dropDownModel.elementConfig != null) {
         fieldKey = dropDownModel.elementConfig!.name!;
         label = dropDownModel.elementConfig!.label!;
+        buttonHead = dropDownModel.elementConfig!.buttonHead!;
         placeholder = dropDownModel.elementConfig!.placeholder!;
 
         isMultipleSelect =

@@ -6,7 +6,7 @@ class DropdownConfiguration {
   late TextStyle? _textStyle = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
-    color: Colors.black,
+    color: Color(0xffAEAEAE),
   );
 
   late TextStyle? _labelTextStyle = const TextStyle(
@@ -17,7 +17,7 @@ class DropdownConfiguration {
   late TextStyle? _selectedTextStyle = const TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
-    color: Colors.black,
+    color: Color(0xffAEAEAE),
   );
   late Widget _rightArrow = const Icon(
     Icons.arrow_forward_ios_outlined,
@@ -27,15 +27,15 @@ class DropdownConfiguration {
   late BoxDecoration? _buttonDecoration = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
     border: Border.all(
-      color: Colors.black26,
+      color: Color(0xffAEAEAE),
     ),
-    color: Color(0xFFE1EFE7),
+    color:Colors.white,
   );
 
   /// The decoration of the dropdown menu
   late BoxDecoration? _dropdownDecoration = BoxDecoration(
     borderRadius: BorderRadius.circular(10),
-    color: Color(0xFFE1EFE7),
+    color: Color(0xFFFFFFFF),
   );
 
   /// The size to use for the drop-down button's icon.
@@ -54,7 +54,7 @@ class DropdownConfiguration {
       const EdgeInsets.only(left: 14, right: 14);
 
   /// The elevation of the Button
-  late int? _buttonElevation = 1;
+  late int? _buttonElevation = 0;
   late int? _dropdownElevation = 5;
 
   /// The padding of menu items
@@ -63,7 +63,7 @@ class DropdownConfiguration {
   late double? _dropdownMaxHeight = 100;
 
   /// The highlight color of the current selected item
-  late Color? _selectedItemHighlightColor;
+  late Color? _selectedItemHighlightColor = Colors.grey;
 
   DropdownConfiguration(
       {TextStyle? textStyle,
@@ -84,9 +84,28 @@ class DropdownConfiguration {
       EdgeInsetsGeometry? buttonPadding,
       EdgeInsetsGeometry? itemPadding,
       int? buttonElevation,
-      int? dropdownElevation});
+      int? dropdownElevation}){
+    _textStyle = textStyle ?? _textStyle;
+    _rightArrow =  rightArrow ?? _rightArrow;
+    _labelTextStyle = labelTextStyle ?? _labelTextStyle;
+    _selectedTextStyle =  selectedTextStyle ?? _selectedTextStyle;
+    _iconEnabledColor =  iconEnabledColor ?? _iconEnabledColor;
+    _iconDisabledColor = iconDisabledColor ?? _iconDisabledColor;
+    _buttonDecoration = buttonDecoration ?? _buttonDecoration;
+    _dropdownDecoration = dropdownDecoration ?? _dropdownDecoration;
+    _iconSize = iconSize ?? _iconSize;
+    _itemHeight = itemHeight ?? _itemHeight;
+    _buttonHeight = buttonHeight ?? _buttonHeight;
+    _buttonWidth = buttonWidth ?? _buttonWidth;
+    _buttonPadding = buttonPadding ?? _buttonPadding;
+    _itemPadding = itemPadding ?? _itemPadding;
+    _buttonElevation = buttonElevation ?? _buttonElevation;
+    _dropdownElevation = dropdownElevation ?? _dropdownElevation;
+    _selectedItemHighlightColor =
+    selectedItemHighlightColor ?? _selectedItemHighlightColor;
+  }
 
-  DropdownConfiguration setConfiguration(
+ /* DropdownConfiguration setConfiguration(
       {TextStyle? textStyle,
       Widget? rightArrow,
       InputBorder? border,
@@ -126,7 +145,7 @@ class DropdownConfiguration {
       selectedItemHighlightColor:
           selectedItemHighlightColor ?? _selectedItemHighlightColor,
     );
-  }
+  }*/
 
   set setTextStyle(TextStyle value) {
     _textStyle = value;
