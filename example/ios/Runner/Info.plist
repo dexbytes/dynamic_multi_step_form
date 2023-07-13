@@ -46,6 +46,14 @@
 	<string>Not used</string>
 	<key>NSContactsUsageDescription</key>
 	<string>Not used</string>
+	<key>NSCameraUsageDescription</key>
+    <string>Camera is used to click an image in edit profile or add package</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>App needs access to photo lib for profile images</string>
+    <key>NSCameraUsageDescription</key>
+    <string>To capture profile photo please grant camera access</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo library is used to select an image in edit profile or add package</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Not used</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -79,5 +87,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

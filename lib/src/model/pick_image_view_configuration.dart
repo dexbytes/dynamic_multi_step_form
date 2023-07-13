@@ -6,6 +6,7 @@ class PickImageViewConfiguration {
   //Label style
   late TextStyle _labelTextStyle = const TextStyle();
 
+  Size imagePreviewSize = Size(double.infinity, 170);
   BorderRadiusGeometry? borderRadius = BorderRadius.circular(8.0);
 
   Widget? bottomSheetCloser =   Row(
@@ -53,7 +54,9 @@ class PickImageViewConfiguration {
     ),
   );
 
- Widget? emptyImgView = Container(width: double.infinity,height: 100,decoration: BoxDecoration(
+ Widget? emptyImgView = Container(
+     width: double.infinity,
+     height: 150,decoration: BoxDecoration(
      border: Border.all(color: Color(0xffAEAEAE)),
      borderRadius: BorderRadius.all(Radius.circular(5))),
      padding:
@@ -61,14 +64,20 @@ class PickImageViewConfiguration {
      child: Icon(Icons.upload,size: 70.0,));
 
  Widget? editImgView = Align(alignment: Alignment.topRight,
-   child: Container(padding:
-       EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-       child: Icon(Icons.close,size: 35.0,)),
+   child: Container(height: 38,width: 38,
+       margin: EdgeInsets.only(right: 10,top: 6),
+       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+       decoration: BoxDecoration(
+         shape: BoxShape.circle,
+         color: Colors.black.withOpacity(0.7)
+       ),
+       child: Icon(Icons.close,size: 25.0,color: Color(0xFFED2D1D),)),
  );
 
-  PickImageViewConfiguration({ Widget? emptyImgView, Widget? editImgView,Widget? bottomSheetGalleryRow,Widget? bottomSheetTopTitle,Widget? bottomSheetCameraRow,BorderRadiusGeometry? borderRadius}){
+  PickImageViewConfiguration({ Widget? emptyImgView, Size? imagePreviewSize, Widget? editImgView,Widget? bottomSheetGalleryRow,Widget? bottomSheetTopTitle,Widget? bottomSheetCameraRow,BorderRadiusGeometry? borderRadius}){
+    this.imagePreviewSize = imagePreviewSize??this.imagePreviewSize;
     this.emptyImgView = emptyImgView??this.emptyImgView;
-    this.editImgView = emptyImgView??this.editImgView;
+    this.editImgView = editImgView??this.editImgView;
     this.borderRadius = borderRadius??this.borderRadius;
     this.bottomSheetGalleryRow = bottomSheetGalleryRow??this.bottomSheetGalleryRow;
     this.bottomSheetCameraRow = bottomSheetCameraRow??this.bottomSheetCameraRow;

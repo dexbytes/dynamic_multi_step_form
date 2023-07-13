@@ -1,3 +1,4 @@
+
 part of dynamic_multi_step_form;
 
 // enum formFieldType {text,name,email,tel,url,number,textMultiline}
@@ -30,6 +31,7 @@ class _TextFieldsState extends State<TextFieldView> {
   bool obscureText = true;
   String formFieldType = "text";
   String textCapitalizeStr = "none";
+  String placeHolderLabel = "";
 
   Map<String, dynamic> jsonData;
   final TextEditingController? _nameController = TextEditingController();
@@ -417,109 +419,125 @@ class _TextFieldsState extends State<TextFieldView> {
             }
             return SizedBox(
               // height:textFieldHeight,
-              child: TextFormField(
-                focusNode: currentFocusNode,
-                //strutStyle:StrutStyle(),
-                readOnly: (formFieldType == "date" && isPickFromCalendar)
-                    ? true
-                    : textFieldModel!.validation!.isReadOnly!,
-                enabled: !textFieldModel!.validation!.isDisabled!,
-                onTap: () {
-                  if (formFieldType == 'date' &&
-                      !(textFieldModel!.validation!.isReadOnly!) &&
-                      isPickFromCalendar) {
-                    pickDate(context,
-                        firstDateTS: textFieldModel!.elementConfig!.firstDate,
-                        initialDateTS:
-                            textFieldModel!.elementConfig!.initialDate,
-                        lastDateTS: textFieldModel!.elementConfig!.lastDate);
-                  }
-                },
-                controller: _nameController,
-                cursorColor:
-                    viewConfig!.viewConfiguration?._cursorColor ?? Colors.blue,
-                textInputAction: TextInputAction.done,
-                maxLength: textFieldModel!.validation!.maxLength,
+              child: Column(mainAxisSize: MainAxisSize.min,
+                children: [
+                  textFieldModel!.elementConfig!.placeHolderLabel!.isEmpty ?SizedBox():
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: viewConfig!.viewConfiguration!._padding,
+                        child: Text(textFieldModel!.elementConfig!.placeHolderLabel!,style: TextStyle( fontSize: 16,
+                            color: const Color(0xff222222),
+                            fontWeight: FontWeight.w400),),
+                      )
+                    ],
+                  ),
+                  TextFormField(
+                    focusNode: currentFocusNode,
+                    //strutStyle:StrutStyle(),
+                    readOnly: (formFieldType == "date" && isPickFromCalendar)
+                        ? true
+                        : textFieldModel!.validation!.isReadOnly!,
+                    enabled: !textFieldModel!.validation!.isDisabled!,
+                    onTap: () {
+                      if (formFieldType == 'date' &&
+                          !(textFieldModel!.validation!.isReadOnly!) &&
+                          isPickFromCalendar) {
+                        pickDate(context,
+                            firstDateTS: textFieldModel!.elementConfig!.firstDate,
+                            initialDateTS:
+                                textFieldModel!.elementConfig!.initialDate,
+                            lastDateTS: textFieldModel!.elementConfig!.lastDate);
+                      }
+                    },
+                    controller: _nameController,
+                    cursorColor:
+                        viewConfig!.viewConfiguration?._cursorColor ?? Colors.blue,
+                    textInputAction: TextInputAction.done,
+                    maxLength: textFieldModel!.validation!.maxLength,
 
-                ///It is the length of char
-                maxLines: maxLine(),
-                minLines: minLine(),
-                textCapitalization:
-                    textCapitalize(textCapitalizeStr: textCapitalizeStr),
-                decoration: viewConfig!.getInputDecoration(),
-                obscureText: obscureText,
-                keyboardType: keyBoardType(formFieldType: formFieldType),
-                inputFormatters: inputFormatter(formFieldType: formFieldType),
-                validator: (value) {
-                  if (value!.isEmpty && !checkValid) {
-                    return null;
-                  } else if (value.isNotEmpty &&
-                      !checkValid &&
-                      !checkValidOnChange) {
-                    return null;
-                  }
-                  return commonValidation.checkValidation(
-                      enteredValue: value,
-                      validationStr: textFieldModel!.validationStr!,
-                      formFieldType: formFieldType);
-                },
-                onChanged: (value) {
-                  if (mounted) {
-                    onChangeValue.call(fieldKey, value);
-                    commonValidation.checkValidation(
-                        enteredValue: value,
-                        validationStr: textFieldModel!.validationStr!,
-                        formFieldType: formFieldType);
+                    ///It is the length of char
+                    maxLines: maxLine(),
+                    minLines: minLine(),
+                    textCapitalization:
+                        textCapitalize(textCapitalizeStr: textCapitalizeStr),
+                    decoration: viewConfig!.getInputDecoration(),
+                    obscureText: obscureText,
+                    keyboardType: keyBoardType(formFieldType: formFieldType),
+                    inputFormatters: inputFormatter(formFieldType: formFieldType),
+                    validator: (value) {
+                      if (value!.isEmpty && !checkValid) {
+                        return null;
+                      } else if (value.isNotEmpty &&
+                          !checkValid &&
+                          !checkValidOnChange) {
+                        return null;
+                      }
+                      return commonValidation.checkValidation(
+                          enteredValue: value,
+                          validationStr: textFieldModel!.validationStr!,
+                          formFieldType: formFieldType);
+                    },
+                    onChanged: (value) {
+                      if (mounted) {
+                        onChangeValue.call(fieldKey, value);
+                        commonValidation.checkValidation(
+                            enteredValue: value,
+                            validationStr: textFieldModel!.validationStr!,
+                            formFieldType: formFieldType);
 
-                    // if(validate !=null ){
-                    //   textFieldHeight = 80;
-                    // }else{
-                    //   textFieldHeight = 50;
-                    // }
-                  }
-                },
-                onSaved: (value) {
-                  //Check all validation on submit
-                  /*if((!checkValidOnChange && checkValid)){
-                setState(() {
-                  checkValidOnSubmit = true;
-                });
-                _formFieldKey.currentState!.validate();
-              }*/
-                  //Check validation on submit and will not submit data on server
-                  if ((value!.isNotEmpty && checkValid)) {
-                    /*setState(() {
-                  checkValidOnSubmit = true;
-                  autovalidateMode = _autoValidate(checkValidOnSubmit : true);
-                });*/
-                    // _formFieldKey.currentState!.validate();
-                  } else if ((checkValid)) {
-                    /*setState(() {
-                  checkValidOnSubmit = true;
-                  autovalidateMode = _autoValidate(checkValidOnSubmit : true);
-                });*/
-
-                    // _formFieldKey.currentState!.validate();
-                  }
-                  //Check validation on submit and will not submit data on server
-                  /*else if((value.isNotEmpty && !checkValidOnChange && !checkValid)){
-                setState(() {
-                  checkValidOnSubmit = true;
-                });
-                _formFieldKey.currentState!.validate();
-              }*/
-                },
-                onFieldSubmitted: (value) {
-                  if ((value.isNotEmpty && checkValid)) {
+                        // if(validate !=null ){
+                        //   textFieldHeight = 80;
+                        // }else{
+                        //   textFieldHeight = 50;
+                        // }
+                      }
+                    },
+                    onSaved: (value) {
+                      //Check all validation on submit
+                      /*if((!checkValidOnChange && checkValid)){
                     setState(() {
-                      checkValidOnChange = true;
-                      autovalidateMode = _autoValidate();
+                      checkValidOnSubmit = true;
                     });
+                    _formFieldKey.currentState!.validate();
+                  }*/
+                      //Check validation on submit and will not submit data on server
+                      if ((value!.isNotEmpty && checkValid)) {
+                        /*setState(() {
+                      checkValidOnSubmit = true;
+                      autovalidateMode = _autoValidate(checkValidOnSubmit : true);
+                    });*/
+                        // _formFieldKey.currentState!.validate();
+                      } else if ((checkValid)) {
+                        /*setState(() {
+                      checkValidOnSubmit = true;
+                      autovalidateMode = _autoValidate(checkValidOnSubmit : true);
+                    });*/
 
-                    moveToNextField(value);
-                  }
-                },
-                autovalidateMode: autovalidateMode,
+                        // _formFieldKey.currentState!.validate();
+                      }
+                      //Check validation on submit and will not submit data on server
+                      /*else if((value.isNotEmpty && !checkValidOnChange && !checkValid)){
+                    setState(() {
+                      checkValidOnSubmit = true;
+                    });
+                    _formFieldKey.currentState!.validate();
+                  }*/
+                    },
+                    onFieldSubmitted: (value) {
+                      if ((value.isNotEmpty && checkValid)) {
+                        setState(() {
+                          checkValidOnChange = true;
+                          autovalidateMode = _autoValidate();
+                        });
+
+                        moveToNextField(value);
+                      }
+                    },
+                    autovalidateMode: autovalidateMode,
+                  ),
+                ],
               ),
             );
           },

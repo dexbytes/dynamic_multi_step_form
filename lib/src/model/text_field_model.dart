@@ -76,6 +76,7 @@ class ElementConfig {
   String? initialDate;
   String? dateFormat;
   bool? pickDateFromCalender;
+  String? placeHolderLabel;
 
   ElementConfig(
       {this.type,
@@ -93,6 +94,7 @@ class ElementConfig {
       this.resetIcon,
       this.nextName,
       this.minLine = 1,
+      this.placeHolderLabel,
       this.maxLine = 2,
       this.dateFormat});
 
@@ -121,6 +123,7 @@ class ElementConfig {
     lastDate = json.containsKey('lastDate') ? json['lastDate'] : '';
     initialDate = json.containsKey('initialDate') ? json['initialDate'] : '';
     dateFormat = json.containsKey('dateFormat') ? json['dateFormat'] : '';
+    placeHolderLabel = json.containsKey('placeHolderLabel') ? json['placeHolderLabel'] : '';
     pickDateFromCalender = json.containsKey('pickDateFromCalender')
         ? json['pickDateFromCalender']
         : false;
@@ -145,6 +148,7 @@ class ElementConfig {
     data['lastDate'] = this.lastDate;
     data['initialDate'] = this.initialDate;
     data['dateFormat'] = this.dateFormat;
+    data['placeHolderLabel'] = this.placeHolderLabel;
     data['pickDateFromCalender'] = this.pickDateFromCalender;
     return data;
   }

@@ -37,6 +37,8 @@ class _UploadImageState extends State<UploadImageView> {
 
   Stream get onVariableChanged => _fieldStreamControl.stream;
   double fieldHeight = 170;
+  double emptyViewHeight = 170;
+  double fieldWidth = double.infinity;
   String? imagePath;
   UploadImageModel? uploadFormFiledParsing;
   _UploadImageState(
@@ -46,8 +48,13 @@ class _UploadImageState extends State<UploadImageView> {
       this.nextFieldKey = ""}) {
     viewConfiguration = viewConfiguration ??
         ConfigurationSetting.instance._pickImageViewConfiguration;
+
+     fieldHeight = viewConfiguration!.imagePreviewSize.height;
+     fieldWidth = viewConfiguration!.imagePreviewSize.width;
+
     uploadFormFiledParsing ??= responseParser.uploadFormFiledParsing(
         jsonData: jsonData, updateCommon: true);
+
 
     if(uploadFormFiledParsing!=null){
       fieldKey = uploadFormFiledParsing!.elementConfig!.name!;
@@ -99,7 +106,7 @@ class _UploadImageState extends State<UploadImageView> {
     if (imagePath!.contains("http")) {
       return CachedNetworkImage(
           height: fieldHeight,
-          width: double.infinity,
+          width: fieldWidth,
           imageUrl: imagePath!,
           imageBuilder: (context, imageProvider) => InkWell(
                 onTap: () {},
@@ -139,7 +146,8 @@ class _UploadImageState extends State<UploadImageView> {
       return Image.file(
         File(imagePath!),
         fit: BoxFit.cover,
-        width: double.infinity,
+        width: fieldWidth,
+        height: fieldHeight,
         errorBuilder:
             (BuildContext context, Object error, StackTrace? stackTrace) {
           // setState(() {
@@ -183,35 +191,32 @@ class _UploadImageState extends State<UploadImageView> {
           ),
         ):SizedBox(),
         SizedBox(
-            height: fieldHeight,
-            child: ClipRRect(
-              borderRadius: viewConfiguration!.borderRadius,
-              child: Stack(
-                children: [
-
-                  imagePath == null || imagePath!.trim().isEmpty? InkWell(
-                          onTap: () {
-                            displayProductDetailModal(context);
-                          },
-                          child: Container(
-                              height: fieldHeight,
-                              padding: EdgeInsets.all(4),
-                              child: viewConfiguration!.emptyImgView),
-                        ):const SizedBox(),
-                  imageView(imagePath),
-                  imagePath == null || imagePath!.trim().isEmpty ? SizedBox()
-                      : InkWell(
-                          onTap: () {
-                            setState(() {
-                              imagePath = null;
-                            });
-                            onChangeValue.call(fieldKey, "");
-                          },
-                          child: viewConfiguration!.editImgView,
-                        ),
-                ],
-              ),
-            )),
+            child: imagePath == null || imagePath!.trim().isEmpty? InkWell(
+    onTap: () {
+    displayProductDetailModal(context);
+    },
+    child: Container(
+    padding: EdgeInsets.all(4),
+    child: viewConfiguration!.emptyImgView),
+    )
+               :ClipRRect(
+                borderRadius: viewConfiguration!.borderRadius,
+                child: Stack(
+                   children: [
+                     imageView(imagePath),
+                     InkWell(
+                       onTap: () {
+                         setState(() {
+                           imagePath = null;
+                         });
+                         onChangeValue.call(fieldKey, "");
+                       },
+                       child: viewConfiguration!.editImgView,
+                     )
+                   ],
+                 ),
+               ),
+            ),
       ],
     );
   }
@@ -272,7 +277,7 @@ class _UploadImageState extends State<UploadImageView> {
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 0.0, sigmaY: 0.0),
           child: Padding(
-            padding: const EdgeInsets.only(left: 10,right: 10,bottom: 20),
+            padding: const EdgeInsets.only(left: 16,right: 10,bottom: 40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,

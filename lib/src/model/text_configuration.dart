@@ -52,6 +52,7 @@ class TextFieldConfiguration {
   late TextStyle? _suffixStyle = const TextStyle();
   late String _suffixText = '';
   late Widget _prefix = Container();
+  late EdgeInsets _padding = const EdgeInsets.only(left: 5,bottom: 5);
   late bool _enableLabel = true;
   late bool _filled = true;
   late Color _fillColor = Colors.transparent;
@@ -80,6 +81,7 @@ class TextFieldConfiguration {
     Color? cursorColor,
     Widget? prefix,
     EdgeInsets? contentPadding,
+    EdgeInsets? padding,
     FloatingLabelBehavior? floatingLabelBehavior,
   }) {
     _fillColor = fillColor ?? _fillColor;
@@ -100,6 +102,7 @@ class TextFieldConfiguration {
     _border = border ?? _border;
     _focusedBorder = focusedBorder ?? _focusedBorder;
     _contentPadding = contentPadding ?? _contentPadding;
+    _padding = padding ?? _padding;
     _floatingLabelBehavior = floatingLabelBehavior ?? _floatingLabelBehavior;
   }
 
@@ -121,6 +124,7 @@ class TextFieldConfiguration {
     Color? suffixIconColor,
     Widget? prefix,
     EdgeInsets? contentPadding,
+    EdgeInsets? padding,
     FloatingLabelBehavior? floatingLabelBehavior,
   }) {
     return TextFieldConfiguration(
@@ -134,6 +138,7 @@ class TextFieldConfiguration {
         prefix: prefix ?? _prefix,
         border: border ?? _border,
         //prefixText : prefixText ?? _prefixText,
+        padding: padding ?? _padding,
         focusedBorder: focusedBorder ?? _focusedBorder,
         fillColor: fillColor ?? _fillColor,
         suffixIconColor: suffixIconColor ?? _suffixIconColor,

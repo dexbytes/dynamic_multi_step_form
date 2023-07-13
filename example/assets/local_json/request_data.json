@@ -117,6 +117,7 @@
       "elementConfig": {
         "type": "text",
         "name": "full_name",
+        "placeHolderLabel": "Full Name",
         "label": "Full name 1",
         "enableLabel": true,
         "placeholder": "Full name 1",

@@ -91,6 +91,25 @@ void main() async {
   //Set load form from json
   ConfigurationSetting.instance.setLoadFromApi = true;
 
+
+  PickImageViewConfiguration pickImageViewConfiguration = PickImageViewConfiguration(
+    emptyImgView: Container(
+height: 100,
+      decoration: BoxDecoration(
+          color: Colors.transparent,
+          border: Border.all(width: 2,color: Colors.red)
+      ),
+      child: Center(
+          child:Icon(Icons.upload)
+      ),
+    ),
+  );
+
+  ConfigurationSetting.instance.setPickImageViewConfigurationConfig = pickImageViewConfiguration;
+
+
+
+
   String? jsonString = "";
   runApp(MyApp(jsonString: jsonString));
 }
