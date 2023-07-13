@@ -655,7 +655,7 @@ class ViewConfig {
     return InputDecoration(
         contentPadding: viewConfiguration!._contentPadding,
         border: viewConfiguration!._border,
-        floatingLabelBehavior: FloatingLabelBehavior.always,
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
         labelStyle: viewConfiguration!._labelStyle,
         errorStyle: viewConfiguration!._errorStyle,
         counterStyle: viewConfiguration!._counterStyle,
