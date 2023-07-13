@@ -609,8 +609,8 @@ class _TextFieldsState extends State<TextFieldView> {
               data: ThemeData().copyWith(
                   // brightness:!isDarkMode? Brightness.light:Brightness.dark,
                   colorScheme: const ColorScheme.dark(
-                      primary: Colors.blue,
-                      onSurface: Colors.blue,
+                      primary: Color(0xFF090C30),
+                      onSurface: Color(0xFF090C30),
                       onPrimary: Colors.white,
                       // surface:Colors.green,
                       brightness: Brightness.light),
