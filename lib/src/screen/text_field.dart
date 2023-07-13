@@ -428,7 +428,7 @@ class _TextFieldsState extends State<TextFieldView> {
                       Padding(
                         padding: viewConfig!.viewConfiguration!._padding,
                         child: Text(textFieldModel!.elementConfig!.placeHolderLabel!,style: TextStyle( fontSize: 16,
-                            color: const Color(0xff222222),
+                            color: const Color(0xff494949),
                             fontWeight: FontWeight.w400),),
                       )
                     ],
