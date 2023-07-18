@@ -60,10 +60,15 @@ class DropdownConfiguration {
   /// The padding of menu items
   late EdgeInsetsGeometry? _itemPadding =
       const EdgeInsets.only(left: 14, right: 14);
-  late double? _dropdownMaxHeight = 100;
+  late double? _dropdownMaxHeight = 500;
 
   /// The highlight color of the current selected item
   late Color? _selectedItemHighlightColor = Colors.grey;
+
+
+  late Widget? _bottomSheetSelectIconView = Icon(
+    Icons.check_circle_sharp,
+    color: Colors.green);
 
   DropdownConfiguration(
       {TextStyle? textStyle,
@@ -84,6 +89,7 @@ class DropdownConfiguration {
       EdgeInsetsGeometry? buttonPadding,
       EdgeInsetsGeometry? itemPadding,
       int? buttonElevation,
+      Widget? bottomSheetSelectIconView,
       int? dropdownElevation}){
     _textStyle = textStyle ?? _textStyle;
     _rightArrow =  rightArrow ?? _rightArrow;
@@ -101,8 +107,8 @@ class DropdownConfiguration {
     _itemPadding = itemPadding ?? _itemPadding;
     _buttonElevation = buttonElevation ?? _buttonElevation;
     _dropdownElevation = dropdownElevation ?? _dropdownElevation;
-    _selectedItemHighlightColor =
-    selectedItemHighlightColor ?? _selectedItemHighlightColor;
+    _selectedItemHighlightColor = selectedItemHighlightColor ?? _selectedItemHighlightColor;
+    _bottomSheetSelectIconView = bottomSheetSelectIconView ?? _bottomSheetSelectIconView;
   }
 
  /* DropdownConfiguration setConfiguration(

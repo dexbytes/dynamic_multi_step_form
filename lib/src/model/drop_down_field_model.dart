@@ -49,6 +49,7 @@ class ElementConfig {
   List<Options>? options;
   bool? isMultipleSelect;
   bool? isInline;
+  bool? isShowBottomSheet;
 
   ElementConfig(
       {this.name,
@@ -58,12 +59,14 @@ class ElementConfig {
       this.classProperty,
       this.options,
       this.isMultipleSelect = false,
+      this.isShowBottomSheet = false,
       this.isInline = false});
 
   ElementConfig.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     label = json['label'];
     buttonHead = json['buttonHead'];
+    placeholder = json['placeholder'];
     placeholder = json['placeholder'];
     classProperty = json.containsKey('class') ? json['class'] : "";
     if (json['options'] != null) {
@@ -75,6 +78,7 @@ class ElementConfig {
     isMultipleSelect =
         json.containsKey('isMulitpleSelect') ? json['isMulitpleSelect'] : false;
     isInline = json.containsKey('isInline') ? json['isInline'] : false;
+    isShowBottomSheet = json.containsKey('isShowBottomSheet') ? json['isShowBottomSheet'] : false;
   }
 
   Map<String, dynamic> toJson() {
@@ -89,6 +93,7 @@ class ElementConfig {
     }
     data['isMultipleSelect'] = this.isMultipleSelect;
     data['isInline'] = this.isInline;
+    data['isShowBottomSheet'] = this.isShowBottomSheet;
     return data;
   }
 }

@@ -41,6 +41,7 @@ class _DropDownState extends State<DropDown> {
   String fieldKey = "";
   String label = "";
   bool enableLabel = true;
+  bool isShowBottomSheet = false;
   String placeholder = "";
   String value = "";
   List<String>? selectedOption = [];
@@ -65,6 +66,8 @@ class _DropDownState extends State<DropDown> {
     autoValidate = widget.autoValidate;
     super.didUpdateWidget(oldWidget);
   }
+
+  String selectedData = "Select country";
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +103,85 @@ class _DropDownState extends State<DropDown> {
               height: enableLabel ? 5 : 0,
             ),
             DropdownButtonHideUnderline(
-              child: DropdownButton2(
+              child: isShowBottomSheet
+               ?  InkWell(
+                 onTap: (){
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (context) => BottomSheetOnlyCardView(
+                        cardBackgroundColor: Colors.white,
+                        topLineShow: true,
+                        sheetTitle: "Select Country",
+                        child:Padding(
+                          padding: const EdgeInsets.only(bottom: 50,top: 10),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: optionList!
+                                .map((item) => DropdownMenuItem<String>(
+                              value: "${item.value}",
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  splashColor: Colors.grey.shade100,
+                                  highlightColor:Colors.grey.shade100,
+                                  onTap: (){
+                                    Navigator.pop(context,item.displayValue);
+                                  },
+                                  child:Container(
+                                    decoration: BoxDecoration(
+                                      border: Border(bottom: BorderSide(
+                                          width: 0.8,color: Colors.grey.shade100))
+                                    ),
+                                    width: MediaQuery.of(context).size.width,
+                                    padding: EdgeInsets.all(10).copyWith(left:20,bottom: 12,right: 20),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          item.displayValue!,
+                                          style: viewConfiguration!._textStyle,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        item.displayValue != selectedData
+                                            ?Container()
+                                            :viewConfiguration!._bottomSheetSelectIconView!
+                                      ],
+                                    )
+                                  )
+                                ),
+                              )
+                            )).toList(),
+                          ),
+                        )
+                      ),
+                      isScrollControlled: true,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius:
+                          BorderRadius.vertical(top: Radius.circular(20)))).then((value) {
+                    if (value != null) {
+                      setState(() {
+                        selectedData = value;
+                      });
+                    }
+                  });
+                },
+                 child: Container(
+                  padding: EdgeInsets.only(left: 20,right: 15),
+                  width: MediaQuery.of(context).size.width,
+                  alignment: Alignment.centerLeft,
+                  height: viewConfiguration!._buttonHeight,
+                  decoration: viewConfiguration!._buttonDecoration,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children:[
+                        Text(selectedData),
+                        viewConfiguration!._rightArrow,
+                   ]
+                  )
+                ),)
+              : DropdownButton2(
                 isExpanded: true,
                 dropdownFullScreen: false,
                 dropdownOverButton: false,
@@ -202,6 +283,7 @@ class _DropDownState extends State<DropDown> {
     if (dropDownModel != null) {
       try {
         enableLabel = jsonData['elementConfig']['enableLabel'];
+        isShowBottomSheet = jsonData['elementConfig']['isShowBottomSheet'];
       } catch (e) {
         if (kDebugMode) {
           print(e);

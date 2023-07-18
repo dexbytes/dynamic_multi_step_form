@@ -30,6 +30,8 @@ import 'package:flutter/services.dart';
 import 'package:images_picker/images_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'src/screen/bottom_sheet_view.dart';
+
 export 'package:flutter/material.dart';
 
 part 'src/configuration_setting.dart';

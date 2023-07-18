@@ -64,14 +64,16 @@ class PickImageViewConfiguration {
      child: Icon(Icons.upload,size: 70.0,));
 
  Widget? editImgView = Align(alignment: Alignment.topRight,
-   child: Container(height: 38,width: 38,
-       margin: EdgeInsets.only(right: 10,top: 6),
-       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+   child: Container(
+       alignment: Alignment.center,
+       height: 25,width: 25,
+       margin: EdgeInsets.only(right: 8,top: 6),
+       padding: EdgeInsets.all(0),
        decoration: BoxDecoration(
          shape: BoxShape.circle,
-         color: Colors.black.withOpacity(0.7)
+         color: Colors.red.shade700
        ),
-       child: Icon(Icons.close,size: 25.0,color: Color(0xFFED2D1D),)),
+       child: Icon(Icons.close,size: 18.0,color: Colors.white,)),
  );
 
   PickImageViewConfiguration({ Widget? emptyImgView, Size? imagePreviewSize, Widget? editImgView,Widget? bottomSheetGalleryRow,Widget? bottomSheetTopTitle,Widget? bottomSheetCameraRow,BorderRadiusGeometry? borderRadius}){

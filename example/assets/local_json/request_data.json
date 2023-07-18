@@ -31,6 +31,67 @@
                 "displayValue": "Pan Card"
               },
               {
+                "value": "AddCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "LanCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "ranCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "drivingLicence",
+                "displayValue": "Driving Licence"
+              }
+            ],
+            "isMulitpleSelect": false
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please select at least one"
+            }
+          },
+          "valid": false
+        },
+        {
+          "elementType": "select",
+          "elementConfig": {
+            "name": "documentType",
+            "label": "",
+            "buttonHead": "Select city",
+            "enableLabel": true,
+            "isShowBottomSheet": true,
+            "placeholder": "Document Type",
+            "class": "form-control",
+            "options": [
+              {
+                "value": "aadharCard",
+                "displayValue": "Aadhar Card"
+              },
+              {
+                "value": "panCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "AddCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "LanCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "ranCard",
+                "displayValue": "Pan Card"
+              },
+              {
                 "value": "drivingLicence",
                 "displayValue": "Driving Licence"
               }
@@ -74,6 +135,54 @@
             "label": "Driving License1",
             "enableLabel": true,
             "initialValue": ""
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please select at least one"
+            }
+          },
+          "valid": false
+        },
+        {
+          "elementType": "select",
+          "elementConfig": {
+            "name": "documentType",
+            "label": "",
+            "buttonHead": "Select city",
+            "enableLabel": true,
+            "placeholder": "Document Type",
+            "class": "form-control",
+            "options": [
+              {
+                "value": "aadharCard",
+                "displayValue": "Aadhar Card"
+              },
+              {
+                "value": "panCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "AddCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "LanCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "ranCard",
+                "displayValue": "Pan Card"
+              },
+              {
+                "value": "drivingLicence",
+                "displayValue": "Driving Licence"
+              }
+            ],
+            "isMulitpleSelect": false
           },
           "value": "",
           "validation": {
