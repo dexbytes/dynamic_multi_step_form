@@ -398,7 +398,7 @@ class SingleFormState extends State<SingleForm> {
         children: [
           _getFormField(data: data, nextData: nextData),
           // formSubmitButton!=null?(widget.submitButtonAlignment!=null?(Align(child: formSubmitButton!,alignment: widget.submitButtonAlignment!,)):formSubmitButton!):const SizedBox(),
-          const SizedBox(height: 20, width: 10)
+          const SizedBox(height: 10, width: 10)
         ],
       );
     }).toList());
