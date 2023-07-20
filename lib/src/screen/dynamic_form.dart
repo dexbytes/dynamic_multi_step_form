@@ -22,7 +22,7 @@ class DynamicForm extends StatefulWidget {
       this.showIndicator = true,
       required this.finalSubmitCallBack,
       this.currentStepCallBack,
-      this.formPadding = const EdgeInsets.only(left: 15, right: 15, top: 25),
+      this.formPadding = const EdgeInsets.only(left: 15, right: 15, top: 0),
       this.formIndicatorPadding =
           const EdgeInsets.only(left: 10, right: 10, bottom: 15, top: 15)})
       : super(key: dynamicFormKey);
