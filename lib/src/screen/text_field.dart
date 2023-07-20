@@ -688,7 +688,6 @@ class ViewConfig {
         filled: viewConfiguration!._filled,
         fillColor: viewConfiguration!._fillColor,
         isDense: true,
-
         /*   errorBorder: viewConfiguration!._errorBorder,
         focusedErrorBorder: viewConfiguration!._errorBorder,*/
         enabledBorder: viewConfiguration!._border,
@@ -705,7 +704,7 @@ class ViewConfig {
                 : null,
         suffixIcon: null,
         counterText: "",
-        errorMaxLines: 3);
+        errorMaxLines: 1);
   }
 
   getInputDecoration() {
