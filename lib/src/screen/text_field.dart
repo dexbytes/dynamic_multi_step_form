@@ -31,6 +31,7 @@ class _TextFieldsState extends State<TextFieldView> {
   bool obscureText = true;
   String formFieldType = "text";
   String textCapitalizeStr = "none";
+  String textInputAction = "none";
   String placeHolderLabel = "";
 
   Map<String, dynamic> jsonData;
@@ -67,8 +68,8 @@ class _TextFieldsState extends State<TextFieldView> {
       _nameController!.text = textFieldModel!.value ?? "";
 
       if (textFieldModel!.elementConfig != null) {
-        textCapitalizeStr =
-            textFieldModel!.elementConfig!.textCapitalization ?? "none";
+        textCapitalizeStr = textFieldModel!.elementConfig!.textCapitalization ?? "none";
+        textInputAction = textFieldModel!.elementConfig!.textCapitalization ?? "none";
         formFieldType = textFieldModel!.elementConfig!.type ?? "text";
         formFieldType = formFieldType.toLowerCase();
         fieldKey = textFieldModel!.elementConfig!.name!;
@@ -208,6 +209,27 @@ class _TextFieldsState extends State<TextFieldView> {
     }
     return textCapitalization;
   }
+
+
+  TextInputAction inputTextAction({required String textInputAction}) {
+    TextInputAction textInputAction = TextInputAction.next;
+    switch (textCapitalizeStr.toLowerCase()) {
+      case 'done':
+        textInputAction = TextInputAction.done;
+        break;
+      case 'go':
+        textInputAction = TextInputAction.go;
+        break;
+      case 'newline':
+        textInputAction = TextInputAction.newline;
+        break;
+      case 'send':
+        textInputAction = TextInputAction.send;
+        break;
+    }
+    return textInputAction;
+  }
+
 
   getDateFormatter({dateFormat = "mm/dd/yy"}) {
     switch (dateFormat.toString().toLowerCase()) {
@@ -454,7 +476,7 @@ class _TextFieldsState extends State<TextFieldView> {
                     controller: _nameController,
                     cursorColor:
                         viewConfig!.viewConfiguration?._cursorColor ?? Colors.blue,
-                    textInputAction: TextInputAction.done,
+                    textInputAction: inputTextAction(textInputAction: textInputAction),
                     maxLength: textFieldModel!.validation!.maxLength,
 
                     ///It is the length of char

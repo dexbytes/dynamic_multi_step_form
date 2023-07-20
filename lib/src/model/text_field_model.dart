@@ -61,6 +61,7 @@ class TextFieldModel {
 class ElementConfig {
   String? type;
   String? textCapitalization;
+  String? textInputAction;
   String? name;
   String? label;
   bool? enableLabel;
@@ -85,6 +86,7 @@ class ElementConfig {
       this.initialDate,
       this.lastDate,
       this.textCapitalization,
+      this.textInputAction,
       this.name,
       this.keyboardRejex = "",
       this.label,
@@ -103,6 +105,9 @@ class ElementConfig {
 
     textCapitalization = json.containsKey('textCapitalization')
         ? json['textCapitalization']
+        : "none";
+    textInputAction = json.containsKey('textInputAction')
+        ? json['textInputAction']
         : "none";
     name = json['name'];
     label = json['label'];
@@ -132,6 +137,7 @@ class ElementConfig {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['textCapitalization'] = this.textCapitalization;
+    data['textInputAction'] = this.textInputAction;
     data['type'] = this.type;
     data['name'] = this.name;
     data['keyboardRejex'] = this.keyboardRejex;
