@@ -452,6 +452,7 @@ class _TextFieldsState extends State<TextFieldView> {
                         child: Text(textFieldModel!.elementConfig!.placeHolderLabel!,
                           style: viewConfig!.viewConfiguration!._placeHolderStyle,
                       )
+                      )
                     ],
                   ),
                   TextFormField(
