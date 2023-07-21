@@ -43,6 +43,7 @@ class TextFieldConfiguration {
   ///    rounded rectangle around the input decorator's container.
   late InputBorder? _border = const OutlineInputBorder();
   late InputBorder? _focusedBorder = const OutlineInputBorder();
+  late InputBorder? _errorBorder = const OutlineInputBorder();
   late TextStyle? _textStyle = const TextStyle();
   late TextStyle? _hintStyle = const TextStyle();
   late TextStyle? _labelStyle = const TextStyle();
@@ -74,6 +75,7 @@ class TextFieldConfiguration {
     // String? prefixText,
     InputBorder? border,
     InputBorder? focusedBorder,
+    InputBorder? errorBorder,
     bool? enableLabel,
     bool? filled,
     Color? fillColor,
@@ -101,6 +103,7 @@ class TextFieldConfiguration {
     _suffixStyle = suffixStyle ?? _suffixStyle;
     _border = border ?? _border;
     _focusedBorder = focusedBorder ?? _focusedBorder;
+    _errorBorder = errorBorder ?? _errorBorder;
     _contentPadding = contentPadding ?? _contentPadding;
     _padding = padding ?? _padding;
     _floatingLabelBehavior = floatingLabelBehavior ?? _floatingLabelBehavior;
@@ -117,6 +120,7 @@ class TextFieldConfiguration {
     //  String? prefixText,
     InputBorder? border,
     InputBorder? focusedBorder,
+    InputBorder? errorBorder,
     bool? enableLabel,
     bool? filled,
     Color? fillColor,
@@ -140,6 +144,7 @@ class TextFieldConfiguration {
         //prefixText : prefixText ?? _prefixText,
         padding: padding ?? _padding,
         focusedBorder: focusedBorder ?? _focusedBorder,
+        errorBorder: errorBorder ?? _errorBorder,
         fillColor: fillColor ?? _fillColor,
         suffixIconColor: suffixIconColor ?? _suffixIconColor,
         cursorColor: cursorColor ?? _cursorColor,

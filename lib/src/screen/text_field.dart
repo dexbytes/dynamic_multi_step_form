@@ -684,6 +684,7 @@ class ViewConfig {
         suffixStyle: viewConfiguration!._suffixStyle,
         prefixStyle: viewConfiguration!._prefixStyle,
         focusedBorder: viewConfiguration!._focusedBorder,
+        errorBorder: viewConfiguration!._errorBorder,
         alignLabelWithHint: true,
         filled: viewConfiguration!._filled,
         fillColor: viewConfiguration!._fillColor,
