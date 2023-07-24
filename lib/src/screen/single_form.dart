@@ -216,6 +216,18 @@ class SingleFormState extends State<SingleForm> {
               },
               nextFieldKey: nextFieldKey);
 
+        case "input_qr_scanner":
+          responseParser.setFieldFocusNode = currentElementKey;
+          if (nextFieldKey.isNotEmpty) {
+            responseParser.setFieldFocusNode = nextFieldKey;
+          }
+          return QrScannerTextFieldView(
+              jsonData: data,
+              onChangeValue: (String fieldKey, String value) {
+                formSubmitData[fieldKey] = value;
+              },
+              nextFieldKey: nextFieldKey);
+
         case "upload_image":
           return StreamBuilder(
               stream: onAutoValidateChanged,

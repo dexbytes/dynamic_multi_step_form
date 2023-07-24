@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dynamic_multi_step_form/src/common_validation.dart';
 import 'package:dynamic_multi_step_form/src/model/drop_down_field_model.dart';
 import 'package:dynamic_multi_step_form/src/model/form_button_model.dart';
+import 'package:dynamic_multi_step_form/src/model/qr_scanner_text_field_model.dart';
 import 'package:dynamic_multi_step_form/src/model/text_field_model.dart';
 import 'package:dynamic_multi_step_form/src/model/upload_image_model.dart';
 import 'package:flutter/foundation.dart';
@@ -103,6 +104,21 @@ class ResponseParser {
       {required Map<String, dynamic> jsonData, bool updateCommon = false}) {
     try {
       TextFieldModel textFieldModel = TextFieldModel.fromJson(jsonData);
+      if (updateCommon) {}
+      return textFieldModel;
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+    return null;
+  }
+
+  /// Return formatted textFieldModel
+  QrScannerTextFieldModel? qrScannerTextFormFiledParsing(
+      {required Map<String, dynamic> jsonData, bool updateCommon = false}) {
+    try {
+      QrScannerTextFieldModel textFieldModel = QrScannerTextFieldModel.fromJson(jsonData);
       if (updateCommon) {}
       return textFieldModel;
     } catch (e) {

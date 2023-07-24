@@ -32,6 +32,14 @@ class ConfigurationSetting extends TextFieldConfiguration {
     _telTextFieldConfiguration = textFieldConfig;
   }
 
+
+
+  QrScannerTextFieldConfiguration _qrScannerTextFieldConfiguration = QrScannerTextFieldConfiguration();
+  ///Set Text field ui presentation
+  set setQrScannerTextFieldViewConfig(QrScannerTextFieldConfiguration textFieldConfig) {
+    _qrScannerTextFieldConfiguration = textFieldConfig;
+  }
+
   DropdownConfiguration _dropdownConfiguration = DropdownConfiguration();
   RadioButtonConfiguration _radioButtonConfiguration =
       RadioButtonConfiguration();

@@ -20,6 +20,8 @@ dependencies:
   file: ^6.1.4
   images_picker: ^1.2.11
   cached_network_image: ^3.2.3
+  file_picker: ^5.3.2
+  qr_code_scanner: ^1.0.1
 
 
 dev_dependencies:

@@ -1,13 +1,14 @@
 part of dynamic_multi_step_form;
 
+// enum formFieldType {text,name,email,tel,url,number,textMultiline}
 /// Custom TextField view
-class UploadImageView extends StatefulWidget {
+class UploadDocFileView extends StatefulWidget {
   final Map<String, dynamic> jsonData;
   final String? nextFieldKey;
   final PickImageViewConfiguration? viewConfiguration;
   final Function(String fieldKey, String fieldValue) onChangeValue;
 
-  const UploadImageView(
+  const UploadDocFileView(
       {Key? key,
       required this.jsonData,
       required this.onChangeValue,
@@ -16,14 +17,14 @@ class UploadImageView extends StatefulWidget {
       : super(key: key);
 
   @override
-  _UploadImageState createState() => _UploadImageState(
+  _UploadDocFileState createState() => _UploadDocFileState(
       jsonData: jsonData,
       onChangeValue: onChangeValue,
       viewConfiguration: viewConfiguration,
       nextFieldKey: nextFieldKey);
 }
 
-class _UploadImageState extends State<UploadImageView> {
+class _UploadDocFileState extends State<UploadDocFileView> {
   String fieldKey = "upload_img";
   String? label = "";
   String? nextFieldKey = "";
@@ -41,7 +42,7 @@ class _UploadImageState extends State<UploadImageView> {
   String? imagePath;
   UploadImageModel? uploadFormFiledParsing;
 
-  _UploadImageState(
+  _UploadDocFileState(
       {required this.jsonData,
       required this.onChangeValue,
       this.viewConfiguration,
@@ -266,6 +267,11 @@ class _UploadImageState extends State<UploadImageView> {
         onChangeValue.call(fieldKey, imagePath!);
       }
     }
+ /*   FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg'*//*, 'pdf', 'doc'*//*],
+    );
+    debugPrint("$result");*/
   }
 
   void displayProductDetailModal(BuildContext context) {
