@@ -21,8 +21,9 @@
             "enableLabel": false,
             "placeholder": "Qr number",
             "class": "form-control",
-            "keyboardRejex": "^[a-zA-Z-]+",
+            "keyboardRejex": "^^[a-zA-Z0-9 ]+$",
             "resetIcon": true,
+            "isQrCodeScanner": true,
             "minLine": 1,
             "maxLine": 1,
             "textCapitalization": "words"
@@ -32,13 +33,13 @@
             "required": true,
             "minLength": 3,
             "maxLength": 50,
-            "rejex": "^[a-zA-Z-]+",
+            "rejex": "^^[a-zA-Z0-9 ]+$",
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
               "required": "Please enter full name",
               "minLength": "Minimum 3 characters require",
-              "rejex": "Please enter valid full name"
+              "rejex": "Please enter valid bar code"
             }
           },
           "valid": true,

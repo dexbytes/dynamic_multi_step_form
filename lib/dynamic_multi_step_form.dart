@@ -30,6 +30,7 @@ import 'package:dynamic_multi_step_form/src/util/project_util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:images_picker/images_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';

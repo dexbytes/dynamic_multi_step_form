@@ -77,12 +77,14 @@ class ElementConfig {
   String? initialDate;
   String? dateFormat;
   bool? pickDateFromCalender;
+  bool? isQrCodeScanner;
   String? placeHolderLabel;
 
   ElementConfig(
       {this.type,
       this.firstDate,
       this.pickDateFromCalender,
+      this.isQrCodeScanner = false,
       this.initialDate,
       this.lastDate,
       this.textCapitalization,
@@ -131,6 +133,9 @@ class ElementConfig {
     placeHolderLabel = json.containsKey('placeHolderLabel') ? json['placeHolderLabel'] : '';
     pickDateFromCalender = json.containsKey('pickDateFromCalender')
         ? json['pickDateFromCalender']
+        : false;
+    isQrCodeScanner = json.containsKey('isQrCodeScanner')
+        ? json['isQrCodeScanner']
         : false;
   }
 
