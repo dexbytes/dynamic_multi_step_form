@@ -43,8 +43,10 @@ class TextFieldConfiguration {
   ///    rounded rectangle around the input decorator's container.
   late InputBorder? _border = const OutlineInputBorder();
   late InputBorder? _focusedBorder = const OutlineInputBorder();
+  late InputBorder? _errorBorder = const OutlineInputBorder();
   late TextStyle? _textStyle = const TextStyle();
   late TextStyle? _hintStyle = const TextStyle();
+  late TextStyle? _placeHolderStyle = const TextStyle();
   late TextStyle? _labelStyle = const TextStyle();
   late TextStyle? _errorStyle = const TextStyle();
   late TextStyle? _prefixStyle = const TextStyle();
@@ -69,11 +71,13 @@ class TextFieldConfiguration {
     TextStyle? errorStyle,
     TextStyle? prefixStyle,
     TextStyle? counterStyle,
+    TextStyle? placeHolderStyle,
     TextStyle? suffixStyle,
     String? suffixText,
     // String? prefixText,
     InputBorder? border,
     InputBorder? focusedBorder,
+    InputBorder? errorBorder,
     bool? enableLabel,
     bool? filled,
     Color? fillColor,
@@ -96,11 +100,13 @@ class TextFieldConfiguration {
     _textStyle = textStyle ?? _textStyle;
     _labelStyle = labelStyle ?? _labelStyle;
     _errorStyle = errorStyle ?? _errorStyle;
+    _placeHolderStyle = placeHolderStyle ?? _placeHolderStyle;
     _prefixStyle = prefixStyle ?? _prefixStyle;
     _counterStyle = counterStyle ?? _counterStyle;
     _suffixStyle = suffixStyle ?? _suffixStyle;
     _border = border ?? _border;
     _focusedBorder = focusedBorder ?? _focusedBorder;
+    _errorBorder = errorBorder ?? _errorBorder;
     _contentPadding = contentPadding ?? _contentPadding;
     _padding = padding ?? _padding;
     _floatingLabelBehavior = floatingLabelBehavior ?? _floatingLabelBehavior;
@@ -112,11 +118,13 @@ class TextFieldConfiguration {
     TextStyle? labelStyle,
     TextStyle? errorStyle,
     TextStyle? prefixStyle,
+    TextStyle? placeHolderStyle,
     TextStyle? counterStyle,
     TextStyle? suffixStyle,
     //  String? prefixText,
     InputBorder? border,
     InputBorder? focusedBorder,
+    InputBorder? errorBorder,
     bool? enableLabel,
     bool? filled,
     Color? fillColor,
@@ -140,6 +148,7 @@ class TextFieldConfiguration {
         //prefixText : prefixText ?? _prefixText,
         padding: padding ?? _padding,
         focusedBorder: focusedBorder ?? _focusedBorder,
+        errorBorder: errorBorder ?? _errorBorder,
         fillColor: fillColor ?? _fillColor,
         suffixIconColor: suffixIconColor ?? _suffixIconColor,
         cursorColor: cursorColor ?? _cursorColor,
