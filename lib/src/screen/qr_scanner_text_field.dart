@@ -725,8 +725,11 @@ class QrScannerViewConfig {
     InputDecoration inputDecoration = _getTextDecoration();
     Widget? suffixIcon;
     if (textFieldModel.elementConfig != null) {
-      if (textFieldModel.elementConfig!.resetIcon!) {
+
+      // comment by mohit
+      // if (textFieldModel.elementConfig!.resetIcon!) {
         suffixIcon = SuffixScannerIcon(
+          isHideCrossIcon: textFieldModel.elementConfig!.resetIcon!,
           iconColor: viewConfiguration?._suffixIconColor,
           qrScannerIconColor: viewConfiguration?._suffixIconColor,
           qrScannerIconWidget: viewConfiguration?._suffixScannerIcon,
@@ -752,7 +755,7 @@ class QrScannerViewConfig {
             // nameController.text = "";
           },
         );
-      }
+      // }
     }
     inputDecoration = inputDecoration.copyWith(suffixIcon: suffixIcon);
     return inputDecoration;
