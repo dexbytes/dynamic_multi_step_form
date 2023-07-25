@@ -28,6 +28,10 @@
             "maxLine": 1,
             "textCapitalization": "words"
           },
+          "help": {
+            "text": "If you do not know the vehicle model information, you may scan the vin",
+            "placement": "up"
+          },
           "value": "",
           "validation": {
             "required": true,
