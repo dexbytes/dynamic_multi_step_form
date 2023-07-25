@@ -622,6 +622,7 @@ class _TextFieldsState extends State<TextFieldView> {
         context: context,
         fieldLabelText: "DOB",
         initialDate: initialDate,
+        initialDatePickerMode:DatePickerMode.year,
         initialEntryMode: DatePickerEntryMode.calendarOnly,
         firstDate: firstDate,
         lastDate: lastDate,
