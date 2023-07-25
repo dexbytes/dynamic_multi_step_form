@@ -67,7 +67,7 @@ class _DropDownState extends State<DropDown> {
     super.didUpdateWidget(oldWidget);
   }
 
-  String selectedData = "Select country";
+  String selectedData = "";
 
   @override
   Widget build(BuildContext context) {
@@ -176,7 +176,7 @@ class _DropDownState extends State<DropDown> {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children:[
-                        Text(selectedData,style:  viewConfiguration!._textStyle),
+                        Text(selectedData.isEmpty?buttonHead!:selectedData,style:  selectedData.isEmpty?viewConfiguration!._labelTextStyle:viewConfiguration!._textStyle),
                         viewConfiguration!._rightArrow,
                    ]
                   )
