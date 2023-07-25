@@ -54,7 +54,7 @@ class QrScannerTextFieldConfiguration {
   late Widget _prefix = Container();
   late Widget? _suffixScannerIcon = Icon(
     Icons.document_scanner_sharp,
-    color: Colors.red,size: 35,
+    color: Colors.red,size: 25,
   );
   late EdgeInsets _padding = const EdgeInsets.only(left: 5,bottom: 5);
   late bool _enableLabel = true;
