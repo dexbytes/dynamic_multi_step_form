@@ -421,7 +421,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
     return Column(mainAxisSize: MainAxisSize.min,crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(bottom: 10),
+          padding: const EdgeInsets.only(bottom: 8),
           child: Text("Vehicle Identification Number(VIN)",
             style: TextStyle(
                 fontSize: 15,
