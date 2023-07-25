@@ -168,7 +168,7 @@ class _DropDownState extends State<DropDown> {
                   });
                 },
                  child: Container(
-                  padding: EdgeInsets.only(left: 20,right: 15),
+                  padding:  viewConfiguration!._itemPadding,
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.centerLeft,
                   height: viewConfiguration!._buttonHeight,
@@ -176,7 +176,7 @@ class _DropDownState extends State<DropDown> {
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children:[
-                        Text(selectedData),
+                        Text(selectedData,style:  viewConfiguration!._textStyle),
                         viewConfiguration!._rightArrow,
                    ]
                   )

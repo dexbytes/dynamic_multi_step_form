@@ -273,7 +273,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
     if (textFieldModel!.help != null &&
         textFieldModel!.help!.text!.isNotEmpty) {
       return Padding(
-        padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+        padding: const EdgeInsets.only(top: 8.0, bottom: 8),
         child: Row(
           children: [
             Flexible(
@@ -281,7 +281,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
                 textFieldModel!.help!.text!,
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 13,
                     color: const Color(0xff000000),
                     fontWeight: FontWeight.w500),
               ),
@@ -424,7 +424,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
           padding: const EdgeInsets.only(bottom: 8),
           child: Text("Vehicle Identification Number(VIN)",
             style: TextStyle(
-                fontSize: 15,
+                fontSize: 14,
                 color: const Color(0xff494949),
                 fontWeight: FontWeight.w400),
           ),
