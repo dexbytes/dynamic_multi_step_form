@@ -457,7 +457,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
                                 textFieldModel!
                                     .elementConfig!.placeHolderLabel!,
                                 style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     color: const Color(0xff494949),
                                     fontWeight: FontWeight.w400),
                               ),
