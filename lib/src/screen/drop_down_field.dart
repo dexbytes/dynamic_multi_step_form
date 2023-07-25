@@ -168,7 +168,7 @@ class _DropDownState extends State<DropDown> {
                   });
                 },
                  child: Container(
-                  padding:  viewConfiguration!._itemPadding,
+                  padding:  viewConfiguration!._buttonPadding,
                   width: MediaQuery.of(context).size.width,
                   alignment: Alignment.centerLeft,
                   height: viewConfiguration!._buttonHeight,
