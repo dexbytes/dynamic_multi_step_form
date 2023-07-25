@@ -446,9 +446,10 @@ class _TextFieldsState extends State<TextFieldView> {
                   textFieldModel!.elementConfig!.placeHolderLabel!.isEmpty ?SizedBox():
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Padding(
-                        padding: viewConfig!.viewConfiguration!._padding,
+                        padding: EdgeInsets.zero,
                         child: Text(textFieldModel!.elementConfig!.placeHolderLabel!,
                           style: viewConfig!.viewConfiguration!._placeHolderStyle,
                       )
