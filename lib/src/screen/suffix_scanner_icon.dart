@@ -18,7 +18,7 @@ class SuffixScannerIcon extends StatefulWidget {
       this.qrScannerIconColor,
       this.iconClicked,
       this.qrScannerIconClicked,
-      this.isHideCrossIcon = false,
+      this.isHideCrossIcon = true,
       this.iconWidget,
       this.qrScannerIconWidget,
       })
@@ -73,7 +73,7 @@ class _IconClearTextFormFiledState extends State<SuffixScannerIcon> {
   @override
   Widget build(BuildContext context) {
     return enteredValue.isNotEmpty
-        ? widget.isHideCrossIcon? SizedBox():InkWell(
+        ? widget.isHideCrossIcon?InkWell(
             onTap: () => widget.iconClicked?.call(),
             child: Container(
               child: widget.iconWidget != null
@@ -82,7 +82,7 @@ class _IconClearTextFormFiledState extends State<SuffixScannerIcon> {
                       Icons.close,
                       color: widget.iconColor ?? Colors.black,
                     ),
-            ))
+            )): SizedBox()
     :InkWell(
             onTap: () => widget.qrScannerIconClicked?.call(),
             child: Container(
