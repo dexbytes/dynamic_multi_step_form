@@ -9,10 +9,10 @@ class QrScannerTextFieldView extends StatefulWidget {
 
   const QrScannerTextFieldView(
       {Key? key,
-      required this.jsonData,
-      required this.onChangeValue,
-      this.viewConfiguration,
-      this.nextFieldKey = ""})
+        required this.jsonData,
+        required this.onChangeValue,
+        this.viewConfiguration,
+        this.nextFieldKey = ""})
       : super(key: key);
 
   @override
@@ -66,9 +66,9 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
 
   _QrScannerTextFieldsState(
       {required this.jsonData,
-      required this.onChangeValue,
-      this.viewConfiguration,
-      this.nextFieldKey = ""}) {
+        required this.onChangeValue,
+        this.viewConfiguration,
+        this.nextFieldKey = ""}) {
     textFieldModel ??= responseParser.qrScannerTextFormFiledParsing(
         jsonData: jsonData, updateCommon: true);
     if (textFieldModel != null) {
@@ -95,22 +95,22 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
               textFieldModel!.value!.toString().trim().isNotEmpty) {
             _nameController!.text = packageUtil
                 .getText(
-                    "dd MMMM, yyyy",
-                    commonValidation.getTimeFromTimeStamp(
-                        dateTimeStamp: textFieldModel!.value))
+                "dd MMMM, yyyy",
+                commonValidation.getTimeFromTimeStamp(
+                    dateTimeStamp: textFieldModel!.value))
                 .toString();
             onChangeValue.call(fieldKey, textFieldModel!.value.toString());
           }
         }
 
         currentFocusNode =
-            (responseParser.getFieldFocusNode.containsKey(fieldKey)
-                ? responseParser.getFieldFocusNode[fieldKey]
-                : FocusNode())!;
+        (responseParser.getFieldFocusNode.containsKey(fieldKey)
+            ? responseParser.getFieldFocusNode[fieldKey]
+            : FocusNode())!;
         nextFocusNode =
-            (responseParser.getFieldFocusNode.containsKey(nextFieldKey)
-                ? responseParser.getFieldFocusNode[nextFieldKey]
-                : FocusNode())!;
+        (responseParser.getFieldFocusNode.containsKey(nextFieldKey)
+            ? responseParser.getFieldFocusNode[nextFieldKey]
+            : FocusNode())!;
 
         viewConfig = QrScannerViewConfig(
             viewConfiguration: viewConfiguration,
@@ -283,7 +283,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
                 style: TextStyle(
                     fontSize: 14,
                     color: const Color(0xff000000),
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w500),
               ),
             ),
           ],
@@ -296,11 +296,11 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
   VerticalDirection fieldHelpPosition() {
     try {
       if (textFieldModel!.help != null && textFieldModel!.help!.text!.isEmpty) {
-            return VerticalDirection.up;
-          }
-          else if (textFieldModel!.help != null && textFieldModel!.help!.placement!.isNotEmpty && textFieldModel!.help!.placement!.isNotEmpty && textFieldModel!.help!.placement!.toLowerCase()=="up") {
-            return VerticalDirection.up;
-          }
+        return VerticalDirection.up;
+      }
+      else if (textFieldModel!.help != null && textFieldModel!.help!.placement!.isNotEmpty && textFieldModel!.help!.placement!.isNotEmpty && textFieldModel!.help!.placement!.toLowerCase()=="up") {
+        return VerticalDirection.up;
+      }
     } catch (e) {
       print(e);
     }
@@ -393,12 +393,12 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
               }
             });*/
           },
-          child: Container(
-            margin: EdgeInsets.only(top: 8,bottom: 15),
+            child: Container(
+              margin: EdgeInsets.only(top: 8,bottom: 15),
               padding: EdgeInsets.symmetric(vertical: 5,horizontal: 20),
               decoration: BoxDecoration(
-                border: Border.all(width: 1,color: Colors.black),
-                borderRadius: BorderRadius.circular(30)
+                  border: Border.all(width: 1,color: Colors.black),
+                  borderRadius: BorderRadius.circular(30)
               ),
               child: Row(mainAxisSize: MainAxisSize.min,children: [
                 SizedBox(child: viewConfig!.viewConfiguration!._suffixScannerIcon),
@@ -424,7 +424,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
           padding: const EdgeInsets.only(bottom: 10),
           child: Text("Vehicle Identification Number(VIN)",
             style: TextStyle(
-                fontSize: 16,
+                fontSize: 15,
                 color: const Color(0xff494949),
                 fontWeight: FontWeight.w400),
           ),
@@ -458,7 +458,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
                                 textFieldModel!
                                     .elementConfig!.placeHolderLabel!,
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 16,
                                     color: const Color(0xff494949),
                                     fontWeight: FontWeight.w400),
                               ),
@@ -575,9 +575,9 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
 
   void moveToNextField(String value) {
     if (commonValidation.checkValidation(
-            enteredValue: value,
-            validationStr: textFieldModel!.validationStr!,
-            formFieldType: formFieldType) ==
+        enteredValue: value,
+        validationStr: textFieldModel!.validationStr!,
+        formFieldType: formFieldType) ==
         null) {
       nextFocusNode.requestFocus();
     }
@@ -673,12 +673,12 @@ class QrScannerViewConfig {
 
   QrScannerViewConfig(
       {required this.nameController,
-      required this.formFieldType,
-      required this.textFieldModel,
-      this.obscureTextState = true,
-      this.obscureTextStateCallBack,
-      this.textFieldCallBack,
-      this.viewConfiguration}) {
+        required this.formFieldType,
+        required this.textFieldModel,
+        this.obscureTextState = true,
+        this.obscureTextStateCallBack,
+        this.textFieldCallBack,
+        this.viewConfiguration}) {
     viewConfiguration = viewConfiguration ??
         ConfigurationSetting.instance._qrScannerTextFieldConfiguration;
   }
@@ -712,12 +712,12 @@ class QrScannerViewConfig {
         label: !enableLabel!
             ? null
             : textFieldModel.elementConfig!.label != null &&
-                    textFieldModel.elementConfig!.label!.isNotEmpty
-                ? Text(
-                    textFieldModel.elementConfig!.label!,
-                    style: viewConfiguration!._textStyle,
-                  )
-                : null,
+            textFieldModel.elementConfig!.label!.isNotEmpty
+            ? Text(
+          textFieldModel.elementConfig!.label!,
+          style: viewConfiguration!._textStyle,
+        )
+            : null,
         suffixIcon: null,
         counterText: "",
         errorMaxLines: 1);
@@ -730,27 +730,27 @@ class QrScannerViewConfig {
 
 
       // if (textFieldModel.elementConfig!.resetIcon!) {
-        suffixIcon = SuffixScannerIcon(
-          isHideCrossIcon: textFieldModel.elementConfig!.resetIcon!,
-          iconColor: viewConfiguration?._suffixIconColor,
-          qrScannerIconColor: viewConfiguration?._suffixIconColor,
-          qrScannerIconWidget: viewConfiguration?._suffixScannerIcon,
-          textController: nameController,
-          iconClicked: () {
-            nameController.text = "";
-          },
-          qrScannerIconClicked: () {},
-        );
+      suffixIcon = SuffixScannerIcon(
+        isHideCrossIcon: textFieldModel.elementConfig!.resetIcon!,
+        iconColor: viewConfiguration?._suffixIconColor,
+        qrScannerIconColor: viewConfiguration?._suffixIconColor,
+        qrScannerIconWidget: viewConfiguration?._suffixScannerIcon,
+        textController: nameController,
+        iconClicked: () {
+          nameController.text = "";
+        },
+        qrScannerIconClicked: () {},
+      );
       // }
 
       // if (textFieldModel.elementConfig!.resetIcon!) {
-        suffixIcon = SuffixCloseIcon(
-          iconColor: viewConfiguration?._suffixIconColor,
-          textController: nameController,
-          iconClicked: () {
-            nameController.text = "";
-          },
-        );
+      suffixIcon = SuffixCloseIcon(
+        iconColor: viewConfiguration?._suffixIconColor,
+        textController: nameController,
+        iconClicked: () {
+          nameController.text = "";
+        },
+      );
       // }
     }
     inputDecoration = inputDecoration.copyWith(suffixIcon: suffixIcon);
@@ -781,7 +781,7 @@ class QrMaskedTextInputFormatter extends TextInputFormatter {
             mask[newValue.text.length - 1] == separator) {
           return TextEditingValue(
             text:
-                '${oldValue.text}$separator${newValue.text.substring(newValue.text.length - 1)}',
+            '${oldValue.text}$separator${newValue.text.substring(newValue.text.length - 1)}',
             selection: TextSelection.collapsed(
               offset: newValue.selection.end + 1,
             ),
