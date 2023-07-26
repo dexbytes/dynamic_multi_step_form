@@ -47,6 +47,7 @@ class TextFieldConfiguration {
   late TextStyle? _textStyle = const TextStyle();
   late TextStyle? _hintStyle = const TextStyle();
   late TextStyle? _placeHolderStyle = const TextStyle();
+  late TextStyle?  _boldTextStyle = const TextStyle();
   late TextStyle? _labelStyle = const TextStyle();
   late TextStyle? _errorStyle = const TextStyle();
   late TextStyle? _prefixStyle = const TextStyle();
@@ -66,6 +67,7 @@ class TextFieldConfiguration {
 
   TextFieldConfiguration({
     TextStyle? textStyle,
+    TextStyle? boldTextStyle,
     TextStyle? hintStyle,
     TextStyle? labelStyle,
     TextStyle? errorStyle,
@@ -101,6 +103,7 @@ class TextFieldConfiguration {
     _labelStyle = labelStyle ?? _labelStyle;
     _errorStyle = errorStyle ?? _errorStyle;
     _placeHolderStyle = placeHolderStyle ?? _placeHolderStyle;
+    _boldTextStyle = boldTextStyle ?? _boldTextStyle;
     _prefixStyle = prefixStyle ?? _prefixStyle;
     _counterStyle = counterStyle ?? _counterStyle;
     _suffixStyle = suffixStyle ?? _suffixStyle;
@@ -119,6 +122,7 @@ class TextFieldConfiguration {
     TextStyle? errorStyle,
     TextStyle? prefixStyle,
     TextStyle? placeHolderStyle,
+    TextStyle? boldTextStyle,
     TextStyle? counterStyle,
     TextStyle? suffixStyle,
     //  String? prefixText,

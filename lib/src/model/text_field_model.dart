@@ -78,6 +78,7 @@ class ElementConfig {
   String? dateFormat;
   bool? pickDateFromCalender;
   String? placeHolderLabel;
+  bool? showTextBold;
 
   ElementConfig(
       {this.type,
@@ -98,6 +99,7 @@ class ElementConfig {
       this.minLine = 1,
       this.placeHolderLabel,
       this.maxLine = 2,
+      this.showTextBold,
       this.dateFormat});
 
   ElementConfig.fromJson(Map<String, dynamic> json) {
@@ -132,6 +134,9 @@ class ElementConfig {
     pickDateFromCalender = json.containsKey('pickDateFromCalender')
         ? json['pickDateFromCalender']
         : false;
+    showTextBold = json.containsKey('showTextBold')
+        ? json['showTextBold']
+        : false;
   }
 
   Map<String, dynamic> toJson() {
@@ -156,6 +161,7 @@ class ElementConfig {
     data['dateFormat'] = this.dateFormat;
     data['placeHolderLabel'] = this.placeHolderLabel;
     data['pickDateFromCalender'] = this.pickDateFromCalender;
+    data['showTextBold'] = this.showTextBold;
     return data;
   }
 }
