@@ -703,7 +703,7 @@ class ViewConfig {
                     textFieldModel.elementConfig!.label!.isNotEmpty
                 ? Text(
                     textFieldModel.elementConfig!.label!,
-                    style: viewConfiguration!._labelStyle,
+                    style: viewConfiguration!._hintStyle,
                   )
                 : null,
         suffixIcon: null,
