@@ -339,6 +339,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
               minLines: minLine(),
               decoration: viewConfig!.getInputDecoration(),
               obscureText: obscureText,
+              cursorColor: Colors.black,
               keyboardType: keyBoardType(formFieldType: formFieldType),
               inputFormatters: inputFormatter(),
               validator: (value) {
