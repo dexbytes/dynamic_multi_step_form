@@ -450,7 +450,7 @@ class CountryPickerViewConfig {
     return InputDecoration(
         contentPadding: viewConfiguration!._contentPadding,
         border: viewConfiguration!._border,
-        floatingLabelBehavior: FloatingLabelBehavior.never,
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
         isDense: true,
         labelStyle: viewConfiguration!._labelStyle,
         errorStyle: viewConfiguration!._errorStyle,
