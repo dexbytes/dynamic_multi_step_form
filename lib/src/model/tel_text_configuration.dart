@@ -42,6 +42,7 @@ class TelTextFieldConfiguration {
   ///  * [OutlineInputBorder], an [InputDecorator] border which draws a
   ///    rounded rectangle around the input decorator's container.
   late InputBorder? _border = const OutlineInputBorder();
+  late InputBorder? _errorBorder = const OutlineInputBorder();
   late InputBorder? _focusedBorder = const OutlineInputBorder();
 
   //late InputBorder? _errorBorder =  const OutlineInputBorder();
@@ -70,6 +71,7 @@ class TelTextFieldConfiguration {
     TextStyle? counterStyle,
     TextStyle? suffixStyle,
     InputBorder? border,
+    InputBorder? errorBorder,
     InputBorder? focusedBorder,
     bool? enableLabel,
     bool? filled,
@@ -92,6 +94,7 @@ class TelTextFieldConfiguration {
     _counterStyle = counterStyle ?? _counterStyle;
     _suffixStyle = suffixStyle ?? _suffixStyle;
     _border = border ?? _border;
+    _errorBorder = errorBorder ?? _errorBorder;
     _focusedBorder = focusedBorder ?? _focusedBorder;
     _contentPadding = contentPadding ?? _contentPadding;
     _floatingLabelBehavior = floatingLabelBehavior ?? _floatingLabelBehavior;

@@ -56,7 +56,9 @@ class _FirstScreenState extends State<FirstScreen> {
                     MaterialPageRoute(
                         builder: (context) => SecondScreen(data: data)),
                   );
-                }, currentStepCallBack: (
+                },
+
+                        currentStepCallBack: (
                             {int? currentIndex,
                             Map<String, dynamic>? formSubmitData,
                             Map<String, dynamic>? formInformation}) {

@@ -472,6 +472,7 @@ class CountryPickerViewConfig {
         /*   errorBorder: viewConfiguration!._errorBorder,
         focusedErrorBorder: viewConfiguration!._errorBorder,*/
         enabledBorder: viewConfiguration!._border,
+        errorBorder: viewConfiguration!._errorBorder,
         hintText: textFieldModel.elementConfig!.placeholder ?? "",
         hintStyle: viewConfiguration!._hintStyle,
         label: !enableLabel
