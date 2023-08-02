@@ -339,6 +339,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
               minLines: minLine(),
               decoration: viewConfig!.getInputDecoration(),
               obscureText: obscureText,
+              cursorColor: Colors.black,
               keyboardType: keyBoardType(formFieldType: formFieldType),
               inputFormatters: inputFormatter(),
               validator: (value) {
@@ -450,7 +451,7 @@ class CountryPickerViewConfig {
     return InputDecoration(
         contentPadding: viewConfiguration!._contentPadding,
         border: viewConfiguration!._border,
-        floatingLabelBehavior: FloatingLabelBehavior.never,
+        floatingLabelBehavior: FloatingLabelBehavior.auto,
         isDense: true,
         labelStyle: viewConfiguration!._labelStyle,
         errorStyle: viewConfiguration!._errorStyle,
@@ -472,6 +473,7 @@ class CountryPickerViewConfig {
         /*   errorBorder: viewConfiguration!._errorBorder,
         focusedErrorBorder: viewConfiguration!._errorBorder,*/
         enabledBorder: viewConfiguration!._border,
+        errorBorder: viewConfiguration!._errorBorder,
         hintText: textFieldModel.elementConfig!.placeholder ?? "",
         hintStyle: viewConfiguration!._hintStyle,
         label: !enableLabel
