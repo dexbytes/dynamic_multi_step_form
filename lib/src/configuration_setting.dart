@@ -12,7 +12,8 @@ class ConfigurationSetting extends TextFieldConfiguration {
   final List<String> singleLineInputFields = ['password', 'email', 'tel'];
 
   TextFieldConfiguration _textFieldConfiguration = TextFieldConfiguration();
-  PickImageViewConfiguration _pickImageViewConfiguration = PickImageViewConfiguration();
+  PickImageViewConfiguration _pickImageViewConfiguration =
+      PickImageViewConfiguration();
 
   ///Set Text field ui presentation
   set setTextFieldViewConfig(TextFieldConfiguration textFieldConfig) {
@@ -20,7 +21,8 @@ class ConfigurationSetting extends TextFieldConfiguration {
   }
 
   ///Set Text field ui presentation
-  set setPickImageViewConfigurationConfig(PickImageViewConfiguration pickImageViewConfiguration) {
+  set setPickImageViewConfigurationConfig(
+      PickImageViewConfiguration pickImageViewConfiguration) {
     _pickImageViewConfiguration = pickImageViewConfiguration;
   }
 
@@ -32,11 +34,12 @@ class ConfigurationSetting extends TextFieldConfiguration {
     _telTextFieldConfiguration = textFieldConfig;
   }
 
+  QrScannerTextFieldConfiguration _qrScannerTextFieldConfiguration =
+      QrScannerTextFieldConfiguration();
 
-
-  QrScannerTextFieldConfiguration _qrScannerTextFieldConfiguration = QrScannerTextFieldConfiguration();
   ///Set Text field ui presentation
-  set setQrScannerTextFieldViewConfig(QrScannerTextFieldConfiguration textFieldConfig) {
+  set setQrScannerTextFieldViewConfig(
+      QrScannerTextFieldConfiguration textFieldConfig) {
     _qrScannerTextFieldConfiguration = textFieldConfig;
   }
 

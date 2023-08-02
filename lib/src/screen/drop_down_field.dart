@@ -104,133 +104,167 @@ class _DropDownState extends State<DropDown> {
             ),
             DropdownButtonHideUnderline(
               child: isShowBottomSheet
-               ?  InkWell(
-                 onTap: (){
-                  showModalBottomSheet(
-                      context: context,
-                      builder: (context) => BottomSheetOnlyCardView(
-                        cardBackgroundColor: Colors.white,
-                        topLineShow: true,
-                        sheetTitle: "Select $buttonHead",
-                        child:Padding(
-                          padding: const EdgeInsets.only(bottom: 50,top: 10),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: optionList!
-                                .map((item) => DropdownMenuItem<String>(
-                              value: "${item.value}",
-                              child: Material(
-                                color: Colors.transparent,
-                                child: InkWell(
-                                  splashColor: Colors.grey.shade100,
-                                  highlightColor:Colors.grey.shade100,
-                                  onTap: (){
-                                    Navigator.pop(context,item.displayValue);
-                                  },
-                                  child:Container(
-                                    decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(
-                                          width: 0.8,color: Colors.grey.shade100))
-                                    ),
-                                    width: MediaQuery.of(context).size.width,
-                                    padding: EdgeInsets.all(10).copyWith(left:20,bottom: 12,right: 20),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          item.displayValue!,
-                                          style: viewConfiguration!._textStyle,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        item.displayValue != selectedData
-                                            ?Container()
-                                            :viewConfiguration!._bottomSheetSelectIconView!
-                                      ],
-                                    )
-                                  )
+                  ? InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                                context: context,
+                                builder: (context) => BottomSheetOnlyCardView(
+                                    cardBackgroundColor: Colors.white,
+                                    topLineShow: true,
+                                    sheetTitle: "Select $buttonHead",
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          bottom: 50, top: 10),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: optionList!
+                                            .map(
+                                                (item) =>
+                                                    DropdownMenuItem<String>(
+                                                        value: "${item.value}",
+                                                        child: Material(
+                                                          color: Colors
+                                                              .transparent,
+                                                          child: InkWell(
+                                                              splashColor: Colors
+                                                                  .grey
+                                                                  .shade100,
+                                                              highlightColor: Colors
+                                                                  .grey
+                                                                  .shade100,
+                                                              onTap: () {
+                                                                Navigator.pop(
+                                                                    context,
+                                                                    item.displayValue);
+                                                              },
+                                                              child: Container(
+                                                                  decoration: BoxDecoration(
+                                                                      border: Border(
+                                                                          bottom: BorderSide(
+                                                                              width:
+                                                                                  0.8,
+                                                                              color: Colors
+                                                                                  .grey.shade100))),
+                                                                  width: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .width,
+                                                                  padding: EdgeInsets.all(10)
+                                                                      .copyWith(
+                                                                          left:
+                                                                              20,
+                                                                          bottom:
+                                                                              12,
+                                                                          right: 20),
+                                                                  child: Row(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .spaceBetween,
+                                                                    children: [
+                                                                      Text(
+                                                                        item.displayValue!,
+                                                                        style: viewConfiguration!
+                                                                            ._textStyle,
+                                                                        overflow:
+                                                                            TextOverflow.ellipsis,
+                                                                      ),
+                                                                      item.displayValue !=
+                                                                              selectedData
+                                                                          ? Container()
+                                                                          : viewConfiguration!
+                                                                              ._bottomSheetSelectIconView!
+                                                                    ],
+                                                                  ))),
+                                                        )))
+                                            .toList(),
+                                      ),
+                                    )),
+                                isScrollControlled: true,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                        top: Radius.circular(20))))
+                            .then((value) {
+                          if (value != null) {
+                            setState(() {
+                              selectedData = value;
+                            });
+                          }
+                        });
+                      },
+                      child: Container(
+                          padding: viewConfiguration!._buttonPadding,
+                          width: MediaQuery.of(context).size.width,
+                          alignment: Alignment.centerLeft,
+                          height: viewConfiguration!._buttonHeight,
+                          decoration: viewConfiguration!._buttonDecoration,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                    selectedData.isEmpty
+                                        ? buttonHead!
+                                        : selectedData,
+                                    style: selectedData.isEmpty
+                                        ? viewConfiguration!._labelTextStyle
+                                        : viewConfiguration!._textStyle),
+                                viewConfiguration!._rightArrow,
+                              ])),
+                    )
+                  : DropdownButton2(
+                      isExpanded: true,
+                      dropdownFullScreen: false,
+                      dropdownOverButton: false,
+                      hint: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              '$buttonHead',
+                              style: viewConfiguration!._selectedTextStyle,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                      items: optionList!
+                          .map((item) => DropdownMenuItem<String>(
+                                value: "${item.value}",
+                                child: Text(
+                                  item.displayValue!,
+                                  style: viewConfiguration!._textStyle,
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                              )
-                            )).toList(),
-                          ),
-                        )
-                      ),
-                      isScrollControlled: true,
-                      shape: const RoundedRectangleBorder(
-                          borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(20)))).then((value) {
-                    if (value != null) {
-                      setState(() {
-                        selectedData = value;
-                      });
-                    }
-                  });
-                },
-                 child: Container(
-                  padding:  viewConfiguration!._buttonPadding,
-                  width: MediaQuery.of(context).size.width,
-                  alignment: Alignment.centerLeft,
-                  height: viewConfiguration!._buttonHeight,
-                  decoration: viewConfiguration!._buttonDecoration,
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children:[
-                        Text(selectedData.isEmpty?buttonHead!:selectedData,style:  selectedData.isEmpty?viewConfiguration!._labelTextStyle:viewConfiguration!._textStyle),
-                        viewConfiguration!._rightArrow,
-                   ]
-                  )
-                ),)
-              : DropdownButton2(
-                isExpanded: true,
-                dropdownFullScreen: false,
-                dropdownOverButton: false,
-                hint: Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        '$buttonHead',
-                        style: viewConfiguration!._selectedTextStyle,
-                        overflow: TextOverflow.ellipsis,
-                      ),
+                              ))
+                          .toList(),
+                      value: valueChoose,
+                      onChanged: (value) {
+                        onItemSelect(value);
+                      },
+                      icon: viewConfiguration!._rightArrow,
+                      iconSize: viewConfiguration!._iconSize,
+                      iconEnabledColor: viewConfiguration!._iconEnabledColor,
+                      iconDisabledColor: viewConfiguration!._iconDisabledColor,
+                      buttonHeight: viewConfiguration!._buttonHeight,
+                      // buttonWidth: viewConfiguration!._buttonWidth,
+                      buttonPadding: viewConfiguration!._buttonPadding,
+                      buttonDecoration: viewConfiguration!._buttonDecoration,
+                      buttonElevation: viewConfiguration!._buttonElevation!,
+                      itemHeight: viewConfiguration!._itemHeight,
+                      itemPadding: viewConfiguration!._itemPadding,
+                      dropdownMaxHeight: viewConfiguration!._dropdownMaxHeight,
+                      // dropdownWidth: viewConfiguration!._dropdownWidth,
+                      dropdownPadding: null,
+                      dropdownDecoration:
+                          viewConfiguration!._dropdownDecoration,
+                      dropdownElevation: viewConfiguration!._dropdownElevation!,
+                      scrollbarRadius: const Radius.circular(40),
+                      scrollbarThickness: 1,
+                      scrollbarAlwaysShow: true,
+                      offset: const Offset(0, 0),
                     ),
-                  ],
-                ),
-                items: optionList!
-                    .map((item) => DropdownMenuItem<String>(
-                          value: "${item.value}",
-                          child: Text(
-                            item.displayValue!,
-                            style: viewConfiguration!._textStyle,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ))
-                    .toList(),
-                value: valueChoose,
-                onChanged: (value) {
-                  onItemSelect(value);
-                },
-                icon: viewConfiguration!._rightArrow,
-                iconSize: viewConfiguration!._iconSize,
-                iconEnabledColor: viewConfiguration!._iconEnabledColor,
-                iconDisabledColor: viewConfiguration!._iconDisabledColor,
-                buttonHeight: viewConfiguration!._buttonHeight,
-                // buttonWidth: viewConfiguration!._buttonWidth,
-                buttonPadding: viewConfiguration!._buttonPadding,
-                buttonDecoration: viewConfiguration!._buttonDecoration,
-                buttonElevation: viewConfiguration!._buttonElevation!,
-                itemHeight: viewConfiguration!._itemHeight,
-                itemPadding: viewConfiguration!._itemPadding,
-                dropdownMaxHeight: viewConfiguration!._dropdownMaxHeight,
-                // dropdownWidth: viewConfiguration!._dropdownWidth,
-                dropdownPadding: null,
-                dropdownDecoration: viewConfiguration!._dropdownDecoration,
-                dropdownElevation: viewConfiguration!._dropdownElevation!,
-                scrollbarRadius: const Radius.circular(40),
-                scrollbarThickness: 1,
-                scrollbarAlwaysShow: true,
-                offset: const Offset(0, 0),
-              ),
             ),
             const SizedBox(
               height: 5,

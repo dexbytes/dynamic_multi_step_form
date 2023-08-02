@@ -16,6 +16,7 @@ class DynamicForm extends StatefulWidget {
   final EdgeInsetsGeometry? formIndicatorPadding;
   final bool? showIndicator;
   final List<List<ChildElement>>? childElementList;
+
   const DynamicForm(this.jsonEncoded,
       {this.submitButtonAlignment,
       this.dynamicFormKey,
@@ -34,6 +35,7 @@ class DynamicForm extends StatefulWidget {
 
 class DynamicFormState extends State<DynamicForm> {
   String jsonEncoded;
+
   Stream get onVariableChanged =>
       DataRefreshStream.instance.getFormFieldsStream.stream;
   Map<String, dynamic> formSubmitData = <String, dynamic>{};
@@ -239,8 +241,9 @@ class DynamicFormState extends State<DynamicForm> {
   }
 }
 
-class ChildElement{
-int? index;
-Widget? childElement;
-ChildElement({this.index = 0,required this.childElement});
+class ChildElement {
+  int? index;
+  Widget? childElement;
+
+  ChildElement({this.index = 0, required this.childElement});
 }

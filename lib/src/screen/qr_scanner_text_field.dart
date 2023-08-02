@@ -9,10 +9,10 @@ class QrScannerTextFieldView extends StatefulWidget {
 
   const QrScannerTextFieldView(
       {Key? key,
-        required this.jsonData,
-        required this.onChangeValue,
-        this.viewConfiguration,
-        this.nextFieldKey = ""})
+      required this.jsonData,
+      required this.onChangeValue,
+      this.viewConfiguration,
+      this.nextFieldKey = ""})
       : super(key: key);
 
   @override
@@ -57,18 +57,15 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
 
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
-
   String _scanBarcode = 'Unknown';
   bool? isClosed = false;
   BuildContext? contextTemp;
 
-
-
   _QrScannerTextFieldsState(
       {required this.jsonData,
-        required this.onChangeValue,
-        this.viewConfiguration,
-        this.nextFieldKey = ""}) {
+      required this.onChangeValue,
+      this.viewConfiguration,
+      this.nextFieldKey = ""}) {
     textFieldModel ??= responseParser.qrScannerTextFormFiledParsing(
         jsonData: jsonData, updateCommon: true);
     if (textFieldModel != null) {
@@ -95,22 +92,22 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
               textFieldModel!.value!.toString().trim().isNotEmpty) {
             _nameController!.text = packageUtil
                 .getText(
-                "dd MMMM, yyyy",
-                commonValidation.getTimeFromTimeStamp(
-                    dateTimeStamp: textFieldModel!.value))
+                    "dd MMMM, yyyy",
+                    commonValidation.getTimeFromTimeStamp(
+                        dateTimeStamp: textFieldModel!.value))
                 .toString();
             onChangeValue.call(fieldKey, textFieldModel!.value.toString());
           }
         }
 
         currentFocusNode =
-        (responseParser.getFieldFocusNode.containsKey(fieldKey)
-            ? responseParser.getFieldFocusNode[fieldKey]
-            : FocusNode())!;
+            (responseParser.getFieldFocusNode.containsKey(fieldKey)
+                ? responseParser.getFieldFocusNode[fieldKey]
+                : FocusNode())!;
         nextFocusNode =
-        (responseParser.getFieldFocusNode.containsKey(nextFieldKey)
-            ? responseParser.getFieldFocusNode[nextFieldKey]
-            : FocusNode())!;
+            (responseParser.getFieldFocusNode.containsKey(nextFieldKey)
+                ? responseParser.getFieldFocusNode[nextFieldKey]
+                : FocusNode())!;
 
         viewConfig = QrScannerViewConfig(
             viewConfiguration: viewConfiguration,
@@ -297,8 +294,10 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
     try {
       if (textFieldModel!.help != null && textFieldModel!.help!.text!.isEmpty) {
         return VerticalDirection.up;
-      }
-      else if (textFieldModel!.help != null && textFieldModel!.help!.placement!.isNotEmpty && textFieldModel!.help!.placement!.isNotEmpty && textFieldModel!.help!.placement!.toLowerCase()=="up") {
+      } else if (textFieldModel!.help != null &&
+          textFieldModel!.help!.placement!.isNotEmpty &&
+          textFieldModel!.help!.placement!.isNotEmpty &&
+          textFieldModel!.help!.placement!.toLowerCase() == "up") {
         return VerticalDirection.up;
       }
     } catch (e) {
@@ -367,19 +366,19 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
       );
     }
 
-    Widget scannerButtonView(){
+    Widget scannerButtonView() {
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          InkWell(onTap: (){
-            bool isQrCode = textFieldModel!.elementConfig!.isQrCodeScanner!;
-            if(isQrCode){
-              scanQR();
-            }
-            else {
-              scanBarcodeNormal();
-            }
-            /*Navigator.of(context)
+          InkWell(
+            onTap: () {
+              bool isQrCode = textFieldModel!.elementConfig!.isQrCodeScanner!;
+              if (isQrCode) {
+                scanQR();
+              } else {
+                scanBarcodeNormal();
+              }
+              /*Navigator.of(context)
                 .push(MaterialPageRoute(
               builder: (context) => ScannerView(isQrCode),
             ))
@@ -392,37 +391,47 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
                 print(e);
               }
             });*/
-          },
+            },
             child: Container(
-              margin: EdgeInsets.only(top: 8,bottom: 15),
-              padding: EdgeInsets.symmetric(vertical: 5,horizontal: 20),
+              margin: EdgeInsets.only(top: 8, bottom: 15),
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
               decoration: BoxDecoration(
-                  border: Border.all(width: 1,color: Colors.black),
-                  borderRadius: BorderRadius.circular(30)
+                  border: Border.all(width: 1, color: Colors.black),
+                  borderRadius: BorderRadius.circular(30)),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                      child: viewConfig!.viewConfiguration!._suffixScannerIcon),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    "Scan VIN",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: const Color(0xff000000),
+                        fontWeight: FontWeight.w600),
+                  )
+                ],
               ),
-              child: Row(mainAxisSize: MainAxisSize.min,children: [
-                SizedBox(child: viewConfig!.viewConfiguration!._suffixScannerIcon),
-                SizedBox(width: 10,),
-                Text("Scan VIN",
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: const Color(0xff000000),
-                      fontWeight: FontWeight.w600),
-                )
-              ],),
             ),
           ),
         ],
       );
     }
+
     // if (formFieldType == "date") {
     //   isPickFromCalendar = textFieldModel!.elementConfig!.pickDateFromCalender??true;
     // }
-    return Column(mainAxisSize: MainAxisSize.min,crossAxisAlignment: CrossAxisAlignment.start,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.only(bottom: 8),
-          child: Text("Vehicle Identification Number(VIN)",
+          child: Text(
+            "Vehicle Identification Number(VIN)",
             style: TextStyle(
                 fontSize: 14,
                 color: const Color(0xff494949),
@@ -430,142 +439,155 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
           ),
         ),
         Column(
-          mainAxisSize: MainAxisSize.min,crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           verticalDirection: fieldHelpPosition(),
           children: [
-            Column(mainAxisSize: MainAxisSize.min,crossAxisAlignment: CrossAxisAlignment.start,children: [scannerButtonView(),
-              StreamBuilder(
-                stream: onVariableChanged,
-                builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                  if (snapshot.hasData) {
-                    obscureText = snapshot.data;
-                  }
-                  return SizedBox(
-                    // height:textFieldHeight,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        !textFieldModel!.elementConfig!.enableLabel! ||
-                            textFieldModel!
-                                .elementConfig!.placeHolderLabel!.isEmpty
-                            ? SizedBox()
-                            : Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: viewConfig!.viewConfiguration!._padding,
-                              child: Text(
-                                textFieldModel!
-                                    .elementConfig!.placeHolderLabel!,
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: const Color(0xff494949),
-                                    fontWeight: FontWeight.w400),
-                              ),
-                            )
-                          ],
-                        ),
-                        TextFormField(
-                          focusNode: currentFocusNode,
-                          //strutStyle:StrutStyle(),
-                          readOnly: (formFieldType == "date" && isPickFromCalendar)
-                              ? true
-                              : textFieldModel!.validation!.isReadOnly!,
-                          enabled: !textFieldModel!.validation!.isDisabled!,
-                          onTap: () {},
-                          controller: _nameController,
-                          cursorColor: viewConfig!.viewConfiguration?._cursorColor ??
-                              Colors.blue,
-                          textInputAction:
-                          inputTextAction(textInputAction: textInputAction),
-                          maxLength: textFieldModel!.validation!.maxLength,
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                scannerButtonView(),
+                StreamBuilder(
+                  stream: onVariableChanged,
+                  builder:
+                      (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                    if (snapshot.hasData) {
+                      obscureText = snapshot.data;
+                    }
+                    return SizedBox(
+                      // height:textFieldHeight,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          !textFieldModel!.elementConfig!.enableLabel! ||
+                                  textFieldModel!
+                                      .elementConfig!.placeHolderLabel!.isEmpty
+                              ? SizedBox()
+                              : Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: viewConfig!
+                                          .viewConfiguration!._padding,
+                                      child: Text(
+                                        textFieldModel!
+                                            .elementConfig!.placeHolderLabel!,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            color: const Color(0xff494949),
+                                            fontWeight: FontWeight.w400),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                          TextFormField(
+                            focusNode: currentFocusNode,
+                            //strutStyle:StrutStyle(),
+                            readOnly:
+                                (formFieldType == "date" && isPickFromCalendar)
+                                    ? true
+                                    : textFieldModel!.validation!.isReadOnly!,
+                            enabled: !textFieldModel!.validation!.isDisabled!,
+                            onTap: () {},
+                            controller: _nameController,
+                            cursorColor:
+                                viewConfig!.viewConfiguration?._cursorColor ??
+                                    Colors.blue,
+                            textInputAction: inputTextAction(
+                                textInputAction: textInputAction),
+                            maxLength: textFieldModel!.validation!.maxLength,
 
-                          ///It is the length of char
-                          maxLines: maxLine(),
-                          minLines: minLine(),
-                          textCapitalization:
-                          textCapitalize(textCapitalizeStr: textCapitalizeStr),
-                          decoration: viewConfig!.getInputDecoration(context),
-                          obscureText: obscureText,
-                          keyboardType: keyBoardType(formFieldType: formFieldType),
-                          inputFormatters:
-                          inputFormatter(formFieldType: formFieldType),
-                          validator: (value) {
-                            if (value!.isEmpty && !checkValid) {
-                              return null;
-                            } else if (value.isNotEmpty &&
-                                !checkValid &&
-                                !checkValidOnChange) {
-                              return null;
-                            }
-                            return commonValidation.checkValidation(
-                                enteredValue: value,
-                                validationStr: textFieldModel!.validationStr!,
-                                formFieldType: formFieldType);
-                          },
-                          onChanged: (value) {
-                            if (mounted) {
-                              onChangeValue.call(fieldKey, value);
-                              commonValidation.checkValidation(
+                            ///It is the length of char
+                            maxLines: maxLine(),
+                            minLines: minLine(),
+                            textCapitalization: textCapitalize(
+                                textCapitalizeStr: textCapitalizeStr),
+                            decoration: viewConfig!.getInputDecoration(context),
+                            obscureText: obscureText,
+                            keyboardType:
+                                keyBoardType(formFieldType: formFieldType),
+                            inputFormatters:
+                                inputFormatter(formFieldType: formFieldType),
+                            validator: (value) {
+                              if (value!.isEmpty && !checkValid) {
+                                return null;
+                              } else if (value.isNotEmpty &&
+                                  !checkValid &&
+                                  !checkValidOnChange) {
+                                return null;
+                              }
+                              return commonValidation.checkValidation(
                                   enteredValue: value,
                                   validationStr: textFieldModel!.validationStr!,
                                   formFieldType: formFieldType);
+                            },
+                            onChanged: (value) {
+                              if (mounted) {
+                                onChangeValue.call(fieldKey, value);
+                                commonValidation.checkValidation(
+                                    enteredValue: value,
+                                    validationStr:
+                                        textFieldModel!.validationStr!,
+                                    formFieldType: formFieldType);
 
-                              // if(validate !=null ){
-                              //   textFieldHeight = 80;
-                              // }else{
-                              //   textFieldHeight = 50;
-                              // }
-                            }
-                          },
-                          onSaved: (value) {
-                            //Check all validation on submit
-                            /*if((!checkValidOnChange && checkValid)){
+                                // if(validate !=null ){
+                                //   textFieldHeight = 80;
+                                // }else{
+                                //   textFieldHeight = 50;
+                                // }
+                              }
+                            },
+                            onSaved: (value) {
+                              //Check all validation on submit
+                              /*if((!checkValidOnChange && checkValid)){
                         setState(() {
                           checkValidOnSubmit = true;
                         });
                         _formFieldKey.currentState!.validate();
                       }*/
-                            //Check validation on submit and will not submit data on server
-                            if ((value!.isNotEmpty && checkValid)) {
-                              /*setState(() {
+                              //Check validation on submit and will not submit data on server
+                              if ((value!.isNotEmpty && checkValid)) {
+                                /*setState(() {
                           checkValidOnSubmit = true;
                           autovalidateMode = _autoValidate(checkValidOnSubmit : true);
                         });*/
-                              // _formFieldKey.currentState!.validate();
-                            } else if ((checkValid)) {
-                              /*setState(() {
+                                // _formFieldKey.currentState!.validate();
+                              } else if ((checkValid)) {
+                                /*setState(() {
                           checkValidOnSubmit = true;
                           autovalidateMode = _autoValidate(checkValidOnSubmit : true);
                         });*/
 
-                              // _formFieldKey.currentState!.validate();
-                            }
-                            //Check validation on submit and will not submit data on server
-                            /*else if((value.isNotEmpty && !checkValidOnChange && !checkValid)){
+                                // _formFieldKey.currentState!.validate();
+                              }
+                              //Check validation on submit and will not submit data on server
+                              /*else if((value.isNotEmpty && !checkValidOnChange && !checkValid)){
                         setState(() {
                           checkValidOnSubmit = true;
                         });
                         _formFieldKey.currentState!.validate();
                       }*/
-                          },
-                          onFieldSubmitted: (value) {
-                            if ((value.isNotEmpty && checkValid)) {
-                              setState(() {
-                                checkValidOnChange = true;
-                                autovalidateMode = _autoValidate();
-                              });
+                            },
+                            onFieldSubmitted: (value) {
+                              if ((value.isNotEmpty && checkValid)) {
+                                setState(() {
+                                  checkValidOnChange = true;
+                                  autovalidateMode = _autoValidate();
+                                });
 
-                              moveToNextField(value);
-                            }
-                          },
-                          autovalidateMode: autovalidateMode,
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),],),
+                                moveToNextField(value);
+                              }
+                            },
+                            autovalidateMode: autovalidateMode,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
             fieldHelpText(),
           ],
         ),
@@ -575,18 +597,17 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
 
   void moveToNextField(String value) {
     if (commonValidation.checkValidation(
-        enteredValue: value,
-        validationStr: textFieldModel!.validationStr!,
-        formFieldType: formFieldType) ==
+            enteredValue: value,
+            validationStr: textFieldModel!.validationStr!,
+            formFieldType: formFieldType) ==
         null) {
       nextFocusNode.requestFocus();
     }
   }
 
-
   Future<void> startBarcodeScanStream() async {
     FlutterBarcodeScanner.getBarcodeStreamReceiver(
-        '#ff6666', 'Cancel', true, ScanMode.BARCODE)!
+            '#ff6666', 'Cancel', true, ScanMode.BARCODE)!
         .listen((barcode) => print(barcode));
   }
 
@@ -607,7 +628,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
     if (!mounted) return;
     setState(() {
       _scanBarcode = barcodeScanRes;
-      if(_scanBarcode=="-1"){
+      if (_scanBarcode == "-1") {
         _scanBarcode = "";
       }
     });
@@ -643,7 +664,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
 
     setState(() {
       _scanBarcode = barcodeScanRes;
-      if(_scanBarcode=="-1"){
+      if (_scanBarcode == "-1") {
         _scanBarcode = "";
       }
     });
@@ -673,12 +694,12 @@ class QrScannerViewConfig {
 
   QrScannerViewConfig(
       {required this.nameController,
-        required this.formFieldType,
-        required this.textFieldModel,
-        this.obscureTextState = true,
-        this.obscureTextStateCallBack,
-        this.textFieldCallBack,
-        this.viewConfiguration}) {
+      required this.formFieldType,
+      required this.textFieldModel,
+      this.obscureTextState = true,
+      this.obscureTextStateCallBack,
+      this.textFieldCallBack,
+      this.viewConfiguration}) {
     viewConfiguration = viewConfiguration ??
         ConfigurationSetting.instance._qrScannerTextFieldConfiguration;
   }
@@ -712,12 +733,12 @@ class QrScannerViewConfig {
         label: !enableLabel!
             ? null
             : textFieldModel.elementConfig!.label != null &&
-            textFieldModel.elementConfig!.label!.isNotEmpty
-            ? Text(
-          textFieldModel.elementConfig!.label!,
-          style: viewConfiguration!._textStyle,
-        )
-            : null,
+                    textFieldModel.elementConfig!.label!.isNotEmpty
+                ? Text(
+                    textFieldModel.elementConfig!.label!,
+                    style: viewConfiguration!._textStyle,
+                  )
+                : null,
         suffixIcon: null,
         counterText: "",
         errorMaxLines: 1);
@@ -727,8 +748,6 @@ class QrScannerViewConfig {
     InputDecoration inputDecoration = _getTextDecoration();
     Widget? suffixIcon;
     if (textFieldModel.elementConfig != null) {
-
-
       // if (textFieldModel.elementConfig!.resetIcon!) {
       suffixIcon = SuffixScannerIcon(
         isHideCrossIcon: textFieldModel.elementConfig!.resetIcon!,
@@ -781,7 +800,7 @@ class QrMaskedTextInputFormatter extends TextInputFormatter {
             mask[newValue.text.length - 1] == separator) {
           return TextEditingValue(
             text:
-            '${oldValue.text}$separator${newValue.text.substring(newValue.text.length - 1)}',
+                '${oldValue.text}$separator${newValue.text.substring(newValue.text.length - 1)}',
             selection: TextSelection.collapsed(
               offset: newValue.selection.end + 1,
             ),
@@ -834,8 +853,6 @@ class QrScannerCardNumberFormatter extends TextInputFormatter {
     return oldValue;
   }
 }
-
-
 
 /*
 class ScannerView extends StatefulWidget {
@@ -957,7 +974,7 @@ class _ScannerViewState extends State<ScannerView> {
                             child: Text('Start QR scan')),
                         ElevatedButton(
                             onPressed: () => startBarcodeScanStream(),
-                            child: Text('Start barcode scan stream')),*//*
+                            child: Text('Start barcode scan stream')),*/ /*
 
                         Text('$_scanBarcode\n',
                             style: TextStyle(fontSize: 10))

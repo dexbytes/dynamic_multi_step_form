@@ -78,7 +78,9 @@ class ElementConfig {
     isMultipleSelect =
         json.containsKey('isMulitpleSelect') ? json['isMulitpleSelect'] : false;
     isInline = json.containsKey('isInline') ? json['isInline'] : false;
-    isShowBottomSheet = json.containsKey('isShowBottomSheet') ? json['isShowBottomSheet'] : false;
+    isShowBottomSheet = json.containsKey('isShowBottomSheet')
+        ? json['isShowBottomSheet']
+        : false;
   }
 
   Map<String, dynamic> toJson() {

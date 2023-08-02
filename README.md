@@ -42,7 +42,9 @@ dynamic_multi_step_form: ^1.1.3
 ![alt text](https://github.com/dexbytes/dynamic_multi_step_form/blob/master/lib/ui_image/multi_step_form.png?raw=true)
 
 Credit for sample UI: https://dribbble.com/shots/16885694-Upload-KYC-screens
+
 ## Add below in Info.plist file
+
 Add below line for QR scanner field
 <key>io.flutter.embedded_views_preview</key>
 <true/>

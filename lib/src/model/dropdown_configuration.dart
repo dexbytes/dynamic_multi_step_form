@@ -29,7 +29,7 @@ class DropdownConfiguration {
     border: Border.all(
       color: Color(0xffAEAEAE),
     ),
-    color:Colors.white,
+    color: Colors.white,
   );
 
   /// The decoration of the dropdown menu
@@ -65,10 +65,8 @@ class DropdownConfiguration {
   /// The highlight color of the current selected item
   late Color? _selectedItemHighlightColor = Colors.grey;
 
-
-  late Widget? _bottomSheetSelectIconView = Icon(
-    Icons.check_circle_sharp,
-    color: Colors.green);
+  late Widget? _bottomSheetSelectIconView =
+      Icon(Icons.check_circle_sharp, color: Colors.green);
 
   DropdownConfiguration(
       {TextStyle? textStyle,
@@ -90,12 +88,12 @@ class DropdownConfiguration {
       EdgeInsetsGeometry? itemPadding,
       int? buttonElevation,
       Widget? bottomSheetSelectIconView,
-      int? dropdownElevation}){
+      int? dropdownElevation}) {
     _textStyle = textStyle ?? _textStyle;
-    _rightArrow =  rightArrow ?? _rightArrow;
+    _rightArrow = rightArrow ?? _rightArrow;
     _labelTextStyle = labelTextStyle ?? _labelTextStyle;
-    _selectedTextStyle =  selectedTextStyle ?? _selectedTextStyle;
-    _iconEnabledColor =  iconEnabledColor ?? _iconEnabledColor;
+    _selectedTextStyle = selectedTextStyle ?? _selectedTextStyle;
+    _iconEnabledColor = iconEnabledColor ?? _iconEnabledColor;
     _iconDisabledColor = iconDisabledColor ?? _iconDisabledColor;
     _buttonDecoration = buttonDecoration ?? _buttonDecoration;
     _dropdownDecoration = dropdownDecoration ?? _dropdownDecoration;
@@ -107,11 +105,13 @@ class DropdownConfiguration {
     _itemPadding = itemPadding ?? _itemPadding;
     _buttonElevation = buttonElevation ?? _buttonElevation;
     _dropdownElevation = dropdownElevation ?? _dropdownElevation;
-    _selectedItemHighlightColor = selectedItemHighlightColor ?? _selectedItemHighlightColor;
-    _bottomSheetSelectIconView = bottomSheetSelectIconView ?? _bottomSheetSelectIconView;
+    _selectedItemHighlightColor =
+        selectedItemHighlightColor ?? _selectedItemHighlightColor;
+    _bottomSheetSelectIconView =
+        bottomSheetSelectIconView ?? _bottomSheetSelectIconView;
   }
 
- /* DropdownConfiguration setConfiguration(
+  /* DropdownConfiguration setConfiguration(
       {TextStyle? textStyle,
       Widget? rightArrow,
       InputBorder? border,

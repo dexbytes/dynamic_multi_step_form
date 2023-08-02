@@ -1,4 +1,3 @@
-
 part of dynamic_multi_step_form;
 
 // enum formFieldType {text,name,email,tel,url,number,textMultiline}
@@ -68,8 +67,10 @@ class _TextFieldsState extends State<TextFieldView> {
       _nameController!.text = textFieldModel!.value ?? "";
 
       if (textFieldModel!.elementConfig != null) {
-        textCapitalizeStr = textFieldModel!.elementConfig!.textCapitalization ?? "none";
-        textInputAction = textFieldModel!.elementConfig!.textCapitalization ?? "none";
+        textCapitalizeStr =
+            textFieldModel!.elementConfig!.textCapitalization ?? "none";
+        textInputAction =
+            textFieldModel!.elementConfig!.textCapitalization ?? "none";
         formFieldType = textFieldModel!.elementConfig!.type ?? "text";
         formFieldType = formFieldType.toLowerCase();
         fieldKey = textFieldModel!.elementConfig!.name!;
@@ -210,7 +211,6 @@ class _TextFieldsState extends State<TextFieldView> {
     return textCapitalization;
   }
 
-
   TextInputAction inputTextAction({required String textInputAction}) {
     TextInputAction textInputAction = TextInputAction.next;
     switch (textCapitalizeStr.toLowerCase()) {
@@ -229,7 +229,6 @@ class _TextFieldsState extends State<TextFieldView> {
     }
     return textInputAction;
   }
-
 
   getDateFormatter({dateFormat = "mm/dd/yy"}) {
     switch (dateFormat.toString().toLowerCase()) {
@@ -441,23 +440,29 @@ class _TextFieldsState extends State<TextFieldView> {
             }
             return SizedBox(
               // height:textFieldHeight,
-              child: Column(mainAxisSize: MainAxisSize.min,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  textFieldModel!.elementConfig!.placeHolderLabel!.isEmpty ?SizedBox():
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.zero,
-                        child: Text(textFieldModel!.elementConfig!.placeHolderLabel!,
-                          style: viewConfig!.viewConfiguration!._placeHolderStyle,
-                      )
-                      )
-                    ],
-                  ),
+                  textFieldModel!.elementConfig!.placeHolderLabel!.isEmpty
+                      ? SizedBox()
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Padding(
+                                padding: EdgeInsets.zero,
+                                child: Text(
+                                  textFieldModel!
+                                      .elementConfig!.placeHolderLabel!,
+                                  style: viewConfig!
+                                      .viewConfiguration!._placeHolderStyle,
+                                ))
+                          ],
+                        ),
                   TextFormField(
-                    style: textFieldModel!.elementConfig!.showTextBold == true ?viewConfig!.viewConfiguration!._boldTextStyle:TextStyle(fontSize: 16,color: Colors.black),
+                    style: textFieldModel!.elementConfig!.showTextBold == true
+                        ? viewConfig!.viewConfiguration!._boldTextStyle
+                        : TextStyle(fontSize: 16, color: Colors.black),
                     focusNode: currentFocusNode,
                     //strutStyle:StrutStyle(),
                     readOnly: (formFieldType == "date" && isPickFromCalendar)
@@ -469,16 +474,19 @@ class _TextFieldsState extends State<TextFieldView> {
                           !(textFieldModel!.validation!.isReadOnly!) &&
                           isPickFromCalendar) {
                         pickDate(context,
-                            firstDateTS: textFieldModel!.elementConfig!.firstDate,
+                            firstDateTS:
+                                textFieldModel!.elementConfig!.firstDate,
                             initialDateTS:
                                 textFieldModel!.elementConfig!.initialDate,
-                            lastDateTS: textFieldModel!.elementConfig!.lastDate);
+                            lastDateTS:
+                                textFieldModel!.elementConfig!.lastDate);
                       }
                     },
                     controller: _nameController,
-                    cursorColor:
-                        viewConfig!.viewConfiguration?._cursorColor ?? Colors.blue,
-                    textInputAction: inputTextAction(textInputAction: textInputAction),
+                    cursorColor: viewConfig!.viewConfiguration?._cursorColor ??
+                        Colors.blue,
+                    textInputAction:
+                        inputTextAction(textInputAction: textInputAction),
                     maxLength: textFieldModel!.validation!.maxLength,
 
                     ///It is the length of char
@@ -489,7 +497,8 @@ class _TextFieldsState extends State<TextFieldView> {
                     decoration: viewConfig!.getInputDecoration(),
                     obscureText: obscureText,
                     keyboardType: keyBoardType(formFieldType: formFieldType),
-                    inputFormatters: inputFormatter(formFieldType: formFieldType),
+                    inputFormatters:
+                        inputFormatter(formFieldType: formFieldType),
                     validator: (value) {
                       if (value!.isEmpty && !checkValid) {
                         return null;
@@ -623,7 +632,7 @@ class _TextFieldsState extends State<TextFieldView> {
         context: context,
         fieldLabelText: "DOB",
         initialDate: initialDate,
-        initialDatePickerMode:DatePickerMode.year,
+        initialDatePickerMode: DatePickerMode.year,
         initialEntryMode: DatePickerEntryMode.calendarOnly,
         firstDate: firstDate,
         lastDate: lastDate,

@@ -118,7 +118,8 @@ class ResponseParser {
   QrScannerTextFieldModel? qrScannerTextFormFiledParsing(
       {required Map<String, dynamic> jsonData, bool updateCommon = false}) {
     try {
-      QrScannerTextFieldModel textFieldModel = QrScannerTextFieldModel.fromJson(jsonData);
+      QrScannerTextFieldModel textFieldModel =
+          QrScannerTextFieldModel.fromJson(jsonData);
       if (updateCommon) {}
       return textFieldModel;
     } catch (e) {

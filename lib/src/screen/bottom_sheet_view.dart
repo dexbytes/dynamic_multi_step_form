@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class BottomSheetOnlyCardView extends StatelessWidget {
   final String sheetTitle;
   final TextStyle sheetTitleStyle;
@@ -19,7 +18,8 @@ class BottomSheetOnlyCardView extends StatelessWidget {
   BottomSheetOnlyCardView({
     Key? key,
     this.sheetTitle = "",
-    this.sheetTitleStyle = const TextStyle(color: Colors.black,fontSize: 16,fontWeight: FontWeight.w500),
+    this.sheetTitleStyle = const TextStyle(
+        color: Colors.black, fontSize: 16, fontWeight: FontWeight.w500),
     this.topLineColor = Colors.grey,
     this.topLineThickness = 4,
     this.topLineWidth = 50,
