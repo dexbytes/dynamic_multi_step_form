@@ -51,7 +51,11 @@ class DynamicFormState extends State<DynamicForm> {
       currentIndex += 1;
       final _formKeyNew = GlobalKey<SingleFormState>();
       formInformation.add(entry.value['title']);
-      return SingleForm(
+      Map<String, dynamic>? filledFormData;
+      if(this.formSubmitData.isNotEmpty && this.formSubmitData.containsKey('$currentIndex')){
+        filledFormData  =  this.formSubmitData['$currentIndex'];
+      }
+      return SingleForm(filledFormData: filledFormData,
           singleFormKey: _formKeyNew,
           formData: entry.value,
           nextPageButtonClick: (index, Map<String, dynamic> formSubmitData) {
@@ -122,6 +126,9 @@ class DynamicFormState extends State<DynamicForm> {
 
   ///Preview step button click event
   void previewStepCustomClick() {
+
+
+
     Map<String, dynamic>? data = formScreen[responseParser.getCurrentFormNumber]
         .singleFormKey!
         .currentState!
@@ -137,6 +144,10 @@ class DynamicFormState extends State<DynamicForm> {
             responseParser.getCurrentFormNumber - 1;
       });
     }
+
+
+
+
     widget.currentStepCallBack?.call(
         currentIndex: responseParser.getCurrentFormNumber,
         formSubmitData: data,

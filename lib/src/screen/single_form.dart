@@ -3,6 +3,7 @@ part of dynamic_multi_step_form;
 /// Single form view
 class SingleForm extends StatefulWidget {
   final Map<String, dynamic> formData;
+  final Map<String, dynamic>? filledFormData;
   final int index;
   final Function(int, Map<String, dynamic>)? nextPageButtonClick;
   final Function(int, Map<String, dynamic>)? finalSubmitCallBack;
@@ -16,6 +17,7 @@ class SingleForm extends StatefulWidget {
       this.submitButtonAlignment,
       required this.formData,
       this.nextPageButtonClick,
+      this.filledFormData,
       this.finalSubmitCallBack,
       this.nextPageButton,
       this.priPageButton,
@@ -25,7 +27,7 @@ class SingleForm extends StatefulWidget {
 
   @override
   State<SingleForm> createState() =>
-      SingleFormState(index: index, formData: formData);
+      SingleFormState(index: index, formData: formData,filledFormData:this.filledFormData);
 }
 
 class SingleFormState extends State<SingleForm> {
@@ -49,8 +51,8 @@ class SingleFormState extends State<SingleForm> {
   String? title = "";
   String description = "";
   Map<String, dynamic> formInformation = {};
-
-  SingleFormState({int index = 0, required this.formData}) {
+  Map<String, dynamic>? filledFormData;
+  SingleFormState({int index = 0, required this.formData,this.filledFormData}) {
     formFieldList = formData['formFields'];
     try {
       formName = formData['formName'];

@@ -158,6 +158,12 @@
       "languageVersion": "2.19"
     },
     {
+      "name": "lints",
+      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/lints-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/matcher-0.12.15",
       "packageUri": "lib/",
@@ -386,7 +392,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2023-08-02T12:52:09.493744Z",
+  "generated": "2023-08-03T13:11:26.831449Z",
   "generator": "pub",
   "generatorVersion": "3.0.5"
 }

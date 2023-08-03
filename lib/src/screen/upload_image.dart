@@ -207,7 +207,7 @@ class _UploadImageState extends State<UploadImageView> {
                       child: viewConfiguration!.emptyImgView),
                 )
               : ClipRRect(
-                  borderRadius: viewConfiguration!.borderRadius,
+                  borderRadius: viewConfiguration!.borderRadius!,
                   child: Stack(
                     children: [
                       imageView(imagePath),
