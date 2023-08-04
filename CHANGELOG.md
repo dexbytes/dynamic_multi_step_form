@@ -1,3 +1,19 @@
+## [1.1.3+3] - 04/08/2023
+
+Code style update.
+
+## [1.1.3+2] - 04/08/2023
+
+Code style update.
+
+## [1.1.3+1] - 03/08/2023
+
+Code style update.
+
+## [1.1.3] - 02/07/2023
+
+Image upload and QR coder scanner field added.
+
 ## [1.1.2+6] - 28/04/2023
 
 Code style update.

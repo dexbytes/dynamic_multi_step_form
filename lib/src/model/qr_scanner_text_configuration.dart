@@ -54,9 +54,10 @@ class QrScannerTextFieldConfiguration {
   late Widget _prefix = Container();
   late Widget? _suffixScannerIcon = Icon(
     Icons.document_scanner_sharp,
-    color: Colors.red,size: 25,
+    color: Colors.red,
+    size: 25,
   );
-  late EdgeInsets _padding = const EdgeInsets.only(left: 5,bottom: 5);
+  late EdgeInsets _padding = const EdgeInsets.only(left: 5, bottom: 5);
   late bool _enableLabel = true;
   late bool _filled = true;
   late Color _fillColor = Colors.transparent;
@@ -160,6 +161,7 @@ class QrScannerTextFieldConfiguration {
   set setSuffixScannerIcon(value) {
     _suffixScannerIcon = value;
   }
+
   set setBorder(value) {
     _border = value;
   }
@@ -177,4 +179,5 @@ class QrScannerTextFieldConfiguration {
   }
 }
 
-QrScannerTextFieldConfiguration qrScannerTextFieldConfiguration = QrScannerTextFieldConfiguration();
+QrScannerTextFieldConfiguration qrScannerTextFieldConfiguration =
+    QrScannerTextFieldConfiguration();

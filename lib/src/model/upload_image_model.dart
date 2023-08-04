@@ -7,10 +7,10 @@ class UploadImageModel {
 
   UploadImageModel(
       {this.elementType,
-        this.elementConfig,
-        this.value,
-        this.validation,
-        this.valid});
+      this.elementConfig,
+      this.value,
+      this.validation,
+      this.valid});
 
   UploadImageModel.fromJson(Map<String, dynamic> json) {
     elementType = json['elementType'];
@@ -49,7 +49,7 @@ class ElementConfig {
 
   ElementConfig.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    label = json['label']??"";
+    label = json['label'] ?? "";
     enableLabel = json['enableLabel'];
     initialValue = json['initialValue'];
   }

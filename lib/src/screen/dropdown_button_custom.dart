@@ -1688,7 +1688,8 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
     if (result == null) {
       /// If there's no MediaQuery, then use the window aspect to determine
       /// orientation.
-      final Size size = WidgetsBinding.instance.window.physicalSize;
+      // final Size size = WidgetsBinding.instance.window.physicalSize;
+      final Size size = View.of(context).physicalSize;
       result = size.width > size.height
           ? Orientation.landscape
           : Orientation.portrait;
@@ -1730,8 +1731,9 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
       hintIndex = items.length;
       items.add(DefaultTextStyle(
         style: _textStyle!.copyWith(color: Theme.of(context).hintColor),
-        child: IgnorePointer(
-          ignoringSemantics: false,
+        child:
+          ExcludeSemantics(
+            excluding: false,
           child: displayedHint,
         ),
       ));

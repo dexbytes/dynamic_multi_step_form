@@ -47,7 +47,7 @@ class _FirstScreenState extends State<FirstScreen> {
               children: [
                 Expanded(
                     // Add jsonString from example assets file or json encoded String.
-                    child: DynamicForm(jsonString, dynamicFormKey: _formKeyNew,
+                    child: DynamicForm(jsonString,childElementList: [] ,dynamicFormKey: _formKeyNew,
                         finalSubmitCallBack:
                             (int currentPage, Map<String, dynamic> data) async {
                   //Get all entered information on final or last form submit and redirect to another scree to display entered information

@@ -30,19 +30,21 @@ This plugin relies on the flutter core.
 
 ## Usage
 
-To use the plugin you just need to add dynamic_multi_step_form: ^1.1.2+6 into your pubspec.yaml file
+To use the plugin you just need to add dynamic_multi_step_form: ^1.1.3+3 into your pubspec.yaml file
 and run pub get.
 
 ## Add following into your package's pubspec.yaml (and run an implicit dart pub get):
 
-dynamic_multi_step_form: ^1.1.2+6
+dynamic_multi_step_form: ^1.1.3+3
 
 ## Multi Step Form UI Sample
 
 ![alt text](https://github.com/dexbytes/dynamic_multi_step_form/blob/master/lib/ui_image/multi_step_form.png?raw=true)
 
 Credit for sample UI: https://dribbble.com/shots/16885694-Upload-KYC-screens
+
 ## Add below in Info.plist file
+
 Add below line for QR scanner field
 <key>io.flutter.embedded_views_preview</key>
 <true/>

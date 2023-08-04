@@ -33,9 +33,9 @@ dependencies:
   dynamic_multi_step_form:
     path: ..//
   http: ^0.13.3
-#  dynamic_multi_step_form:
-#    git:
-#     url: https://github.com/dexbytes/dynamic_multi_step_form.git
+  #  dynamic_multi_step_form:
+  #    git:
+  #     url: https://github.com/dexbytes/dynamic_multi_step_form.git
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2

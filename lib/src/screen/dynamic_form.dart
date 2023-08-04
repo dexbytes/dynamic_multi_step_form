@@ -15,10 +15,12 @@ class DynamicForm extends StatefulWidget {
   final EdgeInsetsGeometry? formPadding;
   final EdgeInsetsGeometry? formIndicatorPadding;
   final bool? showIndicator;
+  final List<List<ChildElement>>? childElementList;
 
   const DynamicForm(this.jsonEncoded,
       {this.submitButtonAlignment,
       this.dynamicFormKey,
+      this.childElementList = const [],
       this.showIndicator = true,
       required this.finalSubmitCallBack,
       this.currentStepCallBack,
@@ -49,7 +51,11 @@ class DynamicFormState extends State<DynamicForm> {
       currentIndex += 1;
       final _formKeyNew = GlobalKey<SingleFormState>();
       formInformation.add(entry.value['title']);
-      return SingleForm(
+      Map<String, dynamic>? filledFormData;
+      if(this.formSubmitData.isNotEmpty && this.formSubmitData.containsKey('$currentIndex')){
+        filledFormData  =  this.formSubmitData['$currentIndex'];
+      }
+      return SingleForm(filledFormData: filledFormData,
           singleFormKey: _formKeyNew,
           formData: entry.value,
           nextPageButtonClick: (index, Map<String, dynamic> formSubmitData) {
@@ -120,6 +126,9 @@ class DynamicFormState extends State<DynamicForm> {
 
   ///Preview step button click event
   void previewStepCustomClick() {
+
+
+
     Map<String, dynamic>? data = formScreen[responseParser.getCurrentFormNumber]
         .singleFormKey!
         .currentState!
@@ -135,6 +144,10 @@ class DynamicFormState extends State<DynamicForm> {
             responseParser.getCurrentFormNumber - 1;
       });
     }
+
+
+
+
     widget.currentStepCallBack?.call(
         currentIndex: responseParser.getCurrentFormNumber,
         formSubmitData: data,
@@ -237,4 +250,11 @@ class DynamicFormState extends State<DynamicForm> {
             ),
     );
   }
+}
+
+class ChildElement {
+  int? index;
+  Widget? childElement;
+
+  ChildElement({this.index = 0, required this.childElement});
 }

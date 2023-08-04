@@ -108,9 +108,8 @@ class ElementConfig {
     textCapitalization = json.containsKey('textCapitalization')
         ? json['textCapitalization']
         : "none";
-    textInputAction = json.containsKey('textInputAction')
-        ? json['textInputAction']
-        : "none";
+    textInputAction =
+        json.containsKey('textInputAction') ? json['textInputAction'] : "none";
     name = json['name'];
     label = json['label'];
     if (json.containsKey('enableLabel')) {
@@ -130,13 +129,13 @@ class ElementConfig {
     lastDate = json.containsKey('lastDate') ? json['lastDate'] : '';
     initialDate = json.containsKey('initialDate') ? json['initialDate'] : '';
     dateFormat = json.containsKey('dateFormat') ? json['dateFormat'] : '';
-    placeHolderLabel = json.containsKey('placeHolderLabel') ? json['placeHolderLabel'] : '';
+    placeHolderLabel =
+        json.containsKey('placeHolderLabel') ? json['placeHolderLabel'] : '';
     pickDateFromCalender = json.containsKey('pickDateFromCalender')
         ? json['pickDateFromCalender']
         : false;
-    showTextBold = json.containsKey('showTextBold')
-        ? json['showTextBold']
-        : false;
+    showTextBold =
+        json.containsKey('showTextBold') ? json['showTextBold'] : false;
   }
 
   Map<String, dynamic> toJson() {

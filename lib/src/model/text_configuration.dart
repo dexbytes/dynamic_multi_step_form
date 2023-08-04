@@ -47,7 +47,7 @@ class TextFieldConfiguration {
   late TextStyle? _textStyle = const TextStyle();
   late TextStyle? _hintStyle = const TextStyle();
   late TextStyle? _placeHolderStyle = const TextStyle();
-  late TextStyle?  _boldTextStyle = const TextStyle();
+  late TextStyle? _boldTextStyle = const TextStyle();
   late TextStyle? _labelStyle = const TextStyle();
   late TextStyle? _errorStyle = const TextStyle();
   late TextStyle? _prefixStyle = const TextStyle();
@@ -55,7 +55,7 @@ class TextFieldConfiguration {
   late TextStyle? _suffixStyle = const TextStyle();
   late String _suffixText = '';
   late Widget _prefix = Container();
-  late EdgeInsets _padding = const EdgeInsets.only(left: 5,bottom: 5);
+  late EdgeInsets _padding = const EdgeInsets.only(left: 5, bottom: 5);
   late bool _enableLabel = true;
   late bool _filled = true;
   late Color _fillColor = Colors.transparent;

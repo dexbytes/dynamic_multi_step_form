@@ -53,7 +53,7 @@
           "elementType": "select",
           "elementConfig": {
             "name": "documentType",
-            "label": "",
+            "label": "Aadhar Card",
             "buttonHead": "Select city",
             "enableLabel": true,
             "placeholder": "Document Type",
@@ -136,25 +136,6 @@
             "isMulitpleSelect": false
           },
           "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select at least one"
-            }
-          },
-          "valid": false
-        },
-        {
-          "elementType": "upload_image",
-          "elementConfig": {
-            "name": "driving_license",
-            "label": "Driving License",
-            "enableLabel": true,
-            "initialValue": ""
-          },
-          "value": "https://img.freepik.com/free-photo/purple-osteospermum-daisy-flower_1373-16.jpg?w=2000",
           "validation": {
             "required": true,
             "isReadOnly": false,

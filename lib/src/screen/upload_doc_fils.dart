@@ -208,7 +208,7 @@ class _UploadDocFileState extends State<UploadDocFileView> {
                       child: viewConfiguration!.emptyImgView),
                 )
               : ClipRRect(
-                  borderRadius: viewConfiguration!.borderRadius,
+                  borderRadius: viewConfiguration!.borderRadius!,
                   child: Stack(
                     children: [
                       imageView(imagePath),
@@ -267,9 +267,9 @@ class _UploadDocFileState extends State<UploadDocFileView> {
         onChangeValue.call(fieldKey, imagePath!);
       }
     }
- /*   FilePickerResult? result = await FilePicker.platform.pickFiles(
+    /*   FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
-      allowedExtensions: ['jpg'*//*, 'pdf', 'doc'*//*],
+      allowedExtensions: ['jpg'*/ /*, 'pdf', 'doc'*/ /*],
     );
     debugPrint("$result");*/
   }

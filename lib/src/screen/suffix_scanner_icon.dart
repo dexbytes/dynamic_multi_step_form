@@ -11,18 +11,17 @@ class SuffixScannerIcon extends StatefulWidget {
   final Color? qrScannerIconColor;
   final bool isHideCrossIcon;
 
-  const SuffixScannerIcon(
-      {Key? key,
-      this.textController,
-      this.iconColor,
-      this.qrScannerIconColor,
-      this.iconClicked,
-      this.qrScannerIconClicked,
-      this.isHideCrossIcon = true,
-      this.iconWidget,
-      this.qrScannerIconWidget,
-      })
-      : super(key: key);
+  const SuffixScannerIcon({
+    Key? key,
+    this.textController,
+    this.iconColor,
+    this.qrScannerIconColor,
+    this.iconClicked,
+    this.qrScannerIconClicked,
+    this.isHideCrossIcon = true,
+    this.iconWidget,
+    this.qrScannerIconWidget,
+  }) : super(key: key);
 
   @override
   _IconClearTextFormFiledState createState() =>
@@ -73,24 +72,27 @@ class _IconClearTextFormFiledState extends State<SuffixScannerIcon> {
   @override
   Widget build(BuildContext context) {
     return enteredValue.isNotEmpty
-        ? widget.isHideCrossIcon?InkWell(
-            onTap: () => widget.iconClicked?.call(),
-            child: Container(
-              child: widget.iconWidget != null
-                  ? widget.iconWidget!
-                  : Icon(
-                      Icons.close,
-                      color: widget.iconColor ?? Colors.black,
-                    ),
-            )): SizedBox()
-    :InkWell(
+        ? widget.isHideCrossIcon
+            ? InkWell(
+                onTap: () => widget.iconClicked?.call(),
+                child: Container(
+                  child: widget.iconWidget != null
+                      ? widget.iconWidget!
+                      : Icon(
+                          Icons.close,
+                          color: widget.iconColor ?? Colors.black,
+                        ),
+                ))
+            : SizedBox()
+        : InkWell(
             onTap: () => widget.qrScannerIconClicked?.call(),
             child: Container(
               child: widget.qrScannerIconWidget != null
                   ? widget.qrScannerIconWidget!
                   : Icon(
                       Icons.document_scanner_sharp,
-                      color: widget.qrScannerIconColor ?? Colors.black,size: 35,
+                      color: widget.qrScannerIconColor ?? Colors.black,
+                      size: 35,
                     ),
             ));
   }
