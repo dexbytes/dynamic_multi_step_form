@@ -192,8 +192,9 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
     List<TextInputFormatter>? filter = [];
     if (keyText.isNotEmpty) {
       filter = [];
-      filter.add(PhoneNumberFormatter());
-      // filter.add(FilteringTextInputFormatter.allow(RegExp(keyText)));
+      textFieldModel!.elementConfig!.isShowAmericanNumberFormat!
+      ? filter.add(PhoneNumberFormatter())
+      : filter.add(FilteringTextInputFormatter.allow(RegExp(keyText)));
       // filter.add(FilteringTextInputFormatter.deny('+'));
       return filter;
     }

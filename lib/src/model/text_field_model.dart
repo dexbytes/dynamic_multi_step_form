@@ -65,6 +65,7 @@ class ElementConfig {
   String? name;
   String? label;
   bool? enableLabel;
+  bool? isShowAmericanNumberFormat;
   String? placeholder;
   String? classProperty;
   String? keyboardRejex;
@@ -92,6 +93,7 @@ class ElementConfig {
       this.keyboardRejex = "",
       this.label,
       this.enableLabel,
+      this.isShowAmericanNumberFormat,
       this.placeholder,
       this.classProperty,
       this.resetIcon,
@@ -136,6 +138,8 @@ class ElementConfig {
         : false;
     showTextBold =
         json.containsKey('showTextBold') ? json['showTextBold'] : false;
+    isShowAmericanNumberFormat =
+        json.containsKey('isShowAmericanNumberFormat') ? json['isShowAmericanNumberFormat'] : false;
   }
 
   Map<String, dynamic> toJson() {
@@ -147,6 +151,7 @@ class ElementConfig {
     data['keyboardRejex'] = this.keyboardRejex;
     data['label'] = this.label;
     data['enableLabel'] = this.enableLabel;
+    data['isShowAmericanNumberFormat'] = this.isShowAmericanNumberFormat;
     data['placeholder'] = this.placeholder;
     data['class'] = this.classProperty;
     data['resetIcon'] = this.resetIcon;
