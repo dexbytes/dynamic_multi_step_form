@@ -1732,7 +1732,6 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
       items.add(DefaultTextStyle(
         style: _textStyle!.copyWith(color: Theme.of(context).hintColor),
         child: IgnorePointer(
-          ignoringSemantics: false,
           child: displayedHint,
         ),
       ));
