@@ -1731,7 +1731,9 @@ class DropdownButton2State<T> extends State<DropdownButton2<T>>
       hintIndex = items.length;
       items.add(DefaultTextStyle(
         style: _textStyle!.copyWith(color: Theme.of(context).hintColor),
-        child: IgnorePointer(
+        child:
+          ExcludeSemantics(
+            excluding: false,
           child: displayedHint,
         ),
       ));
