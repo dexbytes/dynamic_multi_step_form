@@ -58,6 +58,7 @@ class TelTextFieldConfiguration {
   late Color _fillColor = Colors.transparent;
   late Color _cursorColor = Colors.red;
   late Color _suffixIconColor = Colors.red;
+  late List<TextInputFormatter>? _inputFormatter;
   late EdgeInsets _contentPadding = const EdgeInsets.all(16);
   late FloatingLabelBehavior _floatingLabelBehavior =
       FloatingLabelBehavior.never;
@@ -76,6 +77,7 @@ class TelTextFieldConfiguration {
     bool? enableLabel,
     bool? filled,
     Color? fillColor,
+    List<TextInputFormatter>? inputFormatter,
     Color? suffixIconColor,
     Color? cursorColor,
     EdgeInsets? contentPadding,
@@ -95,6 +97,7 @@ class TelTextFieldConfiguration {
     _suffixStyle = suffixStyle ?? _suffixStyle;
     _border = border ?? _border;
     _errorBorder = errorBorder ?? _errorBorder;
+    _inputFormatter = inputFormatter ?? _inputFormatter;
     _focusedBorder = focusedBorder ?? _focusedBorder;
     _contentPadding = contentPadding ?? _contentPadding;
     _floatingLabelBehavior = floatingLabelBehavior ?? _floatingLabelBehavior;

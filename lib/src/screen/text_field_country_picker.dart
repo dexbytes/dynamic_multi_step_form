@@ -341,7 +341,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
               obscureText: obscureText,
               cursorColor: Colors.black,
               keyboardType: keyBoardType(formFieldType: formFieldType),
-              inputFormatters: inputFormatter(),
+              inputFormatters: viewConfiguration!._inputFormatter ?? inputFormatter(),
               validator: (value) {
                 if (value!.isEmpty && !checkValid) {
                   return null;
