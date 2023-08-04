@@ -65,6 +65,7 @@ class ElementConfig {
   String? name;
   String? label;
   bool? enableLabel;
+  bool? isShowAmericanNumberFormat;
   String? placeholder;
   String? classProperty;
   String? keyboardRejex;
@@ -92,6 +93,7 @@ class ElementConfig {
       this.keyboardRejex = "",
       this.label,
       this.enableLabel,
+      this.isShowAmericanNumberFormat,
       this.placeholder,
       this.classProperty,
       this.resetIcon,
@@ -114,6 +116,9 @@ class ElementConfig {
     label = json['label'];
     if (json.containsKey('enableLabel')) {
       enableLabel = json['enableLabel'];
+    }
+    if (json.containsKey('isShowAmericanNumberFormat')) {
+      isShowAmericanNumberFormat = json['isShowAmericanNumberFormat'];
     }
     keyboardRejex =
         json.containsKey('keyboardRejex') ? json['keyboardRejex'] : "";
@@ -147,6 +152,7 @@ class ElementConfig {
     data['keyboardRejex'] = this.keyboardRejex;
     data['label'] = this.label;
     data['enableLabel'] = this.enableLabel;
+    data['isShowAmericanNumberFormat'] = this.isShowAmericanNumberFormat;
     data['placeholder'] = this.placeholder;
     data['class'] = this.classProperty;
     data['resetIcon'] = this.resetIcon;

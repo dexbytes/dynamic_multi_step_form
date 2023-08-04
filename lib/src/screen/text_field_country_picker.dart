@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_statements
+
 part of dynamic_multi_step_form;
 
 /// Custom TextFieldCountryPicker view
@@ -192,7 +194,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
     List<TextInputFormatter>? filter = [];
     if (keyText.isNotEmpty) {
       filter = [];
-      filter.add(PhoneNumberFormatter());
+      textFieldModel!.elementConfig!.isShowAmericanNumberFormat! ? filter.add(PhoneNumberFormatter()):null;
       filter.add(FilteringTextInputFormatter.allow(RegExp(keyText)));
       filter.add(FilteringTextInputFormatter.deny('+'));
       return filter;
