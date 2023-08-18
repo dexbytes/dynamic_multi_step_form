@@ -133,7 +133,7 @@ class _DropDownState extends State<DropDown> {
                                                               splashColor: Colors.grey.shade100,
                                                               highlightColor: Colors.grey.shade100,
                                                               onTap: () {
-                                                                _onSelect(value: value);
+                                                                onItemSelect(item.displayValue);
                                                                 Navigator.pop(context, item.displayValue);
                                                               },
                                                               child: Container(
