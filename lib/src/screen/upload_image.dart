@@ -251,7 +251,7 @@ class _UploadImageState extends State<UploadImageView> {
       // Pick an image.
       List<Media>? photo = await ImagesPicker.pick(
         count: 1,
-        pickType: PickType.all,
+        pickType: PickType.image,
         language: Language.System,
         maxTime: 30,
         // maxSize: 500,

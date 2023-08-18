@@ -326,7 +326,7 @@ class _DropDownState extends State<DropDown> {
       if (dropDownModel.elementConfig != null) {
         fieldKey = dropDownModel.elementConfig!.name!;
         label = dropDownModel.elementConfig!.label!;
-        buttonHead = dropDownModel.elementConfig!.buttonHead!;
+        buttonHead = dropDownModel.elementConfig!.buttonHead ?? "";
         placeholder = dropDownModel.elementConfig!.placeholder!;
 
         isMultipleSelect =
