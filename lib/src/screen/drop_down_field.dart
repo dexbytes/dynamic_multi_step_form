@@ -130,16 +130,11 @@ class _DropDownState extends State<DropDown> {
                                                           color: Colors
                                                               .transparent,
                                                           child: InkWell(
-                                                              splashColor: Colors
-                                                                  .grey
-                                                                  .shade100,
-                                                              highlightColor: Colors
-                                                                  .grey
-                                                                  .shade100,
+                                                              splashColor: Colors.grey.shade100,
+                                                              highlightColor: Colors.grey.shade100,
                                                               onTap: () {
-                                                                Navigator.pop(
-                                                                    context,
-                                                                    item.displayValue);
+                                                                _onSelect(value: value);
+                                                                Navigator.pop(context, item.displayValue);
                                                               },
                                                               child: Container(
                                                                   decoration: BoxDecoration(
@@ -206,7 +201,7 @@ class _DropDownState extends State<DropDown> {
                               children: [
                                 Text(
                                     selectedData.isEmpty
-                                        ? buttonHead!
+                                        ? buttonHead ?? ""
                                         : selectedData,
                                     style: selectedData.isEmpty
                                         ? viewConfiguration!._labelTextStyle
