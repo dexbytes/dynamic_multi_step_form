@@ -9,11 +9,13 @@ class DropDown extends StatefulWidget {
   final Map<String, dynamic> jsonData;
   final DropdownConfiguration? viewConfiguration;
   final Function(String fieldKey, List<String> fieldValue) onChangeValue;
+  final Function(String fieldKey, String fieldValue) onChangeValue2;
 
   const DropDown(
       {Key? key,
       required this.jsonData,
       required this.onChangeValue,
+      required this.onChangeValue2,
       this.optionList = const [],
       this.hint,
       this.viewConfiguration,
@@ -26,6 +28,7 @@ class DropDown extends StatefulWidget {
       jsonData: jsonData,
       autoValidate: autoValidate,
       onChangeValue: onChangeValue,
+      onChangeValue2: onChangeValue2,
       viewConfiguration: viewConfiguration);
 }
 
@@ -48,11 +51,13 @@ class _DropDownState extends State<DropDown> {
   bool autoValidate = false;
 
   Function(String fieldKey, List<String> fieldValue) onChangeValue;
+  Function(String fieldKey, String singleValue) onChangeValue2;
 
   _DropDownState(
       {required this.jsonData,
       this.optionList,
       required this.onChangeValue,
+      required this.onChangeValue2,
       this.autoValidate = false,
       this.viewConfiguration}) {
     dropDownModel ??= responseParser.dropDownFormFiledParsing(
@@ -133,7 +138,8 @@ class _DropDownState extends State<DropDown> {
                                                               splashColor: Colors.grey.shade100,
                                                               highlightColor: Colors.grey.shade100,
                                                               onTap: () {
-                                                                onItemSelect(item.displayValue);
+                                                                // comment this code for multiple value
+                                                                onChangeValue2.call(fieldKey, item.displayValue!);
                                                                 Navigator.pop(context, item.displayValue);
                                                               },
                                                               child: Container(
@@ -185,6 +191,7 @@ class _DropDownState extends State<DropDown> {
                             .then((value) {
                           if (value != null) {
                             setState(() {
+                              onItemSelect(value);
                               selectedData = value;
                             });
                           }

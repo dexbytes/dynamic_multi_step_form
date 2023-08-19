@@ -249,9 +249,15 @@ class SingleFormState extends State<SingleForm> {
                 return DropDown(
                     jsonData: data,
                     autoValidate: snapshot.hasData,
-                    onChangeValue: (String fieldKey, List<String> value) {
+                    onChangeValue2: (String fieldKey, String value) {
                       formSubmitData[fieldKey] = value;
-                    });
+                    },
+                    onChangeValue: (String fieldKey, List<String> value) {
+                      // open this code value list
+                      // formSubmitData[fieldKey] = value;
+                    }
+
+                    );
               });
 
         case "radio":

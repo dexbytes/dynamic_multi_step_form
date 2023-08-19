@@ -7,81 +7,52 @@
   "step": {
     "form1":
     {
-      "formName" : "documentUpload",
-      "title": "Document",
-      "description": "Hey, get on board ",
+      "formName" : "personalDetail",
+      "title": "",
+      "description": "Please Enter the Details",
       "formFields": [
         {
-          "elementType": "input_qr_scanner",
+          "elementType": "select",
           "elementConfig": {
-            "type": "text",
-            "name": "qr_code",
-            "placeHolderLabel": "Qr number",
-            "label": "Qr number",
+            "name": "state",
+            "label": "State",
             "enableLabel": false,
-            "placeholder": "Qr number",
-            "class": "form-control",
-            "keyboardRejex": "^^[a-zA-Z0-9 ]+$",
-            "resetIcon": true,
-            "isQrCodeScanner": true,
-            "minLine": 1,
-            "maxLine": 1,
-            "textCapitalization": "words"
-          },
-          "help": {
-            "text": "If you do not know the vehicle model information, you may scan the vin",
-            "placement": "up"
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "minLength": 3,
-            "maxLength": 50,
-            "rejex": "^^[a-zA-Z0-9 ]+$",
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please enter full name",
-              "minLength": "Minimum 3 characters require",
-              "rejex": "Please enter valid bar code"
-            }
-          },
-          "valid": true,
-          "onchange": false
-        },
-        {
-          "elementType": "select",
-          "elementConfig": {
-            "name": "documentType",
-            "label": "Aadhar Card",
-            "buttonHead": "Select city",
-            "enableLabel": true,
-            "placeholder": "Document Type",
+            "isShowBottomSheet": false,
+            "buttonHead": "State",
+            "placeholder": "State",
             "class": "form-control",
             "options": [
               {
-                "value": "aadharCard",
-                "displayValue": "Aadhar Card"
+                "value": "california",
+                "displayValue": "California"
               },
               {
-                "value": "panCard",
-                "displayValue": "Pan Card"
+                "value": "texas",
+                "displayValue": "Texas"
               },
               {
-                "value": "AddCard",
-                "displayValue": "Pan Card"
+                "value": "florida",
+                "displayValue": "Florida"
               },
               {
-                "value": "LanCard",
-                "displayValue": "Pan Card"
+                "value": "ohio",
+                "displayValue": "Ohio"
               },
               {
-                "value": "ranCard",
-                "displayValue": "Pan Card"
+                "value": "hawaii",
+                "displayValue": "Hawaii"
               },
               {
-                "value": "drivingLicence",
-                "displayValue": "Driving Licence"
+                "value": "virginia",
+                "displayValue": "Virginia"
+              },
+              {
+                "value": "georgia",
+                "displayValue": "Georgia"
+              },
+              {
+                "value": "washington",
+                "displayValue": "Washington"
               }
             ],
             "isMulitpleSelect": false
@@ -92,7 +63,7 @@
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
-              "required": "Please select at least one"
+              "required": "Please select state"
             }
           },
           "valid": false
@@ -100,37 +71,53 @@
         {
           "elementType": "select",
           "elementConfig": {
-            "name": "documentType",
-            "label": "",
-            "buttonHead": "Select city",
-            "enableLabel": true,
+            "name": "city",
+            "label": "City",
+            "enableLabel": false,
             "isShowBottomSheet": true,
-            "placeholder": "Document Type",
+            "buttonHead": "City",
+            "placeholder": "City",
             "class": "form-control",
             "options": [
               {
-                "value": "aadharCard",
-                "displayValue": "Aadhar Card"
+                "value": "new_york.",
+                "displayValue": "New York"
               },
               {
-                "value": "panCard",
-                "displayValue": "Pan Card"
+                "value": "los_angeles.",
+                "displayValue": "Los Angeles"
               },
               {
-                "value": "AddCard",
-                "displayValue": "Pan Card"
+                "value": "chicago",
+                "displayValue": "Chicago"
               },
               {
-                "value": "LanCard",
-                "displayValue": "Pan Card"
+                "value": "houston",
+                "displayValue": "Houston"
               },
               {
-                "value": "ranCard",
-                "displayValue": "Pan Card"
+                "value": "phoenix",
+                "displayValue": "Phoenix"
               },
               {
-                "value": "drivingLicence",
-                "displayValue": "Driving Licence"
+                "value": "philadelphia",
+                "displayValue": "Philadelphia"
+              },
+              {
+                "value": "san_antonio",
+                "displayValue": "San Antonio"
+              },
+              {
+                "value": "arizona",
+                "displayValue": "Arizona"
+              },
+              {
+                "value": "dallas",
+                "displayValue": "Dallas"
+              },
+              {
+                "value": "san_diego",
+                "displayValue": "San Diego"
               }
             ],
             "isMulitpleSelect": false
@@ -141,26 +128,7 @@
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
-              "required": "Please select at least one"
-            }
-          },
-          "valid": false
-        },
-        {
-          "elementType": "upload_image",
-          "elementConfig": {
-            "name": "driving_license1",
-            "label": "Driving License1",
-            "enableLabel": true,
-            "initialValue": ""
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select at least one"
+              "required": "Please select city"
             }
           },
           "valid": false
@@ -168,36 +136,68 @@
         {
           "elementType": "select",
           "elementConfig": {
-            "name": "documentType",
-            "label": "",
-            "buttonHead": "Select city",
-            "enableLabel": true,
-            "placeholder": "Document Type",
+            "name": "ride_platform",
+            "label": "Ride Platform",
+            "buttonHead": "Ride Platform",
+            "enableLabel": false,
+            "isShowBottomSheet": true,
+            "placeholder": "Ride Platform",
             "class": "form-control",
             "options": [
               {
-                "value": "aadharCard",
-                "displayValue": "Aadhar Card"
+                "value": "Uber.",
+                "displayValue": "Uber"
               },
               {
-                "value": "panCard",
-                "displayValue": "Pan Card"
+                "value": "Lyft.",
+                "displayValue": "Lyft"
               },
               {
-                "value": "AddCard",
-                "displayValue": "Pan Card"
+                "value": "Doordash",
+                "displayValue": "Doordash"
+              }
+            ],
+            "isMulitpleSelect": false
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please select city"
+            }
+          },
+          "valid": false
+        },
+        {
+          "elementType": "select",
+          "elementConfig": {
+            "name": "model_year",
+            "label": "Year",
+            "buttonHead": "Year",
+            "enableLabel": false,
+            "isShowBottomSheet": true,
+            "placeholder": "Year",
+            "class": "form-control",
+            "options": [
+              {
+                "value": "2018",
+                "displayValue": "2018"
               },
               {
-                "value": "LanCard",
-                "displayValue": "Pan Card"
+                "value": "2019",
+                "displayValue": "2019"
               },
               {
-                "value": "ranCard",
-                "displayValue": "Pan Card"
-              },
-              {
-                "value": "drivingLicence",
-                "displayValue": "Driving Licence"
+                "value": "2020",
+                "displayValue": "2020"
+              },{
+                "value": "2021",
+                "displayValue": "2021"
+              },{
+                "value": "2022",
+                "displayValue": "2022"
               }
             ],
             "isMulitpleSelect": false
@@ -212,24 +212,6 @@
             }
           },
           "valid": false
-        },
-        {
-          "elementType": "button",
-          "elementConfig": {
-            "type": "button",
-            "name": "submit_first_button",
-            "label": "Submit First Form",
-            "enableLabel": true,
-            "isVisible": false,
-            "class": "form-control",
-            "resetIcon": true,
-            "minLine": 1,
-            "maxLine": 1,
-            "textCapitalization": "words"
-          },
-          "value": "",
-          "valid": true,
-          "onchange": false
         }
       ]
     },
