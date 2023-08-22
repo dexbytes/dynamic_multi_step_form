@@ -6,11 +6,13 @@ class TextFieldCountryPickerView extends StatefulWidget {
   final String? nextFieldKey;
   final TelTextFieldConfiguration? viewConfiguration;
   final Function(String fieldKey, Map<String, String> fieldValue) onChangeValue;
+  final Function(String fieldKey, String fieldValue) onChangeValue2;
 
   const TextFieldCountryPickerView(
       {Key? key,
       required this.jsonData,
       required this.onChangeValue,
+      required this.onChangeValue2,
       this.viewConfiguration,
       this.nextFieldKey = ""})
       : super(key: key);
@@ -19,6 +21,7 @@ class TextFieldCountryPickerView extends StatefulWidget {
   _TextFieldCountryPickerState createState() => _TextFieldCountryPickerState(
       jsonData: jsonData,
       onChangeValue: onChangeValue,
+      onChangeValue2: onChangeValue2,
       viewConfiguration: viewConfiguration,
       nextFieldKey: nextFieldKey!);
 }
@@ -36,6 +39,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
   TelTextFieldConfiguration? viewConfiguration;
   CountryPickerViewConfig? viewConfig;
   Function(String fieldKey, Map<String, String> fieldValue) onChangeValue;
+  Function(String fieldKey, String fieldValue) onChangeValue2;
 
   final StreamController<bool> _fieldStreamControl = StreamController<bool>();
 
@@ -58,6 +62,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
   _TextFieldCountryPickerState(
       {required this.jsonData,
       required this.onChangeValue,
+      required this.onChangeValue2,
       this.viewConfiguration,
       this.nextFieldKey = ""}) {
     textFieldModel ??= responseParser.textFormFiledParsing(
@@ -88,6 +93,8 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
 
         onChangeValue.call(
             fieldKey, getData(enteredNumber.trim(), selectedCountryCode));
+
+        onChangeValue2.call(fieldKey,enteredNumber.trim());
 
         currentFocusNode =
             (responseParser.getFieldFocusNode.containsKey(fieldKey)
@@ -361,6 +368,9 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
                   enteredNumber = value;
                   onChangeValue.call(fieldKey,
                       getData(enteredNumber.trim(), selectedCountryCode));
+
+                  onChangeValue2.call(fieldKey, enteredNumber.trim());
+
                 }
               },
               onSaved: (value) {
@@ -406,6 +416,10 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
 
   Map<String, String> getData(String tel, String selectedCountryCode) {
     return {fieldKey: tel, "code": selectedCountryCode};
+  }
+
+  Map<String, String> getSingleData(String tel, String selectedCountryCode) {
+    return {fieldKey: tel};
   }
 
   void moveToNextField(String value) {

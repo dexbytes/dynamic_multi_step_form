@@ -207,6 +207,10 @@ class SingleFormState extends State<SingleForm> {
             return TextFieldCountryPickerView(
                 jsonData: data,
                 onChangeValue: (String fieldKey, Map<String, String> value) {
+                  /// open this code for country code
+                  // formSubmitData[fieldKey] = value;
+                },
+                onChangeValue2: (String fieldKey, String value) {
                   formSubmitData[fieldKey] = value;
                 },
                 nextFieldKey: nextFieldKey);
