@@ -369,7 +369,8 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
                   onChangeValue.call(fieldKey,
                       getData(enteredNumber.trim(), selectedCountryCode));
 
-                  onChangeValue2.call(fieldKey, enteredNumber.trim());
+
+                  onChangeValue2.call(fieldKey, enteredNumber.trim().replaceAll(RegExp('[^A-Za-z0-9]'), ""));
 
                 }
               },
