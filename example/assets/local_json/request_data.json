@@ -212,6 +212,32 @@
             }
           },
           "valid": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "date",
+            "name": "dob",
+            "label": "Date of Birth",
+            "placeholder": "Date of Birth",
+            "class": "form-control",
+            "resetIcon": true,
+            "firstDate": "1546350642",
+            "initialDate": "631201842",
+            "lastDate": "631201842",
+            "pickDateFromCalender": false
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please select date of birth"
+            }
+          },
+          "valid": true,
+          "onchange": false
         }
       ]
     },

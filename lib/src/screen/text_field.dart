@@ -653,8 +653,8 @@ class _TextFieldsState extends State<TextFieldView> {
 
     if (newDate == null) return;
     _nameController!.text =
-        packageUtil.getText("dd MMMM, yyyy", newDate).toString();
-    onChangeValue.call(fieldKey, newDate.millisecondsSinceEpoch.toString());
+        packageUtil.getText("dd/MM/yyyy", newDate).toString();
+    onChangeValue.call(fieldKey, "${newDate.day}/${newDate.month}/${newDate.year}");
   }
 }
 
