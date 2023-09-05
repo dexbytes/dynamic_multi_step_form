@@ -78,8 +78,8 @@ class _FirstScreenState extends State<FirstScreen> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12)),
                       backgroundColor: Colors.black,
-                      maximumSize: Size(MediaQuery.of(context).size.width, 45),
-                      minimumSize: Size(MediaQuery.of(context).size.width, 45),
+                      maximumSize: Size(MediaQuery.of(context).size.width, 40),
+                      minimumSize: Size(MediaQuery.of(context).size.width, 40),
                     ),
                     clipBehavior: Clip.hardEdge,
                     onPressed: () async {
