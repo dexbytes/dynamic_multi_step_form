@@ -16,43 +16,211 @@
           "elementConfig": {
             "name": "state",
             "label": "State",
-            "enableLabel": false,
-            "isShowBottomSheet": false,
+            "enableLabel": true,
+            "isShowBottomSheet": true,
             "buttonHead": "State",
             "placeholder": "State",
             "class": "form-control",
             "options": [
               {
+                "value": "alabama",
+                "displayValue": "Alabama"
+              },
+              {
+                "value": "alaska",
+                "displayValue": "Alaska"
+              },
+              {
+                "value": "arizona",
+                "displayValue": "Arizona"
+              },
+              {
+                "value": "arkansas",
+                "displayValue": "Arkansas"
+              },
+              {
                 "value": "california",
                 "displayValue": "California"
               },
               {
-                "value": "texas",
-                "displayValue": "Texas"
+                "value": "colorado",
+                "displayValue": "Colorado"
+              },
+              {
+                "value": "connecticut",
+                "displayValue": "Connecticut"
+              },
+              {
+                "value": "delaware",
+                "displayValue": "Delaware"
               },
               {
                 "value": "florida",
                 "displayValue": "Florida"
               },
               {
-                "value": "ohio",
-                "displayValue": "Ohio"
+                "value": "georgia",
+                "displayValue": "Georgia"
               },
               {
                 "value": "hawaii",
                 "displayValue": "Hawaii"
               },
               {
+                "value": "idaho",
+                "displayValue": "Idaho"
+              },
+              {
+                "value": "illinois",
+                "displayValue": "Illinois"
+              },
+              {
+                "value": "indiana",
+                "displayValue": "Indiana"
+              },
+              {
+                "value": "iowa",
+                "displayValue": "Iowa"
+              },
+              {
+                "value": "kansas",
+                "displayValue": "Kansas"
+              },
+              {
+                "value": "kentucky",
+                "displayValue": "Kentucky"
+              },
+              {
+                "value": "louisiana",
+                "displayValue": "louisiana"
+              },
+              {
+                "value": "maine",
+                "displayValue": "Maine"
+              },
+              {
+                "value": "maryland",
+                "displayValue": "Maryland"
+              },
+              {
+                "value": "massachusetts",
+                "displayValue": "Massachusetts"
+              },
+              {
+                "value": "michigan",
+                "displayValue": "Michigan"
+              },
+              {
+                "value": "minnesota",
+                "displayValue": "Minnesota"
+              },
+              {
+                "value": "mississippi",
+                "displayValue": "Mississippi"
+              },
+              {
+                "value": "missouri",
+                "displayValue": "Missouri"
+              },
+              {
+                "value": "montana",
+                "displayValue": "Montana"
+              },
+              {
+                "value": "nebraska",
+                "displayValue": "Nebraska"
+              },
+              {
+                "value": "nevada",
+                "displayValue": "Nevada"
+              },
+              {
+                "value": "new_hampshire",
+                "displayValue": "New Hampshire"
+              },
+              {
+                "value": "new_Jersey",
+                "displayValue": "New Jersey"
+              },
+              {
+                "value": "new_Mexico",
+                "displayValue": "New Mexico"
+              },
+              {
+                "value": "new_York'",
+                "displayValue": "New York'"
+              },
+              {
+                "value": "north_Carolina",
+                "displayValue": "North Carolina"
+              },
+              {
+                "value": "north_Dakota",
+                "displayValue": "North Dakota"
+              },
+              {
+                "value": "ohio",
+                "displayValue": "Ohio"
+              },
+              {
+                "value": "oklahoma",
+                "displayValue": "Oklahoma"
+              },
+              {
+                "value": "oregon",
+                "displayValue": "Oregon"
+              },
+              {
+                "value": "pennsylvania",
+                "displayValue": "Pennsylvania"
+              },
+              {
+                "value": "rhode_Island",
+                "displayValue": "Rhode Island"
+              },
+              {
+                "value": "south_Carolina",
+                "displayValue": "South Carolina"
+              },
+              {
+                "value": "south_Dakota",
+                "displayValue": "South Dakota"
+              },
+              {
+                "value": "tennessee",
+                "displayValue": "Tennessee"
+              },
+              {
+                "value": "texas",
+                "displayValue": "Texas"
+              },
+              {
+                "value": "utah",
+                "displayValue": "Utah"
+              },
+              {
+                "value": "vermont",
+                "displayValue": "Vermont"
+              },
+              {
                 "value": "virginia",
                 "displayValue": "Virginia"
               },
               {
-                "value": "georgia",
-                "displayValue": "Georgia"
-              },
-              {
                 "value": "washington",
                 "displayValue": "Washington"
+              },
+              {
+                "value": "west_Virginia",
+                "displayValue": "West Virginia"
+              },
+              {
+                "value": "wisconsin",
+                "displayValue": "Wisconsin"
+              },
+              {
+                "value": "Wyoming",
+                "displayValue": "Wyoming"
               }
             ],
             "isMulitpleSelect": false
@@ -67,178 +235,8 @@
             }
           },
           "valid": false
-        },
-        {
-          "elementType": "select",
-          "elementConfig": {
-            "name": "city",
-            "label": "City",
-            "enableLabel": false,
-            "isShowBottomSheet": true,
-            "buttonHead": "City",
-            "placeholder": "City",
-            "class": "form-control",
-            "options": [
-              {
-                "value": "new_york.",
-                "displayValue": "New York"
-              },
-              {
-                "value": "los_angeles.",
-                "displayValue": "Los Angeles"
-              },
-              {
-                "value": "chicago",
-                "displayValue": "Chicago"
-              },
-              {
-                "value": "houston",
-                "displayValue": "Houston"
-              },
-              {
-                "value": "phoenix",
-                "displayValue": "Phoenix"
-              },
-              {
-                "value": "philadelphia",
-                "displayValue": "Philadelphia"
-              },
-              {
-                "value": "san_antonio",
-                "displayValue": "San Antonio"
-              },
-              {
-                "value": "arizona",
-                "displayValue": "Arizona"
-              },
-              {
-                "value": "dallas",
-                "displayValue": "Dallas"
-              },
-              {
-                "value": "san_diego",
-                "displayValue": "San Diego"
-              }
-            ],
-            "isMulitpleSelect": false
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select city"
-            }
-          },
-          "valid": false
-        },
-        {
-          "elementType": "select",
-          "elementConfig": {
-            "name": "ride_platform",
-            "label": "Ride Platform",
-            "buttonHead": "Ride Platform",
-            "enableLabel": false,
-            "isShowBottomSheet": true,
-            "placeholder": "Ride Platform",
-            "class": "form-control",
-            "options": [
-              {
-                "value": "Uber.",
-                "displayValue": "Uber"
-              },
-              {
-                "value": "Lyft.",
-                "displayValue": "Lyft"
-              },
-              {
-                "value": "Doordash",
-                "displayValue": "Doordash"
-              }
-            ],
-            "isMulitpleSelect": false
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select city"
-            }
-          },
-          "valid": false
-        },
-        {
-          "elementType": "select",
-          "elementConfig": {
-            "name": "model_year",
-            "label": "Year",
-            "buttonHead": "Year",
-            "enableLabel": false,
-            "isShowBottomSheet": true,
-            "placeholder": "Year",
-            "class": "form-control",
-            "options": [
-              {
-                "value": "2018",
-                "displayValue": "2018"
-              },
-              {
-                "value": "2019",
-                "displayValue": "2019"
-              },
-              {
-                "value": "2020",
-                "displayValue": "2020"
-              },{
-                "value": "2021",
-                "displayValue": "2021"
-              },{
-                "value": "2022",
-                "displayValue": "2022"
-              }
-            ],
-            "isMulitpleSelect": false
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select at least one"
-            }
-          },
-          "valid": false
-        },
-        {
-          "elementType": "input",
-          "elementConfig": {
-            "type": "date",
-            "name": "dob",
-            "label": "Date of Birth",
-            "placeholder": "Date of Birth",
-            "class": "form-control",
-            "resetIcon": true,
-            "firstDate": "1546350642",
-            "initialDate": "631201842",
-            "lastDate": "631201842",
-            "pickDateFromCalender": false
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select date of birth"
-            }
-          },
-          "valid": true,
-          "onchange": false
         }
+
       ]
     },
     "form2":
@@ -247,6 +245,234 @@
   "title": "Personal Detail",
   "description": "Hey, get on board ",
   "formFields": [
+    {
+      "elementType": "select",
+      "elementConfig": {
+        "name": "state",
+        "label": "State",
+        "enableLabel": false,
+        "isShowBottomSheet": false,
+        "buttonHead": "State",
+        "placeholder": "State",
+        "class": "form-control",
+        "options": [
+          {
+            "value": "california",
+            "displayValue": "California"
+          },
+          {
+            "value": "texas",
+            "displayValue": "Texas"
+          },
+          {
+            "value": "florida",
+            "displayValue": "Florida"
+          },
+          {
+            "value": "ohio",
+            "displayValue": "Ohio"
+          },
+          {
+            "value": "hawaii",
+            "displayValue": "Hawaii"
+          },
+          {
+            "value": "virginia",
+            "displayValue": "Virginia"
+          },
+          {
+            "value": "georgia",
+            "displayValue": "Georgia"
+          },
+          {
+            "value": "washington",
+            "displayValue": "Washington"
+          }
+        ],
+        "isMulitpleSelect": false
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please select state"
+        }
+      },
+      "valid": false
+    },
+    {
+      "elementType": "select",
+      "elementConfig": {
+        "name": "city",
+        "label": "City",
+        "enableLabel": false,
+        "isShowBottomSheet": true,
+        "buttonHead": "City",
+        "placeholder": "City",
+        "class": "form-control",
+        "options": [
+          {
+            "value": "new_york.",
+            "displayValue": "New York"
+          },
+          {
+            "value": "los_angeles.",
+            "displayValue": "Los Angeles"
+          },
+          {
+            "value": "chicago",
+            "displayValue": "Chicago"
+          },
+          {
+            "value": "houston",
+            "displayValue": "Houston"
+          },
+          {
+            "value": "phoenix",
+            "displayValue": "Phoenix"
+          },
+          {
+            "value": "philadelphia",
+            "displayValue": "Philadelphia"
+          },
+          {
+            "value": "san_antonio",
+            "displayValue": "San Antonio"
+          },
+          {
+            "value": "arizona",
+            "displayValue": "Arizona"
+          },
+          {
+            "value": "dallas",
+            "displayValue": "Dallas"
+          },
+          {
+            "value": "san_diego",
+            "displayValue": "San Diego"
+          }
+        ],
+        "isMulitpleSelect": false
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please select city"
+        }
+      },
+      "valid": false
+    },
+    {
+      "elementType": "select",
+      "elementConfig": {
+        "name": "ride_platform",
+        "label": "Ride Platform",
+        "buttonHead": "Ride Platform",
+        "enableLabel": false,
+        "isShowBottomSheet": true,
+        "placeholder": "Ride Platform",
+        "class": "form-control",
+        "options": [
+          {
+            "value": "Uber.",
+            "displayValue": "Uber"
+          },
+          {
+            "value": "Lyft.",
+            "displayValue": "Lyft"
+          },
+          {
+            "value": "Doordash",
+            "displayValue": "Doordash"
+          }
+        ],
+        "isMulitpleSelect": false
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please select city"
+        }
+      },
+      "valid": false
+    },
+    {
+      "elementType": "select",
+      "elementConfig": {
+        "name": "model_year",
+        "label": "Year",
+        "buttonHead": "Year",
+        "enableLabel": false,
+        "isShowBottomSheet": true,
+        "placeholder": "Year",
+        "class": "form-control",
+        "options": [
+          {
+            "value": "2018",
+            "displayValue": "2018"
+          },
+          {
+            "value": "2019",
+            "displayValue": "2019"
+          },
+          {
+            "value": "2020",
+            "displayValue": "2020"
+          },{
+            "value": "2021",
+            "displayValue": "2021"
+          },{
+            "value": "2022",
+            "displayValue": "2022"
+          }
+        ],
+        "isMulitpleSelect": false
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please select at least one"
+        }
+      },
+      "valid": false
+    },
+    {
+      "elementType": "input",
+      "elementConfig": {
+        "type": "date",
+        "name": "dob",
+        "label": "Date of Birth",
+        "placeholder": "Date of Birth",
+        "class": "form-control",
+        "resetIcon": true,
+        "firstDate": "1546350642",
+        "initialDate": "631201842",
+        "lastDate": "631201842",
+        "pickDateFromCalender": false
+      },
+      "value": "",
+      "validation": {
+        "required": true,
+        "isReadOnly": false,
+        "isDisabled": false,
+        "errorMessage": {
+          "required": "Please select date of birth"
+        }
+      },
+      "valid": true,
+      "onchange": false
+    },
     {
       "elementType": "input",
       "elementConfig": {

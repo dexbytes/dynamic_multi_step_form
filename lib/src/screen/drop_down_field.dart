@@ -77,7 +77,7 @@ class _DropDownState extends State<DropDown> {
   @override
   Widget build(BuildContext context) {
     ///ErrorMessage
-    Widget errorMessage = (selectedOption != null && selectedOption!.isNotEmpty)
+    Widget errorMessage = (selectedData != null && selectedData!.isNotEmpty)
         ? Container()
         : Padding(
             padding: const EdgeInsets.only(left: 15.0, top: 2),
@@ -271,7 +271,7 @@ class _DropDownState extends State<DropDown> {
             const SizedBox(
               height: 5,
             ),
-            autoValidate ? errorMessage : Container()
+            dropDownModel!.validation!.required! ? errorMessage : Container()
           ],
         ));
   }
