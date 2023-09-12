@@ -368,8 +368,7 @@ class _TextFieldsState extends State<TextFieldView> {
   ///for ios done button callback
   onPressCallback() {
     removeOverlay();
-    // FocusScope.of(context).requestFocus(FocusNode());
-    FocusScope.of(context).unfocus();
+    FocusScope.of(context).requestFocus(FocusNode());
     if (mounted &&
         _nameController != null &&
         _nameController!.text.isNotEmpty &&
