@@ -75,6 +75,13 @@ class _DropDownState extends State<DropDown> {
   String selectedData = "";
 
   @override
+  initState() {
+    setState(() {
+      selectedData = optionList![0].value!;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     ///ErrorMessage
     Widget errorMessage = (selectedData != null && selectedData!.isNotEmpty)
