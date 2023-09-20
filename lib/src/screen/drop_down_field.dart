@@ -77,8 +77,10 @@ class _DropDownState extends State<DropDown> {
   @override
   initState() {
     setState(() {
-      selectedData = optionList![0].value!;
+      selectedData = optionList![0].displayValue!;
+      valueChoose = optionList![0].value;
     });
+    onChangeValue2.call(fieldKey, optionList![0].displayValue!);
   }
 
   @override
