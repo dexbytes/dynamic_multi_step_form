@@ -463,7 +463,7 @@ class _TextFieldsState extends State<TextFieldView> {
                     style: textFieldModel!.elementConfig!.showTextBold == true
                         ? viewConfig!.viewConfiguration!._boldTextStyle
                         : TextStyle(fontSize: 16, color: Colors.black),
-                    focusNode: currentFocusNode,
+                    focusNode: formFieldType == "date" ? null : currentFocusNode,
                     //strutStyle:StrutStyle(),
                     readOnly: (formFieldType == "date" && isPickFromCalendar)
                         ? true
