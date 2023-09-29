@@ -1,4 +1,19 @@
 PODS:
+  - AFNetworking (4.0.1):
+    - AFNetworking/NSURLSession (= 4.0.1)
+    - AFNetworking/Reachability (= 4.0.1)
+    - AFNetworking/Security (= 4.0.1)
+    - AFNetworking/Serialization (= 4.0.1)
+    - AFNetworking/UIKit (= 4.0.1)
+  - AFNetworking/NSURLSession (4.0.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (4.0.1)
+  - AFNetworking/Security (4.0.1)
+  - AFNetworking/Serialization (4.0.1)
+  - AFNetworking/UIKit (4.0.1):
+    - AFNetworking/NSURLSession
   - DKImagePickerController/Core (4.3.4):
     - DKImagePickerController/ImageDataManager
     - DKImagePickerController/Resource
@@ -39,9 +54,11 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - images_picker (0.0.1):
+  - image_pickers (0.0.1):
+    - AFNetworking
     - Flutter
-    - ZLPhotoBrowser (= 4.2.5)
+    - SDWebImage
+    - ZLPhotoBrowser (~> 4.3.9)
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -55,21 +72,22 @@ PODS:
     - Flutter
     - FMDB (>= 2.7.5)
   - SwiftyGif (5.4.4)
-  - ZLPhotoBrowser (4.2.5):
-    - ZLPhotoBrowser/Core (= 4.2.5)
-  - ZLPhotoBrowser/Core (4.2.5)
+  - ZLPhotoBrowser (4.3.9):
+    - ZLPhotoBrowser/Core (= 4.3.9)
+  - ZLPhotoBrowser/Core (4.3.9)
 
 DEPENDENCIES:
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
   - flutter_barcode_scanner (from `.symlinks/plugins/flutter_barcode_scanner/ios`)
-  - images_picker (from `.symlinks/plugins/images_picker/ios`)
+  - image_pickers (from `.symlinks/plugins/image_pickers/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
 
 SPEC REPOS:
   trunk:
+    - AFNetworking
     - DKImagePickerController
     - DKPhotoGallery
     - FMDB
@@ -84,8 +102,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_barcode_scanner:
     :path: ".symlinks/plugins/flutter_barcode_scanner/ios"
-  images_picker:
-    :path: ".symlinks/plugins/images_picker/ios"
+  image_pickers:
+    :path: ".symlinks/plugins/image_pickers/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   shared_preferences_foundation:
@@ -94,20 +112,21 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/sqflite/ios"
 
 SPEC CHECKSUMS:
+  AFNetworking: 3bd23d814e976cd148d7d44c3ab78017b744cd58
   DKImagePickerController: b512c28220a2b8ac7419f21c491fc8534b7601ac
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   file_picker: ce3938a0df3cc1ef404671531facef740d03f920
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_barcode_scanner: 7a1144744c28dc0c57a8de7218ffe5ec59a9e4bf
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  images_picker: fa9364e3a7d3083c49f865fcfb2b9e7cdc574d3a
+  image_pickers: 4406949954a5eb4fac5ada5f13810e6419ef4467
   path_provider_foundation: eaf5b3e458fc0e5fbb9940fb09980e853fe058b8
   SDWebImage: 750adf017a315a280c60fde706ab1e552a3ae4e9
   shared_preferences_foundation: 986fc17f3d3251412d18b0265f9c64113a8c2472
   sqflite: 31f7eba61e3074736dff8807a9b41581e4f7f15a
   SwiftyGif: 93a1cc87bf3a51916001cf8f3d63835fb64c819f
-  ZLPhotoBrowser: 4bfab86b851042e18d7f413284472aa68759626a
+  ZLPhotoBrowser: 02b3569b8f702d2e153e8fdb1f6b32fef3a2867c
 
 PODFILE CHECKSUM: fcff88cf76e8e17db76aba80b60f7c16a7d4c7c2
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.13.0

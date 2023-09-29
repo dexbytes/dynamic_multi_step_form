@@ -261,10 +261,29 @@
             }
           },
           "valid": true
+        },
+        {
+          "elementType": "upload_image",
+          "elementConfig": {
+            "name": "driver_license_photo",
+            "label": "Driving License",
+            "enableLabel": true,
+            "initialValue": ""
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please upload driving license"
+            }
+          },
+          "valid": false
         }
-
       ]
     },
+
     "form2":
     {
   "formName" : "personalDetail",
