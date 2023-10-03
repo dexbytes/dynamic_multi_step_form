@@ -20,8 +20,12 @@ class ResponseParser {
   static int totalFormsCount = 1;
   Map<String, dynamic> _formSubmitFinalData = <String, dynamic>{};
   get getFilledFormsData => _formSubmitFinalData;
-  set setFormFilledData(value) {
-    _formSubmitFinalData = value;
+  void setFormFilledData(key,value) {
+    try {
+      _formSubmitFinalData[key] = value;
+    } catch (e) {
+      print(e);
+    }
   }
 
 
