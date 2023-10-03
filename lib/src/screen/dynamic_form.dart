@@ -71,10 +71,7 @@ class DynamicFormState extends State<DynamicForm> {
     }).toList();
   }
 
-  @override
-  void didUpdateWidget(covariant DynamicForm oldWidget) {
-    // TODO: implement didUpdateWidget
-    super.didUpdateWidget(oldWidget);
+  void updateForm(){
     setState(() {
       responseParser.setFormData = widget.jsonEncoded;
       formScreenList = responseParser.getFormData;
@@ -102,6 +99,13 @@ class DynamicFormState extends State<DynamicForm> {
             });
       }).toList();
     });
+  }
+
+  @override
+  void didUpdateWidget(covariant DynamicForm oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+
   }
 
   ///Next step button click event
