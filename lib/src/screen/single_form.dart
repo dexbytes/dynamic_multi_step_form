@@ -126,8 +126,10 @@ class SingleFormState extends State<SingleForm> {
   }
 
   ///Set form value
-  Map<String, dynamic>? setFormData(Map<String, dynamic>? data,Map<String, dynamic>? formInformation) {
+  Map<String, dynamic>? setFormData(Map<String, dynamic>? data) {
   print("");
+
+
     return null;
   }
 

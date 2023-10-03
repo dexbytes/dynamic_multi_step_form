@@ -189,13 +189,13 @@ class DynamicFormState extends State<DynamicForm> {
         formSubmitData: data,
         formInformation: formInformation);
 
-    Map<String, dynamic>? dataOld = formScreen[oldPage].singleFormKey!.currentState!.getFormData();
-    Map<String, dynamic>? formInformationOld = formScreen[oldPage]
-        .singleFormKey!
-        .currentState!
-        .formInformation;
+    Map<String, dynamic>? dataOld = formSubmitData["$oldPage"];//formScreen[oldPage].singleFormKey!.currentState!.getFormData();
+    // Map<String, dynamic>? formInformationOld = formScreen[oldPage]
+    //     .singleFormKey!
+    //     .currentState!
+    //     .formInformation;
 
-    formScreen[oldPage].singleFormKey!.currentState!.setFormData(dataOld, formInformationOld);
+    formScreen[oldPage].singleFormKey!.currentState!.setFormData(dataOld);
 
   }
 
