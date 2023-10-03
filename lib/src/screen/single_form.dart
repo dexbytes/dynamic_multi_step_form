@@ -53,6 +53,7 @@ class SingleFormState extends State<SingleForm> {
   Map<String, dynamic> formInformation = {};
   Map<String, dynamic>? filledFormData;
   SingleFormState({int index = 0, required this.formData,this.filledFormData}) {
+    setFormData();
     formFieldList = formData['formFields'];
     try {
       formName = formData['formName'];
