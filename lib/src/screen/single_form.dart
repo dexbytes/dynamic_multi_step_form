@@ -77,6 +77,13 @@ class SingleFormState extends State<SingleForm> {
   }
 
   @override
+  void didUpdateWidget(covariant SingleForm oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    setFormData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder(
         stream: onVariableChanged,
@@ -126,11 +133,17 @@ class SingleFormState extends State<SingleForm> {
   }
 
   ///Set form value
-  Map<String, dynamic>? setFormData(Map<String, dynamic>? data) {
-  print("");
-
-
-    return null;
+  Map<String, dynamic>? setFormData() {
+    try {
+      int currentPageIndex =  responseParser.getCurrentFormNumber;
+      print("$currentPageIndex");
+      Map<String, dynamic> _formSubmitFinalData = responseParser.getFilledFormsData;
+      Map<String, dynamic> formSubmitFinalSingleData = _formSubmitFinalData["$currentPageIndex"];
+      print("$currentPageIndex");
+    } catch (e) {
+      print(e);
+    }
+  return null;
   }
 
   _autoValidate({bool checkValidOnSubmit = false}) {

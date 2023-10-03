@@ -18,6 +18,12 @@ export 'model/text_field_model.dart';
 class ResponseParser {
   static int _currentFormNumber = 0;
   static int totalFormsCount = 1;
+  Map<String, dynamic> _formSubmitFinalData = <String, dynamic>{};
+  get getFilledFormsData => _formSubmitFinalData;
+  set setFormFilledData(value) {
+    _formSubmitFinalData = value;
+  }
+
 
   get getCurrentFormNumber => _currentFormNumber;
 

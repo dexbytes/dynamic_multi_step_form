@@ -60,6 +60,7 @@ class DynamicFormState extends State<DynamicForm> {
           formData: entry.value,
           nextPageButtonClick: (index, Map<String, dynamic> formSubmitData) {
             this.formSubmitData['$currentIndex'] = formSubmitData;
+            responseParser.setFormFilledData = this.formSubmitData;
             widget.currentStepCallBack?.call(
                 currentIndex: currentIndex, formSubmitData: formSubmitData);
             setState(() {});
@@ -195,7 +196,7 @@ class DynamicFormState extends State<DynamicForm> {
     //     .currentState!
     //     .formInformation;
 
-    formScreen[oldPage].singleFormKey!.currentState!.setFormData(dataOld);
+    // formScreen[oldPage].singleFormKey!.currentState!.setFormData();
 
   }
 
