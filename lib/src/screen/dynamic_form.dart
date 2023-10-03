@@ -71,6 +71,39 @@ class DynamicFormState extends State<DynamicForm> {
     }).toList();
   }
 
+  @override
+  void didUpdateWidget(covariant DynamicForm oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    setState(() {
+      responseParser.setFormData = widget.jsonEncoded;
+      formScreenList = responseParser.getFormData;
+      int currentIndex = -1;
+      formScreen = formScreenList.entries.map((entry) {
+        currentIndex += 1;
+        final _formKeyNew = GlobalKey<SingleFormState>();
+        formInformation.add(entry.value['title']);
+        Map<String, dynamic>? filledFormData;
+        if(this.formSubmitData.isNotEmpty && this.formSubmitData.containsKey('$currentIndex')){
+          filledFormData  =  this.formSubmitData['$currentIndex'];
+        }
+        return SingleForm(filledFormData: filledFormData,
+            singleFormKey: _formKeyNew,
+            formData: entry.value,
+            nextPageButtonClick: (index, Map<String, dynamic> formSubmitData) {
+              this.formSubmitData['$currentIndex'] = formSubmitData;
+              widget.currentStepCallBack?.call(
+                  currentIndex: currentIndex, formSubmitData: formSubmitData);
+              setState(() {});
+            },
+            finalSubmitCallBack: (index, Map<String, dynamic> formSubmitData) {
+              this.formSubmitData['$currentIndex'] = formSubmitData;
+              widget.finalSubmitCallBack?.call(index, this.formSubmitData);
+            });
+      }).toList();
+    });
+  }
+
   ///Next step button click event
   void nextStepCustomClick() {
     int currentPage = responseParser.getCurrentFormNumber;
