@@ -59,8 +59,11 @@ class SingleFormState extends State<SingleForm> {
       List<dynamic>? formFieldListTemp = formFieldList!.map((e) {
         dynamic valueData = e;
         String key = valueData["elementConfig"]["name"];
-        String valueLocal = formSubmitFinalSingleData[key];
-        valueData['value'] = valueLocal;
+        String? valueLocal = formSubmitFinalSingleData[key];
+        if(valueLocal!=null){
+          valueData['value'] = valueLocal;
+        }
+
         print("$valueLocal      $valueData");
         return valueData;
       }).toList();
