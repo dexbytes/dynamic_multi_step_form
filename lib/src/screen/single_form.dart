@@ -63,7 +63,7 @@ class SingleFormState extends State<SingleForm> {
         String? valueLocal = formSubmitFinalSingleData[key];
         if(valueLocal!=null){
           if(fieldType!=null && fieldType == "date"){
-            valueData['value'] = dateToTimeStamp(dateVal: valueLocal);
+            // valueData['value'] = dateToTimeStamp(dateVal: valueLocal);
           }
           else{
             valueData['value'] = valueLocal;
