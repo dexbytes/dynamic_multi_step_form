@@ -59,10 +59,10 @@ class SingleFormState extends State<SingleForm> {
       List<dynamic>? formFieldListTemp = formFieldList!.map((e) {
         dynamic valueData = e;
         String key = valueData["elementConfig"]["name"];
-        String fieldType = valueData["elementConfig"]["type"];
+        String? fieldType = valueData["elementConfig"]["type"];
         String? valueLocal = formSubmitFinalSingleData[key];
         if(valueLocal!=null){
-          if(fieldType == "date"){
+          if(fieldType!=null && fieldType == "date"){
             valueData['value'] = dateToTimeStamp(dateVal: valueLocal);
           }
           else{
