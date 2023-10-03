@@ -59,11 +59,16 @@ class SingleFormState extends State<SingleForm> {
       List<dynamic>? formFieldListTemp = formFieldList!.map((e) {
         dynamic valueData = e;
         String key = valueData["elementConfig"]["name"];
+        String fieldType = valueData["elementConfig"]["type"];
         String? valueLocal = formSubmitFinalSingleData[key];
         if(valueLocal!=null){
-          valueData['value'] = valueLocal;
+          if(fieldType == "date"){
+            valueData['value'] = dateToTimeStamp(dateVal: valueLocal);
+          }
+          else{
+            valueData['value'] = valueLocal;
+          }
         }
-
         print("$valueLocal      $valueData");
         return valueData;
       }).toList();
@@ -464,4 +469,25 @@ class SingleFormState extends State<SingleForm> {
       );
     }).toList());
   }
+}
+String dateToTimeStamp({dateVal}){
+  String stringDate1 = '';
+  String dateValue = dateVal == "" ? DateFormat('dd/MM/yyyy').format(DateTime.now()): DateFormat('dd/MM/yyyy').format(DateTime.parse(dateVal));
+  if(dateValue != '0000-00-00' && dateValue != ''){
+    List values1  = dateValue.split("/");
+    String day = values1[0].toString().padLeft(2, '0');
+    String month = values1[1].toString().padLeft(2, '0');
+    String year = values1[2];
+    stringDate1 = '$year-$month-$day 01:01:01';
+  }
+  String dateTimeVal = dateValue == '0000-00-00' || dateValue == '' ? DateFormat('dd/MM/yyyy').format(DateTime.now()) : DateFormat('dd/MM/yyyy').format(DateTime.parse(stringDate1));
+  List values  = dateTimeVal.split("/");
+  String day = values[0].toString().padLeft(2, '0');
+  String month = values[1].toString().padLeft(2, '0');
+  String year = values[2];
+  String stringDate = '$year-$month-$day 01:01:01';
+  DateTime dateWithTime = DateTime.parse(stringDate);
+  // DateTime dateTimeValue = DateFormat('yyyy/MM/dd').parse('0000-00-00');
+  int timeStamp = (dateWithTime.millisecondsSinceEpoch / 1000).round();
+  return timeStamp.toString();
 }
