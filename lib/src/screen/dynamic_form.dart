@@ -164,8 +164,6 @@ class DynamicFormState extends State<DynamicForm> {
   ///Preview step button click event
   void previewStepCustomClick() {
 
-
-
     Map<String, dynamic>? data = formScreen[responseParser.getCurrentFormNumber]
         .singleFormKey!
         .currentState!
@@ -175,20 +173,30 @@ class DynamicFormState extends State<DynamicForm> {
             .singleFormKey!
             .currentState!
             .formInformation;
+
+    int oldPage = 0;
     if (responseParser.getCurrentFormNumber > 0) {
       setState(() {
+        oldPage = responseParser.getCurrentFormNumber - 1;
         responseParser.setCurrentFormNumber =
             responseParser.getCurrentFormNumber - 1;
+
       });
     }
-
-
-
 
     widget.currentStepCallBack?.call(
         currentIndex: responseParser.getCurrentFormNumber,
         formSubmitData: data,
         formInformation: formInformation);
+
+    Map<String, dynamic>? dataOld = formScreen[oldPage].singleFormKey!.currentState!.getFormData();
+    Map<String, dynamic>? formInformationOld = formScreen[oldPage]
+        .singleFormKey!
+        .currentState!
+        .formInformation;
+
+    formScreen[oldPage].singleFormKey!.currentState!.setFormData(dataOld, formInformationOld);
+
   }
 
   Widget? customStep(int, color, double) {

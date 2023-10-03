@@ -125,6 +125,12 @@ class SingleFormState extends State<SingleForm> {
     return null;
   }
 
+  ///Set form value
+  Map<String, dynamic>? setFormData(Map<String, dynamic>? data,Map<String, dynamic>? formInformation) {
+  print("");
+    return null;
+  }
+
   _autoValidate({bool checkValidOnSubmit = false}) {
     /*if(checkValidOnChange){
       return AutovalidateMode.onUserInteraction;
