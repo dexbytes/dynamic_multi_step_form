@@ -55,21 +55,25 @@ class SingleFormState extends State<SingleForm> {
   SingleFormState({int index = 0, required this.formData,this.filledFormData}) {
     Map<String, dynamic>? formSubmitFinalSingleData =  setFormData();
     formFieldList = formData['formFields'];
-    if(formSubmitFinalSingleData!=null){
+    if(formSubmitFinalSingleData!=null && formSubmitFinalSingleData.isNotEmpty){
       List<dynamic>? formFieldListTemp = formFieldList!.map((e) {
         dynamic valueData = e;
-        String key = valueData["elementConfig"]["name"];
-        String? fieldType = valueData["elementConfig"]["type"];
-        String? valueLocal = formSubmitFinalSingleData[key];
-        if(valueLocal!=null){
-          if(fieldType!=null && fieldType == "date"){
-            // valueData['value'] = dateToTimeStamp(dateVal: valueLocal);
-          }
-          else{
-            valueData['value'] = valueLocal;
-          }
+        try {
+          String key = valueData["elementConfig"]["name"];
+          String? fieldType = valueData["elementConfig"]["type"];
+          String? valueLocal = formSubmitFinalSingleData[key];
+          if(valueLocal!=null){
+                    if(fieldType!=null && fieldType == "date"){
+                      // valueData['value'] = dateToTimeStamp(dateVal: valueLocal);
+                    }
+                    else{
+                      valueData['value'] = valueLocal;
+                    }
+                  }
+          print("$valueLocal      $valueData");
+        } catch (e) {
+          print(e);
         }
-        print("$valueLocal      $valueData");
         return valueData;
       }).toList();
       formFieldList = formFieldListTemp ;
@@ -156,11 +160,14 @@ class SingleFormState extends State<SingleForm> {
   Map<String, dynamic>? setFormData() {
     try {
       int currentPageIndex =  responseParser.getCurrentFormNumber;
-      print("$currentPageIndex");
+      // print("$currentPageIndex");
       Map<String, dynamic> _formSubmitFinalData = responseParser.getFilledFormsData;
-      Map<String, dynamic> formSubmitFinalSingleData = _formSubmitFinalData["$currentPageIndex"];
-      print("$currentPageIndex");
-      return formSubmitFinalSingleData;
+      if(_formSubmitFinalData.isNotEmpty){
+        Map<String, dynamic> formSubmitFinalSingleData = _formSubmitFinalData["$currentPageIndex"];
+        // print("$currentPageIndex");
+        return formSubmitFinalSingleData;
+      }
+      return null;
     } catch (e) {
       print(e);
     }

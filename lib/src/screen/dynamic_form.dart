@@ -8,7 +8,7 @@ class DynamicForm extends StatefulWidget {
   final Function(
       {int currentIndex,
       Map<String, dynamic>? formSubmitData,
-      Map<String, dynamic>? formInformation})? currentStepCallBack;
+      Map<String, dynamic>? formInformation,bool? isBack})? currentStepCallBack;
   final GlobalKey<DynamicFormState>? dynamicFormKey;
 
   final Alignment? submitButtonAlignment;
@@ -62,7 +62,7 @@ class DynamicFormState extends State<DynamicForm> {
             this.formSubmitData['$currentIndex'] = formSubmitData;
 
             widget.currentStepCallBack?.call(
-                currentIndex: currentIndex, formSubmitData: formSubmitData);
+                currentIndex: currentIndex, formSubmitData: formSubmitData,isBack:false);
             setState(() {});
           },
           finalSubmitCallBack: (index, Map<String, dynamic> formSubmitData) {
@@ -91,7 +91,7 @@ class DynamicFormState extends State<DynamicForm> {
             nextPageButtonClick: (index, Map<String, dynamic> formSubmitData) {
               this.formSubmitData['$currentIndex'] = formSubmitData;
               widget.currentStepCallBack?.call(
-                  currentIndex: currentIndex, formSubmitData: formSubmitData);
+                  currentIndex: currentIndex, formSubmitData: formSubmitData,isBack:false);
               setState(() {});
             },
             finalSubmitCallBack: (index, Map<String, dynamic> formSubmitData) {
@@ -132,7 +132,7 @@ class DynamicFormState extends State<DynamicForm> {
         widget.currentStepCallBack?.call(
             currentIndex: currentPage + 1,
             formSubmitData: data,
-            formInformation: formInformation);
+            formInformation: formInformation,isBack:false);
 
         if (data!.isNotEmpty) {
           setState(() {
@@ -159,7 +159,7 @@ class DynamicFormState extends State<DynamicForm> {
         widget.currentStepCallBack?.call(
             currentIndex: currentPage + 1,
             formSubmitData: data,
-            formInformation: formInformation);
+            formInformation: formInformation,isBack:false);
         if (data!.isNotEmpty) {
           widget.finalSubmitCallBack
               ?.call(responseParser.getCurrentFormNumber, formSubmitData);
@@ -194,7 +194,8 @@ class DynamicFormState extends State<DynamicForm> {
     widget.currentStepCallBack?.call(
         currentIndex: responseParser.getCurrentFormNumber,
         formSubmitData: data,
-        formInformation: formInformation);
+        formInformation: formInformation,
+        isBack:true);
 
     Map<String, dynamic>? dataOld = formSubmitData["$oldPage"];//formScreen[oldPage].singleFormKey!.currentState!.getFormData();
     // Map<String, dynamic>? formInformationOld = formScreen[oldPage]

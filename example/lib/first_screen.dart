@@ -61,7 +61,7 @@ class _FirstScreenState extends State<FirstScreen> {
                         currentStepCallBack: (
                             {int? currentIndex,
                             Map<String, dynamic>? formSubmitData,
-                            Map<String, dynamic>? formInformation}) {
+                            Map<String, dynamic>? formInformation,bool? isBack = false }) {
                   //This function return value when any current form submit and validated.
                   setState(() {
                     //Here currentIndex is a current displayed step index. its default value is zero.
