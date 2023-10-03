@@ -127,7 +127,7 @@ class DynamicFormState extends State<DynamicForm> {
             .formInformation;
         formSubmitData['$currentPage'] = data;
 
-        responseParser.setFormFilledData('$currentPage',this.formSubmitData);
+        responseParser.setFormFilledData('$currentPage',data);
 
         widget.currentStepCallBack?.call(
             currentIndex: currentPage + 1,
