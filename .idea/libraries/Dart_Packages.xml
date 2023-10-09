@@ -173,10 +173,10 @@
             </list>
           </value>
         </entry>
-        <entry key="image_pickers">
+        <entry key="images_picker">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/image_pickers-2.0.4+2/lib" />
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dev/images_picker-1.2.11/lib" />
             </list>
           </value>
         </entry>
@@ -493,7 +493,7 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http-1.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http_parser-4.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/http_parser-4.0.2/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/image_pickers-2.0.4+2/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/images_picker-1.2.11/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/intl-0.18.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/js-0.6.7/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dev/lints-2.1.1/lib" />
