@@ -176,14 +176,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-  image_pickers:
+  images_picker:
     dependency: "direct main"
     description:
-      name: image_pickers
-      sha256: "6a8ef5e00a7db9d7f4bd6948e0b10f81409b9c88a3fb22f0c505bf7c33913137"
+      name: images_picker
+      sha256: cc99347a6fa93228bf92f15ce36e4474256e4af0e6c0e1f0e7e9f047adbccd5b
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.4+2"
+    version: "1.2.11"
   intl:
     dependency: "direct main"
     description:

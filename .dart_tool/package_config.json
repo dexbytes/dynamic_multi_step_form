@@ -140,8 +140,8 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "image_pickers",
-      "rootUri": "file:///Users/dexbytesinfotech/.pub-cache/hosted/pub.dev/image_pickers-2.0.4+2",
+      "name": "images_picker",
+      "rootUri": "file:///Users/dexbytesinfotech/.pub-cache/hosted/pub.dev/images_picker-1.2.11",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -392,7 +392,7 @@
       "languageVersion": "2.15"
     }
   ],
-  "generated": "2023-09-29T07:01:31.744235Z",
+  "generated": "2023-10-09T07:56:32.942672Z",
   "generator": "pub",
   "generatorVersion": "3.0.0"
 }
