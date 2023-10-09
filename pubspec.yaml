@@ -19,7 +19,6 @@ dependencies:
   intl: ^0.18.1
   file: ^6.1.4
   image_pickers: 2.0.4+2
-  images_picker: ^1.2.11
   cached_network_image: ^3.2.3
   file_picker: ^5.3.3
   flutter_barcode_scanner: ^2.0.0

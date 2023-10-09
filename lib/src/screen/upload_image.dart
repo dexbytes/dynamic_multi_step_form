@@ -228,72 +228,35 @@ class _UploadImageState extends State<UploadImageView> {
     );
   }
 
-  void actionOnClick(String clickFor) async {
-    if (clickFor.toLowerCase() == "camera") {
-      // Capture a photo.
-      List<Media>? photo = await ImagesPicker.openCamera(
-        // pickType: PickType.video,
-        pickType: PickType.image,
-        quality: 0.8,
-        maxSize: 800,
-        cropOpt: CropOption(
-          aspectRatio: CropAspectRatio.wh16x9,
-        ),
-        maxTime: 15,
-      );
-      if (photo != null && photo.isNotEmpty) {
-        setState(() {
-          imagePath = photo[0].path;
-        });
-        onChangeValue.call(fieldKey, imagePath!);
-      }
-    } else if (clickFor.toLowerCase() == "gallery") {
-      // Pick an image.
-      List<Media>? photo = await ImagesPicker.pick(
-        count: 1,
-        pickType: PickType.image,
-        language: Language.System,
-        maxTime: 30,
-        // maxSize: 500,
-        cropOpt: CropOption(
-          aspectRatio: CropAspectRatio.wh16x9,
-        ),
-      );
-      if (photo != null && photo.isNotEmpty) {
-        setState(() {
-          imagePath = photo[0].path;
-        });
-        onChangeValue.call(fieldKey, imagePath!);
-      }
-    }
-  }
-
   // void actionOnClick(String clickFor) async {
   //   if (clickFor.toLowerCase() == "camera") {
   //     // Capture a photo.
-  //     Media? photo = await ImagePickers.openCamera(
-  //       cameraMimeType: CameraMimeType.photo,
-  //       compressSize: 500,
-  //       cropConfig:  CropConfig(enableCrop: true),);
-  //     if (photo != null && photo.path!.isNotEmpty) {
+  //     List<Media>? photo = await ImagesPicker.openCamera(
+  //       // pickType: PickType.video,
+  //       pickType: PickType.image,
+  //       quality: 0.8,
+  //       maxSize: 800,
+  //       cropOpt: CropOption(
+  //         aspectRatio: CropAspectRatio.wh16x9,
+  //       ),
+  //       maxTime: 15,
+  //     );
+  //     if (photo != null && photo.isNotEmpty) {
   //       setState(() {
-  //         imagePath = photo.path;
+  //         imagePath = photo[0].path;
   //       });
   //       onChangeValue.call(fieldKey, imagePath!);
   //     }
-  //
   //   } else if (clickFor.toLowerCase() == "gallery") {
   //     // Pick an image.
-  //     List<Media>? photo = await ImagePickers.pickerPaths(
-  //       galleryMode: GalleryMode.image,
-  //       showGif: false,
-  //       selectCount: 1,
-  //       showCamera: false,
-  //       cropConfig:
-  //       CropConfig(enableCrop: true),
-  //       compressSize: 500,
-  //       uiConfig: UIConfig(
-  //         uiThemeColor: Color(0xff090C30),
+  //     List<Media>? photo = await ImagesPicker.pick(
+  //       count: 1,
+  //       pickType: PickType.image,
+  //       language: Language.System,
+  //       maxTime: 30,
+  //       // maxSize: 500,
+  //       cropOpt: CropOption(
+  //         aspectRatio: CropAspectRatio.wh16x9,
   //       ),
   //     );
   //     if (photo != null && photo.isNotEmpty) {
@@ -304,6 +267,43 @@ class _UploadImageState extends State<UploadImageView> {
   //     }
   //   }
   // }
+
+  void actionOnClick(String clickFor) async {
+    if (clickFor.toLowerCase() == "camera") {
+      // Capture a photo.
+      Media? photo = await ImagePickers.openCamera(
+        cameraMimeType: CameraMimeType.photo,
+        compressSize: 500,
+        cropConfig:  CropConfig(enableCrop: true),);
+      if (photo != null && photo.path!.isNotEmpty) {
+        setState(() {
+          imagePath = photo.path;
+        });
+        onChangeValue.call(fieldKey, imagePath!);
+      }
+
+    } else if (clickFor.toLowerCase() == "gallery") {
+      // Pick an image.
+      List<Media>? photo = await ImagePickers.pickerPaths(
+        galleryMode: GalleryMode.image,
+        showGif: false,
+        selectCount: 1,
+        showCamera: false,
+        cropConfig:
+        CropConfig(enableCrop: true),
+        compressSize: 500,
+        uiConfig: UIConfig(
+          uiThemeColor: Color(0xff090C30),
+        ),
+      );
+      if (photo != null && photo.isNotEmpty) {
+        setState(() {
+          imagePath = photo[0].path;
+        });
+        onChangeValue.call(fieldKey, imagePath!);
+      }
+    }
+  }
 
   void displayProductDetailModal(BuildContext context) {
     showModalBottomSheet(
