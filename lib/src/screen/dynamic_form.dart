@@ -106,7 +106,6 @@ class DynamicFormState extends State<DynamicForm> {
   void didUpdateWidget(covariant DynamicForm oldWidget) {
     // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
-    updateForm();
   }
 
   ///Next step button click event
