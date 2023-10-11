@@ -117,7 +117,7 @@ class SingleFormState extends State<SingleForm> {
             children: [
               title != null && title!.trim().isNotEmpty
                   ? Padding(
-                      padding: const EdgeInsets.only(bottom: 11, left: 4),
+                      padding: const EdgeInsets.only(bottom: 5, left: 4),
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
