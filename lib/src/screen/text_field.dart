@@ -641,14 +641,16 @@ class _TextFieldsState extends State<TextFieldView> {
           return Theme(
               child: child!,
               data: ThemeData().copyWith(
-                  // brightness:!isDarkMode? Brightness.light:Brightness.dark,
-                  colorScheme: const ColorScheme.dark(
-                      primary: Color(0xFF090C30),
-                      onSurface: Color(0xFF090C30),
+                // brightness:!isDarkMode? Brightness.light:Brightness.dark,
+                  colorScheme: ColorScheme.dark(
+                      primary: Color(0xFF2772EE),
+                      onSurface: Colors.black,
                       onPrimary: Colors.white,
-                      // surface:Colors.green,
-                      brightness: Brightness.light),
-                  dialogBackgroundColor: Colors.white));
+                      surface:Colors.white,
+                      brightness: Brightness.light
+                  ),
+                  dialogBackgroundColor:Colors.white
+              ));
         });
 
     if (newDate == null) return;
