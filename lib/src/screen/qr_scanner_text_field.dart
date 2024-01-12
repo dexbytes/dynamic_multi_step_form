@@ -638,6 +638,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
         isClosed = true;
         if (_scanBarcode.trim().isNotEmpty) {
           _nameController!.text = _scanBarcode.trim();
+          onChangeValue.call(fieldKey, _scanBarcode.trim());
         }
       }
     } catch (e) {
