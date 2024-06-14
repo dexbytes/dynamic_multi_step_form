@@ -238,12 +238,14 @@ class DynamicFormState extends State<DynamicForm> {
                       String title = "${formInformation[index]}";
                       return Column(
                         children: [
-                          Text(
-                            "$title",
-                            style: TextStyle(
-                                color: color,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14),
+                          Flexible(
+                            child: Text(
+                              "$title",
+                              style: TextStyle(
+                                  color: color,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12),
+                            ),
                           ),
                           SizedBox(
                             height: 5,

@@ -18,7 +18,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0
 
 environment:
-  sdk: ">=2.12.2 <3.0.0"
+  sdk: '>=3.4.1 <4.0.0'
+#  sdk: ">=2.12.2 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -32,13 +33,13 @@ dependencies:
 
   dynamic_multi_step_form:
     path: ..//
-  http: ^0.13.3
+  http: ^1.2.1
   #  dynamic_multi_step_form:
   #    git:
   #     url: https://github.com/dexbytes/dynamic_multi_step_form.git
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.6
 
 dev_dependencies:
   flutter_test:
