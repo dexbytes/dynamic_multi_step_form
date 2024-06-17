@@ -180,10 +180,9 @@ class DynamicFormState extends State<DynamicForm> {
             .currentState!
             .formInformation;
 
-    int oldPage = 0;
+
     if (responseParser.getCurrentFormNumber > 0) {
       setState(() {
-        oldPage = responseParser.getCurrentFormNumber - 1;
         responseParser.setCurrentFormNumber =
             responseParser.getCurrentFormNumber - 1;
 
@@ -196,7 +195,7 @@ class DynamicFormState extends State<DynamicForm> {
         formInformation: formInformation,
         isBack:true);
 
-    Map<String, dynamic>? dataOld = formSubmitData["$oldPage"];//formScreen[oldPage].singleFormKey!.currentState!.getFormData();
+    // Map<String, dynamic>? dataOld = formSubmitData["$oldPage"];//formScreen[oldPage].singleFormKey!.currentState!.getFormData();
     // Map<String, dynamic>? formInformationOld = formScreen[oldPage]
     //     .singleFormKey!
     //     .currentState!

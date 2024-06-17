@@ -76,17 +76,21 @@ class _DropDownState extends State<DropDown> {
 
   @override
   initState() {
-    setState(() {
-      selectedData = optionList![0].displayValue!;
+    // setState(() {
+    if(optionList!=null){
+      selectedData = optionList![0].displayValue??"";
       valueChoose = optionList![0].value;
-    });
+    }
+
+    // });
     onChangeValue2.call(fieldKey, optionList![0].displayValue!);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     ///ErrorMessage
-    Widget errorMessage = (selectedData != null && selectedData!.isNotEmpty)
+    Widget errorMessage = selectedData.isNotEmpty
         ? Container()
         : Padding(
             padding: const EdgeInsets.only(left: 4.0, top: 2),

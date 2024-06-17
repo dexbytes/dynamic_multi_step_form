@@ -1748,10 +1748,10 @@ class _DropdownButtonState<T> extends State<DropdownButtonNew<T>>
     }
 
     final MouseCursor effectiveMouseCursor =
-        MaterialStateProperty.resolveAs<MouseCursor>(
-      MaterialStateMouseCursor.clickable,
-      <MaterialState>{
-        if (!_enabled) MaterialState.disabled,
+        WidgetStateProperty.resolveAs<MouseCursor>(
+      WidgetStateMouseCursor.clickable,
+      <WidgetState>{
+        if (!_enabled) WidgetState.disabled,
       },
     );
 

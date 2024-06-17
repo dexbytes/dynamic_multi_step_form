@@ -85,7 +85,7 @@ class _TextFieldsState extends State<TextFieldView> {
         if (formFieldType == 'date') {
           if (textFieldModel!.value != null &&
               textFieldModel!.value!.toString().trim().isNotEmpty) {
-            _nameController!.text = packageUtil
+            _nameController.text = packageUtil
                 .getText(
                     "dd MMMM, yyyy",
                     commonValidation.getTimeFromTimeStamp(
@@ -106,7 +106,7 @@ class _TextFieldsState extends State<TextFieldView> {
 
         viewConfig = ViewConfig(
             viewConfiguration: viewConfiguration,
-            nameController: _nameController!,
+            nameController: _nameController,
             textFieldModel: textFieldModel!,
             formFieldType: formFieldType,
             obscureTextState: obscureText,
@@ -371,13 +371,13 @@ class _TextFieldsState extends State<TextFieldView> {
     FocusScope.of(context).requestFocus(new FocusNode());
     if (mounted &&
         _nameController != null &&
-        _nameController!.text.isNotEmpty &&
+        _nameController.text.isNotEmpty &&
         checkValid) {
       setState(() {
         checkValidOnChange = true;
         autovalidateMode = _autoValidate();
       });
-      moveToNextField(_nameController!.text.toString());
+      moveToNextField(_nameController.text.toString());
     }
   }
 

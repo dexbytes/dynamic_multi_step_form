@@ -283,8 +283,9 @@ class _UploadImageState extends State<UploadImageView> {
       }
 
     } else if (clickFor.toLowerCase() == "gallery") {
+      List<Media>? photo = [];
       // Pick an image.
-      List<Media>? photo = await ImagePickers.pickerPaths(
+      photo = await ImagePickers.pickerPaths(
         galleryMode: GalleryMode.image,
         showGif: false,
         selectCount: 1,
@@ -296,9 +297,9 @@ class _UploadImageState extends State<UploadImageView> {
           uiThemeColor: Color(0xff090C30),
         ),
       );
-      if (photo != null && photo.isNotEmpty) {
+      if (photo.isNotEmpty) {
         setState(() {
-          imagePath = photo[0].path;
+          imagePath = photo![0].path;
         });
         onChangeValue.call(fieldKey, imagePath!);
       }

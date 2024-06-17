@@ -109,7 +109,7 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
             isCountryCode: isCountryCode,
             enabledCountries: enabledCountries,
             viewConfiguration: viewConfiguration,
-            nameController: _nameController!,
+            nameController: _nameController,
             textFieldModel: textFieldModel!,
             formFieldType: formFieldType,
             obscureTextState: obscureText,
@@ -265,14 +265,14 @@ class _TextFieldCountryPickerState extends State<TextFieldCountryPickerView> {
     FocusScope.of(context).requestFocus(new FocusNode());
     if (mounted &&
         _nameController != null &&
-        _nameController!.text.isNotEmpty &&
+        _nameController.text.isNotEmpty &&
         checkValid) {
       setState(() {
         checkValidOnChange = true;
         autovalidateMode = _autoValidate();
       });
 
-      moveToNextField(_nameController!.text.toString());
+      moveToNextField(_nameController.text.toString());
     }
   }
 
