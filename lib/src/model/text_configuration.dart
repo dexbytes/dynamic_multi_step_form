@@ -5,9 +5,9 @@ part of dynamic_multi_step_form;
 class TextFieldConfiguration {
   /// The shape of the border to draw around the decoration's container.
   ///
-  /// If [border] is a [MaterialStateUnderlineInputBorder]
-  /// or [MaterialStateOutlineInputBorder], then the effective border can depend on
-  /// the [MaterialState.focused] state, i.e. if the [TextField] is focused or not.
+  /// If [border] is a [WidgetStateUnderlineInputBorder]
+  /// or [WidgetStateOutlineInputBorder], then the effective border can depend on
+  /// the [WidgetState.focused] state, i.e. if the [TextField] is focused or not.
   ///
   /// If [border] derives from [InputBorder] the border's [InputBorder.borderSide],
   /// i.e. the border's color and width, will be overridden to reflect the input

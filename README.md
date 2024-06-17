@@ -30,12 +30,12 @@ This plugin relies on the flutter core.
 
 ## Usage
 
-To use the plugin you just need to add dynamic_multi_step_form: ^1.1.4 into your pubspec.yaml file
+To use the plugin you just need to add dynamic_multi_step_form: ^1.1.5 into your pubspec.yaml file
 and run pub get.
 
 ## Add following into your package's pubspec.yaml (and run an implicit dart pub get):
 
-dynamic_multi_step_form: ^1.1.4
+dynamic_multi_step_form: ^1.1.5
 
 ## Multi Step Form UI Sample
 

@@ -56,6 +56,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "cross_file",
+      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/cross_file-0.3.4+1",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "crypto",
       "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/crypto-3.0.3",
       "packageUri": "lib/",
@@ -75,15 +81,15 @@
     },
     {
       "name": "file",
-      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/file-6.1.4",
+      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/file-7.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "file_picker",
-      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/file_picker-5.5.0",
+      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/file_picker-8.0.5",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.19"
     },
     {
       "name": "fixnum",
@@ -105,7 +111,7 @@
     },
     {
       "name": "flutter_cache_manager",
-      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.1",
+      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/flutter_cache_manager-3.3.2",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -141,15 +147,15 @@
     },
     {
       "name": "image_pickers",
-      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/image_pickers-2.0.4+2",
+      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/image_pickers-2.0.5+2",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.15"
     },
     {
       "name": "intl",
-      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/intl-0.18.1",
+      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/intl-0.19.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "leak_tracker",
@@ -171,9 +177,9 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/lints-3.0.0",
+      "rootUri": "file:///Users/dexbytes_ultra/.pub-cache/hosted/pub.dev/lints-4.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.0"
+      "languageVersion": "3.1"
     },
     {
       "name": "matcher",
@@ -416,7 +422,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-06-17T07:14:46.602942Z",
+  "generated": "2024-06-17T07:46:38.831810Z",
   "generator": "pub",
   "generatorVersion": "3.4.1",
   "flutterRoot": "file:///Users/dexbytes_ultra/flutter_SDK/flutter",
