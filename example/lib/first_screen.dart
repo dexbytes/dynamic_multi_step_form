@@ -25,7 +25,9 @@ class _FirstScreenState extends State<FirstScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: appBarWithBackArrow(),
+      appBar: appBarWithBackArrow(onPress: (){
+        Navigator.pop(context);
+      }),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

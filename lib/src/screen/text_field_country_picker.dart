@@ -522,10 +522,11 @@ class CountryPickerViewConfig {
       }
 
       if (isCountryCode && enabledCountries.isNotEmpty) {
+        List<String> stringList = enabledCountries.map((item) => item as String).toList();
         prefixCountryView = CountryPicker(
           margin: const EdgeInsets.only(left: 0, right: 0, bottom: 0),
           padding: const EdgeInsets.only(left: 0, top: 0, bottom: 5, right: 0),
-          initialSelection: enabledCountries[0].toString(),
+          initialSelection: enabledCountries[0].toString(),countryFilter: stringList,
           onChanged: (value) {
             countryCodeCallBack!.call(value.dialCode.toString());
             if (kDebugMode) {

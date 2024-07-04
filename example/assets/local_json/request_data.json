@@ -263,6 +263,44 @@
           "valid": true
         },
         {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "tel",
+            "name": "phone",
+            "label": "Contact Number",
+            "enableLabel": true,
+            "isShowAmericanNumberFormat": true,
+            "keyboardRejex": "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$",
+            "placeholder": "",
+            "class": "form-control",
+            "resetIcon": true,
+            "isCountryCode": true,
+            "enabledCountries": ["Sa"],
+            "selectedCountryCode": "Sa"
+
+          },
+          "help": {
+            "text": "",
+            "placement": "below"
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 8,
+            "maxLength": 14,
+            "rejex": "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter contact number",
+              "minLength": "Minimum 8 digit contact number required",
+              "rejex": "Please enter valid contact number"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
           "elementType": "upload_image",
           "elementConfig": {
             "name": "driver_license_photo",
