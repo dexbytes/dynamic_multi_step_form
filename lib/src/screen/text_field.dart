@@ -450,7 +450,7 @@ class _TextFieldsState extends State<TextFieldView> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Padding(
-                                padding: EdgeInsets.zero,
+                                padding: EdgeInsets.only(bottom: 4,left: 2),
                                 child: Text(
                                   textFieldModel!
                                       .elementConfig!.placeHolderLabel!,

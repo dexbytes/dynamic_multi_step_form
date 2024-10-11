@@ -14,12 +14,13 @@
         {
           "elementType": "input",
           "elementConfig": {
-            "type": "tel",
+            "type": "text",
             "name": "Score *",
-            "label": "Score *",
+            "label": "",
             "enableLabel": false,
-            "keyboardRejex": "^[0-9+]+",
+            "keyboardRejex": "^(100(.0{1,2})?|[1-9]?[0-9](.d{1,2})?)$",
             "placeholder": "Score *",
+            "placeHolderLabel": "Score *",
             "class": "form-control",
             "resetIcon": true
           },
@@ -31,8 +32,8 @@
           "validation": {
             "required": true,
             "minLength": 1,
-            "maxLength": 3,
-            "rejex": "^[0-9+]+",
+            "maxLength": 5,
+            "rejex": "^(100(.0{1,2})?|[1-9]?[0-9](.d{1,2})?)$",
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
@@ -52,7 +53,7 @@
             "type": "text",
             "name": "comment *",
             "placeHolderLabel": "Comment *",
-            "label": "",
+            "label": "Comment *",
             "enableLabel": true,
             "placeholder": "Comment *",
             "class": "form-control",
@@ -109,7 +110,7 @@
               "rejex": "Please enter valid suggestion"
             }
           },
-          "valid": true,
+          "valid": false,
           "onchange": false
         }
       ]
@@ -127,6 +128,7 @@
             "type": "tel",
             "name": "Score *",
             "label": "Score *",
+            "placeHolderLabel": "Score *",
             "enableLabel": false,
             "keyboardRejex": "^[0-9+]+",
             "placeholder": "Score *",
@@ -235,6 +237,7 @@
             "type": "tel",
             "name": "Score *",
             "label": "Score *",
+            "placeHolderLabel": "Score *",
             "enableLabel": false,
             "keyboardRejex": "^[0-9+]+",
             "placeholder": "Score *",
@@ -344,6 +347,7 @@
             "type": "tel",
             "name": "Score *",
             "label": "Score *",
+            "placeHolderLabel": "Score *",
             "enableLabel": false,
             "keyboardRejex": "^[0-9+]+",
             "placeholder": "Score *",
@@ -452,6 +456,7 @@
             "type": "tel",
             "name": "Score *",
             "label": "Score *",
+            "placeHolderLabel": "Score *",
             "enableLabel": false,
             "keyboardRejex": "^[0-9+]+",
             "placeholder": "Score *",
