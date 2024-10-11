@@ -112,38 +112,37 @@ class SingleFormState extends State<SingleForm> {
     return StreamBuilder(
         stream: onVariableChanged,
         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-          return Padding(
-            padding: EdgeInsets.only(top: 25),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                title != null && title!.trim().isNotEmpty
-                    ? Padding(
-                        padding: const EdgeInsets.only(bottom: 5, left: 4),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
+          return Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              title != null && title!.trim().isNotEmpty
+                  ? Padding(
+                      padding: const EdgeInsets.only(bottom: 15, left: 4),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Flexible(
+                            child: Text(
                               title!,
                               style: TextStyle(
                                   fontSize: 16,
                                   color: const Color(0xff222222),
                                   fontWeight: FontWeight.w500),
                             ),
-                          ],
-                        ),
-                      )
-                    : SizedBox(),
-                Form(
-                    key: _formKey,
-                    autovalidateMode: autovalidateMode,
-                    child: formFieldListView(formFieldList: formFieldList!)),
-                formSubmitButton != null
-                    ? formSubmitButton!
-                    : const SizedBox(height: 0)
-              ],
-            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : SizedBox(),
+              Form(
+                  key: _formKey,
+                  autovalidateMode: autovalidateMode,
+                  child: formFieldListView(formFieldList: formFieldList!)),
+              formSubmitButton != null
+                  ? formSubmitButton!
+                  : const SizedBox(height: 0)
+            ],
           );
         });
   }
