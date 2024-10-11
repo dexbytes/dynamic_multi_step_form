@@ -7,277 +7,21 @@
   "step": {
     "form1":
     {
-      "formName" : "personalDetail",
+      "formName" : "Step 1",
       "title": "",
-      "description": "Please Enter the Details",
+      "description": "",
       "formFields": [
         {
           "elementType": "input",
           "elementConfig": {
-            "type": "date",
-            "name": "dob",
-            "label": "Date of Birth",
-            "placeholder": "Date of Birth",
-            "class": "form-control",
-            "resetIcon": true,
-            "firstDate": "1546350642",
-            "initialDate": "631201842",
-            "lastDate": "631201842",
-            "pickDateFromCalender": false
-          },
-          "value": "",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select date of birth"
-            }
-          },
-          "valid": true,
-          "onchange": false
-        },
-        {
-          "elementType": "select",
-          "elementConfig": {
-            "name": "state",
-            "label": "State",
-            "enableLabel": true,
-            "isShowBottomSheet": true,
-            "buttonHead": "State",
-            "placeholder": "State",
-            "class": "form-control",
-            "options": [
-              {
-                "value": "alabama",
-                "displayValue": "Alabama"
-              },
-              {
-                "value": "alaska",
-                "displayValue": "Alaska"
-              },
-              {
-                "value": "arizona",
-                "displayValue": "Arizona"
-              },
-              {
-                "value": "arkansas",
-                "displayValue": "Arkansas"
-              },
-              {
-                "value": "california",
-                "displayValue": "California"
-              },
-              {
-                "value": "colorado",
-                "displayValue": "Colorado"
-              },
-              {
-                "value": "connecticut",
-                "displayValue": "Connecticut"
-              },
-              {
-                "value": "delaware",
-                "displayValue": "Delaware"
-              },
-              {
-                "value": "florida",
-                "displayValue": "Florida"
-              },
-              {
-                "value": "georgia",
-                "displayValue": "Georgia"
-              },
-              {
-                "value": "hawaii",
-                "displayValue": "Hawaii"
-              },
-              {
-                "value": "idaho",
-                "displayValue": "Idaho"
-              },
-              {
-                "value": "illinois",
-                "displayValue": "Illinois"
-              },
-              {
-                "value": "indiana",
-                "displayValue": "Indiana"
-              },
-              {
-                "value": "iowa",
-                "displayValue": "Iowa"
-              },
-              {
-                "value": "kansas",
-                "displayValue": "Kansas"
-              },
-              {
-                "value": "kentucky",
-                "displayValue": "Kentucky"
-              },
-              {
-                "value": "louisiana",
-                "displayValue": "louisiana"
-              },
-              {
-                "value": "maine",
-                "displayValue": "Maine"
-              },
-              {
-                "value": "maryland",
-                "displayValue": "Maryland"
-              },
-              {
-                "value": "massachusetts",
-                "displayValue": "Massachusetts"
-              },
-              {
-                "value": "michigan",
-                "displayValue": "Michigan"
-              },
-              {
-                "value": "minnesota",
-                "displayValue": "Minnesota"
-              },
-              {
-                "value": "mississippi",
-                "displayValue": "Mississippi"
-              },
-              {
-                "value": "missouri",
-                "displayValue": "Missouri"
-              },
-              {
-                "value": "montana",
-                "displayValue": "Montana"
-              },
-              {
-                "value": "nebraska",
-                "displayValue": "Nebraska"
-              },
-              {
-                "value": "nevada",
-                "displayValue": "Nevada"
-              },
-              {
-                "value": "new_hampshire",
-                "displayValue": "New Hampshire"
-              },
-              {
-                "value": "new_Jersey",
-                "displayValue": "New Jersey"
-              },
-              {
-                "value": "new_Mexico",
-                "displayValue": "New Mexico"
-              },
-              {
-                "value": "new_York'",
-                "displayValue": "New York'"
-              },
-              {
-                "value": "north_Carolina",
-                "displayValue": "North Carolina"
-              },
-              {
-                "value": "north_Dakota",
-                "displayValue": "North Dakota"
-              },
-              {
-                "value": "ohio",
-                "displayValue": "Ohio"
-              },
-              {
-                "value": "oklahoma",
-                "displayValue": "Oklahoma"
-              },
-              {
-                "value": "oregon",
-                "displayValue": "Oregon"
-              },
-              {
-                "value": "pennsylvania",
-                "displayValue": "Pennsylvania"
-              },
-              {
-                "value": "rhode_Island",
-                "displayValue": "Rhode Island"
-              },
-              {
-                "value": "south_Carolina",
-                "displayValue": "South Carolina"
-              },
-              {
-                "value": "south_Dakota",
-                "displayValue": "South Dakota"
-              },
-              {
-                "value": "tennessee",
-                "displayValue": "Tennessee"
-              },
-              {
-                "value": "texas",
-                "displayValue": "Texas"
-              },
-              {
-                "value": "utah",
-                "displayValue": "Utah"
-              },
-              {
-                "value": "vermont",
-                "displayValue": "Vermont"
-              },
-              {
-                "value": "virginia",
-                "displayValue": "Virginia"
-              },
-              {
-                "value": "washington",
-                "displayValue": "Washington"
-              },
-              {
-                "value": "west_Virginia",
-                "displayValue": "West Virginia"
-              },
-              {
-                "value": "wisconsin",
-                "displayValue": "Wisconsin"
-              },
-              {
-                "value": "Wyoming",
-                "displayValue": "Wyoming"
-              }
-            ],
-            "isMulitpleSelect": false
-          },
-          "value": "alabama",
-          "validation": {
-            "required": true,
-            "isReadOnly": false,
-            "isDisabled": false,
-            "errorMessage": {
-              "required": "Please select state"
-            }
-          },
-          "valid": true
-        },
-        {
-          "elementType": "input",
-          "elementConfig": {
             "type": "tel",
-            "name": "phone",
-            "label": "Contact Number",
-            "enableLabel": true,
-            "isShowAmericanNumberFormat": true,
-            "keyboardRejex": "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$",
-            "placeholder": "",
+            "name": "Score *",
+            "label": "Score *",
+            "enableLabel": false,
+            "keyboardRejex": "^[0-9+]+",
+            "placeholder": "Score *",
             "class": "form-control",
-            "resetIcon": true,
-            "isCountryCode": true,
-            "enabledCountries": ["Sa"],
-            "selectedCountryCode": "Sa"
-
+            "resetIcon": true
           },
           "help": {
             "text": "",
@@ -286,550 +30,628 @@
           "value": "",
           "validation": {
             "required": true,
-            "minLength": 8,
-            "maxLength": 14,
-            "rejex": "^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$",
+            "minLength": 1,
+            "maxLength": 3,
+            "rejex": "^[0-9+]+",
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
-              "required": "Please enter contact number",
-              "minLength": "Minimum 8 digit contact number required",
-              "rejex": "Please enter valid contact number"
+              "required": "Please enter score",
+              "minLength": "Please enter valid score",
+              "rejex": "Please enter valid score",
+              "maxValue": "Score must be between 1 and 100"
+            },
+            "maxValue": 100
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "comment *",
+            "placeHolderLabel": "Comment *",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Comment *",
+            "class": "form-control",
+            "keyboardRejex": "^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter comment",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid comment"
             }
           },
           "valid": true,
           "onchange": false
         },
         {
-          "elementType": "upload_image",
+          "elementType": "input",
           "elementConfig": {
-            "name": "driver_license_photo",
-            "label": "Driving License",
+            "type": "text",
+            "name": "suggestion",
+            "placeHolderLabel": "Suggestion (optional)",
+            "label": "",
             "enableLabel": true,
-            "initialValue": ""
+            "placeholder": "Suggestion",
+            "class": "form-control",
+            "keyboardRejex":"^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
           },
           "value": "",
           "validation": {
-            "required": true,
+            "required": false,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
             "isReadOnly": false,
             "isDisabled": false,
             "errorMessage": {
-              "required": "Please upload driving license"
+              "required": "",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid suggestion"
             }
           },
-          "valid": false
+          "valid": true,
+          "onchange": false
         }
       ]
     },
 
     "form2":
     {
-  "formName" : "personalDetail",
-  "title": "Personal Detail",
-  "description": "Hey, get on board ",
-  "formFields": [
-    {
-      "elementType": "select",
-      "elementConfig": {
-        "name": "state",
-        "label": "State",
-        "enableLabel": false,
-        "isShowBottomSheet": false,
-        "buttonHead": "State",
-        "placeholder": "State",
-        "class": "form-control",
-        "options": [
-          {
-            "value": "california",
-            "displayValue": "California"
+      "formName" : "Step 2",
+      "title": "",
+      "description": "",
+      "formFields": [
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "tel",
+            "name": "Score *",
+            "label": "Score *",
+            "enableLabel": false,
+            "keyboardRejex": "^[0-9+]+",
+            "placeholder": "Score *",
+            "class": "form-control",
+            "resetIcon": true
           },
-          {
-            "value": "texas",
-            "displayValue": "Texas"
+          "help": {
+            "text": "",
+            "placement": "below"
           },
-          {
-            "value": "florida",
-            "displayValue": "Florida"
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 1,
+            "maxLength": 3,
+            "rejex": "^[0-9+]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter score",
+              "minLength": "Please enter valid score",
+              "rejex": "Please enter valid score"
+            }
           },
-          {
-            "value": "ohio",
-            "displayValue": "Ohio"
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "comment *",
+            "placeHolderLabel": "Comment *",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Comment *",
+            "class": "form-control",
+            "keyboardRejex": "^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
           },
-          {
-            "value": "hawaii",
-            "displayValue": "Hawaii"
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter comment",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid comment"
+            }
           },
-          {
-            "value": "virginia",
-            "displayValue": "Virginia"
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "suggestion",
+            "placeHolderLabel": "Suggestion (optional)",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Suggestion",
+            "class": "form-control",
+            "keyboardRejex":"^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
           },
-          {
-            "value": "georgia",
-            "displayValue": "Georgia"
+          "value": "",
+          "validation": {
+            "required": false,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid suggestion"
+            }
           },
-          {
-            "value": "washington",
-            "displayValue": "Washington"
-          }
-        ],
-        "isMulitpleSelect": false
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please select state"
+          "valid": true,
+          "onchange": false
         }
-      },
-      "valid": false
+      ]
     },
-    {
-      "elementType": "select",
-      "elementConfig": {
-        "name": "city",
-        "label": "City",
-        "enableLabel": false,
-        "isShowBottomSheet": true,
-        "buttonHead": "City",
-        "placeholder": "City",
-        "class": "form-control",
-        "options": [
-          {
-            "value": "new_york.",
-            "displayValue": "New York"
-          },
-          {
-            "value": "los_angeles.",
-            "displayValue": "Los Angeles"
-          },
-          {
-            "value": "chicago",
-            "displayValue": "Chicago"
-          },
-          {
-            "value": "houston",
-            "displayValue": "Houston"
-          },
-          {
-            "value": "phoenix",
-            "displayValue": "Phoenix"
-          },
-          {
-            "value": "philadelphia",
-            "displayValue": "Philadelphia"
-          },
-          {
-            "value": "san_antonio",
-            "displayValue": "San Antonio"
-          },
-          {
-            "value": "arizona",
-            "displayValue": "Arizona"
-          },
-          {
-            "value": "dallas",
-            "displayValue": "Dallas"
-          },
-          {
-            "value": "san_diego",
-            "displayValue": "San Diego"
-          }
-        ],
-        "isMulitpleSelect": false
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please select city"
-        }
-      },
-      "valid": false
-    },
-    {
-      "elementType": "select",
-      "elementConfig": {
-        "name": "ride_platform",
-        "label": "Ride Platform",
-        "buttonHead": "Ride Platform",
-        "enableLabel": false,
-        "isShowBottomSheet": true,
-        "placeholder": "Ride Platform",
-        "class": "form-control",
-        "options": [
-          {
-            "value": "Uber.",
-            "displayValue": "Uber"
-          },
-          {
-            "value": "Lyft.",
-            "displayValue": "Lyft"
-          },
-          {
-            "value": "Doordash",
-            "displayValue": "Doordash"
-          }
-        ],
-        "isMulitpleSelect": false
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please select city"
-        }
-      },
-      "valid": false
-    },
-    {
-      "elementType": "select",
-      "elementConfig": {
-        "name": "model_year",
-        "label": "Year",
-        "buttonHead": "Year",
-        "enableLabel": false,
-        "isShowBottomSheet": true,
-        "placeholder": "Year",
-        "class": "form-control",
-        "options": [
-          {
-            "value": "2018",
-            "displayValue": "2018"
-          },
-          {
-            "value": "2019",
-            "displayValue": "2019"
-          },
-          {
-            "value": "2020",
-            "displayValue": "2020"
-          },{
-            "value": "2021",
-            "displayValue": "2021"
-          },{
-            "value": "2022",
-            "displayValue": "2022"
-          }
-        ],
-        "isMulitpleSelect": false
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please select at least one"
-        }
-      },
-      "valid": false
-    },
-    {
-      "elementType": "input",
-      "elementConfig": {
-        "type": "text",
-        "name": "full_name",
-        "placeHolderLabel": "Full Name",
-        "label": "Full name 1",
-        "enableLabel": true,
-        "placeholder": "Full name 1",
-        "class": "form-control",
-        "keyboardRejex": "^[a-zA-Z-]+",
-        "resetIcon": true,
-        "minLine": 1,
-        "maxLine": 1,
-        "textCapitalization": "words"
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "minLength": 3,
-        "maxLength": 50,
-        "rejex": "^[a-zA-Z-]+",
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please enter full name",
-          "minLength": "Minimum 3 characters require",
-          "rejex": "Please enter valid full name"
-        }
-      },
-      "valid": true,
-      "onchange": false
-    },
-    {
-      "elementType": "input",
-      "elementConfig": {
-        "type": "tel",
-        "name": "office",
-        "label": "Phone",
-        "enableLabel": false,
-        "keyboardRejex": "^[0-9+]+",
-        "placeholder": "Mobile Number",
-        "class": "form-control",
-        "resetIcon": true
-      },
-      "help": {
-        "text": "",
-        "placement": "below"
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "minLength": 8,
-        "maxLength": 13,
-        "rejex": "^[0-9+]+",
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please enter mobile number",
-          "minLength": "Minimum 8 digit mobile number required",
-          "rejex": "Please enter valid mobile number"
-        }
-      },
-      "valid": true,
-      "onchange": false
-    },
-    {
-      "elementType": "input",
-      "elementConfig": {
-        "type": "email",
-        "name": "email",
-        "label": "Email",
-        "enableLabel": true,
-        "placeholder": "Email",
-        "class": "form-control",
-        "resetIcon": true
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "isEmail": true,
-        "maxLength": 50,
-        "rejex": "^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+\\.[a-zA-Z]+",
-        "isReadOnly": false,
-        "isDisabled": false,
-        "isUnique": false,
-        "errorMessage": {
-          "required": "Please enter email",
-          "rejex": "Please enter valid email"
-        }
-      },
-      "valid": true,
-      "onchange": false
-    },
-    {
-      "elementType": "input",
-      "elementConfig": {
-        "type": "date",
-        "name": "dob",
-        "label": "Date of Birth",
-        "placeholder": "Date of Birth",
-        "class": "form-control",
-        "resetIcon": true,
-        "firstDate": "1546350642",
-        "initialDate": "631201842",
-        "lastDate": "631201842",
-        "pickDateFromCalender": false
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please select date of birth"
-        }
-      },
-      "valid": true,
-      "onchange": false
-    },
-    {
-      "elementType": "input",
-      "elementConfig": {
-        "type": "tel",
-        "name": "pincode",
-        "label": "Pincode",
-        "enableLabel": false,
-        "keyboardRejex": "^[0-9+]+",
-        "placeholder": "Pincode",
-        "class": "form-control",
-        "resetIcon": true
-      },
-      "help": {
-        "text": "",
-        "placement": "below"
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "minLength": 4,
-        "maxLength": 6,
-        "rejex": "^[0-9+]+",
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please enter the pin-code",
-          "minLength": "Minimum 4 digit pin-code required",
-          "rejex": "Please enter valid pin-code"
-        }
-      },
-      "valid": true,
-      "onchange": false
-    },
-    {
-      "elementType": "radio",
-      "elementConfig": {
-        "name": "gender",
-        "label": "Gender",
-        "enableLabel": true,
-        "class": "form-control",
-        "options": [
-          {
-            "value": "female",
-            "displayValue": "Female"
-          },
-          {
-            "value": "male",
-            "displayValue": "Male"
-          },
-          {
-            "value": "other",
-            "displayValue": "Other"
-          }
-        ],
-        "initialValue": ""
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please select at least one"
-        }
-      },
-      "valid": false
-    },
-    {
-      "elementType": "button",
-      "elementConfig": {
-        "type": "button",
-        "name": "submit_first_button",
-        "label": "Submit First Form",
-        "enableLabel": true,
-        "isVisible": false,
-        "class": "form-control",
-        "resetIcon": true,
-        "minLine": 1,
-        "maxLine": 1,
-        "textCapitalization": "words"
-      },
-      "value": "",
-      "valid": true,
-      "onchange": false
-    }
-  ]
-},
     "form3":
     {
-  "formName" : "bankDetail",
-  "title": "Bank Detail",
-  "description": "Hey, get on board ",
-  "formFields": [
-    {
-      "elementType": "select",
-      "elementConfig": {
-        "name": "documentType",
-        "label": "Document Type",
-        "enableLabel": true,
-        "placeholder": "Document Type",
-        "class": "form-control",
-        "options": [
-          {
-            "value": "aadharCard",
-            "displayValue": "Aadhar Card"
+      "formName" : "Step 3",
+      "title": "",
+      "description": "",
+      "formFields": [
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "tel",
+            "name": "Score *",
+            "label": "Score *",
+            "enableLabel": false,
+            "keyboardRejex": "^[0-9+]+",
+            "placeholder": "Score *",
+            "class": "form-control",
+            "resetIcon": true
           },
-          {
-            "value": "panCard",
-            "displayValue": "Pan Card"
+          "help": {
+            "text": "",
+            "placement": "below"
           },
-          {
-            "value": "drivingLicence",
-            "displayValue": "Driving Licence"
-          }
-        ],
-        "isMulitpleSelect": false
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please select at least one"
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 1,
+            "maxLength": 3,
+            "rejex": "^[0-9+]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter score",
+              "minLength": "Please enter valid score",
+              "rejex": "Please enter valid score"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "comment *",
+            "placeHolderLabel": "Comment *",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Comment *",
+            "class": "form-control",
+            "keyboardRejex": "^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter comment",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid comment"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "suggestion",
+            "placeHolderLabel": "Suggestion (optional)",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Suggestion",
+            "class": "form-control",
+            "keyboardRejex":"^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "validation": {
+            "required": false,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid suggestion"
+            }
+          },
+          "valid": true,
+          "onchange": false
         }
-      },
-      "valid": false
+      ]
     },
+
+    "form4":
     {
-      "elementType": "input",
-      "elementConfig": {
-        "type": "text",
-        "name": "proofId",
-        "label": "Proof ID",
-        "enableLabel": false,
-        "keyboardRejex": "^[a-zA-Z0-9_.-]*$",
-        "placeholder": "Proof ID",
-        "class": "form-control",
-        "resetIcon": true
-      },
-      "help": {
-        "text": "",
-        "placement": "below"
-      },
-      "value": "",
-      "validation": {
-        "required": true,
-        "minLength": 8,
-        "maxLength": 13,
-        "rejex": "^[a-zA-Z0-9_.-]*$",
-        "isReadOnly": false,
-        "isDisabled": false,
-        "errorMessage": {
-          "required": "Please enter the id proof number",
-          "minLength": "Please enter correct id proof number",
-          "rejex": "Please enter valid id proof"
+
+      "formName" : "Step 4",
+      "title": "",
+      "description": "",
+      "formFields": [
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "tel",
+            "name": "Score *",
+            "label": "Score *",
+            "enableLabel": false,
+            "keyboardRejex": "^[0-9+]+",
+            "placeholder": "Score *",
+            "class": "form-control",
+            "resetIcon": true
+          },
+          "help": {
+            "text": "",
+            "placement": "below"
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 1,
+            "maxLength": 3,
+            "rejex": "^[0-9+]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter score",
+              "minLength": "Please enter valid score",
+              "rejex": "Please enter valid score"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "comment *",
+            "placeHolderLabel": "Comment *",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Comment *",
+            "class": "form-control",
+            "keyboardRejex": "^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter comment",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid comment"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "suggestion",
+            "placeHolderLabel": "Suggestion (optional)",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Suggestion",
+            "class": "form-control",
+            "keyboardRejex":"^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "validation": {
+            "required": false,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid suggestion"
+            }
+          },
+          "valid": true,
+          "onchange": false
         }
-      },
-      "valid": true,
-      "onchange": false
+      ]
     },
+
+    "form5":
     {
-      "elementType": "button",
-      "elementConfig": {
-        "type": "button",
-        "name": "submit_second_button",
-        "label": "Submit First Form",
-        "enableLabel": true,
-        "class": "form-control",
-        "resetIcon": true,
-        "isVisible": false,
-        "minLine": 1,
-        "maxLine": 1,
-        "textCapitalization": "words"
-      },
-      "value": "",
-      "valid": true,
-      "onchange": false
+      "formName" : "Step 5",
+      "title": "",
+      "description": "",
+      "formFields": [
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "tel",
+            "name": "Score *",
+            "label": "Score *",
+            "enableLabel": false,
+            "keyboardRejex": "^[0-9+]+",
+            "placeholder": "Score *",
+            "class": "form-control",
+            "resetIcon": true
+          },
+          "help": {
+            "text": "",
+            "placement": "below"
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 1,
+            "maxLength": 3,
+            "rejex": "^[0-9+]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter score",
+              "minLength": "Please enter valid score",
+              "rejex": "Please enter valid score"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "comment *",
+            "placeHolderLabel": "Comment *",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Comment *",
+            "class": "form-control",
+            "keyboardRejex": "^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter comment",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid comment"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "suggestion",
+            "placeHolderLabel": "Suggestion (optional)",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Suggestion",
+            "class": "form-control",
+            "keyboardRejex":"^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "validation": {
+            "required": false,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid suggestion"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        }
+      ]
+    },
+    "form6":
+    {
+      "formName" : "Step 6",
+      "title": "",
+      "description": "",
+      "formFields": [
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "tel",
+            "name": "Score *",
+            "label": "Score *",
+            "enableLabel": false,
+            "keyboardRejex": "^[0-9+]+",
+            "placeholder": "Score *",
+            "class": "form-control",
+            "resetIcon": true
+          },
+          "help": {
+            "text": "",
+            "placement": "below"
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 1,
+            "maxLength": 3,
+            "rejex": "^[0-9+]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter score",
+              "minLength": "Please enter valid score",
+              "rejex": "Please enter valid score"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "comment *",
+            "placeHolderLabel": "Comment *",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Comment *",
+            "class": "form-control",
+            "keyboardRejex": "^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "validation": {
+            "required": true,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "Please enter comment",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid comment"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        },
+        {
+          "elementType": "input",
+          "elementConfig": {
+            "type": "text",
+            "name": "suggestion",
+            "placeHolderLabel": "Suggestion (optional)",
+            "label": "",
+            "enableLabel": true,
+            "placeholder": "Suggestion",
+            "class": "form-control",
+            "keyboardRejex":"^[a-zA-Z\\s]+",
+            "resetIcon": true,
+            "minLine": 1,
+            "maxLine": 5,
+            "textCapitalization": "words"
+          },
+          "value": "",
+          "validation": {
+            "required": false,
+            "minLength": 3,
+            "maxLength": 250,
+            "rejex": "^[a-zA-Z\\s]+",
+            "isReadOnly": false,
+            "isDisabled": false,
+            "errorMessage": {
+              "required": "",
+              "minLength": "Minimum 3 characters require",
+              "rejex": "Please enter valid suggestion"
+            }
+          },
+          "valid": true,
+          "onchange": false
+        }
+      ]
     }
-  ]
-}
   }
 }

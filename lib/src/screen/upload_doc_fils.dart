@@ -232,31 +232,17 @@ class _UploadDocFileState extends State<UploadDocFileView> {
   void actionOnClick(String clickFor) async {
     if (clickFor.toLowerCase() == "camera") {
       // Capture a photo.
-        Media? photo = await ImagePickers.openCamera(
-        cameraMimeType: CameraMimeType.photo,
-        compressSize: 500,
-        cropConfig:  CropConfig(enableCrop: true),);
-      if (photo != null && photo.path!.isNotEmpty) {
+      XFile? photo = await ImagePicker().pickImage(source: ImageSource.camera, imageQuality: 50);
+      if (photo != null && photo.path.isNotEmpty) {
         setState(() {
           imagePath = photo.path;
         });
         onChangeValue.call(fieldKey, imagePath!);
       }
     } else if (clickFor.toLowerCase() == "gallery") {
-      List<Media>? photo = [];
+      List<XFile>? photo = [];
       // Pick an image.
-      photo = await ImagePickers.pickerPaths(
-        galleryMode: GalleryMode.image,
-        showGif: false,
-        selectCount: 1,
-        showCamera: false,
-        cropConfig:
-        CropConfig(enableCrop: true),
-        compressSize: 500,
-        uiConfig: UIConfig(
-          uiThemeColor: Color(0xff090C30),
-        ),
-      );
+      photo = await ImagePicker().pickMultiImage(imageQuality: 50, limit: 1);
       if (photo.isNotEmpty) {
         setState(() {
           imagePath = photo![0].path;

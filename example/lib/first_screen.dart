@@ -25,7 +25,7 @@ class _FirstScreenState extends State<FirstScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: appBarWithBackArrow(onPress: (){
+      appBar: appBarWithBackArrow(onPress: () {
         Navigator.pop(context);
       }),
       body: Column(
@@ -49,9 +49,10 @@ class _FirstScreenState extends State<FirstScreen> {
               children: [
                 Expanded(
                     // Add jsonString from example assets file or json encoded String.
-                    child: DynamicForm(jsonString,childElementList: [] ,dynamicFormKey: _formKeyNew,
-                        finalSubmitCallBack:
-                            (int currentPage, Map<String, dynamic> data) async {
+                    child: DynamicForm(jsonString,
+                        childElementList: [],
+                        dynamicFormKey: _formKeyNew,
+                        finalSubmitCallBack: (int currentPage, Map<String, dynamic> data) async {
                   //Get all entered information on final or last form submit and redirect to another scree to display entered information
                   Navigator.push(
                     context,
@@ -59,11 +60,11 @@ class _FirstScreenState extends State<FirstScreen> {
                         builder: (context) => SecondScreen(data: data)),
                   );
                 },
-
                         currentStepCallBack: (
                             {int? currentIndex,
                             Map<String, dynamic>? formSubmitData,
-                            Map<String, dynamic>? formInformation,bool? isBack = false }) {
+                            Map<String, dynamic>? formInformation,
+                            bool? isBack = false}) {
                   //This function return value when any current form submit and validated.
                   setState(() {
                     //Here currentIndex is a current displayed step index. its default value is zero.
