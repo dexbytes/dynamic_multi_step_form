@@ -20,8 +20,8 @@ class SingleForm extends StatefulWidget {
       this.nextPageButtonClick,
       this.filledFormData,
       this.finalSubmitCallBack,
-      this.titleTextStyle,
       this.nextPageButton,
+      this.titleTextStyle,
       this.priPageButton,
       this.index = 0,
       this.singleFormKey})

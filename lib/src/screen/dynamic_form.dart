@@ -16,7 +16,7 @@ class DynamicForm extends StatefulWidget {
   final EdgeInsetsGeometry? formIndicatorPadding;
   final bool? showIndicator;
   final List<List<ChildElement>>? childElementList;
-  final TextStyle? titleTextStyle;
+  final TextStyle titleTextStyle;
 
   const DynamicForm(this.jsonEncoded,
       {this.submitButtonAlignment,
@@ -25,18 +25,19 @@ class DynamicForm extends StatefulWidget {
       this.showIndicator = true,
       required this.finalSubmitCallBack,
       this.currentStepCallBack,
-      this.titleTextStyle,
       this.formPadding = const EdgeInsets.only(left: 15, right: 15, top: 0),
-      this.formIndicatorPadding =
-          const EdgeInsets.only(left: 10, right: 10, bottom: 15, top: 15)})
+      this.formIndicatorPadding = const EdgeInsets.only(left: 10, right: 10, bottom: 15, top: 15),
+      this.titleTextStyle = const TextStyle(fontSize: 16, color: const Color(0xff222222), fontWeight: FontWeight.w500)
+      })
       : super(key: dynamicFormKey);
 
   @override
-  DynamicFormState createState() => DynamicFormState(jsonEncoded: jsonEncoded);
+  DynamicFormState createState() => DynamicFormState(jsonEncoded: jsonEncoded,titleTextStyle: titleTextStyle);
 }
 
 class DynamicFormState extends State<DynamicForm> {
   String jsonEncoded;
+  TextStyle titleTextStyle;
 
   Stream get onVariableChanged =>
       DataRefreshStream.instance.getFormFieldsStream.stream;
@@ -45,7 +46,7 @@ class DynamicFormState extends State<DynamicForm> {
   List<SingleForm> formScreen = [];
   List<String> formInformation = [];
 
-  DynamicFormState({required this.jsonEncoded}) {
+  DynamicFormState({required this.jsonEncoded,this.titleTextStyle = const TextStyle(fontSize: 16, color: const Color(0xff222222), fontWeight: FontWeight.w500)}) {
     responseParser.setFormData = jsonEncoded;
     formScreenList = responseParser.getFormData;
     int currentIndex = -1;
@@ -60,10 +61,7 @@ class DynamicFormState extends State<DynamicForm> {
       return SingleForm(filledFormData: filledFormData,
           singleFormKey: _formKeyNew,
           formData: entry.value,
-          titleTextStyle: widget.titleTextStyle ?? TextStyle(
-              fontSize: 16,
-              color: const Color(0xff222222),
-              fontWeight: FontWeight.w500),
+          titleTextStyle: titleTextStyle,
           nextPageButtonClick: (index, Map<String, dynamic> formSubmitData) {
             this.formSubmitData['$currentIndex'] = formSubmitData;
 
@@ -94,10 +92,7 @@ class DynamicFormState extends State<DynamicForm> {
         return SingleForm(filledFormData: filledFormData,
             singleFormKey: _formKeyNew,
             formData: entry.value,
-            titleTextStyle: widget.titleTextStyle ?? TextStyle(
-                fontSize: 16,
-                color: const Color(0xff222222),
-                fontWeight: FontWeight.w500),
+            titleTextStyle: titleTextStyle,
             nextPageButtonClick: (index, Map<String, dynamic> formSubmitData) {
               this.formSubmitData['$currentIndex'] = formSubmitData;
               widget.currentStepCallBack?.call(
