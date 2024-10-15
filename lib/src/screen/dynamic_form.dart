@@ -119,30 +119,54 @@ class DynamicFormState extends State<DynamicForm> {
 
     if (responseParser.getTotalFormsCount - 1 >
         responseParser.getCurrentFormNumber) {
-      if (formScreen[currentPage]
-          .singleFormKey!
-          .currentState!
-          .validateFields()) {
-        Map<String, dynamic>? data =
-            formScreen[currentPage].singleFormKey!.currentState!.getFormData();
-        Map<String, dynamic>? formInformation = formScreen[currentPage]
-            .singleFormKey!
-            .currentState!
-            .formInformation;
-        formSubmitData['$currentPage'] = data;
+      if (formScreen[currentPage].singleFormKey!.currentState!.validateFields()) {
+        int currentPageIndex = responseParser.getCurrentFormNumber;
+        Map<String, dynamic> _formSubmitFinalData = responseParser.getFilledFormsData;
 
-        responseParser.setFormFilledData('$currentPage',data);
+// Check if _formSubmitFinalData contains the key and if its value is not null or empty
+        if (_formSubmitFinalData.containsKey('$currentPageIndex') &&
+            _formSubmitFinalData['$currentPageIndex'] != null &&
+            _formSubmitFinalData['$currentPageIndex'] is Map &&
+            (_formSubmitFinalData['$currentPageIndex'] as Map).isNotEmpty) {
 
-        widget.currentStepCallBack?.call(
+          // Safely retrieve data since we already checked it's not null and is not empty
+          Map<String, dynamic> formSubmitFinalSingleData = _formSubmitFinalData["$currentPageIndex"] as Map<String, dynamic>;
+          formSubmitData['$currentPage'] = formSubmitFinalSingleData;
+
+          Map<String, dynamic>? formInformation = formScreen[currentPage]
+              .singleFormKey!
+              .currentState!
+              .formInformation;
+
+          widget.currentStepCallBack?.call(
             currentIndex: currentPage + 1,
-            formSubmitData: data,
-            formInformation: formInformation,isBack:false);
+            formSubmitData: formSubmitFinalSingleData,
+            formInformation: formInformation,
+            isBack: false,
+          );
 
-        if (data!.isNotEmpty) {
-          setState(() {
-            responseParser.setCurrentFormNumber =
-                responseParser.getCurrentFormNumber + 1;
-          });
+          if (formSubmitFinalSingleData.isNotEmpty) {
+            setState(() {
+              responseParser.setCurrentFormNumber =
+                  responseParser.getCurrentFormNumber + 1;
+            });
+          }
+        }
+        else {
+          Map<String, dynamic>? data = formScreen[currentPage].singleFormKey!.currentState!.getFormData();
+          Map<String, dynamic>? formInformation = formScreen[currentPage].singleFormKey!.currentState!.formInformation;
+          formSubmitData['$currentPage'] = data;
+          responseParser.setFormFilledData('$currentPage',data);
+          widget.currentStepCallBack?.call(
+              currentIndex: currentPage + 1,
+              formSubmitData: data,
+              formInformation: formInformation,isBack:false);
+          if (data!.isNotEmpty) {
+            setState(() {
+              responseParser.setCurrentFormNumber =
+                  responseParser.getCurrentFormNumber + 1;
+            });
+          }
         }
       }
     } else {

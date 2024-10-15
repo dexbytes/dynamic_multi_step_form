@@ -14,7 +14,7 @@
         {
           "elementType": "input",
           "elementConfig": {
-            "type": "text",
+            "type": "tel",
             "name": "Score *",
             "label": "",
             "enableLabel": false,
@@ -50,7 +50,7 @@
         {
           "elementType": "input",
           "elementConfig": {
-            "type": "text",
+            "type": "text_multiline",
             "name": "comment *",
             "placeHolderLabel": "Comment *",
             "label": "Comment *",
@@ -219,7 +219,7 @@
               "rejex": "Please enter valid suggestion"
             }
           },
-          "valid": true,
+          "valid": false,
           "onchange": false
         }
       ]
@@ -328,7 +328,7 @@
               "rejex": "Please enter valid suggestion"
             }
           },
-          "valid": true,
+          "valid": false,
           "onchange": false
         }
       ]
@@ -438,7 +438,7 @@
               "rejex": "Please enter valid suggestion"
             }
           },
-          "valid": true,
+          "valid": false,
           "onchange": false
         }
       ]
@@ -547,7 +547,7 @@
               "rejex": "Please enter valid suggestion"
             }
           },
-          "valid": true,
+          "valid": false,
           "onchange": false
         }
       ]
