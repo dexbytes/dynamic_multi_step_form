@@ -54,6 +54,7 @@ class _FirstScreenState extends State<FirstScreen> {
                         formPadding: EdgeInsets.symmetric(horizontal: 15).copyWith(top: 20),
                         dynamicFormKey: _formKeyNew,
                         finalSubmitCallBack: (int currentPage, Map<String, dynamic> data) async {
+
                   //Get all entered information on final or last form submit and redirect to another scree to display entered information
                   Navigator.push(
                     context,

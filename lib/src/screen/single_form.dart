@@ -10,6 +10,7 @@ class SingleForm extends StatefulWidget {
   final Function(Widget)? nextPageButton;
   final Function(Widget)? priPageButton;
   final Alignment? submitButtonAlignment;
+  final TextStyle? titleTextStyle;
   final GlobalKey<SingleFormState>? singleFormKey;
 
   const SingleForm(
@@ -19,6 +20,7 @@ class SingleForm extends StatefulWidget {
       this.nextPageButtonClick,
       this.filledFormData,
       this.finalSubmitCallBack,
+      this.titleTextStyle,
       this.nextPageButton,
       this.priPageButton,
       this.index = 0,
@@ -125,7 +127,7 @@ class SingleFormState extends State<SingleForm> {
                           Flexible(
                             child: Text(
                               title!,
-                              style: TextStyle(
+                              style: widget.titleTextStyle ??  TextStyle(
                                   fontSize: 16,
                                   color: const Color(0xff222222),
                                   fontWeight: FontWeight.w500),
