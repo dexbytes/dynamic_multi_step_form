@@ -16,7 +16,7 @@ class DynamicForm extends StatefulWidget {
   final EdgeInsetsGeometry? formIndicatorPadding;
   final bool? showIndicator;
   final List<List<ChildElement>>? childElementList;
-  final TextStyle? textStyle;
+  final TextStyle? titleTextStyle;
 
   const DynamicForm(this.jsonEncoded,
       {this.submitButtonAlignment,
@@ -25,7 +25,7 @@ class DynamicForm extends StatefulWidget {
       this.showIndicator = true,
       required this.finalSubmitCallBack,
       this.currentStepCallBack,
-      this.textStyle,
+      this.titleTextStyle,
       this.formPadding = const EdgeInsets.only(left: 15, right: 15, top: 0),
       this.formIndicatorPadding =
           const EdgeInsets.only(left: 10, right: 10, bottom: 15, top: 15)})
@@ -60,7 +60,10 @@ class DynamicFormState extends State<DynamicForm> {
       return SingleForm(filledFormData: filledFormData,
           singleFormKey: _formKeyNew,
           formData: entry.value,
-          titleTextStyle: widget.textStyle,
+          titleTextStyle: widget.titleTextStyle ?? TextStyle(
+              fontSize: 16,
+              color: const Color(0xff222222),
+              fontWeight: FontWeight.w500),
           nextPageButtonClick: (index, Map<String, dynamic> formSubmitData) {
             this.formSubmitData['$currentIndex'] = formSubmitData;
 
@@ -91,7 +94,10 @@ class DynamicFormState extends State<DynamicForm> {
         return SingleForm(filledFormData: filledFormData,
             singleFormKey: _formKeyNew,
             formData: entry.value,
-            titleTextStyle: widget.textStyle,
+            titleTextStyle: widget.titleTextStyle ?? TextStyle(
+                fontSize: 16,
+                color: const Color(0xff222222),
+                fontWeight: FontWeight.w500),
             nextPageButtonClick: (index, Map<String, dynamic> formSubmitData) {
               this.formSubmitData['$currentIndex'] = formSubmitData;
               widget.currentStepCallBack?.call(
