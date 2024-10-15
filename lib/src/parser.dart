@@ -28,6 +28,14 @@ class ResponseParser {
     }
   }
 
+  void clearFormFilledData() {
+    try {
+      _formSubmitFinalData.clear();
+    } catch (e) {
+      print(e);
+    }
+  }
+
 
   get getCurrentFormNumber => _currentFormNumber;
 

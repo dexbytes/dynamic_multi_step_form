@@ -191,6 +191,7 @@ class DynamicFormState extends State<DynamicForm> {
         if (data!.isNotEmpty) {
           widget.finalSubmitCallBack
               ?.call(responseParser.getCurrentFormNumber, formSubmitData);
+          responseParser.clearFormFilledData();
         }
       }
     }
