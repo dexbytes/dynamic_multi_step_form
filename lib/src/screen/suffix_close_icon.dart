@@ -9,10 +9,10 @@ class SuffixCloseIcon extends StatefulWidget {
 
   const SuffixCloseIcon(
       {Key? key,
-      this.textController,
-      this.iconColor,
-      this.iconClicked,
-      this.iconWidget})
+        this.textController,
+        this.iconColor,
+        this.iconClicked,
+        this.iconWidget})
       : super(key: key);
 
   @override
@@ -65,18 +65,18 @@ class _IconClearTextFormFiledState extends State<SuffixCloseIcon> {
   Widget build(BuildContext context) {
     return enteredValue.isNotEmpty
         ? InkWell(
-            onTap: () => widget.iconClicked?.call(),
-            child: Container(
-              child: widget.iconWidget != null
-                  ? widget.iconWidget!
-                  : Icon(
-                      Icons.close,
-                      color: widget.iconColor ?? Colors.black,
-                    ),
-            ))
+        onTap: () => widget.iconClicked?.call(),
+        child: Container(
+          child: widget.iconWidget != null
+              ? widget.iconWidget!
+              : Icon(
+            Icons.close,
+            color: widget.iconColor ?? Colors.black,
+          ),
+        ))
         : const SizedBox(
-            width: 0,
-            height: 0,
-          );
+      width: 0,
+      height: 0,
+    );
   }
 }

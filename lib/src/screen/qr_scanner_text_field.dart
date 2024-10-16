@@ -9,10 +9,10 @@ class QrScannerTextFieldView extends StatefulWidget {
 
   const QrScannerTextFieldView(
       {Key? key,
-      required this.jsonData,
-      required this.onChangeValue,
-      this.viewConfiguration,
-      this.nextFieldKey = ""})
+        required this.jsonData,
+        required this.onChangeValue,
+        this.viewConfiguration,
+        this.nextFieldKey = ""})
       : super(key: key);
 
   @override
@@ -63,9 +63,9 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
 
   _QrScannerTextFieldsState(
       {required this.jsonData,
-      required this.onChangeValue,
-      this.viewConfiguration,
-      this.nextFieldKey = ""}) {
+        required this.onChangeValue,
+        this.viewConfiguration,
+        this.nextFieldKey = ""}) {
     textFieldModel ??= responseParser.qrScannerTextFormFiledParsing(
         jsonData: jsonData, updateCommon: true);
     if (textFieldModel != null) {
@@ -79,7 +79,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
         formFieldType = textFieldModel!.elementConfig!.type ?? "text";
         formFieldType = formFieldType.toLowerCase();
         fieldKey = textFieldModel!.elementConfig!.name!;
-        onChangeValue.call(fieldKey, "");
+        onChangeValue.call(fieldKey, _nameController!.text);
         checkValidOnChange = textFieldModel!.onchange ?? false;
         checkValid = textFieldModel!.valid ?? false;
         autovalidateMode = _autoValidate();
@@ -92,22 +92,22 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
               textFieldModel!.value!.toString().trim().isNotEmpty) {
             _nameController.text = packageUtil
                 .getText(
-                    "dd MMMM, yyyy",
-                    commonValidation.getTimeFromTimeStamp(
-                        dateTimeStamp: textFieldModel!.value))
+                "dd MMMM, yyyy",
+                commonValidation.getTimeFromTimeStamp(
+                    dateTimeStamp: textFieldModel!.value))
                 .toString();
             onChangeValue.call(fieldKey, textFieldModel!.value.toString());
           }
         }
 
         currentFocusNode =
-            (responseParser.getFieldFocusNode.containsKey(fieldKey)
-                ? responseParser.getFieldFocusNode[fieldKey]
-                : FocusNode())!;
+        (responseParser.getFieldFocusNode.containsKey(fieldKey)
+            ? responseParser.getFieldFocusNode[fieldKey]
+            : FocusNode())!;
         nextFocusNode =
-            (responseParser.getFieldFocusNode.containsKey(nextFieldKey)
-                ? responseParser.getFieldFocusNode[nextFieldKey]
-                : FocusNode())!;
+        (responseParser.getFieldFocusNode.containsKey(nextFieldKey)
+            ? responseParser.getFieldFocusNode[nextFieldKey]
+            : FocusNode())!;
 
         viewConfig = QrScannerViewConfig(
             viewConfiguration: viewConfiguration,
@@ -461,39 +461,39 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           !textFieldModel!.elementConfig!.enableLabel! ||
-                                  textFieldModel!
-                                      .elementConfig!.placeHolderLabel!.isEmpty
+                              textFieldModel!
+                                  .elementConfig!.placeHolderLabel!.isEmpty
                               ? SizedBox()
                               : Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: viewConfig!
-                                          .viewConfiguration!._padding,
-                                      child: Text(
-                                        textFieldModel!
-                                            .elementConfig!.placeHolderLabel!,
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            color: const Color(0xff494949),
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    )
-                                  ],
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: viewConfig!
+                                    .viewConfiguration!._padding,
+                                child: Text(
+                                  textFieldModel!
+                                      .elementConfig!.placeHolderLabel!,
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: const Color(0xff494949),
+                                      fontWeight: FontWeight.w400),
                                 ),
+                              )
+                            ],
+                          ),
                           TextFormField(
                             focusNode: currentFocusNode,
                             //strutStyle:StrutStyle(),
                             readOnly:
-                                (formFieldType == "date" && isPickFromCalendar)
-                                    ? true
-                                    : textFieldModel!.validation!.isReadOnly!,
+                            (formFieldType == "date" && isPickFromCalendar)
+                                ? true
+                                : textFieldModel!.validation!.isReadOnly!,
                             enabled: !textFieldModel!.validation!.isDisabled!,
                             onTap: () {},
                             controller: _nameController,
                             cursorColor:
-                                viewConfig!.viewConfiguration?._cursorColor ??
-                                    Colors.blue,
+                            viewConfig!.viewConfiguration?._cursorColor ??
+                                Colors.blue,
                             textInputAction: inputTextAction(
                                 textInputAction: textInputAction),
                             maxLength: textFieldModel!.validation!.maxLength,
@@ -506,9 +506,9 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
                             decoration: viewConfig!.getInputDecoration(context),
                             obscureText: obscureText,
                             keyboardType:
-                                keyBoardType(formFieldType: formFieldType),
+                            keyBoardType(formFieldType: formFieldType),
                             inputFormatters:
-                                inputFormatter(formFieldType: formFieldType),
+                            inputFormatter(formFieldType: formFieldType),
                             validator: (value) {
                               if (value!.isEmpty && !checkValid) {
                                 return null;
@@ -528,7 +528,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
                                 commonValidation.checkValidation(
                                     enteredValue: value,
                                     validationStr:
-                                        textFieldModel!.validationStr!,
+                                    textFieldModel!.validationStr!,
                                     formFieldType: formFieldType);
 
                                 // if(validate !=null ){
@@ -597,9 +597,9 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
 
   void moveToNextField(String value) {
     if (commonValidation.checkValidation(
-            enteredValue: value,
-            validationStr: textFieldModel!.validationStr!,
-            formFieldType: formFieldType) ==
+        enteredValue: value,
+        validationStr: textFieldModel!.validationStr!,
+        formFieldType: formFieldType) ==
         null) {
       nextFocusNode.requestFocus();
     }
@@ -607,7 +607,7 @@ class _QrScannerTextFieldsState extends State<QrScannerTextFieldView> {
 
   Future<void> startBarcodeScanStream() async {
     FlutterBarcodeScanner.getBarcodeStreamReceiver(
-            '#ff6666', 'Cancel', true, ScanMode.BARCODE)!
+        '#ff6666', 'Cancel', true, ScanMode.BARCODE)!
         .listen((barcode) => print(barcode));
   }
 
@@ -695,12 +695,12 @@ class QrScannerViewConfig {
 
   QrScannerViewConfig(
       {required this.nameController,
-      required this.formFieldType,
-      required this.textFieldModel,
-      this.obscureTextState = true,
-      this.obscureTextStateCallBack,
-      this.textFieldCallBack,
-      this.viewConfiguration}) {
+        required this.formFieldType,
+        required this.textFieldModel,
+        this.obscureTextState = true,
+        this.obscureTextStateCallBack,
+        this.textFieldCallBack,
+        this.viewConfiguration}) {
     viewConfiguration = viewConfiguration ??
         ConfigurationSetting.instance._qrScannerTextFieldConfiguration;
   }
@@ -734,12 +734,12 @@ class QrScannerViewConfig {
         label: !enableLabel!
             ? null
             : textFieldModel.elementConfig!.label != null &&
-                    textFieldModel.elementConfig!.label!.isNotEmpty
-                ? Text(
-                    textFieldModel.elementConfig!.label!,
-                    style: viewConfiguration!._textStyle,
-                  )
-                : null,
+            textFieldModel.elementConfig!.label!.isNotEmpty
+            ? Text(
+          textFieldModel.elementConfig!.label!,
+          style: viewConfiguration!._textStyle,
+        )
+            : null,
         suffixIcon: null,
         counterText: "",
         errorMaxLines: 1);
@@ -801,7 +801,7 @@ class QrMaskedTextInputFormatter extends TextInputFormatter {
             mask[newValue.text.length - 1] == separator) {
           return TextEditingValue(
             text:
-                '${oldValue.text}$separator${newValue.text.substring(newValue.text.length - 1)}',
+            '${oldValue.text}$separator${newValue.text.substring(newValue.text.length - 1)}',
             selection: TextSelection.collapsed(
               offset: newValue.selection.end + 1,
             ),

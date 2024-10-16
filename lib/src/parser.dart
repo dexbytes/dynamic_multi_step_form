@@ -31,6 +31,14 @@ class ResponseParser {
   void clearFormFilledData() {
     try {
       _formSubmitFinalData.clear();
+
+    } catch (e) {
+      print(e);
+    }
+    try {
+      _formData.clear();
+      _currentFormNumber = 0;
+      totalFormsCount = 1;
     } catch (e) {
       print(e);
     }
@@ -137,7 +145,7 @@ class ResponseParser {
       {required Map<String, dynamic> jsonData, bool updateCommon = false}) {
     try {
       QrScannerTextFieldModel textFieldModel =
-          QrScannerTextFieldModel.fromJson(jsonData);
+      QrScannerTextFieldModel.fromJson(jsonData);
       if (updateCommon) {}
       return textFieldModel;
     } catch (e) {

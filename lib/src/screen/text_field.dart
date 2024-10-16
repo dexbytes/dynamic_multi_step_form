@@ -10,10 +10,10 @@ class TextFieldView extends StatefulWidget {
 
   const TextFieldView(
       {Key? key,
-      required this.jsonData,
-      required this.onChangeValue,
-      this.viewConfiguration,
-      this.nextFieldKey = ""})
+        required this.jsonData,
+        required this.onChangeValue,
+        this.viewConfiguration,
+        this.nextFieldKey = ""})
       : super(key: key);
 
   @override
@@ -58,13 +58,14 @@ class _TextFieldsState extends State<TextFieldView> {
 
   _TextFieldsState(
       {required this.jsonData,
-      required this.onChangeValue,
-      this.viewConfiguration,
-      this.nextFieldKey = ""}) {
+        required this.onChangeValue,
+        this.viewConfiguration,
+        this.nextFieldKey = ""}) {
     textFieldModel ??= responseParser.textFormFiledParsing(
         jsonData: jsonData, updateCommon: true);
     if (textFieldModel != null) {
       _nameController!.text = textFieldModel!.value ?? "";
+
 
       if (textFieldModel!.elementConfig != null) {
         textCapitalizeStr =
@@ -74,7 +75,7 @@ class _TextFieldsState extends State<TextFieldView> {
         formFieldType = textFieldModel!.elementConfig!.type ?? "text";
         formFieldType = formFieldType.toLowerCase();
         fieldKey = textFieldModel!.elementConfig!.name!;
-        onChangeValue.call(fieldKey, "");
+        onChangeValue.call(fieldKey, _nameController!.text);
         checkValidOnChange = textFieldModel!.onchange ?? false;
         checkValid = textFieldModel!.valid ?? false;
         autovalidateMode = _autoValidate();
@@ -87,22 +88,22 @@ class _TextFieldsState extends State<TextFieldView> {
               textFieldModel!.value!.toString().trim().isNotEmpty) {
             _nameController.text = packageUtil
                 .getText(
-                    "dd MMMM, yyyy",
-                    commonValidation.getTimeFromTimeStamp(
-                        dateTimeStamp: textFieldModel!.value))
+                "dd MMMM, yyyy",
+                commonValidation.getTimeFromTimeStamp(
+                    dateTimeStamp: textFieldModel!.value))
                 .toString();
             onChangeValue.call(fieldKey, textFieldModel!.value.toString());
           }
         }
 
         currentFocusNode =
-            (responseParser.getFieldFocusNode.containsKey(fieldKey)
-                ? responseParser.getFieldFocusNode[fieldKey]
-                : FocusNode())!;
+        (responseParser.getFieldFocusNode.containsKey(fieldKey)
+            ? responseParser.getFieldFocusNode[fieldKey]
+            : FocusNode())!;
         nextFocusNode =
-            (responseParser.getFieldFocusNode.containsKey(nextFieldKey)
-                ? responseParser.getFieldFocusNode[nextFieldKey]
-                : FocusNode())!;
+        (responseParser.getFieldFocusNode.containsKey(nextFieldKey)
+            ? responseParser.getFieldFocusNode[nextFieldKey]
+            : FocusNode())!;
 
         viewConfig = ViewConfig(
             viewConfiguration: viewConfiguration,
@@ -446,19 +447,19 @@ class _TextFieldsState extends State<TextFieldView> {
                   textFieldModel!.elementConfig!.placeHolderLabel!.isEmpty
                       ? SizedBox()
                       : Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Padding(
-                                padding: EdgeInsets.only(bottom: 4,left: 2),
-                                child: Text(
-                                  textFieldModel!
-                                      .elementConfig!.placeHolderLabel!,
-                                  style: viewConfig!
-                                      .viewConfiguration!._placeHolderStyle,
-                                ))
-                          ],
-                        ),
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Padding(
+                          padding: EdgeInsets.only(bottom: 4,left: 2),
+                          child: Text(
+                            textFieldModel!
+                                .elementConfig!.placeHolderLabel!,
+                            style: viewConfig!
+                                .viewConfiguration!._placeHolderStyle,
+                          ))
+                    ],
+                  ),
                   TextFormField(
                     style: textFieldModel!.elementConfig!.showTextBold == true
                         ? viewConfig!.viewConfiguration!._boldTextStyle
@@ -475,30 +476,30 @@ class _TextFieldsState extends State<TextFieldView> {
                           isPickFromCalendar) {
                         pickDate(context,
                             firstDateTS:
-                                textFieldModel!.elementConfig!.firstDate,
+                            textFieldModel!.elementConfig!.firstDate,
                             initialDateTS:
-                                textFieldModel!.elementConfig!.initialDate,
+                            textFieldModel!.elementConfig!.initialDate,
                             lastDateTS:
-                                textFieldModel!.elementConfig!.lastDate);
+                            textFieldModel!.elementConfig!.lastDate);
                       }
                     },
                     controller: _nameController,
                     cursorColor: viewConfig!.viewConfiguration?._cursorColor ??
                         Colors.blue,
                     textInputAction:
-                        inputTextAction(textInputAction: textInputAction),
+                    inputTextAction(textInputAction: textInputAction),
                     maxLength: textFieldModel!.validation!.maxLength,
 
                     ///It is the length of char
                     maxLines: maxLine(),
                     minLines: minLine(),
                     textCapitalization:
-                        textCapitalize(textCapitalizeStr: textCapitalizeStr),
-                    decoration: viewConfig!.getInputDecoration(),
+                    textCapitalize(textCapitalizeStr: textCapitalizeStr),
+                    decoration: viewConfig!.getInputDecoration(minLines:minLine(),maxLines:maxLine()),
                     obscureText: obscureText,
                     keyboardType: keyBoardType(formFieldType: formFieldType),
                     inputFormatters:
-                        inputFormatter(formFieldType: formFieldType),
+                    inputFormatter(formFieldType: formFieldType),
                     validator: (value) {
                       if (value!.isEmpty && !checkValid) {
                         return null;
@@ -582,9 +583,9 @@ class _TextFieldsState extends State<TextFieldView> {
 
   void moveToNextField(String value) {
     if (commonValidation.checkValidation(
-            enteredValue: value,
-            validationStr: textFieldModel!.validationStr!,
-            formFieldType: formFieldType) ==
+        enteredValue: value,
+        validationStr: textFieldModel!.validationStr!,
+        formFieldType: formFieldType) ==
         null) {
       nextFocusNode.requestFocus();
     }
@@ -605,7 +606,7 @@ class _TextFieldsState extends State<TextFieldView> {
     ///check initial date, it must be after first date and before last date
     try {
       if ((firstDate.isBefore(tempDate) ||
-              firstDate.isAtSameMomentAs(tempDate)) &&
+          firstDate.isAtSameMomentAs(tempDate)) &&
           (tempDate.isBefore(lastDate) ||
               lastDate.isAtSameMomentAs(tempDate))) {
         initialDate = tempDate;
@@ -671,12 +672,12 @@ class ViewConfig {
 
   ViewConfig(
       {required this.nameController,
-      required this.formFieldType,
-      required this.textFieldModel,
-      this.obscureTextState = true,
-      this.obscureTextStateCallBack,
-      this.textFieldCallBack,
-      this.viewConfiguration}) {
+        required this.formFieldType,
+        required this.textFieldModel,
+        this.obscureTextState = true,
+        this.obscureTextStateCallBack,
+        this.textFieldCallBack,
+        this.viewConfiguration}) {
     viewConfiguration = viewConfiguration ??
         ConfigurationSetting.instance._textFieldConfiguration;
   }
@@ -711,23 +712,29 @@ class ViewConfig {
         label: !enableLabel
             ? null
             : textFieldModel.elementConfig!.label != null &&
-                    textFieldModel.elementConfig!.label!.isNotEmpty
-                ? Text(
-                    textFieldModel.elementConfig!.label!,
-                    style: viewConfiguration!._hintStyle,
-                  )
-                : null,
+            textFieldModel.elementConfig!.label!.isNotEmpty
+            ? Text(
+          textFieldModel.elementConfig!.label!,
+          style: viewConfiguration!._hintStyle,
+        )
+            : null,
         suffixIcon: null,
         counterText: "",
         errorMaxLines: 1);
   }
 
-  getInputDecoration() {
+  getInputDecoration({int? maxLines = 1,int? minLines = 1}) {
     InputDecoration inputDecoration = _getTextDecoration();
     Widget? suffixIcon;
     if (textFieldModel.elementConfig != null) {
       if (textFieldModel.elementConfig!.resetIcon!) {
-        suffixIcon = SuffixCloseIcon(
+        suffixIcon = minLines! == 1 && maxLines! == 1?SuffixCloseIcon(
+          iconColor: viewConfiguration?._suffixIconColor,
+          textController: nameController,
+          iconClicked: () {
+            nameController.text = "";
+          },
+        ): SuffixCloseIcon(
           iconColor: viewConfiguration?._suffixIconColor,
           textController: nameController,
           iconClicked: () {
@@ -747,17 +754,17 @@ class ViewConfig {
           inputDecoration = inputDecoration.copyWith(
               suffixIcon: textFieldModel.elementConfig!.resetIcon!
                   ? SuffixVisibilityIcon(
-                      initialValue: obscureTextState,
-                      iconClicked: (bool visibleStatus) {
-                        try {
-                          obscureTextStateCallBack?.call(visibleStatus);
-                        } catch (e) {
-                          if (kDebugMode) {
-                            print(e);
-                          }
-                        }
-                      },
-                    )
+                initialValue: obscureTextState,
+                iconClicked: (bool visibleStatus) {
+                  try {
+                    obscureTextStateCallBack?.call(visibleStatus);
+                  } catch (e) {
+                    if (kDebugMode) {
+                      print(e);
+                    }
+                  }
+                },
+              )
                   : null);
         }
         break;
@@ -774,16 +781,16 @@ class ViewConfig {
         inputDecoration = inputDecoration.copyWith(
             suffixIcon: textFieldModel.elementConfig!.resetIcon!
                 ? SuffixCalendarIcon(
-                    iconClicked: (bool visibleStatus) {
-                      try {
-                        textFieldCallBack?.call();
-                      } catch (e) {
-                        if (kDebugMode) {
-                          print(e);
-                        }
-                      }
-                    },
-                  )
+              iconClicked: (bool visibleStatus) {
+                try {
+                  textFieldCallBack?.call();
+                } catch (e) {
+                  if (kDebugMode) {
+                    print(e);
+                  }
+                }
+              },
+            )
                 : null);
         break;
       case 'url':
@@ -824,7 +831,7 @@ class MaskedTextInputFormatter extends TextInputFormatter {
             mask[newValue.text.length - 1] == separator) {
           return TextEditingValue(
             text:
-                '${oldValue.text}$separator${newValue.text.substring(newValue.text.length - 1)}',
+            '${oldValue.text}$separator${newValue.text.substring(newValue.text.length - 1)}',
             selection: TextSelection.collapsed(
               offset: newValue.selection.end + 1,
             ),

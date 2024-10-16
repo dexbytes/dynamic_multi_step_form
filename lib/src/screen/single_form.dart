@@ -15,16 +15,16 @@ class SingleForm extends StatefulWidget {
 
   const SingleForm(
       {Key? key,
-      this.submitButtonAlignment,
-      required this.formData,
-      this.nextPageButtonClick,
-      this.filledFormData,
-      this.finalSubmitCallBack,
-      this.nextPageButton,
-      this.titleTextStyle,
-      this.priPageButton,
-      this.index = 0,
-      this.singleFormKey})
+        this.submitButtonAlignment,
+        required this.formData,
+        this.nextPageButtonClick,
+        this.filledFormData,
+        this.finalSubmitCallBack,
+        this.nextPageButton,
+        this.titleTextStyle,
+        this.priPageButton,
+        this.index = 0,
+        this.singleFormKey})
       : super(key: singleFormKey);
 
   @override
@@ -40,7 +40,7 @@ class SingleFormState extends State<SingleForm> {
   var _formKey;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   final StreamController<bool> _fieldStreamControl =
-      StreamController<bool>.broadcast();
+  StreamController<bool>.broadcast();
 
   Stream get onAutoValidateChanged => _fieldStreamControl.stream;
 
@@ -65,13 +65,13 @@ class SingleFormState extends State<SingleForm> {
           String? fieldType = valueData["elementConfig"]["type"];
           String? valueLocal = formSubmitFinalSingleData[key];
           if(valueLocal!=null){
-                    if(fieldType!=null && fieldType == "date"){
-                      // valueData['value'] = dateToTimeStamp(dateVal: valueLocal);
-                    }
-                    else{
-                      valueData['value'] = valueLocal;
-                    }
-                  }
+            if(fieldType!=null && fieldType == "date"){
+              // valueData['value'] = dateToTimeStamp(dateVal: valueLocal);
+            }
+            else{
+              valueData['value'] = valueLocal;
+            }
+          }
           print("$valueLocal ewqwddqwdqw      qwdqwdwqd $valueData");
         } catch (e) {
           print(e);
@@ -119,23 +119,23 @@ class SingleFormState extends State<SingleForm> {
             children: [
               title != null && title!.trim().isNotEmpty
                   ? Padding(
-                      padding: const EdgeInsets.only(bottom: 15, left: 4),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              title!,
-                              style: widget.titleTextStyle ??  TextStyle(
-                                  fontSize: 16,
-                                  color: const Color(0xff222222),
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ],
+                padding: const EdgeInsets.only(bottom: 15, left: 4),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        title!,
+                        style: widget.titleTextStyle ??  TextStyle(
+                            fontSize: 16,
+                            color: const Color(0xff222222),
+                            fontWeight: FontWeight.w500),
                       ),
-                    )
+                    ),
+                  ],
+                ),
+              )
                   : SizedBox(),
               Form(
                   key: _formKey,
@@ -175,7 +175,7 @@ class SingleFormState extends State<SingleForm> {
     } catch (e) {
       print(e);
     }
-  return null;
+    return null;
   }
 
   _autoValidate({bool checkValidOnSubmit = false}) {
@@ -314,7 +314,7 @@ class SingleFormState extends State<SingleForm> {
                       // formSubmitData[fieldKey] = value;
                     }
 
-                    );
+                );
               });
 
         case "radio":
@@ -396,25 +396,25 @@ class SingleFormState extends State<SingleForm> {
                     children: [
                       responseParser.getCurrentFormNumber > 0
                           ? FormButtonWidget(
-                              label: "Preview",
-                              jsonData: data,
-                              onChangeValue:
-                                  (String fieldKey, List<String> value) {
-                                if (responseParser.getCurrentFormNumber > 0) {
-                                  setState(() {
-                                    responseParser.setCurrentFormNumber =
-                                        responseParser.getCurrentFormNumber - 1;
-                                  });
-                                  widget.nextPageButtonClick?.call(
-                                      responseParser.getCurrentFormNumber,
-                                      formSubmitData);
-                                } else {}
-                                // formSubmitData[fieldKey] = value;
-                              })
+                          label: "Preview",
+                          jsonData: data,
+                          onChangeValue:
+                              (String fieldKey, List<String> value) {
+                            if (responseParser.getCurrentFormNumber > 0) {
+                              setState(() {
+                                responseParser.setCurrentFormNumber =
+                                    responseParser.getCurrentFormNumber - 1;
+                              });
+                              widget.nextPageButtonClick?.call(
+                                  responseParser.getCurrentFormNumber,
+                                  formSubmitData);
+                            } else {}
+                            // formSubmitData[fieldKey] = value;
+                          })
                           : const SizedBox(
-                              height: 0,
-                              width: 0,
-                            ),
+                        height: 0,
+                        width: 0,
+                      ),
                       FormButtonWidget(
                           jsonData: data,
                           onChangeValue: (String fieldKey, List<String> value) {
@@ -461,24 +461,24 @@ class SingleFormState extends State<SingleForm> {
     responseParser.clearFieldFocusNode();
     return Column(
         children: formFieldList.map((element) {
-      Map<String, dynamic> data = element;
-      Map<String, dynamic> nextData = {};
+          Map<String, dynamic> data = element;
+          Map<String, dynamic> nextData = {};
 
-      if (nextItemIndex < formFieldList.length) {
-        nextData = formFieldList[nextItemIndex];
-        nextItemIndex = nextItemIndex + 1;
-      }
+          if (nextItemIndex < formFieldList.length) {
+            nextData = formFieldList[nextItemIndex];
+            nextItemIndex = nextItemIndex + 1;
+          }
 
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          _getFormField(data: data, nextData: nextData),
-          // formSubmitButton!=null?(widget.submitButtonAlignment!=null?(Align(child: formSubmitButton!,alignment: widget.submitButtonAlignment!,)):formSubmitButton!):const SizedBox(),
-          const SizedBox(height: 10, width: 10)
-        ],
-      );
-    }).toList());
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              _getFormField(data: data, nextData: nextData),
+              // formSubmitButton!=null?(widget.submitButtonAlignment!=null?(Align(child: formSubmitButton!,alignment: widget.submitButtonAlignment!,)):formSubmitButton!):const SizedBox(),
+              const SizedBox(height: 10, width: 10)
+            ],
+          );
+        }).toList());
   }
 }
 String dateToTimeStamp({dateVal}){

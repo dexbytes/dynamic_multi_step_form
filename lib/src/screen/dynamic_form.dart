@@ -4,7 +4,7 @@ part of dynamic_multi_step_form;
 class DynamicForm extends StatefulWidget {
   final String jsonEncoded;
   final Function(int currentFormNumber, Map<String, dynamic> data)?
-      finalSubmitCallBack;
+  finalSubmitCallBack;
   final Function(
       {int currentIndex,
       Map<String, dynamic>? formSubmitData,
@@ -20,14 +20,14 @@ class DynamicForm extends StatefulWidget {
 
   const DynamicForm(this.jsonEncoded,
       {this.submitButtonAlignment,
-      this.dynamicFormKey,
-      this.childElementList = const [],
-      this.showIndicator = true,
-      required this.finalSubmitCallBack,
-      this.currentStepCallBack,
-      this.formPadding = const EdgeInsets.only(left: 15, right: 15, top: 0),
-      this.formIndicatorPadding = const EdgeInsets.only(left: 10, right: 10, bottom: 15, top: 15),
-      this.titleTextStyle = const TextStyle(fontSize: 16, color: const Color(0xff222222), fontWeight: FontWeight.w500)
+        this.dynamicFormKey,
+        this.childElementList = const [],
+        this.showIndicator = true,
+        required this.finalSubmitCallBack,
+        this.currentStepCallBack,
+        this.formPadding = const EdgeInsets.only(left: 15, right: 15, top: 0),
+        this.formIndicatorPadding = const EdgeInsets.only(left: 10, right: 10, bottom: 15, top: 15),
+        this.titleTextStyle = const TextStyle(fontSize: 16, color: const Color(0xff222222), fontWeight: FontWeight.w500)
       })
       : super(key: dynamicFormKey);
 
@@ -47,6 +47,8 @@ class DynamicFormState extends State<DynamicForm> {
   List<String> formInformation = [];
 
   DynamicFormState({required this.jsonEncoded,this.titleTextStyle = const TextStyle(fontSize: 16, color: const Color(0xff222222), fontWeight: FontWeight.w500)}) {
+    /// Clear data before entering new
+    responseParser.clearFormFilledData();
     responseParser.setFormData = jsonEncoded;
     formScreenList = responseParser.getFormData;
     int currentIndex = -1;
@@ -129,6 +131,11 @@ class DynamicFormState extends State<DynamicForm> {
             _formSubmitFinalData['$currentPageIndex'] is Map &&
             (_formSubmitFinalData['$currentPageIndex'] as Map).isNotEmpty) {
 
+          Map<String, dynamic>? data = formScreen[currentPage].singleFormKey!.currentState!.getFormData();
+          _formSubmitFinalData['$currentPageIndex'] = data;
+          formSubmitData['$currentPage'] = data;
+          responseParser.setFormFilledData('$currentPage',data);
+
           // Safely retrieve data since we already checked it's not null and is not empty
           Map<String, dynamic> formSubmitFinalSingleData = _formSubmitFinalData["$currentPageIndex"] as Map<String, dynamic>;
           formSubmitData['$currentPage'] = formSubmitFinalSingleData;
@@ -175,7 +182,7 @@ class DynamicFormState extends State<DynamicForm> {
           .currentState!
           .validateFields()) {
         Map<String, dynamic>? data =
-            formScreen[currentPage].singleFormKey!.currentState!.getFormData();
+        formScreen[currentPage].singleFormKey!.currentState!.getFormData();
         Map<String, dynamic>? formInformation = formScreen[currentPage]
             .singleFormKey!
             .currentState!
@@ -247,54 +254,54 @@ class DynamicFormState extends State<DynamicForm> {
     int currentPage = responseParser.getCurrentFormNumber;
     return widget.showIndicator!
         ? (count > 1
-            ? Padding(
-                padding: widget.formIndicatorPadding!,
-                child: StepProgressIndicator(
-                    totalSteps: count,
-                    size: 35,
-                    padding: 8,
-                    currentStep: currentPage + 1,
-                    selectedColor: selectedColor,
-                    unselectedColor: unselectedColor,
-                    onTap: (index) {
-                      return () {
-                        if (responseParser.getCurrentFormNumber > index) {
-                          previewStepCustomClick();
-                        }
-                      };
-                    },
-                    customStep: (int index, Color color, double) {
-                      String title = "${formInformation[index]}";
-                      return Column(
-                        children: [
-                          Flexible(
-                            child: Text(
-                              "$title",
-                              style: TextStyle(
-                                  color: color,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 12),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Container(
-                            height: 4,
-                            decoration: BoxDecoration(
-                                color: color,
-                                borderRadius: BorderRadius.circular(15)),
-                          ),
-                        ],
-                      );
-                    }),
-              )
-            : const SizedBox(
-                height: 0,
-              ))
+        ? Padding(
+      padding: widget.formIndicatorPadding!,
+      child: StepProgressIndicator(
+          totalSteps: count,
+          size: 35,
+          padding: 8,
+          currentStep: currentPage + 1,
+          selectedColor: selectedColor,
+          unselectedColor: unselectedColor,
+          onTap: (index) {
+            return () {
+              if (responseParser.getCurrentFormNumber > index) {
+                previewStepCustomClick();
+              }
+            };
+          },
+          customStep: (int index, Color color, double) {
+            String title = "${formInformation[index]}";
+            return Column(
+              children: [
+                Flexible(
+                  child: Text(
+                    "$title",
+                    style: TextStyle(
+                        color: color,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  height: 4,
+                  decoration: BoxDecoration(
+                      color: color,
+                      borderRadius: BorderRadius.circular(15)),
+                ),
+              ],
+            );
+          }),
+    )
+        : const SizedBox(
+      height: 0,
+    ))
         : SizedBox(
-            height: 0,
-          );
+      height: 0,
+    );
   }
 
   @override
@@ -304,33 +311,33 @@ class DynamicFormState extends State<DynamicForm> {
       child: !commonValidation.isValidJsonEncoded(jsonEncoded)
           ? Container()
           : Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                formStepIndicator(),
-                Flexible(
-                    child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(16),
-                          topRight: Radius.circular(16))),
-                  child: ListView.builder(
-                      shrinkWrap: false,
-                      padding: widget.formPadding!,
-                      physics: const ClampingScrollPhysics(),
-                      itemCount: formScreen.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        if (responseParser.getCurrentFormNumber != index) {
-                          return const SizedBox(
-                            height: 0,
-                          );
-                        }
-                        return formScreen[index];
-                      }),
-                )),
-                // formScreen[selectedPageIndex].singleFormKey!=null && formScreen[selectedPageIndex].singleFormKey!.currentState!=null && formScreen[selectedPageIndex].singleFormKey!.currentState!.formSubmitButton!=null?formScreen[selectedPageIndex].singleFormKey!.currentState!.formSubmitButton!:const SizedBox(height:0),
-              ],
-            ),
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          formStepIndicator(),
+          Flexible(
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16))),
+                child: ListView.builder(
+                    shrinkWrap: false,
+                    padding: widget.formPadding!,
+                    physics: const ClampingScrollPhysics(),
+                    itemCount: formScreen.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      if (responseParser.getCurrentFormNumber != index) {
+                        return const SizedBox(
+                          height: 0,
+                        );
+                      }
+                      return formScreen[index];
+                    }),
+              )),
+          // formScreen[selectedPageIndex].singleFormKey!=null && formScreen[selectedPageIndex].singleFormKey!.currentState!=null && formScreen[selectedPageIndex].singleFormKey!.currentState!.formSubmitButton!=null?formScreen[selectedPageIndex].singleFormKey!.currentState!.formSubmitButton!:const SizedBox(height:0),
+        ],
+      ),
     );
   }
 }
