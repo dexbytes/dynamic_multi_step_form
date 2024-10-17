@@ -486,7 +486,7 @@ class _TextFieldsState extends State<TextFieldView> {
                     cursorColor: viewConfig!.viewConfiguration?._cursorColor ??
                         Colors.blue,
                     textInputAction:
-                    inputTextAction(textInputAction: textInputAction),
+                    inputTextAction(textInputActionType: textInputAction),
                     maxLength: textFieldModel!.validation!.maxLength,
 
                     ///It is the length of char
