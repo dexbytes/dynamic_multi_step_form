@@ -70,8 +70,7 @@ class _TextFieldsState extends State<TextFieldView> {
       if (textFieldModel!.elementConfig != null) {
         textCapitalizeStr =
             textFieldModel!.elementConfig!.textCapitalization ?? "none";
-        textInputAction =
-            textFieldModel!.elementConfig!.textCapitalization ?? "none";
+        textInputAction = textFieldModel!.elementConfig!.textInputAction ?? "none";
         formFieldType = textFieldModel!.elementConfig!.type ?? "text";
         formFieldType = formFieldType.toLowerCase();
         fieldKey = textFieldModel!.elementConfig!.name!;
