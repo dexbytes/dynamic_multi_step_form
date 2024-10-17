@@ -211,9 +211,9 @@ class _TextFieldsState extends State<TextFieldView> {
     return textCapitalization;
   }
 
-  TextInputAction inputTextAction({required String textInputAction}) {
+  TextInputAction inputTextAction({required String textInputActionType}) {
     TextInputAction textInputAction = TextInputAction.next;
-    switch (textCapitalizeStr.toLowerCase()) {
+    switch (textInputActionType.toLowerCase()) {
       case 'done':
         textInputAction = TextInputAction.done;
         break;
