@@ -103,6 +103,7 @@ height: 100,
           child:Icon(Icons.upload)
       ),
     ),
+    isCircularImageView: false,
   );
 
   ConfigurationSetting.instance.setPickImageViewConfigurationConfig = pickImageViewConfiguration;

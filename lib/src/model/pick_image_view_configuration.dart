@@ -5,7 +5,7 @@ part of dynamic_multi_step_form;
 class PickImageViewConfiguration {
   Size imagePreviewSize = Size(double.infinity, 170);
   BorderRadiusGeometry? borderRadius = BorderRadius.circular(8.0);
-
+  bool isCircularImageView =  false;
   Widget? bottomSheetCloser = Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -98,13 +98,16 @@ class PickImageViewConfiguration {
   );
 
   PickImageViewConfiguration(
-      {Widget? emptyImgView,
+      {
+        Widget? emptyImgView,
       Size? imagePreviewSize,
       Widget? editImgView,
       Widget? bottomSheetGalleryRow,
       Widget? bottomSheetTopTitle,
       Widget? bottomSheetCameraRow,
-      BorderRadiusGeometry? borderRadius}) {
+      BorderRadiusGeometry? borderRadius,
+        bool? isCircularImageView,
+      }) {
     this.imagePreviewSize = imagePreviewSize ?? this.imagePreviewSize;
     this.emptyImgView = emptyImgView ?? this.emptyImgView;
     this.editImgView = editImgView ?? this.editImgView;
@@ -114,6 +117,7 @@ class PickImageViewConfiguration {
     this.bottomSheetCameraRow =
         bottomSheetCameraRow ?? this.bottomSheetCameraRow;
     this.bottomSheetTopTitle = bottomSheetTopTitle ?? this.bottomSheetTopTitle;
+    this.isCircularImageView = isCircularImageView ?? false;
   }
 }
 

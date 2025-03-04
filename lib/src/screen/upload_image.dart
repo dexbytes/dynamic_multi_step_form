@@ -110,7 +110,14 @@ class _UploadImageState extends State<UploadImageView> {
                 onTap: () {},
                 child: Container(
                   decoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
+                    shape: viewConfiguration!.isCircularImageView
+                        ? BoxShape.circle
+                        : BoxShape.rectangle,
+                    border: Border.all(
+                        color: viewConfiguration!.isCircularImageView
+                            ? Color(0xff077FC8)
+                            : Colors.transparent,
+                        width: viewConfiguration!.isCircularImageView ? 1 : 0),
                     color: Colors.transparent,
                     image: DecorationImage(
                       image: imageProvider,
@@ -140,19 +147,52 @@ class _UploadImageState extends State<UploadImageView> {
             return Container();
           });
     } else if (!imagePath!.contains("http")) {
-      return Image.file(
-        File(imagePath!),
-        fit: BoxFit.cover,
-        width: fieldWidth,
-        height: fieldHeight,
-        errorBuilder:
-            (BuildContext context, Object error, StackTrace? stackTrace) {
-          // setState(() {
-          imagePath = null;
-          // });
-          return const Center(child: Text('This image type is not supported'));
-        },
-      );
+      return viewConfiguration!.isCircularImageView
+          ? Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                        color: Color(0xff077FC8),
+                        width: 1), // Border color and width
+                  ),
+                  child: ClipOval(
+                    // Ensures the image is circular
+                    child: Image.file(
+                      File(imagePath!),
+                      fit: BoxFit.cover,
+                      width: 120,
+                      height: 120,
+                      errorBuilder: (BuildContext context, Object error,
+                          StackTrace? stackTrace) {
+                        imagePath = null;
+                        return const Center(
+                            child: Text('This image type is not supported'));
+                      },
+                    ),
+                  ),
+                )
+              ],
+            )
+          : Image.file(
+              File(imagePath!),
+              fit: BoxFit.cover,
+              width: fieldWidth,
+              height: fieldHeight,
+              errorBuilder:
+                  (BuildContext context, Object error, StackTrace? stackTrace) {
+                // setState(() {
+                imagePath = null;
+                // });
+                return const Center(
+                    child: Text('This image type is not supported'));
+              },
+            );
     } else {
       return SizedBox();
     }
@@ -206,20 +246,49 @@ class _UploadImageState extends State<UploadImageView> {
                       padding: EdgeInsets.all(4),
                       child: viewConfiguration!.emptyImgView),
                 )
-              : ClipRRect(
+              :  viewConfiguration!.isCircularImageView ?
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              imageView(imagePath),
+              InkWell(
+                  onTap: () {
+                      displayProductDetailModal(context);
+                  },
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                        alignment: Alignment.center,
+                        height: 25,
+                        width: 25,
+                        margin: EdgeInsets.only(top: 95,left: 65),
+                        padding: EdgeInsets.all(4),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xff077FC8)),
+                        child: Icon(
+                          Icons.edit,
+                          size: 16,
+                          color: Colors.white,
+                        )),
+                  ))
+            ],
+          ) :
+
+                ClipRRect(
                   borderRadius: viewConfiguration!.borderRadius!,
                   child: Stack(
                     children: [
                       imageView(imagePath),
                       InkWell(
-                        onTap: () {
-                          setState(() {
-                            imagePath = null;
-                          });
-                          onChangeValue.call(fieldKey, "");
-                        },
-                        child: viewConfiguration!.editImgView,
-                      )
+                          onTap: () {
+                            setState(() {
+                              imagePath = null;
+                            });
+                            onChangeValue.call(fieldKey, "");
+                          },
+                          child: viewConfiguration!.editImgView,
+                          )
                     ],
                   ),
                 ),
@@ -279,14 +348,16 @@ class _UploadImageState extends State<UploadImageView> {
         });
         onChangeValue.call(fieldKey, imagePath!);
       }
-
     } else if (clickFor.toLowerCase() == "gallery") {
-      List<XFile>? photo = [];
+      //List<XFile>? photo = [];
+      XFile? photo;
       // Pick an image.
-      photo = await ImagePicker().pickMultiImage(imageQuality: 50, limit: 1);
-      if (photo.isNotEmpty) {
+      // photo = await ImagePicker().pickMultiImage(imageQuality: 50, limit: 1);
+      photo = await ImagePicker()
+          .pickImage(imageQuality: 50, source: ImageSource.gallery);
+      if (photo != null) {
         setState(() {
-          imagePath = photo![0].path;
+          imagePath = photo!.path;
         });
         onChangeValue.call(fieldKey, imagePath!);
       }
