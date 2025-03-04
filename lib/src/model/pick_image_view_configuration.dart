@@ -105,6 +105,7 @@ class PickImageViewConfiguration {
       Widget? bottomSheetGalleryRow,
       Widget? bottomSheetTopTitle,
       Widget? bottomSheetCameraRow,
+      Widget? bottomSheetCloser,
       BorderRadiusGeometry? borderRadius,
         bool? isCircularImageView,
       }) {
@@ -117,6 +118,7 @@ class PickImageViewConfiguration {
     this.bottomSheetCameraRow =
         bottomSheetCameraRow ?? this.bottomSheetCameraRow;
     this.bottomSheetTopTitle = bottomSheetTopTitle ?? this.bottomSheetTopTitle;
+    this.bottomSheetCloser = bottomSheetCloser ?? this.bottomSheetCloser;
     this.isCircularImageView = isCircularImageView ?? false;
   }
 }
