@@ -109,8 +109,6 @@ height: 100,
   ConfigurationSetting.instance.setPickImageViewConfigurationConfig = pickImageViewConfiguration;
 
 
-
-
   String? jsonString = "";
   runApp(MyApp(jsonString: jsonString));
 }
