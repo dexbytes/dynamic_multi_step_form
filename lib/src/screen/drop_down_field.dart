@@ -79,8 +79,9 @@ class _DropDownState extends State<DropDown> {
     // setState(() {
     if(optionList!=null){
       selectedData = optionList![0].displayValue??"";
-      valueChoose = optionList![0].value;
+      //valueChoose = optionList![0].value;
     }
+    buttonHead = jsonData['elementConfig']['placeholder'] ?? "";
 
     // });
     onChangeValue2.call(fieldKey, optionList![0].displayValue!);
