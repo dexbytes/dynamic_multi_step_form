@@ -82,9 +82,14 @@ class _DropDownState extends State<DropDown> {
       //valueChoose = optionList![0].value;
     }
     buttonHead = jsonData['elementConfig']['placeholder'] ?? "";
-
     // });
-    onChangeValue2.call(fieldKey, optionList![0].displayValue!);
+
+     //comment this because it value send first value when we click on button
+    //onChangeValue2.call(fieldKey, optionList![0].displayValue!);
+
+    if (jsonData['value'].isNotEmpty) {
+      onChangeValue2.call(fieldKey, jsonData['value']);
+    }
     super.initState();
   }
 
@@ -446,7 +451,8 @@ class _DropDownState extends State<DropDown> {
     /*if(!isMultipleSelect){
       Navigator.pop(_dropDownKey.currentContext!);
       }*/
-    onChangeValue.call(fieldKey, selectedOption!);
+    //onChangeValue.call(fieldKey, selectedOption!);
+    onChangeValue2.call(fieldKey, selectedOption![0]);
   }
 
   void onItemSelect(Object? value) {
